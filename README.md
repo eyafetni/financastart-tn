@@ -93,11 +93,11 @@ Questionnaire piloté par LLM — les questions s'adaptent en temps réel selon 
 
 | Score | Poids FRI | Sous-dimensions |
 |-------|-----------|-----------------|
-| Market Score | 32% | TAM · Concurrence · Validation · Revenus |
-| Commercial Score | 22% | Valeur · Produit · Pricing · Alignement |
-| Innovation Score | 20% | Nouveauté · Tech · Barrière · Rupture |
-| Scalability Score | 16% | Réplicabilité · Coûts · Géo · Manuel |
-| Green Score | 10% | Climat · Eau · Sols · Ressources (PNUD) |
+| Market Score | 29.8% | TAM · Concurrence · Validation · Revenus |
+| Commercial Score | 15.8% | Valeur · Produit · Pricing · Alignement |
+| Innovation Score | 29.8% | Nouveauté · Tech · Barrière · Rupture |
+| Scalability Score | 15.8% | Réplicabilité · Coûts · Géo · Manuel |
+| Green Score | 8.9% | Climat · Eau · Sols · Ressources (PNUD) |
 
 **Financing Readiness Index (FRI) :**
 > ⚠️ Les scores ne sont pas des moyennes. Un Market Score < 30 plafonne le FRI à 40/100 — même si tous les autres scores sont excellents.
@@ -106,6 +106,7 @@ Questionnaire piloté par LLM — les questions s'adaptent en temps réel selon 
 - `Validation ≥ 70 ET Revenus ≤ 20` → −8 pts Market *(Stiglitz & Weiss 1981)*
 - `Réplicabilité ≥ 70 ET Revenus ≤ 20` → −10 pts Scalability
 - `Tous scores ≥ 70 ET Stade F1 = Idéation` → −15 pts global
+**Adaptaion des pourcentages pour les 5 secteurs différents**
 
 **Ancrages théoriques :** Stiglitz & Weiss (1981) · WB Enterprise Survey 2024 · Startup Act Art. 3§4, Art. 12, Art. 17 · PNUD 4 piliers Green
 

@@ -1,0 +1,35 @@
+{
+  "entrepreneur_id": "ENT-CAS02",
+  "timestamp": "2026-06-16T15:21:34.760143",
+  "stade_reel": "Ideation",
+  "stade_percu": "Market Validation",
+  "score_diagnostic": 8,
+  "gap_detecte": true,
+  "gap_explication": "L'entrepreneur interprète l'enthousiasme de son entourage comme de la traction marché. Aucun client payant, aucune lettre d'intention, aucune validation par des experts sectoriels. Des amis intéressés ≠ demande marché réelle. Le projet est en stade idéation.",
+  "gaps": [
+    "Aucun client payant identifié",
+    "Validation uniquement par des proches — non représentative",
+    "Pas de contrats ni lettres d'intention",
+    "Aucune étude de marché formelle"
+  ],
+  "blockers": [
+    {
+      "domaine": "marché",
+      "description": "Traction non prouvée par des clients réels",
+      "priorite": 1
+    },
+    {
+      "domaine": "financier",
+      "description": "Zéro revenu généré",
+      "priorite": 2
+    }
+  ],
+  "secteur": "tech_digital",
+  "localisation": "Tunis",
+  "signaux_divergence": [
+    "Des amis ou de la famille intéressés par votre idée ≠ traction marché réelle. Aucun client payant détecté."
+  ],
+  "financement_recommande": "Love money / Concours",
+  "cas_reference": "CAS-02",
+  "cas_description": "Entrepreneur confondant intérêt de l'entourage avec validation marché"
+}

@@ -106,7 +106,7 @@ Questionnaire piloté par LLM — les questions s'adaptent en temps réel selon 
 - `Validation ≥ 70 ET Revenus ≤ 20` → −8 pts Market *(Stiglitz & Weiss 1981)*
 - `Réplicabilité ≥ 70 ET Revenus ≤ 20` → −10 pts Scalability
 - `Tous scores ≥ 70 ET Stade F1 = Idéation` → −15 pts global
-**Adaptaion des pourcentages pour les 5 secteurs différents**
+Adaptaion des pourcentages pour les 5 secteurs différents**
 
 **Ancrages théoriques :** Stiglitz & Weiss (1981) · WB Enterprise Survey 2024 · Startup Act Art. 3§4, Art. 12, Art. 17 · PNUD 4 piliers Green
 

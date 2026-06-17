@@ -1,0 +1,81 @@
+{
+  "financing_readiness_index": 2,
+  "fri_interpretation": "Non bancable (2/100) — Les scores cumulatifs sont trop faibles. Un accompagnement structurant est indispensable.",
+  "is_financeable": false,
+  "secteur_applique": "autre",
+  "scores": {
+    "market_score": {
+      "valeur": 63.6,
+      "sous_scores": {
+        "taille_marche": 40.0,
+        "concurrence": 100.0,
+        "validation_client": 20.0,
+        "modele_revenus": 40.0
+      },
+      "justification_template": "Le marche est partiellement valide. Point fort : 'Concurrence' (100/100). Faiblesse identifiee : 'Validation client' (20/100) qui penalise la bancabilite.",
+      "action_template": "Priorite : ameliorer 'Validation client' — obtenir 3 lettres d'intention clients ou preuves de traction payante avant tout depot de dossier.",
+      "kb_link": ""
+    },
+    "commercial_offer_score": {
+      "valeur": 31.2,
+      "sous_scores": {
+        "proposition_valeur": 20.0,
+        "maturite_produit": 20.0,
+        "strategie_prix": 40.0,
+        "alignement_besoins": 40.0
+      },
+      "justification_template": "L'offre commerciale est trop fragile (31.2/100). La 'Proposition valeur' (20/100) doit etre refondee avant toute approche d'investisseur.",
+      "action_template": "ACTION URGENTE : redefinir 'Proposition valeur' (score 20/100). Engager un atelier job-to-be-done avec de vrais utilisateurs.",
+      "kb_link": ""
+    },
+    "innovation_score": {
+      "valeur": 20.0,
+      "sous_scores": {
+        "nouveaute_locale": 20.0,
+        "intensite_tech": 20.0,
+        "barrieres_entree": 20.0,
+        "degre_rupture": 20.0
+      },
+      "justification_template": "Le score d'innovation est trop faible (20.0/100). Sans 'Nouveaute locale' renforce, le projet ne repond pas au critere Startup Act Art. 3.",
+      "action_template": "ACTION URGENTE : justifier la nouveaute par une etude comparative de marche. Sans differentiation documentee, le label Startup Act est inaccessible.",
+      "kb_link": ""
+    },
+    "scalability_score": {
+      "valeur": 35.0,
+      "sous_scores": {
+        "replicabilite": 40.0,
+        "independance_manuelle": 40.0,
+        "couts_deploiement": 20.0,
+        "potentiel_geo": 20.0
+      },
+      "justification_template": "Le profil de scalabilite est insuffisant (35.0/100). Le critere 'Couts deploiement' (20/100) signale une dependance trop forte au modele manuel.",
+      "action_template": "ACTION URGENTE : repenser le modele operationnel pour que 'Couts deploiement' depasse 30/100 — le projet ne peut pas scaler dans son etat actuel.",
+      "kb_link": ""
+    },
+    "green_score": {
+      "valeur": 21.9,
+      "sous_scores": {
+        "climat_air": 20.0,
+        "eau": 20.0,
+        "sols_biodiversite": 40.0,
+        "ressources_dechets": 20.0
+      },
+      "justification_template": "Le Green Score est insuffisant (21.9/100). Le pilier 'Climat air' (20/100) constitue un risque ESG pour les partenaires PNUD.",
+      "action_template": "ACTION URGENTE : le pilier 'Climat air' (20/100) doit faire l'objet d'un plan de mitigation ecrit avant toute soumission a des fonds verts.",
+      "kb_link": ""
+    }
+  },
+  "blockers_actifs": [],
+  "anomalies_detectees": [
+    {
+      "id": "ANOM_GLOBAL_FRAUD",
+      "description": "Incohérence majeure : Déclarations de revenus élevées contredites par l'absence de RNE.",
+      "penalite": 35,
+      "dimension_impactee": "global",
+      "justification_template": "",
+      "action_template": "",
+      "kb_link": ""
+    }
+  ],
+  "resume_executif": "Analyse pour le secteur 'autre' : le projet n'est PAS encore bancable avec un Financing Readiness Index de 2/100. Le point fort du profil est le Market Score (63.6/100). Le principal frein est le Innovation Score (20.0/100), qui doit etre traite en priorite. 1 anomalie(s) detectee(s) et 0 blocker(s) identifie(s). Les actions prioritaires sont detaillees par dimension dans la section 'scores'."
+}

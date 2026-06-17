@@ -1,0 +1,30 @@
+{
+  "id": "PROF-PERFECTION",
+  "nom_scenario": "Cas Démo : Agritech Sfax - Analyse Réelle complète",
+  "secteur": "agritech",
+  "sub_scores": {
+    "MS1": 100,
+    "MS2": 60,
+    "MS3": 100,
+    "MS4": 80,
+    "CO1": 100,
+    "CO2": 100,
+    "CO3": 80,
+    "CO4": 100,
+    "IN1": 80,
+    "IN2": 100,
+    "IN3": 80,
+    "IN4": 80,
+    "SC1": 100,
+    "SC2": 100,
+    "SC3": 80,
+    "SC4": 100,
+    "GS1": 100,
+    "GS2": 100,
+    "GS3": 100,
+    "GS4": 100
+  },
+  "anomalies": [],
+  "blockers": [],
+  "attendu": "FRI calculé selon les pondérations cibles du système expert."
+}

@@ -1,0 +1,455 @@
+AINS Hackathon 2026 — Briefings Équipe
+Projet : FinançaStart TN — Intelligent Financing Readiness Engine
+Soumission finale : 22 juin 2026   |   5 membres   |   7 jours
+
+Ce document contient le briefing précis de chaque membre. Chaque personne travaille de façon INDÉPENDANTE sur son module. Le Membre 5 (Chef de projet) définit les contrats JSON dès le Jour 1 — c'est le seul prérequis pour que tout le monde démarre en parallèle.
+
+
+  MEMBRE 1 — Diagnostic Adaptatif (Feature F1)  
+Ta mission
+Construire le questionnaire intelligent qui diagnostique la vraie maturité de l'entrepreneur — pas celle qu'il déclare, la réelle.
+Ce que tu dois livrer
+Un programme Python qui pose des questions et classe l'entrepreneur dans l'un des 6 stades
+L'arbre de décision : les questions changent selon les réponses précédentes (branchement dynamique)
+3 cas documentés de divergence perception-réalité (l'entrepreneur se croit au stade X, le système dit Y)
+Le fichier JSON de sortie (contrat F1) — format fourni par le Membre 5
+
+Les 6 stades de maturité obligatoires
+Stade
+Critères clés
+Financement typique
+1. Ideation
+Idée sans validation, équipe incomplète
+Love money, concours
+2. Market Validation
+Premiers clients, traction naissante
+Microfinance BTS
+3. Structuration
+Structure juridique, business plan
+APII, ANPE
+4. Fundraising
+Dossier bancable en construction
+BFPME, Startup Act
+5. Launch Planning
+Produit validé, prêt à lever
+Capital risque, ANAVA
+6. Growth
+Revenus existants, expansion
+Lignes bancaires, AFD/EU
+
+L'arbre de décision — logique de branchement
+Exemple concret à implémenter :
+Q1 : Dans quel secteur travaillez-vous ?
+  → Agri-food : poser des questions sur certifications sanitaires, chaîne de froid, saisonnalité
+  → Tech/Digital : poser des questions sur MVP, MRR, propriété intellectuelle
+  → Industrie : poser des questions sur équipements, normes ISO, FOPRODI
+
+Q2 : Avez-vous des revenus ?
+  → OUI : Quel CA annuel ? Depuis combien de temps ?
+  → NON : Avez-vous des clients payants ?
+         → OUI : Lettres d'intention documentées ?
+         → NON : Qui a validé votre idée ? → ALERTE divergence probable
+
+Les 3 cas de divergence à documenter
+Cas
+Ce que l'entrepreneur dit
+Ce que le système diagnostique
+Raison de l'écart
+Cas 1
+Je suis prêt pour la BFPME (Fundraising)
+Structuration
+Pas de RNE, pas de business plan
+Cas 2
+J'ai de la traction marché
+Ideation
+Amis intéressés ≠ clients payants
+Cas 3
+Mon projet est très innovant
+Innovation Score faible
+Produit existant depuis 3 ans en Tunisie
+
+Ton planning
+Jour
+Tâche
+J1
+Recevoir le contrat JSON du Membre 5 — définir les questions et l'arbre de décision sur papier
+J2-J3
+Coder le questionnaire adaptatif en Python — tester les 3 profils distincts
+J4-J5
+Documenter les 3 cas de divergence avec exemples réels — tester end-to-end
+J6
+Valider que le JSON de sortie respecte le contrat — tests edge cases
+J7
+Support intégration avec Membre 5 + répétition démo
+
+IMPORTANT : Tu n'attends personne. Travaille avec le contrat JSON fourni par le Membre 5 dès J1.
+Tu n'as PAS besoin de connaître le scoring ni le dashboard pour coder ton module.
+Ton seul output : un JSON structuré conforme au contrat F1.
+
+  MEMBRE 2 — Scoring Multi-Dimensionnel (Feature F2)  
+Ta mission
+Construire le moteur qui calcule 5 scores sur le projet de l'entrepreneur et explique pourquoi — comme un vrai comité de crédit, pas une moyenne simple.
+Ce que tu dois livrer
+Un programme Python qui reçoit un profil JSON (F1) et retourne 5 scores détaillés
+Un document de méthodologie : les poids, les critères, la logique — tout justifié
+10 profils synthétiques avec leurs scores attendus (test set pour prouver la cohérence)
+Le fichier JSON de sortie (contrat F2) — format fourni par le Membre 5
+
+Les 5 scores obligatoires
+Score
+Sous-dimensions
+Poids suggéré
+Market Score
+Taille marché + concurrence / Validation client / Modèle revenus
+25%
+Commercial Offer Score
+Proposition de valeur / Maturité produit / Pricing / Alignement offre-besoins
+20%
+Innovation Score
+Nouveauté locale / Intensité tech / Barrière entrée / Degré de rupture
+20%
+Scalability Score
+Réplicabilité / Dépendance manuelle / Coûts déploiement / Potentiel géo
+20%
+Green Score
+Impact env / Viabilité écologique / Empreinte carbone / ODD / Éco-circulaire
+15%
+
+Règle critique — Les scores ne sont PAS des moyennes
+Un score faible sur une dimension fondamentale ne doit PAS être masqué par des scores forts ailleurs.
+
+Exemple : Market Score = 10/100 → le système doit signaler clairement que ce projet
+n'est PAS finançable même si les 4 autres scores sont à 80/100.
+
+Logique à implémenter : si Market Score < 30 OU Commercial Score < 25
+→ Financing Readiness Index plafonné à 40/100 peu importe le reste.
+
+Format de sortie pour chaque score
+{
+  "market_score": {
+    "valeur": 28,
+    "sous_scores": {
+      "taille_marche": 40,
+      "validation_client": 10,
+      "modele_revenus": 35
+    },
+    "justification": "Marché agri-food prometteur mais zéro client payant documenté",
+    "action": "Obtenez 3 lettres d'intention avant tout dépôt de dossier"
+  }
+}
+
+Ton planning
+Jour
+Tâche
+J1
+Recevoir contrat JSON Membre 5 — définir les critères et poids sur papier, les justifier
+J2-J3
+Coder le moteur de scoring en Python — tester sur 5 profils fictifs
+J4
+Implémenter la logique non-linéaire (scores bloquants) — tester les anomalies
+J5
+Rédiger le document de méthodologie (critères, poids, justifications)
+J6
+Créer le test set de 10 profils synthétiques avec scores attendus — métriques
+J7
+Support intégration Membre 5 + répétition démo
+
+IMPORTANT : Tu travailles avec un JSON fictif d'entrée (fourni par Membre 5 dès J1).
+Tu n'attends PAS que le vrai diagnostic F1 soit prêt — tu testes avec des données mock.
+Ton seul output : un JSON de scores conforme au contrat F2.
+
+  MEMBRE 3 — Knowledge Base + RAG (Feature F3)  
+Ta mission
+Construire la base de données des vraies ressources tunisiennes (minimum 30, idéalement 40+) et le moteur qui recommande les bonnes ressources selon le profil de l'entrepreneur. Zéro hallucination — chaque recommandation doit être tracée à une vraie source.
+Ce que tu dois livrer
+40+ fiches ressources tunisiennes réelles structurées en JSON (scraped depuis les sites officiels)
+Un script Python de scraping pour automatiser la collecte
+Un vector store indexé (ChromaDB ou FAISS) prêt pour le RAG
+Un moteur RAG qui reçoit gaps + scores et retourne des ressources tracées
+Le fichier JSON de sortie (contrat F3) — format fourni par le Membre 5
+
+Les sources à scraper — par priorité
+Priorité
+Source
+URL
+Ce qu'on collecte
+🔴 Urgent
+BFPME
+bfpme.com.tn
+Critères éligibilité, montants, taux, documents requis
+🔴 Urgent
+Startup Act
+startup.gov.tn
+Critères label, avantages, procédures, fonds
+🔴 Urgent
+Financini
+financini.org.tn
+Base mécanismes financement TPMEs (déjà agrégée)
+🔴 Urgent
+APII
+apii.nat.tn
+Programmes accompagnement, fiches projets sectoriels
+🟡 Important
+BTS
+bts.com.tn
+Microfinancement, conditions, éligibilité, montants
+🟡 Important
+ANPE
+emploi.gov.tn
+Programmes emploi, accompagnement jeunes entrepreneurs
+🟡 Important
+RNE
+registre-entreprises.tn
+Procédures création entreprise, formes juridiques
+🟢 Bonus
+Flat6Labs
+flat6labs.com
+Critères incubation, programme accélération Tunis
+🟢 Bonus
+AFD Tunisie
+afd.fr/tunisie
+Programmes actifs, lignes de financement disponibles
+
+Format de chaque fiche ressource (JSON)
+{
+  "id": "BFPME-001",
+  "nom": "Crédit BFPME PME industrielle",
+  "organisme": "BFPME",
+  "type": "financement_bancaire",
+  "stades_eligibles": ["Structuration", "Fundraising", "Launch Planning"],
+  "montant_min": 100000,
+  "montant_max": 5000000,
+  "taux": "TMM + 2 à 4 points",
+  "criteres_eligibilite": ["PME tunisienne", "apport 10-12%", "business plan"],
+  "documents_requis": ["business plan", "états financiers", "statuts"],
+  "url_source": "https://www.bfpme.com.tn/...",
+  "date_scraping": "2026-06-15"
+}
+
+Règle absolue — Zéro hallucination
+Toute ressource recommandée DOIT avoir un champ url_source pointant vers une vraie page.
+Si tu n'as pas trouvé l'information sur le site officiel, tu ne l'inventes PAS.
+Inventer des noms de programmes = DISQUALIFICATION immédiate du hackathon.
+
+En cas de doute sur une information : marquer le champ comme 'À vérifier' plutôt qu'inventer.
+
+Ton planning
+Jour
+Tâche
+J1
+Recevoir contrat JSON Membre 5 — commencer le scraping BFPME + Startup Act + Financini
+J2
+Scraping APII + BTS + RNE — structurer en JSON propre au fur et à mesure
+J3
+Scraping Flat6Labs + AFD + sources bonus — objectif 40 fiches minimum
+J4
+Indexation dans ChromaDB — tester les premières requêtes de recherche
+J5
+Coder le moteur RAG — tester avec 5 profils fictifs différents
+J6
+Mesurer la pertinence des recommandations (relevance score) sur le test set
+J7
+Support intégration Membre 5 + répétition démo
+
+IMPORTANT : Tu n'attends personne. Tu commences le scraping dès J1.
+Les fiches JSON que tu produis sont indépendantes du reste de l'équipe.
+Le Membre 5 branchera ton moteur RAG sur le système global en J5-J6.
+
+  MEMBRE 4 — Dashboard + Interface Utilisateur (Frontend)  
+Ta mission
+Construire l'interface visuelle que l'entrepreneur voit : un tableau de bord qui affiche en un seul écran sa maturité réelle, ses 5 scores, ses blockers prioritaires et sa roadmap personnalisée. Et une vue 'Mon Parcours' qui garde la mémoire de son évolution.
+Ce que tu dois livrer
+Un dashboard web complet (React ou HTML/CSS/JS — ton choix)
+Composant : indicateur de maturité avec les 6 stades et alerte de divergence perception-réalité
+Composant : 5 barres de score avec sous-dimensions et justification au survol
+Composant : liste des blockers prioritaires par domaine (légal, marché, financier...)
+Composant : roadmap timeline avec horizons immédiat / court terme / moyen terme
+Vue 'Mon Parcours' : historique des sessions avec évolution des scores
+Support bilingue FR/AR si possible (au moins les labels principaux en arabe)
+
+La maquette du dashboard principal
+┌─────────────────────────────────────────────────────────┐
+│  VOTRE STADE RÉEL : STRUCTURATION                       │
+│  ⚠️  Vous pensiez être : FUNDRAISING                    │
+│  Écart détecté — Voici pourquoi ↓                       │
+├─────────────────────────────────────────────────────────┤
+│  Market Score      ████░░░░░░  28/100                   │
+│  Commercial Score  ████████░░  45/100                   │
+│  Innovation Score  ██████░░░░  38/100                   │
+│  Scalability       █████░░░░░  30/100                   │
+│  Green Score       ███░░░░░░░  20/100                   │
+│  ──────────────────────────────────────────             │
+│  Financing Readiness Index     34/100   ⛔ Non bancable │
+├─────────────────────────────────────────────────────────┤
+│  BLOCKERS PRIORITAIRES                                  │
+│  🔴 [Légal]      Structure juridique non enregistrée    │
+│  🟠 [Marché]     Validation client insuffisante         │
+│  🟡 [Financier]  Apport personnel insuffisant           │
+├─────────────────────────────────────────────────────────┤
+│  ROADMAP PERSONNALISÉE                                  │
+│  ● Immédiat (0-2 sem) : Enregistrement RNE → [APII]    │
+│  ● Court terme (1-2m) : 3 lettres d'intention clients   │
+│  ● Moyen terme (3-6m) : Dossier BFPME → [BFPME-001]   │
+└─────────────────────────────────────────────────────────┘
+
+Comment travailler sans attendre les autres
+Le Membre 5 te fournit dès J1 des fichiers JSON fictifs qui ont exactement
+la même structure que les vrais outputs du système.
+
+Tu codes ton dashboard en lisant ces JSON fictifs.
+En J6, le Membre 5 branche les vrais modules — ton interface ne change PAS,
+elle lit juste des vraies données au lieu de données fictives.
+
+Exemple de JSON fictif que tu recevras :
+{ "stade_reel": "Structuration", "stade_percu": "Fundraising",
+  "scores": { "market_score": { "valeur": 28, ... } },
+  "roadmap": [ { "horizon": "immediat", "action": "..." } ] }
+
+Ton planning
+Jour
+Tâche
+J1
+Recevoir les JSON fictifs du Membre 5 — dessiner les maquettes sur papier d'abord
+J2
+Coder le composant indicateur de maturité + alerte divergence
+J3
+Coder les 5 barres de score avec sous-dimensions et justification
+J4
+Coder les blockers + la roadmap timeline
+J5
+Coder la vue Mon Parcours — polish UI général
+J6
+Intégration avec les vrais modules (Membre 5 gère) — tests visuels
+J7
+Derniers ajustements UI + répétition démo live
+
+IMPORTANT : Un entrepreneur non-technicien doit comprendre le dashboard en 30 secondes.
+Pas de jargon technique. Pas de chiffres seuls — toujours avec une explication courte.
+Le jury évalue : 'Est-ce qu'un vrai entrepreneur tunisien pourrait l'utiliser seul ?'
+
+  MEMBRE 5 — TOI — Intégration + Évaluation + Pitch (Chef de projet)  
+Ta mission
+Tu es le chef d'orchestre. Tu définis les règles du jeu (contrats JSON), tu connectes les 4 modules, tu mesures que ça marche, et tu présentes le projet. C'est toi qui as l'idée — c'est toi qui la défends.
+Ce que tu dois livrer
+Les 3 contrats JSON dès le Jour 1 (le prérequis pour que tout le monde démarre)
+L'API centrale qui connecte F1 → F2 → F3 → Dashboard
+Le rapport d'évaluation avec métriques sur les 3 modules
+Le README GitHub structuré + diagramme d'architecture
+Le pitch deck final (15 slides maximum)
+
+PRIORITÉ ABSOLUE — Jour 1 matin : Les 3 contrats JSON
+Avant que tes coéquipiers écrivent une seule ligne de code, tu crées ces 3 fichiers sur GitHub :
+Fichier 1 : contract_f1_output.json
+→ Ce que le module de diagnostic produit
+  { "stade_reel": "Structuration", "stade_percu": "Fundraising",
+    "gap_detecte": true, "gaps": [...], "blockers": [...],
+    "secteur": "agri-food", "localisation": "Sfax" }
+
+Fichier 2 : contract_f2_output.json
+→ Ce que le module de scoring produit
+  { "financing_readiness_index": 34,
+    "scores": { "market_score": { "valeur": 28, "sous_scores": {...},
+    "justification": "...", "action": "..." }, ... } }
+
+Fichier 3 : contract_f3_output.json
+→ Ce que le module RAG produit
+  { "roadmap": [ { "horizon": "immediat", "action": "...",
+    "ressource_kb": "BFPME-001", "url": "..." } ] }
+
+L'API centrale à construire (J3-J5)
+# api_main.py — connecte tout
+
+def run_pipeline(entrepreneur_input):
+    # Étape 1 : Diagnostic
+    diagnostic = f1_diagnostic(entrepreneur_input)
+
+    # Étape 2 : Scoring (reçoit le diagnostic)
+    scores = f2_scoring(diagnostic)
+
+    # Étape 3 : RAG (reçoit diagnostic + scores)
+    roadmap = f3_rag(diagnostic, scores)
+
+    # Étape 4 : Tout envoyer au dashboard
+    return { ...diagnostic, ...scores, ...roadmap }
+
+Le rapport d'évaluation (J6)
+Tu crées 10 profils fictifs d'entrepreneurs tunisiens et tu mesures :
+Module
+Ce qu'on mesure
+Objectif
+F1 Diagnostic
+Classification accuracy : le stade assigné est-il correct ?
+> 80% sur 10 profils
+F2 Scoring
+Consistency : des profils similaires donnent des scores proches ?
+Écart < 10 pts entre profils similaires
+F3 RAG
+Relevance : les ressources recommandées sont-elles pertinentes ?
+> 3 ressources pertinentes sur 5 recommandées
+
+Le README GitHub (J1-J2)
+Structure obligatoire du README :
+
+# FinançaStart TN
+## Problème
+## Solution
+## Architecture (diagramme)
+## Les 3 Features
+## Knowledge Base (liste des 40+ ressources)
+## Installation & Setup
+## Évaluation & Métriques
+## Équipe
+
+Ton planning
+Jour
+Tâche
+J1 MATIN
+Créer repo GitHub + les 3 contrats JSON + partager avec l'équipe → PRIORITÉ 1
+J1 APRÈS-MIDI
+Écrire le README + diagramme architecture + brief chaque membre
+J2-J3
+Coder l'API centrale avec les JSON fictifs — tester le pipeline complet en mock
+J4-J5
+Intégrer les vrais modules au fur et à mesure qu'ils arrivent — F1 d'abord, puis F2, puis F3
+J6
+Tests end-to-end sur 10 profils — rapport d'évaluation — métriques documentées
+J7
+Finaliser pitch deck 15 slides — répétition démo live — polish final
+
+Le pitch deck — structure des 15 slides
+Slide
+Contenu
+1
+Titre + tagline : 'La première plateforme qui dit à l'entrepreneur tunisien la vérité sur sa bancabilité'
+2
+Le problème : 60.6% des PME sans crédit, 41.4% des demandes refusées — données chiffrées
+3
+Pourquoi ça existe : l'entrepreneur et la banque parlent deux langues différentes
+4
+Notre solution : FinançaStart TN — ce que c'est en une phrase
+5
+Feature F1 : Diagnostic adaptatif — demo screenshot ou gif
+6
+Feature F2 : Les 5 scores — exemple concret avec justification
+7
+Feature F3 : RAG + Roadmap — exemple de roadmap générée
+8
+Le Dashboard — screenshot de l'interface complète
+9
+L'architecture technique — diagramme simplifié
+10
+La Knowledge Base — 40+ ressources tunisiennes réelles (liste)
+11
+L'évaluation — nos métriques sur nos 10 profils de test
+12
+Cas démo : entrepreneur Sfax agri-food — avant/après FinançaStart
+13
+Impact potentiel : X% des PME tunisiennes ciblées, partenariats PNUD/GEWEET
+14
+Roadmap post-hackathon : déploiement avec APII/BFPME
+15
+Équipe + Contact
+
+TON AVANTAGE sur les autres équipes : tu as l'idée la plus ancrée dans la réalité tunisienne.
+Les équipes techniques vont faire de belles démos IA. Toi tu vas montrer un vrai problème,
+une vraie solution, avec de vraies ressources tunisiennes. C'est ça qui gagne.

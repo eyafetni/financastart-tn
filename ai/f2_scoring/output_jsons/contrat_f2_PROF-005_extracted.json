@@ -1,0 +1,30 @@
+{
+  "id": "PROF-005",
+  "nom_scenario": "Cas Démo : Tech Tunis - Analyse Réelle complète",
+  "secteur": "tech",
+  "sub_scores": {
+    "MS1": 100,
+    "MS2": 40,
+    "MS3": 100,
+    "MS4": 100,
+    "CO1": 100,
+    "CO2": 100,
+    "CO3": 100,
+    "CO4": 100,
+    "IN1": 100,
+    "IN2": 100,
+    "IN3": 100,
+    "IN4": 80,
+    "SC1": 100,
+    "SC2": 100,
+    "SC3": 100,
+    "SC4": 100,
+    "GS1": 40,
+    "GS2": 20,
+    "GS3": 20,
+    "GS4": 60
+  },
+  "anomalies": [],
+  "blockers": [],
+  "attendu": "FRI calculé selon les pondérations cibles du système expert."
+}

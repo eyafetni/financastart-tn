@@ -1,0 +1,106 @@
+{
+  "financing_readiness_index": 46,
+  "fri_interpretation": "Insuffisant (46/100) — Des blockers majeurs doivent etre resolus avant toute approche bancaire.",
+  "is_financeable": false,
+  "secteur_applique": "Agroalimentaire",
+  "scores": {
+    "market_score": {
+      "valeur": 32.1,
+      "sous_scores": {
+        "taille_marche": 85.0,
+        "concurrence": 15.0,
+        "validation_client": 75.0,
+        "modele_revenus": 15.0
+      },
+      "justification": "Le Market Score est insuffisant (32.1/100). Le critere 'Concurrence' (15/100) constitue un bloqueur majeur pour toute demarche de financement.",
+      "action": "ACTION URGENTE : 'Concurrence' doit passer au-dessus de 30/100. Sans cela, aucun financement n'est envisageable."
+    },
+    "commercial_offer_score": {
+      "valeur": 57.4,
+      "sous_scores": {
+        "proposition_valeur": 80.0,
+        "maturite_produit": 30.0,
+        "strategie_prix": 15.0,
+        "alignement_besoins": 70.0
+      },
+      "justification": "L'offre commerciale necessite des ajustements. Le critere 'Strategie prix' (15/100) fragilise la proposition de valeur globale.",
+      "action": "Travailler 'Strategie prix' : rediger une fiche de proposition de valeur claire (1 page) et la tester avec 5 clients potentiels."
+    },
+    "innovation_score": {
+      "valeur": 56.3,
+      "sous_scores": {
+        "nouveaute_locale": 75.0,
+        "intensite_tech": 25.0,
+        "barrieres_entree": 15.0,
+        "degre_rupture": 65.0
+      },
+      "justification": "L'innovation est presente mais insuffisamment defenisble. Le critere 'Barrieres entree' (15/100) limite la protection competitive.",
+      "action": "Renforcer 'Barrieres entree' : documenter la differentiation par rapport aux solutions existantes sur le marche tunisien."
+    },
+    "scalability_score": {
+      "valeur": 38.7,
+      "sous_scores": {
+        "replicabilite": 50.0,
+        "independance_manuelle": 45.0,
+        "couts_deploiement": 60.0,
+        "potentiel_geo": 40.0
+      },
+      "justification": "Le profil de scalabilite est insuffisant (38.7/100). Le critere 'Potentiel geo' (40/100) signale une dependance trop forte au modele manuel.",
+      "action": "ACTION URGENTE : repenser le modele operationnel pour que 'Potentiel geo' depasse 30/100 — le projet ne peut pas scaler dans son etat actuel."
+    },
+    "green_score": {
+      "valeur": 54.3,
+      "sous_scores": {
+        "climat_air": 40.0,
+        "eau": 85.0,
+        "sols_biodiversite": 50.0,
+        "ressources_dechets": 55.0
+      },
+      "justification": "La dimension green est partiellement couverte. Le pilier 'Climat air' (40/100) necessite des actions correctives documentees.",
+      "action": "Produire un plan d'action sur le pilier 'Climat air' : mesures correctives, calendrier, indicateurs suivis."
+    }
+  },
+  "blockers_actifs": [
+    {
+      "domaine": "Marché",
+      "description": "Modèle de revenus non finalisé (MS4=15/100)",
+      "niveau": "rouge"
+    },
+    {
+      "domaine": "Financier",
+      "description": "Aucun état financier formel disponible",
+      "niveau": "rouge"
+    },
+    {
+      "domaine": "Légal",
+      "description": "Statuts juridiques non encore déposés (RNE)",
+      "niveau": "orange"
+    },
+    {
+      "domaine": "Vert",
+      "description": "Données hydriques non documentées en AgriTech",
+      "niveau": "orange"
+    }
+  ],
+  "anomalies_detectees": [
+    {
+      "id": "ANOM_MS_1",
+      "description": "Validation client élevée (MS3 >= 70) mais modèle de revenus embryonnaire (MS4 <= 20).",
+      "penalite": 8,
+      "dimension_impactee": "market"
+    },
+    {
+      "id": "ANOM_SC_1",
+      "description": "Forte réplicabilité revendiquée (SC1 >= 18) mais modèle de revenus embryonnaire (MS4 <= 20).",
+      "penalite": 10,
+      "dimension_impactee": "scalability"
+    },
+    {
+      "id": "ANOM_GS_2",
+      "description": "Gestion de l'eau irréprochable revendiquée (GS2 >= 70) en Agroalimentaire sans aucune donnée hydrique fournie.",
+      "penalite": 10,
+      "dimension_impactee": "green"
+    }
+  ],
+  "resume_executif": "Analyse pour le secteur 'Agroalimentaire' : le projet n'est PAS encore bancable avec un Financing Readiness Index de 46/100. Le point fort du profil est le Commercial Offer Score (57.4/100). Le principal frein est le Market Score (32.1/100), qui doit etre traite en priorite. 3 anomalie(s) detectee(s) et 4 blocker(s) identifie(s). Les actions prioritaires sont detaillees par dimension dans la section 'scores'."
+}

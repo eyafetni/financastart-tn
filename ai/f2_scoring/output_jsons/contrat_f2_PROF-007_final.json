@@ -1,0 +1,77 @@
+{
+  "financing_readiness_index": 79,
+  "fri_interpretation": "Excellent (79/100) — Profil bancable. Le projet peut initier une demarche de financement formelle.",
+  "is_financeable": true,
+  "secteur_applique": "health",
+  "scores": {
+    "market_score": {
+      "valeur": 66.0,
+      "sous_scores": {
+        "taille_marche": 100.0,
+        "concurrence": 60.0,
+        "validation_client": 40.0,
+        "modele_revenus": 80.0
+      },
+      "justification_template": "Le marche est partiellement valide. Point fort : 'Taille marche' (100/100). Faiblesse identifiee : 'Validation client' (40/100) qui penalise la bancabilite.",
+      "action_template": "Priorite : ameliorer 'Validation client' — obtenir 3 lettres d'intention clients ou preuves de traction payante avant tout depot de dossier.",
+      "kb_link": ""
+    },
+    "commercial_offer_score": {
+      "valeur": 94.9,
+      "sous_scores": {
+        "proposition_valeur": 100.0,
+        "maturite_produit": 80.0,
+        "strategie_prix": 80.0,
+        "alignement_besoins": 100.0
+      },
+      "justification_template": "L'offre commerciale est differentiated et bien definie. La 'Proposition valeur' (100/100) constitue un avantage competitif clair.",
+      "action_template": "Formaliser le pricing dans un document de strategie commerciale pour les due diligences.",
+      "kb_link": ""
+    },
+    "innovation_score": {
+      "valeur": 95.5,
+      "sous_scores": {
+        "nouveaute_locale": 100.0,
+        "intensite_tech": 100.0,
+        "barrieres_entree": 100.0,
+        "degre_rupture": 80.0
+      },
+      "justification_template": "Le profil innovant est reconnu : 'Nouveaute locale' (100/100) positionne favorablement le projet sur son marche.",
+      "action_template": "Initier une procedure de depot de brevet (Art. 12 Startup Act) pour securiser les barrieres a l'entree.",
+      "kb_link": ""
+    },
+    "scalability_score": {
+      "valeur": 76.9,
+      "sous_scores": {
+        "replicabilite": 80.0,
+        "independance_manuelle": 80.0,
+        "couts_deploiement": 40.0,
+        "potentiel_geo": 100.0
+      },
+      "justification_template": "Le modele est fortement scalable. La 'Potentiel geo' (100/100) confirme la capacite de croissance sans augmentation lineaire des couts.",
+      "action_template": "Modeliser les economies d'echelle a 3 ans pour le dossier de levee de fonds.",
+      "kb_link": ""
+    },
+    "green_score": {
+      "valeur": 44.5,
+      "sous_scores": {
+        "climat_air": 40.0,
+        "eau": 40.0,
+        "sols_biodiversite": 20.0,
+        "ressources_dechets": 80.0
+      },
+      "justification_template": "Le Green Score est insuffisant (44.5/100). Le pilier 'Sols biodiversite' (20/100) constitue un risque ESG pour les partenaires PNUD.",
+      "action_template": "ACTION URGENTE : le pilier 'Sols biodiversite' (20/100) doit faire l'objet d'un plan de mitigation ecrit avant toute soumission a des fonds verts.",
+      "kb_link": ""
+    }
+  },
+  "blockers_actifs": [
+    {
+      "domaine": "Légal",
+      "description": "Autorisation ministérielle de mise sur le marché manquante",
+      "niveau": "rouge"
+    }
+  ],
+  "anomalies_detectees": [],
+  "resume_executif": "Analyse pour le secteur 'health' : le projet est bancable avec un Financing Readiness Index de 79/100. Le point fort du profil est le Innovation Score (95.5/100). Le principal frein est le Green Score (44.5/100), qui doit etre traite en priorite. 0 anomalie(s) detectee(s) et 1 blocker(s) identifie(s). Les actions prioritaires sont detaillees par dimension dans la section 'scores'."
+}

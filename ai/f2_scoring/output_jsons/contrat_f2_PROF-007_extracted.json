@@ -1,0 +1,36 @@
+{
+  "id": "PROF-007",
+  "nom_scenario": "Cas Démo : Health Monastir - Analyse Réelle complète",
+  "secteur": "health",
+  "sub_scores": {
+    "MS1": 100,
+    "MS2": 60,
+    "MS3": 40,
+    "MS4": 80,
+    "CO1": 100,
+    "CO2": 80,
+    "CO3": 80,
+    "CO4": 100,
+    "IN1": 100,
+    "IN2": 100,
+    "IN3": 100,
+    "IN4": 80,
+    "SC1": 80,
+    "SC2": 80,
+    "SC3": 40,
+    "SC4": 100,
+    "GS1": 40,
+    "GS2": 40,
+    "GS3": 20,
+    "GS4": 80
+  },
+  "anomalies": [],
+  "blockers": [
+    {
+      "domaine": "Légal",
+      "description": "Autorisation ministérielle de mise sur le marché manquante",
+      "niveau": "rouge"
+    }
+  ],
+  "attendu": "FRI calculé selon les pondérations cibles du système expert."
+}

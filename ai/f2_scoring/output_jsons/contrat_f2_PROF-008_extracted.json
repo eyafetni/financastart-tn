@@ -1,0 +1,36 @@
+{
+  "id": "PROF-008",
+  "nom_scenario": "Cas Démo : Fintech Sousse - Analyse Réelle complète",
+  "secteur": "fintech",
+  "sub_scores": {
+    "MS1": 80,
+    "MS2": 80,
+    "MS3": 80,
+    "MS4": 100,
+    "CO1": 100,
+    "CO2": 100,
+    "CO3": 80,
+    "CO4": 80,
+    "IN1": 80,
+    "IN2": 100,
+    "IN3": 80,
+    "IN4": 80,
+    "SC1": 100,
+    "SC2": 100,
+    "SC3": 80,
+    "SC4": 80,
+    "GS1": 40,
+    "GS2": 20,
+    "GS3": 20,
+    "GS4": 40
+  },
+  "anomalies": [],
+  "blockers": [
+    {
+      "domaine": "Réglementaire",
+      "description": "Absence de licence BCT Sandbox",
+      "niveau": "rouge"
+    }
+  ],
+  "attendu": "FRI calculé selon les pondérations cibles du système expert."
+}

@@ -1,0 +1,77 @@
+{
+  "financing_readiness_index": 82,
+  "fri_interpretation": "Excellent (82/100) — Profil bancable. Le projet peut initier une demarche de financement formelle.",
+  "is_financeable": true,
+  "secteur_applique": "Tech / Digital",
+  "scores": {
+    "market_score": {
+      "valeur": 84.5,
+      "sous_scores": {
+        "taille_marche": 80.0,
+        "concurrence": 80.0,
+        "validation_client": 80.0,
+        "modele_revenus": 100.0
+      },
+      "justification_template": "Le marche est bien positionne : le critere 'Modele revenus' (100/100) tire le score. Le marche adressable est credible et la traction validee.",
+      "action_template": "Consolider la documentation de validation client (LOI, contrats) pour renforcer le dossier bancaire.",
+      "kb_link": ""
+    },
+    "commercial_offer_score": {
+      "valeur": 89.8,
+      "sous_scores": {
+        "proposition_valeur": 100.0,
+        "maturite_produit": 100.0,
+        "strategie_prix": 80.0,
+        "alignement_besoins": 80.0
+      },
+      "justification_template": "L'offre commerciale est differentiated et bien definie. La 'Proposition valeur' (100/100) constitue un avantage competitif clair.",
+      "action_template": "Formaliser le pricing dans un document de strategie commerciale pour les due diligences.",
+      "kb_link": ""
+    },
+    "innovation_score": {
+      "valeur": 85.5,
+      "sous_scores": {
+        "nouveaute_locale": 80.0,
+        "intensite_tech": 100.0,
+        "barrieres_entree": 80.0,
+        "degre_rupture": 80.0
+      },
+      "justification_template": "Le profil innovant est reconnu : 'Intensite tech' (100/100) positionne favorablement le projet sur son marche.",
+      "action_template": "Initier une procedure de depot de brevet (Art. 12 Startup Act) pour securiser les barrieres a l'entree.",
+      "kb_link": ""
+    },
+    "scalability_score": {
+      "valeur": 94.6,
+      "sous_scores": {
+        "replicabilite": 100.0,
+        "independance_manuelle": 100.0,
+        "couts_deploiement": 80.0,
+        "potentiel_geo": 80.0
+      },
+      "justification_template": "Le modele est fortement scalable. La 'Replicabilite' (100/100) confirme la capacite de croissance sans augmentation lineaire des couts.",
+      "action_template": "Modeliser les economies d'echelle a 3 ans pour le dossier de levee de fonds.",
+      "kb_link": ""
+    },
+    "green_score": {
+      "valeur": 29.8,
+      "sous_scores": {
+        "climat_air": 40.0,
+        "eau": 20.0,
+        "sols_biodiversite": 20.0,
+        "ressources_dechets": 40.0
+      },
+      "justification_template": "Le Green Score est insuffisant (29.8/100). Le pilier 'Eau' (20/100) constitue un risque ESG pour les partenaires PNUD.",
+      "action_template": "ACTION URGENTE : le pilier 'Eau' (20/100) doit faire l'objet d'un plan de mitigation ecrit avant toute soumission a des fonds verts.",
+      "kb_link": ""
+    }
+  },
+  "blockers_actifs": [
+    {
+      "domaine": "Réglementaire",
+      "description": "Absence de licence BCT Sandbox",
+      "niveau": "rouge"
+    }
+  ],
+  "anomalies_detectees": [],
+  "resume_executif": "Analyse pour le secteur 'Tech / Digital' : le projet est bancable avec un Financing Readiness Index de 82/100. Le point fort du profil est le Scalability Score (94.6/100). Le principal frein est le Green Score (29.8/100), qui doit etre traite en priorite. 0 anomalie(s) detectee(s) et 1 blocker(s) identifie(s). Les actions prioritaires sont detaillees par dimension dans la section 'scores'."
+}

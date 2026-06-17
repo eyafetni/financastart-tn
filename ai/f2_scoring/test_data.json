@@ -1,0 +1,1218 @@
+[
+    {
+        "entrepreneur_id": "ENT-F9FD5C-ORIGINAL",
+        "stade_reel": "Structuration",
+        "stade_percu": "Structuration",
+        "score_diagnostic": 38,
+        "gap_detecte": false,
+        "gap_explication": null,
+        "gaps": [
+            "Fondateur seul — équipe à constituer",
+            "Pas de RNE enregistré"
+        ],
+        "blockers": [
+            {
+                "domaine": "organisationnel",
+                "description": "Absence d'équipe fondatrice",
+                "priorite": 2
+            },
+            {
+                "domaine": "légal",
+                "description": "Entreprise non enregistrée",
+                "priorite": 1
+            }
+        ],
+        "secteur": "agritech",
+        "localisation": "Sfax",
+        "financement_recommande": "APII / ANPE",
+        "signaux_divergence": [],
+        "profil_complet": {
+            "entrepreneur_id": "ENT-F9FD5C-ORIGINAL",
+            "prenom": "ste charika",
+            "stade_percu": "Structuration",
+            "secteur": "agritech",
+            "localisation": "Sfax",
+            "equipe": "solo",
+            "rne": false,
+            "forme_juridique": null,
+            "chiffre_affaires": 55500000.0,
+            "anciennete_revenus": "Plus de 3 ans",
+            "business_plan": "en_cours",
+            "innovation_niveau": "moyenne",
+            "accompagnement": "jamais",
+            "financement": "aucun"
+        },
+        "reponses_questionnaire": {
+            "type_cible": {
+                "index": 2,
+                "valeur": "B2B_Enterprise"
+            },
+            "potentiel_financier_marche": {
+                "index": 2,
+                "valeur": "marche_national_intermediaire"
+            },
+            "intensite_concurrence": {
+                "index": 2,
+                "valeur": "marche_partage"
+            },
+            "niveau_traction": {
+                "index": 2,
+                "valeur": "traction_initiale"
+            },
+            "modele_revenu": {
+                "index": 3,
+                "valeur": "abonnement_saas"
+            },
+            "business_plan_maturite": {
+                "index": 2,
+                "valeur": "en_cours_de_validation"
+            },
+            "maturite_produit": {
+                "index": 2,
+                "valeur": "mvp_valide"
+            },
+            "strategie_prix": {
+                "index": 3,
+                "valeur": "valeur_percue"
+            },
+            "alignement_besoins": {
+                "index": 3,
+                "valeur": "must_have_urgent"
+            },
+            "nouveaute_locale": {
+                "index": 2,
+                "valeur": "adaptation_locale"
+            },
+            "intensite_tech": {
+                "index": 3,
+                "valeur": "ia_proprietaire"
+            },
+            "barrieres_entree": {
+                "index": 2,
+                "valeur": "moat_commercial"
+            },
+            "degre_rupture": {
+                "index": 2,
+                "valeur": "transformation_process"
+            },
+            "replicabilite": {
+                "index": 3,
+                "valeur": "facilement_replicable"
+            },
+            "independance_manuelle": {
+                "index": 3,
+                "valeur": "haute_automatisation"
+            },
+            "couts_deploiement": {
+                "index": 2,
+                "valeur": "besoin_modere"
+            },
+            "potentiel_geo": {
+                "index": 3,
+                "valeur": "continental_mena"
+            },
+            "climat_air": {
+                "index": 3,
+                "valeur": "impact_positif_mesurable"
+            },
+            "donnees_eau_fournies": {
+                "index": 3,
+                "valeur": "suivi_digital_temps_reel"
+            },
+            "sols_biodiversite": {
+                "index": 2,
+                "valeur": "preservation_passive"
+            },
+            "ressources_dechets": {
+                "index": 3,
+                "valeur": "revalorisation_upcycling"
+            }
+        }
+    },
+    {
+        "entrepreneur_id": "ENT-F9FD5C-VAR1-RNE",
+        "comment": "VARIATION 1 : Même profil mais l'entreprise a régularisé son RNE. Devrait lever l'anomalie de fraude mais garder le blocker organisationnel.",
+        "stade_reel": "Structuration",
+        "stade_percu": "Structuration",
+        "score_diagnostic": 55,
+        "gap_detecte": false,
+        "gap_explication": null,
+        "gaps": [
+            "Fondateur seul — équipe à constituer"
+        ],
+        "blockers": [
+            {
+                "domaine": "organisationnel",
+                "description": "Absence d'équipe fondatrice",
+                "priorite": 2
+            }
+        ],
+        "secteur": "agritech",
+        "localisation": "Sfax",
+        "financement_recommande": "APII / ANPE",
+        "signaux_divergence": [],
+        "profil_complet": {
+            "entrepreneur_id": "ENT-F9FD5C-VAR1-RNE",
+            "prenom": "ste charika pro",
+            "stade_percu": "Structuration",
+            "secteur": "agritech",
+            "localisation": "Sfax",
+            "equipe": "solo",
+            "rne": true,
+            "forme_juridique": "SUARL",
+            "chiffre_affaires": 55500000.0,
+            "anciennete_revenus": "Plus de 3 ans",
+            "business_plan": "en_cours",
+            "innovation_niveau": "moyenne",
+            "accompagnement": "jamais",
+            "financement": "aucun"
+        },
+        "reponses_questionnaire": {
+            "type_cible": {
+                "index": 2,
+                "valeur": "B2B_Enterprise"
+            },
+            "potentiel_financier_marche": {
+                "index": 2,
+                "valeur": "marche_national_intermediaire"
+            },
+            "intensite_concurrence": {
+                "index": 2,
+                "valeur": "marche_partage"
+            },
+            "niveau_traction": {
+                "index": 2,
+                "valeur": "traction_initiale"
+            },
+            "modele_revenu": {
+                "index": 3,
+                "valeur": "abonnement_saas"
+            },
+            "business_plan_maturite": {
+                "index": 2,
+                "valeur": "en_cours_de_validation"
+            },
+            "maturite_produit": {
+                "index": 2,
+                "valeur": "mvp_valide"
+            },
+            "strategie_prix": {
+                "index": 3,
+                "valeur": "valeur_percue"
+            },
+            "alignement_besoins": {
+                "index": 3,
+                "valeur": "must_have_urgent"
+            },
+            "nouveaute_locale": {
+                "index": 2,
+                "valeur": "adaptation_locale"
+            },
+            "intensite_tech": {
+                "index": 3,
+                "valeur": "ia_proprietaire"
+            },
+            "barrieres_entree": {
+                "index": 2,
+                "valeur": "moat_commercial"
+            },
+            "degre_rupture": {
+                "index": 2,
+                "valeur": "transformation_process"
+            },
+            "replicabilite": {
+                "index": 3,
+                "valeur": "facilement_replicable"
+            },
+            "independance_manuelle": {
+                "index": 3,
+                "valeur": "haute_automatisation"
+            },
+            "couts_deploiement": {
+                "index": 2,
+                "valeur": "besoin_modere"
+            },
+            "potentiel_geo": {
+                "index": 3,
+                "valeur": "continental_mena"
+            },
+            "climat_air": {
+                "index": 3,
+                "valeur": "impact_positif_mesurable"
+            },
+            "donnees_eau_fournies": {
+                "index": 3,
+                "valeur": "suivi_digital_temps_reel"
+            },
+            "sols_biodiversite": {
+                "index": 2,
+                "valeur": "preservation_passive"
+            },
+            "ressources_dechets": {
+                "index": 3,
+                "valeur": "revalorisation_upcycling"
+            }
+        }
+    },
+    {
+        "entrepreneur_id": "ENT-F9FD5C-VAR2-SECTEUR",
+        "comment": "VARIATION 2 : Même profil mais basculé sur le secteur 'autre'. Devrait appliquer des poids AHP différents de l'Agritech.",
+        "stade_reel": "Structuration",
+        "stade_percu": "Structuration",
+        "score_diagnostic": 35,
+        "gap_detecte": false,
+        "gap_explication": null,
+        "gaps": [
+            "Fondateur seul — équipe à constituer",
+            "Pas de RNE enregistré"
+        ],
+        "blockers": [
+            {
+                "domaine": "organisationnel",
+                "description": "Absence d'équipe fondatrice",
+                "priorite": 2
+            },
+            {
+                "domaine": "légal",
+                "description": "Entreprise non enregistrée",
+                "priorite": 1
+            }
+        ],
+        "secteur": "autre",
+        "localisation": "Sfax",
+        "financement_recommande": "APII / ANPE",
+        "signaux_divergence": [],
+        "profil_complet": {
+            "entrepreneur_id": "ENT-F9FD5C-VAR2-SECTEUR",
+            "prenom": "ste charika service",
+            "stade_percu": "Structuration",
+            "secteur": "autre",
+            "localisation": "Sfax",
+            "equipe": "solo",
+            "rne": false,
+            "forme_juridique": null,
+            "chiffre_affaires": 55500000.0,
+            "anciennete_revenus": "Plus de 3 ans",
+            "business_plan": "en_cours",
+            "innovation_niveau": "moyenne",
+            "accompagnement": "jamais",
+            "financement": "aucun"
+        },
+        "reponses_questionnaire": {
+            "type_cible": {
+                "index": 2,
+                "valeur": "B2B_Enterprise"
+            },
+            "potentiel_financier_marche": {
+                "index": 2,
+                "valeur": "marche_national_intermediaire"
+            },
+            "intensite_concurrence": {
+                "index": 2,
+                "valeur": "marche_partage"
+            },
+            "niveau_traction": {
+                "index": 2,
+                "valeur": "traction_initiale"
+            },
+            "modele_revenu": {
+                "index": 3,
+                "valeur": "abonnement_saas"
+            },
+            "business_plan_maturite": {
+                "index": 2,
+                "valeur": "en_cours_de_validation"
+            },
+            "maturite_produit": {
+                "index": 2,
+                "valeur": "mvp_valide"
+            },
+            "strategie_prix": {
+                "index": 3,
+                "valeur": "valeur_percue"
+            },
+            "alignement_besoins": {
+                "index": 3,
+                "valeur": "must_have_urgent"
+            },
+            "nouveaute_locale": {
+                "index": 2,
+                "valeur": "adaptation_locale"
+            },
+            "intensite_tech": {
+                "index": 3,
+                "valeur": "ia_proprietaire"
+            },
+            "barrieres_entree": {
+                "index": 2,
+                "valeur": "moat_commercial"
+            },
+            "degre_rupture": {
+                "index": 2,
+                "valeur": "transformation_process"
+            },
+            "replicabilite": {
+                "index": 3,
+                "valeur": "facilement_replicable"
+            },
+            "independance_manuelle": {
+                "index": 3,
+                "valeur": "haute_automatisation"
+            },
+            "couts_deploiement": {
+                "index": 2,
+                "valeur": "besoin_modere"
+            },
+            "potentiel_geo": {
+                "index": 3,
+                "valeur": "continental_mena"
+            },
+            "climat_air": {
+                "index": 3,
+                "valeur": "impact_positif_mesurable"
+            },
+            "donnees_eau_fournies": {
+                "index": 3,
+                "valeur": "suivi_digital_temps_reel"
+            },
+            "sols_biodiversite": {
+                "index": 2,
+                "valeur": "preservation_passive"
+            },
+            "ressources_dechets": {
+                "index": 3,
+                "valeur": "revalorisation_upcycling"
+            }
+        }
+    },
+    {
+        "entrepreneur_id": "ENT-F9FD5C-VAR3-COHERENT",
+        "comment": "VARIATION 3 : Même profil mais avec un chiffre d'affaires cohérent avec l'état informel (0 DT). Profil parfait pour tester l'amorçage.",
+        "stade_reel": "Ideation",
+        "stade_percu": "Structuration",
+        "score_diagnostic": 20,
+        "gap_detecte": true,
+        "gap_explication": null,
+        "gaps": [
+            "Pas de RNE enregistré"
+        ],
+        "blockers": [
+            {
+                "domaine": "légal",
+                "description": "Entreprise non enregistrée",
+                "priorite": 1
+            }
+        ],
+        "secteur": "agritech",
+        "localisation": "Sfax",
+        "financement_recommande": "APII / ANPE",
+        "signaux_divergence": [],
+        "profil_complet": {
+            "entrepreneur_id": "ENT-F9FD5C-VAR3-COHERENT",
+            "prenom": "vraye startup",
+            "stade_percu": "Structuration",
+            "secteur": "agritech",
+            "localisation": "Sfax",
+            "equipe": "solo",
+            "rne": false,
+            "chiffre_affaires": 0.0,
+            "anciennete_revenus": "Aucune",
+            "business_plan": "en_cours",
+            "innovation_niveau": "moyenne",
+            "accompagnement": "jamais",
+            "financement": "aucun"
+        },
+        "reponses_questionnaire": {
+            "type_cible": {
+                "index": 2,
+                "valeur": "B2B_Enterprise"
+            },
+            "potentiel_financier_marche": {
+                "index": 2,
+                "valeur": "marche_national_intermediaire"
+            },
+            "intensite_concurrence": {
+                "index": 2,
+                "valeur": "marche_partage"
+            },
+            "niveau_traction": {
+                "index": 1,
+                "valeur": "interet_verbal"
+            },
+            "modele_revenu": {
+                "index": 3,
+                "valeur": "abonnement_saas"
+            },
+            "business_plan_maturite": {
+                "index": 2,
+                "valeur": "en_cours_de_validation"
+            },
+            "maturite_produit": {
+                "index": 1,
+                "valeur": "prototype_poc"
+            },
+            "strategie_prix": {
+                "index": 3,
+                "valeur": "valeur_percue"
+            },
+            "alignement_besoins": {
+                "index": 3,
+                "valeur": "must_have_urgent"
+            },
+            "nouveaute_locale": {
+                "index": 2,
+                "valeur": "adaptation_locale"
+            },
+            "intensite_tech": {
+                "index": 3,
+                "valeur": "ia_proprietaire"
+            },
+            "barrieres_entree": {
+                "index": 2,
+                "valeur": "moat_commercial"
+            },
+            "degre_rupture": {
+                "index": 2,
+                "valeur": "transformation_process"
+            },
+            "replicabilite": {
+                "index": 3,
+                "valeur": "facilement_replicable"
+            },
+            "independance_manuelle": {
+                "index": 3,
+                "valeur": "haute_automatisation"
+            },
+            "couts_deploiement": {
+                "index": 2,
+                "valeur": "besoin_modere"
+            },
+            "potentiel_geo": {
+                "index": 3,
+                "valeur": "continental_mena"
+            },
+            "climat_air": {
+                "index": 3,
+                "valeur": "impact_positif_mesurable"
+            },
+            "donnees_eau_fournies": {
+                "index": 3,
+                "valeur": "suivi_digital_temps_reel"
+            },
+            "sols_biodiversite": {
+                "index": 2,
+                "valeur": "preservation_passive"
+            },
+            "ressources_dechets": {
+                "index": 3,
+                "valeur": "revalorisation_upcycling"
+            }
+        }
+    },
+    {
+        "entrepreneur_id": "ENT-TECH-005",
+        "stade_reel": "Growth",
+        "stade_percu": "Growth",
+        "score_diagnostic": 85,
+        "gap_detecte": false,
+        "gap_explication": null,
+        "gaps": [],
+        "secteur": "tech",
+        "localisation": "Tunis",
+        "blockers": [],
+        "financement_recommande": "APII / ANPE",
+        "signaux_divergence": [],
+        "profil_complet": {
+            "entrepreneur_id": "ENT-TECH-005",
+            "stade_percu": "Growth",
+            "secteur": "tech",
+            "localisation": "Tunis",
+            "equipe": "associes_et_salaries",
+            "rne": true,
+            "chiffre_affaires": 450000.0,
+            "anciennete_revenus": "1 à 3 ans",
+            "business_plan": "valide",
+            "innovation_niveau": "forte",
+            "accompagnement": "deja",
+            "financement": "credits"
+        },
+        "reponses_questionnaire": {
+            "type_cible": {
+                "index": 3,
+                "valeur": "International"
+            },
+            "potentiel_financier_marche": {
+                "index": 4,
+                "valeur": "marche_global_fort"
+            },
+            "intensite_concurrence": {
+                "index": 1,
+                "valeur": "faible_concurrence"
+            },
+            "niveau_traction": {
+                "index": 4,
+                "valeur": "croissance_organique"
+            },
+            "modele_revenu": {
+                "index": 4,
+                "valeur": "saas_recurrent"
+            },
+            "business_plan_maturite": {
+                "index": 4,
+                "valeur": "valide_par_experts"
+            },
+            "maturite_produit": {
+                "index": 4,
+                "valeur": "produit_en_production"
+            },
+            "strategie_prix": {
+                "index": 4,
+                "valeur": "premium_value"
+            },
+            "alignement_besoins": {
+                "index": 4,
+                "valeur": "indispensable_metier"
+            },
+            "nouveaute_locale": {
+                "index": 4,
+                "valeur": "premiere_afrique_nord"
+            },
+            "intensite_tech": {
+                "index": 4,
+                "valeur": "r_d_brevetee"
+            },
+            "barrieres_entree": {
+                "index": 4,
+                "valeur": "forte_propriete_intellectuelle"
+            },
+            "degre_rupture": {
+                "index": 3,
+                "valeur": "rupture_usage"
+            },
+            "replicabilite": {
+                "index": 4,
+                "valeur": "scalabilite_totale"
+            },
+            "independance_manuelle": {
+                "index": 4,
+                "valeur": "zero_hardware"
+            },
+            "couts_deploiement": {
+                "index": 4,
+                "valeur": "cout_marginal_nul"
+            },
+            "potentiel_geo": {
+                "index": 4,
+                "valeur": "mondial"
+            },
+            "climat_air": {
+                "index": 1,
+                "valeur": "neutre"
+            },
+            "donnees_eau_fournies": {
+                "index": 0,
+                "valeur": "non_applicable"
+            },
+            "sols_biodiversite": {
+                "index": 0,
+                "valeur": "non_applicable"
+            },
+            "ressources_dechets": {
+                "index": 2,
+                "valeur": "tri_standard"
+            }
+        }
+    },
+    {
+        "entrepreneur_id": "ENT-GREEN-006",
+        "stade_reel": "Market Validation",
+        "stade_percu": "Market Validation",
+        "score_diagnostic": 62,
+        "gap_detecte": false,
+        "gap_explication": null,
+        "gaps": [],
+        "secteur": "green",
+        "localisation": "Gabès",
+        "blockers": [],
+        "financement_recommande": "APII / ANPE",
+        "signaux_divergence": [],
+        "profil_complet": {
+            "entrepreneur_id": "ENT-GREEN-006",
+            "stade_percu": "Market Validation",
+            "secteur": "green",
+            "localisation": "Gabès",
+            "equipe": "associes_seuls",
+            "rne": true,
+            "chiffre_affaires": 12000.0,
+            "anciennete_revenus": "Moins d'un an",
+            "business_plan": "en_cours",
+            "innovation_niveau": "forte",
+            "accompagnement": "en_cours",
+            "financement": "subventions"
+        },
+        "reponses_questionnaire": {
+            "type_cible": {
+                "index": 2,
+                "valeur": "B2B_Enterprise"
+            },
+            "potentiel_financier_marche": {
+                "index": 3,
+                "valeur": "marche_regional_cible"
+            },
+            "intensite_concurrence": {
+                "index": 3,
+                "valeur": "concurrence_severe"
+            },
+            "niveau_traction": {
+                "index": 3,
+                "valeur": "premiers_clients_payants"
+            },
+            "modele_revenu": {
+                "index": 2,
+                "valeur": "vente_directe"
+            },
+            "business_plan_maturite": {
+                "index": 3,
+                "valeur": "finalise_recherche_partenaires"
+            },
+            "maturite_produit": {
+                "index": 3,
+                "valeur": "beta_publique"
+            },
+            "strategie_prix": {
+                "index": 2,
+                "valeur": "aligne_marche"
+            },
+            "alignement_besoins": {
+                "index": 3,
+                "valeur": "must_have_urgent"
+            },
+            "nouveaute_locale": {
+                "index": 3,
+                "valeur": "innovation_procede_local"
+            },
+            "intensite_tech": {
+                "index": 2,
+                "valeur": "ingenierie_avancee"
+            },
+            "barrieres_entree": {
+                "index": 3,
+                "valeur": "secret_industriel"
+            },
+            "degre_rupture": {
+                "index": 4,
+                "valeur": "changement_paradigme"
+            },
+            "replicabilite": {
+                "index": 2,
+                "valeur": "necessite_usine_locale"
+            },
+            "independance_manuelle": {
+                "index": 2,
+                "valeur": "semi_automatise"
+            },
+            "couts_deploiement": {
+                "index": 1,
+                "valeur": "investissement_lourd"
+            },
+            "potentiel_geo": {
+                "index": 2,
+                "valeur": "national"
+            },
+            "climat_air": {
+                "index": 4,
+                "valeur": "decarbonation_directe"
+            },
+            "donnees_eau_fournies": {
+                "index": 4,
+                "valeur": "zero_rejet_liquide"
+            },
+            "sols_biodiversite": {
+                "index": 4,
+                "valeur": "regeneration_sols"
+            },
+            "ressources_dechets": {
+                "index": 4,
+                "valeur": "zero_dechet_circulaire"
+            }
+        }
+    },
+    {
+        "entrepreneur_id": "ENT-MED-007",
+        "stade_reel": "Launch Planning",
+        "stade_percu": "Launch Planning",
+        "score_diagnostic": 58,
+        "gap_detecte": false,
+        "gap_explication": null,
+        "gaps": [
+            "Autorisation ministérielle manquante"
+        ],
+        "secteur": "health",
+        "localisation": "Monastir",
+        "blockers": [
+            {
+                "domaine": "légal",
+                "description": "Autorisation ministérielle de mise sur le marché manquante",
+                "priorite": 1
+            }
+        ],
+        "financement_recommande": "APII / ANPE",
+        "signaux_divergence": [],
+        "profil_complet": {
+            "entrepreneur_id": "ENT-MED-007",
+            "stade_percu": "Launch Planning",
+            "secteur": "health",
+            "localisation": "Monastir",
+            "equipe": "associes_et_salaries",
+            "rne": true,
+            "chiffre_affaires": 0.0,
+            "anciennete_revenus": "Aucune",
+            "business_plan": "valide",
+            "innovation_niveau": "forte",
+            "accompagnement": "deja",
+            "financement": "aucun"
+        },
+        "reponses_questionnaire": {
+            "type_cible": {
+                "index": 2,
+                "valeur": "B2C_Sante"
+            },
+            "potentiel_financier_marche": {
+                "index": 4,
+                "valeur": "marche_global_fort"
+            },
+            "intensite_concurrence": {
+                "index": 2,
+                "valeur": "marche_partage"
+            },
+            "niveau_traction": {
+                "index": 1,
+                "valeur": "interet_verbal"
+            },
+            "modele_revenu": {
+                "index": 3,
+                "valeur": "licence_b2b"
+            },
+            "business_plan_maturite": {
+                "index": 4,
+                "valeur": "valide_par_experts"
+            },
+            "maturite_produit": {
+                "index": 3,
+                "valeur": "certification_en_cours"
+            },
+            "strategie_prix": {
+                "index": 3,
+                "valeur": "valeur_percue"
+            },
+            "alignement_besoins": {
+                "index": 4,
+                "valeur": "sauve_des_vies"
+            },
+            "nouveaute_locale": {
+                "index": 4,
+                "valeur": "premiere_tunisie"
+            },
+            "intensite_tech": {
+                "index": 4,
+                "valeur": "r_d_brevetee"
+            },
+            "barrieres_entree": {
+                "index": 4,
+                "valeur": "forte_propriete_intellectuelle"
+            },
+            "degre_rupture": {
+                "index": 3,
+                "valeur": "rupture_usage"
+            },
+            "replicabilite": {
+                "index": 3,
+                "valeur": "facilement_replicable"
+            },
+            "independance_manuelle": {
+                "index": 3,
+                "valeur": "haute_automatisation"
+            },
+            "couts_deploiement": {
+                "index": 1,
+                "valeur": "investissement_lourd"
+            },
+            "potentiel_geo": {
+                "index": 4,
+                "valeur": "mondial"
+            },
+            "climat_air": {
+                "index": 1,
+                "valeur": "neutre"
+            },
+            "donnees_eau_fournies": {
+                "index": 1,
+                "valeur": "faible_impact"
+            },
+            "sols_biodiversite": {
+                "index": 0,
+                "valeur": "non_applicable"
+            },
+            "ressources_dechets": {
+                "index": 3,
+                "valeur": "revalorisation_upcycling"
+            }
+        }
+    },
+    {
+        "entrepreneur_id": "ENT-FIN-008",
+        "stade_reel": "Fundraising",
+        "stade_percu": "Fundraising",
+        "score_diagnostic": 74,
+        "gap_detecte": false,
+        "gap_explication": null,
+        "gaps": [
+            "Absence de licence BCT"
+        ],
+        "secteur": "fintech",
+        "localisation": "Sousse",
+        "blockers": [
+            {
+                "domaine": "réglementaire",
+                "description": "Absence de licence BCT Sandbox",
+                "priorite": 1
+            }
+        ],
+        "financement_recommande": "APII / ANPE",
+        "signaux_divergence": [],
+        "profil_complet": {
+            "entrepreneur_id": "ENT-FIN-008",
+            "stade_percu": "Fundraising",
+            "secteur": "fintech",
+            "localisation": "Sousse",
+            "equipe": "associes_seuls",
+            "rne": true,
+            "chiffre_affaires": 85000.0,
+            "anciennete_revenus": "1 à 3 ans",
+            "business_plan": "valide",
+            "innovation_niveau": "forte",
+            "accompagnement": "deja",
+            "financement": "business_angels"
+        },
+        "reponses_questionnaire": {
+            "type_cible": {
+                "index": 2,
+                "valeur": "B2B_Enterprise"
+            },
+            "potentiel_financier_marche": {
+                "index": 3,
+                "valeur": "marche_regional_cible"
+            },
+            "intensite_concurrence": {
+                "index": 3,
+                "valeur": "concurrence_severe"
+            },
+            "niveau_traction": {
+                "index": 3,
+                "valeur": "premiers_clients_payants"
+            },
+            "modele_revenu": {
+                "index": 4,
+                "valeur": "commission_transaction"
+            },
+            "business_plan_maturite": {
+                "index": 4,
+                "valeur": "valide_par_experts"
+            },
+            "maturite_produit": {
+                "index": 4,
+                "valeur": "produit_en_production"
+            },
+            "strategie_prix": {
+                "index": 3,
+                "valeur": "valeur_percue"
+            },
+            "alignement_besoins": {
+                "index": 3,
+                "valeur": "must_have_urgent"
+            },
+            "nouveaute_locale": {
+                "index": 3,
+                "valeur": "adaptation_locale"
+            },
+            "intensite_tech": {
+                "index": 4,
+                "valeur": "ia_proprietaire"
+            },
+            "barrieres_entree": {
+                "index": 3,
+                "valeur": "moat_commercial"
+            },
+            "degre_rupture": {
+                "index": 3,
+                "valeur": "transformation_process"
+            },
+            "replicabilite": {
+                "index": 4,
+                "valeur": "scalabilite_totale"
+            },
+            "independance_manuelle": {
+                "index": 4,
+                "valeur": "zero_hardware"
+            },
+            "couts_deploiement": {
+                "index": 3,
+                "valeur": "faibles_couts"
+            },
+            "potentiel_geo": {
+                "index": 3,
+                "valeur": "continental_mena"
+            },
+            "climat_air": {
+                "index": 1,
+                "valeur": "neutre"
+            },
+            "donnees_eau_fournies": {
+                "index": 0,
+                "valeur": "non_applicable"
+            },
+            "sols_biodiversite": {
+                "index": 0,
+                "valeur": "non_applicable"
+            },
+            "ressources_dechets": {
+                "index": 1,
+                "valeur": "numerisation_zero_papier"
+            }
+        }
+    },
+    {
+        "entrepreneur_id": "ENT-FRAUD-009",
+        "comment": "PROFIL FRAUDE SYNTHÉTIQUE : Déclare 25 millions de CA, mais en Idéation et sans équipe. Doit faire exploser le score d'anomalie.",
+        "stade_reel": "Ideation",
+        "stade_percu": "Growth",
+        "score_diagnostic": 12,
+        "gap_detecte": true,
+        "gap_explication": "Incohérence majeure entre le CA déclaré et l'absence de structure légale",
+        "gaps": [
+            "Surévaluation systémique des indicateurs"
+        ],
+        "secteur": "autre",
+        "localisation": "Autre région",
+        "blockers": [],
+        "financement_recommande": "APII / ANPE",
+        "signaux_divergence": [],
+        "profil_complet": {
+            "entrepreneur_id": "ENT-FRAUD-009",
+            "stade_percu": "Growth",
+            "secteur": "autre",
+            "localisation": "Autre région",
+            "equipe": "solo",
+            "rne": false,
+            "chiffre_affaires": 25000000.0,
+            "anciennete_revenus": "Moins d'un an",
+            "business_plan": "non_commence",
+            "innovation_niveau": "faible",
+            "accompagnement": "jamais",
+            "financement": "aucun"
+        },
+        "reponses_questionnaire": {
+            "type_cible": {
+                "index": 1,
+                "valeur": "B2C_Local"
+            },
+            "potentiel_financier_marche": {
+                "index": 1,
+                "valeur": "marche_niche_local"
+            },
+            "intensite_concurrence": {
+                "index": 4,
+                "valeur": "guerre_des_prix"
+            },
+            "niveau_traction": {
+                "index": 0,
+                "valeur": "aucune_preuve"
+            },
+            "modele_revenu": {
+                "index": 1,
+                "valeur": "marge_unitaire"
+            },
+            "business_plan_maturite": {
+                "index": 0,
+                "valeur": "idee_brute"
+            },
+            "maturite_produit": {
+                "index": 0,
+                "valeur": "idee_concept"
+            },
+            "strategie_prix": {
+                "index": 1,
+                "valeur": "low_cost"
+            },
+            "alignement_besoins": {
+                "index": 1,
+                "valeur": "nice_to_have"
+            },
+            "nouveaute_locale": {
+                "index": 0,
+                "valeur": "copie_existante"
+            },
+            "intensite_tech": {
+                "index": 0,
+                "valeur": "pas_de_tech"
+            },
+            "barrieres_entree": {
+                "index": 0,
+                "valeur": "aucune"
+            },
+            "degre_rupture": {
+                "index": 0,
+                "valeur": "statu_quo"
+            },
+            "replicabilite": {
+                "index": 1,
+                "valeur": "dependance_locale_forte"
+            },
+            "independance_manuelle": {
+                "index": 1,
+                "valeur": "artisanat_manuel"
+            },
+            "couts_deploiement": {
+                "index": 0,
+                "valeur": "tres_bloquant"
+            },
+            "potentiel_geo": {
+                "index": 0,
+                "valeur": "local_uniquement"
+            },
+            "climat_air": {
+                "index": 0,
+                "valeur": "impact_negatif"
+            },
+            "donnees_eau_fournies": {
+                "index": 0,
+                "valeur": "gaspillage"
+            },
+            "sols_biodiversite": {
+                "index": 1,
+                "valeur": "destruction_passive"
+            },
+            "ressources_dechets": {
+                "index": 0,
+                "valeur": "aucun_traitement"
+            }
+        }
+    },
+    {
+        "entrepreneur_id": "ENT-AGR-PERFECTION",
+        "comment": "PROFIL IDÉAL AGRITECH SFAX : Structure solide, RNE valide, très bonne innovation IA et scores ESG au maximum.",
+        "stade_reel": "Launch Planning",
+        "stade_percu": "Launch Planning",
+        "score_diagnostic": 91,
+        "gap_detecte": false,
+        "gap_explication": null,
+        "gaps": [],
+        "secteur": "agritech",
+        "localisation": "Sfax",
+        "blockers": [],
+        "financement_recommande": "APII / ANPE",
+        "signaux_divergence": [],
+        "profil_complet": {
+            "entrepreneur_id": "ENT-AGR-PERFECTION",
+            "prenom": "Sfax Olive Tech",
+            "stade_percu": "Launch Planning",
+            "secteur": "agritech",
+            "localisation": "Sfax",
+            "equipe": "associes_et_salaries",
+            "rne": true,
+            "forme_juridique": "SA",
+            "chiffre_affaires": 650000.0,
+            "anciennete_revenus": "1 à 3 ans",
+            "business_plan": "valide",
+            "innovation_niveau": "forte",
+            "accompagnement": "deja",
+            "financement": "subventions"
+        },
+        "reponses_questionnaire": {
+            "type_cible": {
+                "index": 2,
+                "valeur": "B2B_Enterprise"
+            },
+            "potentiel_financier_marche": {
+                "index": 4,
+                "valeur": "marche_global_fort"
+            },
+            "intensite_concurrence": {
+                "index": 2,
+                "valeur": "marche_partage"
+            },
+            "niveau_traction": {
+                "index": 4,
+                "valeur": "croissance_organique"
+            },
+            "modele_revenu": {
+                "index": 3,
+                "valeur": "abonnement_saas"
+            },
+            "business_plan_maturite": {
+                "index": 4,
+                "valeur": "valide_par_experts"
+            },
+            "maturite_produit": {
+                "index": 4,
+                "valeur": "produit_en_production"
+            },
+            "strategie_prix": {
+                "index": 3,
+                "valeur": "valeur_percue"
+            },
+            "alignement_besoins": {
+                "index": 4,
+                "valeur": "indispensable_metier"
+            },
+            "nouveaute_locale": {
+                "index": 3,
+                "valeur": "adaptation_locale"
+            },
+            "intensite_tech": {
+                "index": 4,
+                "valeur": "ia_proprietaire"
+            },
+            "barrieres_entree": {
+                "index": 3,
+                "valeur": "moat_commercial"
+            },
+            "degre_rupture": {
+                "index": 3,
+                "valeur": "transformation_process"
+            },
+            "replicabilite": {
+                "index": 4,
+                "valeur": "scalabilite_totale"
+            },
+            "independance_manuelle": {
+                "index": 4,
+                "valeur": "haute_automatisation"
+            },
+            "couts_deploiement": {
+                "index": 3,
+                "valeur": "faibles_couts"
+            },
+            "potentiel_geo": {
+                "index": 4,
+                "valeur": "mondial"
+            },
+            "climat_air": {
+                "index": 4,
+                "valeur": "impact_positif_mesurable"
+            },
+            "donnees_eau_fournies": {
+                "index": 4,
+                "valeur": "suivi_digital_temps_reel"
+            },
+            "sols_biodiversite": {
+                "index": 4,
+                "valeur": "preservation_active"
+            },
+            "ressources_dechets": {
+                "index": 4,
+                "valeur": "revalorisation_upcycling"
+            }
+        }
+    }
+]

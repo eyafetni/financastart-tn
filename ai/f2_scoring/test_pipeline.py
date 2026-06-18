@@ -1,128 +1,71 @@
-# f2_scoring/pipeline.py
-"""
-Orchestrateur Principal — Pipeline Global.
-Prend le profil brut de l'entrepreneur (JSON) et retourne le contrat F2 finalisé.
-"""
+# run_backend_test.py
 import os
 import json
-from typing import Any
+import traceback
 
-# Imports de tes modules d'extraction (Phase 1)
-from extraction_donnees.extract_sub_scores import extract_sub_scores
-from extraction_donnees.extract_anomalies_etapes_1 import extract_anomalies as extract_anomalies_p1
-from extraction_donnees.extract_blockers import extract_blockers
+# On importe la fonction pure depuis ton module fonction_principale
+from fonction_principale import process_entrepreneur_profile
 
-# Import du moteur de calcul (Phase 2)
-from calcul_scores import calculer_scores
-
-def executer_pipeline_complet(profil_entrepreneur_json: str | dict[str, Any]) -> dict[str, Any]:
-    """
-    Prend le profil JSON brut de l'entrepreneur et retourne le contrat F2 finalisé
-    avec les clés 'justification' correctement nommées à la place de 'description'.
-    """
-    # 1. Sérialisation / Désérialisation sécurisée
-    if isinstance(profil_entrepreneur_json, str):
-        profil_data = json.loads(profil_entrepreneur_json)
-    else:
-        profil_data = profil_entrepreneur_json
-
-    # 2. Extraction Phase 1 (Indicateurs, Bloqueurs, Premières anomalies)
-    # Note : Ajuste les noms de fonctions selon tes signatures exactes
-    sub_scores_extraits = extract_sub_scores(profil_data)
-    anomalies_p1 = extract_anomalies_p1(profil_data)
-    blockers_extraits = extract_blockers(profil_data)
+def exécuter_test_local():
+    print("🚀 BASE DE TEST BACKEND — FEATURE 2")
     
-    # Récupération du secteur (clé 'sector' souvent présente à la racine du profil)
-    secteur = profil_data.get("secteur", "Général")
-
-    # 3. Calcul des Scores et Enrichissement Phase 2
-    contrat_f2 = calculer_scores(
-        sub_scores=sub_scores_extraits,
-        anomalies=anomalies_p1,
-        blockers=blockers_extraits,
-        secteur=secteur
-    )
-
-    # 4. Post-processing : Transformation finale pour basculer de 'description' à 'justification'
-    if "anomalies_detectees" in contrat_f2:
-        anomalies_modifiees = []
-        for anom in contrat_f2["anomalies_detectees"]:
-            # On crée un nouveau dictionnaire pour réordonner proprement les clés
-            nouvelle_anomalie = {
-                "id": anom.get("id", "?"),
-                "justification": anom.get("description", ""),  # Le changement majeur est ici
-                "penalite": anom.get("penalite", 0),
-                "dimension_impactee": anom.get("dimension_impactee", ""),
-                "justification_template": anom.get("justification_template", ""),
-                "action_template": anom.get("action_template", ""),
-                "kb_link": anom.get("kb_link", "")
-            }
-            anomalies_modifiees.append(nouvelle_anomalie)
-            
-        contrat_f2["anomalies_detectees"] = anomalies_modifiees
-
-    return contrat_f2
-def tester_conversion_fichier(fichier_entree: str, fichier_sortie: str) -> None:
-    """
-    Prend le chemin d'un fichier JSON d'entrée, applique le pipeline,
-    et écrit le résultat mis en forme dans le fichier de sortie.
-    """
-    print(f"🚀 Démarrage du test de conversion...")
-    print(f"📂 Lecture du profil brut : {fichier_entree}")
+    # 1. Détermination dynamique des chemins absolus basés sur l'emplacement de ce script
+    _THIS_DIR = os.path.dirname(os.path.abspath(__file__))
     
-    # 1. Vérification et lecture du fichier d'entrée
-    if not os.path.exists(fichier_entree):
-        print(f"❌ Erreur : Le fichier d'entrée '{fichier_entree}' n'existe pas.")
+    fichier_input = os.path.join(_THIS_DIR, "test_partie_1.json")
+    fichier_output = os.path.join(_THIS_DIR, "contrat_f2_output.json")
+    
+    print(f"📂 Lecture du fichier de test : {fichier_input}")
+    if not os.path.exists(fichier_input):
+        print(f"❌ Erreur : Le fichier '{fichier_input}' est introuvable.")
+        print("Vérifiez que 'test_partie_1.json' est bien dans le même dossier que ce script.")
         return
-        
-    with open(fichier_entree, "r", encoding="utf-8") as f:
+
+    # 2. Chargement du JSON d'entrée
+    with open(fichier_input, "r", encoding="utf-8") as f:
         try:
             profil_brut = json.load(f)
         except json.JSONDecodeError as e:
-            print(f"❌ Erreur : Le fichier d'entrée n'est pas un JSON valide. Details : {e}")
+            print(f"❌ Erreur de décodage JSON sur le fichier d'entrée : {e}")
             return
 
-    # 2. Exécution du pipeline complet
+    # 3. Appel de la fonction de ton pipeline
+    print("⚙️  Passage des données dans 'process_entrepreneur_profile'...")
     try:
-        print("⚙️  Exécution du pipeline global (Phase 1 + Phase 2)...")
-        contrat_final = executer_pipeline_complet(profil_brut)
+        contrat_final = process_entrepreneur_profile(profil_brut)
+        print("🟢 Pipeline exécuté avec succès (aucune exception levée).")
     except Exception as e:
-        print(f"❌ Erreur critique pendant l'exécution du pipeline : {e}")
-        import traceback
+        print(f"❌ Le pipeline a crashé pendant l'exécution : {e}")
         traceback.print_exc()
         return
 
-    # 3. Création automatique du dossier de sortie s'il n'existe pas
-    dossier_sortie = os.path.dirname(fichier_sortie)
-    if dossier_sortie and not os.path.exists(dossier_sortie):
-        os.makedirs(dossier_sortie, exist_ok=True)
+    # 4. Sauvegarde du résultat final dans le fichier de sortie
+    print(f"💾 Écriture du contrat F2 dans : {fichier_output}")
+    try:
+        with open(fichier_output, "w", encoding="utf-8") as f_out:
+            json.dump(contrat_final, f_out, indent=4, ensure_ascii=False)
+        print("✨ Fichier output généré proprement.")
+    except Exception as e:
+        print(f"❌ Impossible d'écrire le fichier de sortie : {e}")
+        return
 
-    # 4. Écriture du fichier de sortie
-    with open(fichier_sortie, "w", encoding="utf-8") as f:
-        json.dump(contrat_final, f, indent=4, ensure_ascii=False)
-        
-    print(f"✨ Succès ! Contrat F2 généré avec succès.")
-    print(f"💾 Résultat disponible ici : {fichier_sortie}\n")
+    # 5. Assertions et vérifications visuelles rapides dans la console
+    print("\n📊 --- VÉRIFICATION DES RÉSULTATS ---")
+    print(f"• Secteur appliqué : {contrat_final.get('secteur_applique')}")
+    print(f"• Score FRI Global : {contrat_final.get('financing_readiness_index')}/100")
+    print(f"• Éligible (is_financeable) : {contrat_final.get('is_financeable')}")
     
-    # 5. Petit check visuel rapide dans la console pour l'anomalie régionale
-    print("🔍 Vérification rapide de la structure des anomalies détectées :")
-    anoms = contrat_final.get("anomalies_detectees", [])
-    if anoms:
-        for a in anoms[:2]: # Affiche les deux premières pour valider
-            print(f"  - ID: {a.get('id')} | justification: {a.get('justification')[:50]}...")
-    else:
-        print("  ⚠️ Aucune anomalie détectée dans ce profil.")
-
+    anomalies = contrat_final.get("anomalies_detectees", [])
+    print(f"• Nombre d'anomalies : {len(anomalies)}")
+    if anomalies:
+        print("🔍 Top anomalie (Vérification de la clé 'justification') :")
+        top_anom = anomalies[0]
+        print(f"  - ID : {top_anom.get('id')}")
+        print(f"  - Justification : {top_anom.get('justification', '')[:90]}...")
+        if "description" in top_anom:
+            print("  ⚠️ Attention : l'ancienne clé 'description' est encore présente !")
+        else:
+            print("  ✅ Clé 'description' supprimée et mappée avec succès.")
 
 if __name__ == "__main__":
-
-    _THIS_DIR = os.path.dirname(os.path.abspath(__file__))  # f2_scoring/tests
-    _ROOT_DIR = os.path.dirname(_THIS_DIR)                 # f2_scoring
-    # Puisque test_partie_1.json est à la racine de f2_scoring (_ROOT_DIR)
-    FICHIER_INPUT = os.path.join(_ROOT_DIR, "f2_scoring/test_partie_1.json")
-    
-    # Pour la sortie, on le génère au même endroit pour que tu le voies tout de suite
-    FICHIER_OUTPUT = os.path.join(_ROOT_DIR, "f2_scoring/contrat_f2_output.json")
-    
-    # Lancement du test
-    tester_conversion_fichier(FICHIER_INPUT, FICHIER_OUTPUT)
+    exécuter_test_local()

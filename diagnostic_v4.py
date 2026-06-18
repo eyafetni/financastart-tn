@@ -29,16 +29,16 @@ SECTEURS = {
     "agriculture_sylviculture_peche": {
         "label": "Agriculture / Sylviculture / Pêche",
         "mots_cles": [
-            "agri", "agricol", "agroaliment", "food", "sylvicult",
+            "agri", "agro", "agricol", "agroaliment", "food", "sylvicult",
             "forêt", "peche", "pêche", "élevage", "elevage",
             "cultures", "céréales", "cereales", "maraich", "arboricult",
-            "aquaculture", "halieutique"
+            "aquaculture", "halieutique" , "argi-tech"
         ]
     },
     "industrie_construction": {
         "label": "Industrie / Construction",
         "mots_cles": [
-            "industri", "manufactur", "usine", "fabricat", "product",
+            "industrie", "manufactur", "usine", "fabricat", "product",
             "construct", "bâtiment", "batiment", "travaux", "btp",
             "immobilier", "génie civil", "genie civil", "matériaux", "materiaux",
             "mécanique", "mecanique", "metallurgi", "chimie", "plasturgie"
@@ -47,7 +47,7 @@ SECTEURS = {
     "commerce_transport_logistique": {
         "label": "Commerce / Transport / Logistique",
         "mots_cles": [
-            "commerc", "vente", "retail", "boutique", "distribut",
+            "commerce", "vente", "retail", "boutique", "distribut",
             "transport", "logistique", "livraison", "fret", "import",
             "export", "supply chain", "entrepôt", "entrepot", "transit",
             "grossiste", "détaillant", "detaillant"
@@ -76,13 +76,310 @@ SECTEURS = {
 }
 
 # ─────────────────────────────────────────────
+# DÉFINITION DES QUESTIONS F2 — SCORING MULTI-DIMENSIONNEL
+# ─────────────────────────────────────────────
+
+DIMENSIONS_F2 = {
+    "MKT": "Marché & Traction",
+    "COM": "Offre Commerciale",
+    "INO": "Innovation & Différenciation",
+    "SCA": "Scalabilité & Croissance",
+    "ESG": "Impact & Environnement"
+}
+
+QUESTIONS_F2 = {
+    "type_cible": {
+        "id": "type_cible",
+        "dimension": "MKT",
+        "question": "Quel est le modèle d'interaction et la cible prioritaire de votre solution ?",
+        "options": [
+            {"index": 0, "valeur": "B2C",            "texte": "Grand public / Utilisateurs individuels"},
+            {"index": 1, "valeur": "B2B_SME",         "texte": "Petites et Moyennes Entreprises / Professionnels indépendants"},
+            {"index": 2, "valeur": "B2B_Enterprise",  "texte": "Grands Comptes / Groupes Industriels / Corporates"},
+            {"index": 3, "valeur": "B2B2C",           "texte": "Modèle intermédiaire (via un partenaire pour toucher le client final)"},
+            {"index": 4, "valeur": "B2G",             "texte": "Gouvernements / Ministères / Collectivités Publiques"}
+        ]
+    },
+    "potentiel_financier_marche": {
+        "id": "potentiel_financier_marche",
+        "dimension": "MKT",
+        "question": "Quelle est la valeur financière annuelle estimée de votre marché immédiatement accessible (SOM) ?",
+        "options": [
+            {"index": 0, "valeur": "niche_ultra_locale",           "texte": "Marché de niche très restreint (Moins de 1M DT / an)"},
+            {"index": 1, "valeur": "marche_local_limite",          "texte": "Marché local avec un plafond rapide (1M à 5M DT / an)"},
+            {"index": 2, "valeur": "marche_national_intermediaire", "texte": "Marché national significatif (5M à 20M DT / an)"},
+            {"index": 3, "valeur": "marche_regional_scalable",     "texte": "Marché à fort potentiel d'extension régionale (20M à 50M DT / an)"},
+            {"index": 4, "valeur": "marche_global_massif",         "texte": "Marché de masse international (Plus de 50M DT / an)"}
+        ]
+    },
+    "intensite_concurrence": {
+        "id": "intensite_concurrence",
+        "dimension": "MKT",
+        "question": "Comment se structure l'intensité concurrentielle sur votre segment cible ?",
+        "options": [
+            {"index": 0, "valeur": "hyper_competition",  "texte": "Marché saturé, guerre des prix féroce avec des géants installés"},
+            {"index": 1, "valeur": "forte_concurrence",  "texte": "Plusieurs acteurs directs bien financés et identifiés"},
+            {"index": 2, "valeur": "marche_partage",     "texte": "Concurrence modérée, fragmentation permettant de prendre des parts"},
+            {"index": 3, "valeur": "faible_concurrence", "texte": "Marché émergent, solutions alternatives indirectes ou obsolètes"},
+            {"index": 4, "valeur": "ocean_bleu",         "texte": "Pionnier absolu, aucun concurrent direct sur cette proposition de valeur"}
+        ]
+    },
+    "niveau_traction": {
+        "id": "niveau_traction",
+        "dimension": "MKT",
+        "question": "Quel est l'état réel et mesurable de votre validation commerciale sur le terrain ?",
+        "options": [
+            {"index": 0, "valeur": "ideation_pure",        "texte": "Zéro utilisateur, validation théorique uniquement"},
+            {"index": 1, "valeur": "premiers_testeurs",    "texte": "Bêta-testeurs actifs ou utilisateurs pilotes non-payants"},
+            {"index": 2, "valeur": "traction_initiale",    "texte": "Premières transactions ou contrats signés (Preuve de Concept payante)"},
+            {"index": 3, "valeur": "traction_significative","texte": "Portefeuille clients en croissance régulière et acquisition active"},
+            {"index": 4, "valeur": "croissance_organique", "texte": "Revenus récurrents stables (MRR/ARR) avec fort taux de rétention"}
+        ]
+    },
+    "modele_revenu": {
+        "id": "modele_revenu",
+        "dimension": "MKT",
+        "question": "Où en est la validation empirique de votre mécanisme de capture de valeur ?",
+        "options": [
+            {"index": 0, "valeur": "non_defini",           "texte": "Modèle de revenus flou, gratuité totale sans stratégie de conversion"},
+            {"index": 1, "valeur": "transactionnel_standard","texte": "Vente unique (one-shot), revenus dépendants de chaque acte de vente"},
+            {"index": 2, "valeur": "commission_marketplace","texte": "Modèle basé sur des frais de transaction ou de mise en relation"},
+            {"index": 3, "valeur": "abonnement_saas",      "texte": "Revenus récurrents prévisibles (SaaS, abonnements périodiques)"},
+            {"index": 4, "valeur": "multi_stream_optimise", "texte": "Modèle hybride validé (Abonnement + Commissions + Options premium)"}
+        ]
+    },
+    "business_plan_f2": {
+        "id": "business_plan_f2",
+        "dimension": "COM",
+        "question": "Quel est le niveau de maturité de votre modélisation financière et stratégique ?",
+        "options": [
+            {"index": 0, "valeur": "non_commence",          "texte": "Aucune projection financière ni business plan formalisé"},
+            {"index": 1, "valeur": "ebauche_initiale",      "texte": "Structure de coûts basique estimée sans métriques clés (LTV, CAC)"},
+            {"index": 2, "valeur": "en_cours_de_validation","texte": "Business Model Canvas complet avec prévisions financières à 3 ans"},
+            {"index": 3, "valeur": "valide_equipe",         "texte": "Modèle financier complet validé par des mentors ou experts internes"},
+            {"index": 4, "valeur": "valide_audite_externe", "texte": "Plan d'affaires validé et audité par des investisseurs ou cabinets tiers"}
+        ]
+    },
+    "maturite_produit": {
+        "id": "maturite_produit",
+        "dimension": "COM",
+        "question": "Où se situe votre solution sur l'échelle de développement technique ?",
+        "options": [
+            {"index": 0, "valeur": "concept_wireframe",     "texte": "Maquettes graphiques, storyboards ou slides de présentation uniquement"},
+            {"index": 1, "valeur": "prototype_poc",         "texte": "Prototype de laboratoire fonctionnel mais instable (Preuve de Concept)"},
+            {"index": 2, "valeur": "mvp_valide",            "texte": "Produit Minimum Viable déployé et testé en conditions réelles"},
+            {"index": 3, "valeur": "industrialise_stable",  "texte": "Produit fini, stable, sécurisé et prêt pour un déploiement massif"},
+            {"index": 4, "valeur": "scalable_architecture", "texte": "Produit hautement disponible, API-fié et prêt pour l'international"}
+        ]
+    },
+    "strategie_prix": {
+        "id": "strategie_prix",
+        "dimension": "COM",
+        "question": "Comment votre structure tarifaire (pricing) est-elle perçue par le marché ?",
+        "options": [
+            {"index": 0, "valeur": "arbitraire",          "texte": "Prix fixé au hasard ou à l'intuition sans étude terrain"},
+            {"index": 1, "valeur": "cost_plus_margin",    "texte": "Tarification basique calculée uniquement sur les coûts + une marge fixe"},
+            {"index": 2, "valeur": "alignement_concurrence","texte": "Prix calqué horizontalement sur les solutions existantes"},
+            {"index": 3, "valeur": "valeur_percue",       "texte": "Prix indexé sur le ROI (Retour sur Investissement) généré pour le client"},
+            {"index": 4, "valeur": "dynamique_usage",     "texte": "Pricing hautement optimisé à l'usage, testé et validé par des cohortes"}
+        ]
+    },
+    "alignement_besoins": {
+        "id": "alignement_besoins",
+        "dimension": "COM",
+        "question": "À quel point votre produit résout-il un problème critique (Pain Point) pour votre cible ?",
+        "options": [
+            {"index": 0, "valeur": "aucun_interet",       "texte": "Le problème ciblé n'intéresse pas le marché ou n'existe pas"},
+            {"index": 1, "valeur": "nice_to_have",        "texte": "Outil de confort secondaire, déclenche peu d'intentions d'achat"},
+            {"index": 2, "valeur": "important_non_urgent","texte": "Problème réel mais le client remet souvent l'achat à plus tard"},
+            {"index": 3, "valeur": "must_have_urgent",    "texte": "Besoin critique, les clients recherchent activement une solution"},
+            {"index": 4, "valeur": "total_pmf",           "texte": "Dépendance forte au produit, rétention exceptionnelle (Product-Market Fit validé)"}
+        ]
+    },
+    "nouveaute_locale": {
+        "id": "nouveaute_locale",
+        "dimension": "INO",
+        "question": "Quelle est l'originalité de votre positionnement sur votre zone géographique cible ?",
+        "options": [
+            {"index": 0, "valeur": "copie_conforme",    "texte": "Réplication exacte d'un service déjà omniprésent localement"},
+            {"index": 1, "valeur": "amelioration_mineure","texte": "Même concept que les concurrents avec une simple option en plus"},
+            {"index": 2, "valeur": "adaptation_locale",  "texte": "Importation et adaptation d'un concept étranger inexistant ici"},
+            {"index": 3, "valeur": "premiere_nationale", "texte": "Concept totalement inédit et pionnier à l'échelle du pays"},
+            {"index": 4, "valeur": "disruption_globale", "texte": "Innovation de rupture sans équivalent à l'échelle internationale"}
+        ]
+    },
+    "intensite_tech": {
+        "id": "intensite_tech",
+        "dimension": "INO",
+        "question": "Quelle est l'épaisseur technologique sous-jacente à votre solution ?",
+        "options": [
+            {"index": 0, "valeur": "no_code_standard",       "texte": "Assemblage d'outils tiers existants sans aucun code propriétaire"},
+            {"index": 1, "valeur": "developpement_classique", "texte": "Application Web ou Mobile standard sans complexité technique"},
+            {"index": 2, "valeur": "integration_avancee",    "texte": "Système connecté avec des architectures Cloud et intégration poussée d'API"},
+            {"index": 3, "valeur": "ia_proprietaire",        "texte": "Algorithmes d'Intelligence Artificielle ou traitement de données propriétaires"},
+            {"index": 4, "valeur": "deeptech_science",       "texte": "DeepTech issue de laboratoires de recherche, biotechnologies ou hardware complexe"}
+        ]
+    },
+    "barrieres_entree": {
+        "id": "barrieres_entree",
+        "dimension": "INO",
+        "question": "De quel avantage défensif disposez-vous pour empêcher une copie rapide par un concurrent ?",
+        "options": [
+            {"index": 0, "valeur": "aucune_barriere",       "texte": "N'importe quel développeur peut copier le concept en deux semaines"},
+            {"index": 1, "valeur": "avance_operationnelle", "texte": "Simple avantage de rapidité d'exécution ou de communication"},
+            {"index": 2, "valeur": "moat_commercial",       "texte": "Exclusivités commerciales, partenariats clés ou base de données qualifiée"},
+            {"index": 3, "valeur": "effet_de_reseau",       "texte": "Barrière forte grâce aux effets de réseau (plus d'utilisateurs = incopiable)"},
+            {"index": 4, "valeur": "propriete_intellectuelle","texte": "Brevet déposé, secret industriel strict ou technologie hautement complexe"}
+        ]
+    },
+    "degre_rupture": {
+        "id": "degre_rupture",
+        "dimension": "INO",
+        "question": "Comment votre innovation modifie-t-elle les habitudes des acteurs du secteur ?",
+        "options": [
+            {"index": 0, "valeur": "evolution_nulle",          "texte": "L'utilisateur ne change absolument rien à ses processus actuels"},
+            {"index": 1, "valeur": "optimisation_incrementale","texte": "Simple gain de temps ou économie marginale sur un processus existant"},
+            {"index": 2, "valeur": "transformation_process",   "texte": "Modification visible des habitudes de travail ou de consommation"},
+            {"index": 3, "valeur": "forte_substitution",       "texte": "Rend obsolètes les anciennes méthodes pour une grande partie des utilisateurs"},
+            {"index": 4, "valeur": "changement_paradigme",     "texte": "Crée un nouvel usage ou une nouvelle industrie à part entière"}
+        ]
+    },
+    "replicabilite": {
+        "id": "replicabilite",
+        "dimension": "SCA",
+        "question": "Quel est le niveau de complexité pour déployer votre solution sur un nouveau territoire ?",
+        "options": [
+            {"index": 0, "valeur": "dependance_physique_stricte",   "texte": "Nécessite des infrastructures lourdes, des locaux et des équipes physiques"},
+            {"index": 1, "valeur": "contraintes_reglementaires",    "texte": "Soumis à des autorisations légales longues et complexes par pays"},
+            {"index": 2, "valeur": "deploiement_operationnel_modere","texte": "Nécessite l'ouverture d'un bureau réduit et du support local"},
+            {"index": 3, "valeur": "facilement_replicable",         "texte": "Processus hautement standardisés, déploiement rapide sans gros ajustements"},
+            {"index": 4, "valeur": "immediate_pure_player",         "texte": "Modèle 100% digital, expansion internationale instantanée sans barrière"}
+        ]
+    },
+    "independance_manuelle": {
+        "id": "independance_manuelle",
+        "dimension": "SCA",
+        "question": "Comment évolue votre masse salariale par rapport à l'augmentation de vos clients ?",
+        "options": [
+            {"index": 0, "valeur": "modele_artisanal",    "texte": "Progression strictement linéaire (Plus de clients = besoin d'autant de staff)"},
+            {"index": 1, "valeur": "semi_automatise",     "texte": "L'humain reste au cœur de la livraison de valeur, goulot d'étranglement fort"},
+            {"index": 2, "valeur": "paliers_de_croissance","texte": "Recrutements par vagues nécessaires pour soutenir la charge technique"},
+            {"index": 3, "valeur": "haute_automatisation","texte": "L'infrastructure gère la hausse, le staff n'augmente que pour le support"},
+            {"index": 4, "valeur": "zero_marginal_cost",  "texte": "Automatisation totale, coût marginal de livraison d'un nouveau client quasi nul"}
+        ]
+    },
+    "couts_deploiement": {
+        "id": "couts_deploiement",
+        "dimension": "SCA",
+        "question": "Quel est le niveau d'investissement financier (CAPEX) requis pour onboarder un grand volume de clients ?",
+        "options": [
+            {"index": 0, "valeur": "capex_prohibitif",          "texte": "Nécessite des millions d'investissements matériels ou marketing préalables"},
+            {"index": 1, "valeur": "investissements_lourds",    "texte": "Besoin de lever des fonds massifs pour financer le fonds de roulement"},
+            {"index": 2, "valeur": "besoin_modere",             "texte": "Coûts d'acquisition d'infrastructure absorbables par la marge opérationnelle"},
+            {"index": 3, "valeur": "faibles_couts",             "texte": "Coût de configuration initial très faible pour chaque groupe de clients"},
+            {"index": 4, "valeur": "croissance_organique_gratuite","texte": "Coût marginal d'infrastructure transparent, autofinancement par le volume"}
+        ]
+    },
+    "potentiel_geo": {
+        "id": "potentiel_geo",
+        "dimension": "SCA",
+        "question": "Quelle est l'échelle géographique inscrite dans l'architecture même de votre projet ?",
+        "options": [
+            {"index": 0, "valeur": "hyper_local",      "texte": "Solution viable uniquement à l'échelle d'une ville ou communauté restreinte"},
+            {"index": 1, "valeur": "regional",         "texte": "Portée limitée à quelques gouvernorats ou régions spécifiques"},
+            {"index": 2, "valeur": "national",         "texte": "Conçu pour couvrir l'intégralité du territoire national uniquement"},
+            {"index": 3, "valeur": "continental_mena", "texte": "Adapté nativement pour cibler l'Afrique du Nord et le Moyen-Orient (MENA)"},
+            {"index": 4, "valeur": "global_born_global","texte": "Produit 'Born Global', conçu sans frontières géographiques ni culturelles"}
+        ]
+    },
+    "climat_air": {
+        "id": "climat_air",
+        "dimension": "ESG",
+        "question": "Quelle est la contribution directe ou indirecte de votre entreprise sur l'empreinte carbone ?",
+        "options": [
+            {"index": 0, "valeur": "impact_negatif_lourd",    "texte": "Activité fortement carbonée sans politique de réduction ou compensation"},
+            {"index": 1, "valeur": "impact_negatif_modere",   "texte": "Génère des émissions de GES mais des efforts d'optimisation sont en cours"},
+            {"index": 2, "valeur": "neutralite_passive",      "texte": "Impact neutre par défaut (services numériques de base non éco-conçus)"},
+            {"index": 3, "valeur": "impact_positif_mesurable","texte": "Réduction active et prouvée des émissions (efficacité, circuits courts)"},
+            {"index": 4, "valeur": "impact_regeneratif",      "texte": "Modèle de captation carbone ou solution réduisant l'impact de tout un secteur"}
+        ]
+    },
+    "donnees_eau_fournies": {
+        "id": "donnees_eau_fournies",
+        "dimension": "ESG",
+        "question": "Quel niveau d'intelligence et de précision intégrez-vous dans la gestion ou la préservation de l'eau ?",
+        "options": [
+            {"index": 0, "valeur": "aucune_mesure",             "texte": "Consommation d'eau non mesurée, aucune conscience de la ressource"},
+            {"index": 1, "valeur": "estimation_theorique",      "texte": "Évaluation de l'empreinte eau basée sur des moyennes théoriques floues"},
+            {"index": 2, "valeur": "suivi_manuel_partiel",      "texte": "Relevés réguliers mais manuels de la consommation avec correctifs tardifs"},
+            {"index": 3, "valeur": "suivi_digital_temps_reel",  "texte": "Monitoring digital continu (IoT/Capteurs) avec alertes instantanées"},
+            {"index": 4, "valeur": "optimisation_ia_predictive","texte": "Pilotage automatisé par IA prédisant les besoins et réduisant au strict minimum"}
+        ]
+    },
+    "sols_biodiversite": {
+        "id": "sols_biodiversite",
+        "dimension": "ESG",
+        "question": "Comment votre activité interagit-elle avec la santé des sols et les écosystèmes vivants ?",
+        "options": [
+            {"index": 0, "valeur": "degradation_active",      "texte": "Utilisation d'intrants chimiques ou processus accélérant l'érosion"},
+            {"index": 1, "valeur": "non_evalue",              "texte": "Aucun impact direct évident et aucune métrique d'impact collectée"},
+            {"index": 2, "valeur": "preservation_passive",    "texte": "Pratiques limitant la casse (réduction des déchets, respect des lois)"},
+            {"index": 3, "valeur": "impact_positif_certifie", "texte": "Amélioration mesurable de la qualité des terres ou baisse drastique des intrants"},
+            {"index": 4, "valeur": "regeneratif_ecosysteme",  "texte": "Restauration active de la biodiversité locale ou des sols (agriculture verte)"}
+        ]
+    },
+    "ressources_dechets": {
+        "id": "ressources_dechets",
+        "dimension": "ESG",
+        "question": "Quel est le cycle de vie des matières premières et des déchets générés par votre chaîne de valeur ?",
+        "options": [
+            {"index": 0, "valeur": "economie_lineaire_lourde", "texte": "Modèle 'Extraire, Fabriquer, Jeter' avec production résiduelle massive"},
+            {"index": 1, "valeur": "gestion_dechets_standard", "texte": "Tri basique et respect des réglementations municipales de gestion standard"},
+            {"index": 2, "valeur": "reduction_a_la_source",    "texte": "Actions concrètes pour réduire la consommation de matières en amont"},
+            {"index": 3, "valeur": "revalorisation_upcycling", "texte": "Transformation des déchets ou sous-produits en nouvelles matières marchandes"},
+            {"index": 4, "valeur": "circularite_totale",       "texte": "Modèle Zéro-Déchet natif où 100% des extrants réintègrent un cycle vertueux"}
+        ]
+    }
+}
+
+
+def poser_scoring_f2():
+    """
+    Pose les 21 questions de scoring F2 et retourne un dict reponses
+    au format {"question_id": {"index": X, "valeur": "..."}}
+    """
+    reponses = {}
+
+    dim_courante = None
+    for qid, q in QUESTIONS_F2.items():
+        # Afficher un séparateur de dimension à chaque changement
+        if q["dimension"] != dim_courante:
+            dim_courante = q["dimension"]
+            label_dim = DIMENSIONS_F2[dim_courante]
+            print(f"\n\n  {'═'*50}")
+            print(f"  DIMENSION : {dim_courante} — {label_dim}")
+            print(f"  {'═'*50}")
+
+        textes_options = [opt["texte"] for opt in q["options"]]
+        reponse_texte  = poser_question(q["question"], textes_options)
+
+        # Retrouver l'index et la valeur correspondant au texte choisi
+        idx_choisi   = next(i for i, opt in enumerate(q["options"]) if opt["texte"] == reponse_texte)
+        valeur_choisie = q["options"][idx_choisi]["valeur"]
+
+        reponses[qid] = {"index": idx_choisi, "valeur": valeur_choisie}
+
+    return reponses
+
+
+# ─────────────────────────────────────────────
 # HELPERS UI
 # ─────────────────────────────────────────────
 
 def afficher_titre():
-    print("\n")
-    print("       Diagnostic de Maturité Entrepreneuriale")
-    print("   Ce diagnostic évalue votre projet objectivement.")
+    print("═" * 60)
+    print("       diagnostic de daturité dntrepreneuriale".upper())
+    print("   Ce diagnostic évalue votre projet objectivement".upper())
 
 
 def poser_question(question, options=None, type_reponse="choix"):
@@ -167,7 +464,7 @@ class ScoreEngine:
 # ─────────────────────────────────────────────
 
 def branche_agriculture_sylviculture_peche(engine, profil):
-    print("\n  📌 Section spécifique : Agriculture / Sylviculture / Pêche")
+    print("\n Section spécifique : Agriculture / Sylviculture / Pêche")
 
     certif = poser_question(
         "Avez-vous des certifications sanitaires ou phytosanitaires (ISO 22000, HACCP, GlobalG.A.P., etc.) ?",
@@ -218,7 +515,7 @@ def branche_agriculture_sylviculture_peche(engine, profil):
 
 
 def branche_industrie_construction(engine, profil):
-    print("\n  📌 Section spécifique : Industrie / Construction")
+    print("\n Section spécifique : Industrie / Construction")
 
     equipements = poser_question(
         "Avez-vous les équipements de production / chantier nécessaires ?",
@@ -271,7 +568,7 @@ def branche_industrie_construction(engine, profil):
 
 
 def branche_commerce_transport_logistique(engine, profil):
-    print("\n  📌 Section spécifique : Commerce / Transport / Logistique")
+    print("\n Section spécifique : Commerce / Transport / Logistique")
 
     reseau_distribution = poser_question(
         "Avez-vous un réseau de distribution ou des points de vente établis ?",
@@ -321,7 +618,7 @@ def branche_commerce_transport_logistique(engine, profil):
 
 
 def branche_service_tourisme(engine, profil):
-    print("\n  📌 Section spécifique : Service / Tourisme")
+    print("\n Section spécifique : Service / Tourisme")
 
     classement = poser_question(
         "Votre établissement est-il classé ou agréé (hôtel classé, agence de voyage agréée, etc.) ?",
@@ -374,7 +671,7 @@ def branche_service_tourisme(engine, profil):
 
 
 def branche_tech_services_entreprise(engine, profil):
-    print("\n  📌 Section spécifique : Technologie et Services Entreprise")
+    print("\n Section spécifique : Technologie et Services Entreprise")
 
     mvp = poser_question(
         "Avez-vous un MVP (produit minimum viable) ou une offre de service formalisée ?",
@@ -468,19 +765,20 @@ def run_diagnostic():
     profil = {}
 
     # ── BLOC 1 : Profil de base + Auto-évaluation (texte libre) ──
-    print("\n  📋 ÉTAPE 1 — Présentation de votre projet")
+    print("\n ÉTAPE 1 — Présentation de votre projet")
     print("  " + "─" * 50)
     print("  Décrivez votre projet en quelques lignes en précisant :")
-    print("    • Le secteur d'activité")
-    print("      (Agriculture/Sylviculture/Pêche — Industrie/Construction —")
-    print("       Commerce/Transport/Logistique — Service/Tourisme —")
-    print("       Technologie et Services Entreprise)")
+    print("    • Le secteur d'activité :")
+    print("      — Agriculture/Sylviculture/Pêche")
+    print("      — Industrie/Construction")
+    print("      — Commerce/Transport/Logistique")
+    print("      — Service/Tourisme")
+    print("      — Technologie et Services Entreprise")
     print("    • La région où vous êtes basé  (ex: Tunis, Sfax, Sousse...)")
-    print("    • Le nom de votre entreprise ou projet")
+    #print("    • Le nom de votre entreprise ou projet")
     print("    • Selon vous, à quel stade en êtes-vous aujourd'hui ?")
     print("      (Ideation / Market Validation / Structuration /")
     print("       Fundraising / Launch Planning / Growth)")
-    print()
 
     description_libre = poser_question(
         "Votre description (appuyez sur Entrée quand vous avez terminé) :",
@@ -530,7 +828,7 @@ def run_diagnostic():
     profil["secteur_label"] = SECTEURS[secteur_cle]["label"]
 
     # ── Extraction de la localisation ──
-    REGIONS = ["Tunis", "Sfax", "Sousse", "Monastir", "Bizerte", "Autre région"]
+    REGIONS = ["Bizerte", "Tunis", "Ariana", "Ben Arous", "Manouba", "Nabeul", "Sfax", "Zaghouan", "Beja", "Jendouba", "Siliana", "Kasserine", "Kef", "Kaireon", "Sousse", "Monastir", "Mahdia", "Sidi Bouzid", "Tozeur", "Kebili", "Gabes", "Gafsa", "Medenine", "Tataouine"]
     localisation_detectee = None
     for region in REGIONS:
         if region.lower() in desc_lower:
@@ -603,7 +901,7 @@ def run_diagnostic():
         profil["equipe"] = "solo"
 
     # ── BLOC 2 : Branches sectorielles ──
-    print("\n  📋 ÉTAPE 2 — Questions sectorielles")
+    print("\n ÉTAPE 2 — Questions sectorielles")
 
     if secteur_cle == "agriculture_sylviculture_peche":
         branche_agriculture_sylviculture_peche(engine, profil)
@@ -617,7 +915,7 @@ def run_diagnostic():
         branche_tech_services_entreprise(engine, profil)
 
     # ── BLOC 3 : Structure juridique ──
-    print("\n  📋 ÉTAPE 3 — Structure juridique")
+    print("\n ÉTAPE 3 — Structure juridique")
 
     rne = poser_question(
         "Avez-vous un RNE (Registre National des Entreprises) ?",
@@ -648,7 +946,7 @@ def run_diagnostic():
             )
 
     # ── BLOC 4 : Revenus et validation marché ──
-    print("\n  📋 ÉTAPE 4 — Revenus et validation marché")
+    print("\n ÉTAPE 4 — Revenus et validation marché")
 
     a_revenus = poser_question(
         "Avez-vous des revenus générés par votre activité ?",
@@ -731,7 +1029,7 @@ def run_diagnostic():
                 profil["validation_type"] = "aucune"
 
     # ── BLOC 5 : Business Plan et dossier ──
-    print("\n  📋 ÉTAPE 5 — Business Plan et dossier")
+    print("\n ÉTAPE 5 — Business Plan et dossier")
 
     bp = poser_question(
         "Avez-vous un business plan documenté ?",
@@ -763,7 +1061,7 @@ def run_diagnostic():
             )
 
     # ── BLOC 6 : Innovation ──
-    print("\n  📋 ÉTAPE 6 — Innovation et différenciation")
+    print("\n ÉTAPE 6 — Innovation et différenciation")
 
     innovation = poser_question(
         "Votre solution existe-t-elle déjà sur le marché tunisien ?",
@@ -792,7 +1090,7 @@ def run_diagnostic():
         )
 
     # ── BLOC 7 : Accompagnement et financement ──
-    print("\n  📋 ÉTAPE 7 — Accompagnement et financement")
+    print("\n ÉTAPE 7 — Accompagnement et financement")
 
     accompagnement = poser_question(
         "Avez-vous bénéficié d'un programme d'accompagnement ?",
@@ -828,6 +1126,13 @@ def run_diagnostic():
     else:
         profil["financement"] = "aucun"
 
+    # ── BLOC 8 : Scoring Multi-Dimensionnel F2 ──
+    print("\n ÉTAPE 8 — Évaluation Multi-Dimensionnelle")
+    print("  " + "─" * 50)
+    print("  Ces questions évaluent votre projet sur 5 dimensions :")
+    print("  Marché, Offre Commerciale, Innovation, Scalabilité, Impact.")
+    reponses_f2 = poser_scoring_f2()
+
     # ─────────────────────────────────────────────
     # CALCUL FINAL
     # ─────────────────────────────────────────────
@@ -854,9 +1159,9 @@ def run_diagnostic():
     # AFFICHAGE DU RÉSULTAT
     # ─────────────────────────────────────────────
 
-    print("\n" + "═" * 60)
-    print("   📊  RÉSULTATS DU DIAGNOSTIC")
-    print("═" * 60)
+    print("\n")
+    print("   RÉSULTATS DU DIAGNOSTIC")
+    print("\n")
     print(f"  Projet        : {profil.get('nom_entreprise', 'N/A')} ({entrepreneur_id})")
     print(f"  Secteur       : {profil['secteur_label']}")
     print(f"  Localisation  : {localisation}")
@@ -864,25 +1169,25 @@ def run_diagnostic():
     print(f"  Stade réel    : {stade_reel_nom}  (score: {engine.score}/100)")
 
     if gap_detecte:
-        print(f"\n  ⚠️  GAP DÉTECTÉ !")
+        print(f"\n GAP DÉTECTÉ !")
         print(f"  {gap_explication}")
     else:
-        print(f"\n  ✅ Votre auto-évaluation correspond au diagnostic.")
+        print(f"\n Votre auto-évaluation correspond au diagnostic.")
 
     if engine.gaps:
-        print(f"\n  🔴 Lacunes identifiées :")
+        print(f"\n Lacunes identifiées :")
         for g in engine.gaps:
             print(f"     • {g}")
 
     if engine.blockers:
-        print(f"\n  🚧 Blockers prioritaires :")
+        print(f"\n Blockers prioritaires :")
         sorted_blockers = sorted(engine.blockers, key=lambda x: x["priorite"])
         for b in sorted_blockers:
             print(f"     [{b['priorite']}] {b['domaine'].upper()} — {b['description']}")
 
     stade_info = STADES[stade_reel_num]
-    print(f"\n  💡 Financement adapté à votre stade réel : {stade_info['financement']}")
-    print("═" * 60)
+    print(f"\n Financement adapté à votre stade réel : {stade_info['financement']}")
+    print("\n")
 
     # ─────────────────────────────────────────────
     # EXPORT JSON — Contrat F1
@@ -904,13 +1209,16 @@ def run_diagnostic():
         "profil_complet": profil,
         "signaux_divergence": engine.signaux_divergence,
         "financement_recommande": stade_info["financement"],
+        "dimensions": DIMENSIONS_F2,
+        "questions": QUESTIONS_F2,
+        "reponses": reponses_f2,
     }
 
     filename = f"diagnostic_{entrepreneur_id}_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json"
     with open(filename, "w", encoding="utf-8") as f:
         json.dump(output, f, ensure_ascii=False, indent=2)
 
-    print(f"\n  📁 Fichier JSON exporté : {filename}")
+    print(f"\n Fichier JSON exporté : {filename}")
     print("═" * 60 + "\n")
 
     return output

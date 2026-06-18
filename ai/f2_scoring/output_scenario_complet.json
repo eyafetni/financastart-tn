@@ -1,0 +1,61 @@
+{
+    "id": "PROF-MODIFIED",
+    "nom_scenario": "Cas Démo : Agritech Sfax - Analyse Réelle complète",
+    "secteur": "agritech",
+    "stade_reel": "Structuration",
+    "sub_scores": {
+        "MS1": 60,
+        "MS2": 60,
+        "MS3": 60,
+        "MS4": 80,
+        "CO1": 60,
+        "CO2": 60,
+        "CO3": 80,
+        "CO4": 80,
+        "IN1": 60,
+        "IN2": 80,
+        "IN3": 60,
+        "IN4": 60,
+        "SC1": 80,
+        "SC2": 80,
+        "SC3": 60,
+        "SC4": 80,
+        "GS1": 80,
+        "GS2": 80,
+        "GS3": 60,
+        "GS4": 80
+    },
+    "anomalies": [
+        {
+            "id": "ANOM_FRAUD_CA_NO_RNE",
+            "justification": "Alerte de conformité sévère : Vous déclarez un chiffre d'affaires de 55500000.0 TND sans être immatriculé au Registre National des Entreprises (RNE). En Tunisie, générer des revenus commerciaux sans existence légale relève du marché informel.",
+            "dimension": "legal_compliance",
+            "penalty_points": 50,
+            "target_score": "global",
+            "action": "Stoppez toute levée de fonds et procédez immédiatement à la création de votre statut juridique via la plateforme du RNE.",
+            "kb_link": "KB-LEGAL-RNE-001"
+        },
+        {
+            "id": "ANOM_REGIONAL_ISOLATION",
+            "justification": "Isolement entrepreneurial : Opérer à Sfax sans accompagnement réduit vos chances de validation. Des pépinières APII et centres d'affaires existent pourtant dans votre gouvernorat.",
+            "dimension": "ecosystem_integration",
+            "penalty_points": 10,
+            "target_score": "global",
+            "action": "Rapprochez-vous de la pépinière d'entreprises locale de l'APII à Sfax.",
+            "kb_link": "KB-ECO-REGIONS-011"
+        }
+    ],
+    "blockers": [
+        {
+            "domaine": "Organisationnel",
+            "description": "Absence d'équipe fondatrice",
+            "niveau": "orange"
+        },
+        {
+            "domaine": "Légal",
+            "description": "Entreprise non enregistrée",
+            "niveau": "rouge"
+        }
+    ],
+    "attendu": "FRI calculé selon les pondérations cibles du système expert."
+}

@@ -358,11 +358,10 @@ def extract_anomalies(payload):
                 justification = rule["justification_template"]
                 action = rule["action_template"]
                 
-            # Les clés 'id' et 'description' sont mappées pour correspondre
-            # à l'interface originale de extract_all_scenario_data
+            # Remplacement de 'description' par 'justification' dans l'output
             anomalies_detectees.append({
                 "id": rule["id"],
-                "description": justification,
+                "justification": justification,  # Changement effectué ici
                 "dimension": rule["dimension"],
                 "penalty_points": rule["penalty_points"],
                 "target_score": rule["target_score"],

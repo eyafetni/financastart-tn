@@ -1,0 +1,101 @@
+{
+    "financing_readiness_index": 8,
+    "fri_interpretation": "Non bancable (8/100) — Les scores cumulatifs sont trop faibles. Un accompagnement structurant est indispensable.",
+    "is_financeable": false,
+    "secteur_applique": "Agroalimentaire",
+    "scores": {
+        "market_score": {
+            "valeur": 64.2,
+            "sous_scores": {
+                "taille_marche": 60.0,
+                "concurrence": 60.0,
+                "validation_client": 60.0,
+                "modele_revenus": 80.0
+            },
+            "justification_template": "Le marche est partiellement valide. Point fort : 'Modele revenus' (80/100). Faiblesse identifiee : 'Taille marche' (60/100) qui penalise la bancabilite.",
+            "action_template": "Priorite : ameliorer 'Taille marche' — obtenir 3 lettres d'intention clients ou preuves de traction payante avant tout depot de dossier.",
+            "kb_link": ""
+        },
+        "commercial_offer_score": {
+            "valeur": 72.4,
+            "sous_scores": {
+                "proposition_valeur": 60.0,
+                "maturite_produit": 60.0,
+                "strategie_prix": 80.0,
+                "alignement_besoins": 80.0
+            },
+            "justification_template": "L'offre commerciale est differentiated et bien definie. La 'Strategie prix' (80/100) constitue un avantage competitif clair.",
+            "action_template": "Formaliser le pricing dans un document de strategie commerciale pour les due diligences.",
+            "kb_link": ""
+        },
+        "innovation_score": {
+            "valeur": 64.0,
+            "sous_scores": {
+                "nouveaute_locale": 60.0,
+                "intensite_tech": 80.0,
+                "barrieres_entree": 60.0,
+                "degre_rupture": 60.0
+            },
+            "justification_template": "L'innovation est presente mais insuffisamment defenisble. Le critere 'Nouveaute locale' (60/100) limite la protection competitive.",
+            "action_template": "Renforcer 'Nouveaute locale' : documenter la differentiation par rapport aux solutions existantes sur le marche tunisien.",
+            "kb_link": ""
+        },
+        "scalability_score": {
+            "valeur": 76.6,
+            "sous_scores": {
+                "replicabilite": 80.0,
+                "independance_manuelle": 80.0,
+                "couts_deploiement": 60.0,
+                "potentiel_geo": 80.0
+            },
+            "justification_template": "Le modele est fortement scalable. La 'Replicabilite' (80/100) confirme la capacite de croissance sans augmentation lineaire des couts.",
+            "action_template": "Modeliser les economies d'echelle a 3 ans pour le dossier de levee de fonds.",
+            "kb_link": ""
+        },
+        "green_score": {
+            "valeur": 77.1,
+            "sous_scores": {
+                "climat_air": 80.0,
+                "eau": 80.0,
+                "sols_biodiversite": 60.0,
+                "ressources_dechets": 80.0
+            },
+            "justification_template": "L'impact environnemental est bien maitrise. Le pilier 'Climat air' (80/100) est un atout dans le contexte PNUD/ODD.",
+            "action_template": "Formaliser le bilan carbone et l'aligner sur les ODD pour les dossiers de financement PNUD/AFD.",
+            "kb_link": ""
+        }
+    },
+    "blockers_actifs": [
+        {
+            "domaine": "Organisationnel",
+            "description": "Absence d'équipe fondatrice",
+            "niveau": "orange"
+        },
+        {
+            "domaine": "Légal",
+            "description": "Entreprise non enregistrée",
+            "niveau": "rouge"
+        }
+    ],
+    "anomalies_detectees": [
+        {
+            "id": "ANOM_FRAUD_CA_NO_RNE",
+            "description": "Alerte de conformité sévère : Vous déclarez un chiffre d'affaires de 55500000.0 TND sans être immatriculé au Registre National des Entreprises (RNE). En Tunisie, générer des revenus commerciaux sans existence légale relève du marché informel. ACTION : Stoppez toute levée de fonds et procédez immédiatement à la création de votre statut juridique via la plateforme du RNE.",
+            "penalite": 50,
+            "dimension_impactee": "global",
+            "justification_template": "Alerte de conformité sévère : Vous déclarez un chiffre d'affaires de 55500000.0 TND sans être immatriculé au Registre National des Entreprises (RNE). En Tunisie, générer des revenus commerciaux sans existence légale relève du marché informel.",
+            "action_template": "Stoppez toute levée de fonds et procédez immédiatement à la création de votre statut juridique via la plateforme du RNE.",
+            "kb_link": "KB-LEGAL-RNE-001"
+        },
+        {
+            "id": "ANOM_REGIONAL_ISOLATION",
+            "description": "Isolement entrepreneurial : Opérer à Sfax sans accompagnement réduit vos chances de validation. Des pépinières APII et centres d'affaires existent pourtant dans votre gouvernorat. ACTION : Rapprochez-vous de la pépinière d'entreprises locale de l'APII à Sfax.",
+            "penalite": 10,
+            "dimension_impactee": "global",
+            "justification_template": "Isolement entrepreneurial : Opérer à Sfax sans accompagnement réduit vos chances de validation. Des pépinières APII et centres d'affaires existent pourtant dans votre gouvernorat.",
+            "action_template": "Rapprochez-vous de la pépinière d'entreprises locale de l'APII à Sfax.",
+            "kb_link": "KB-ECO-REGIONS-011"
+        }
+    ],
+    "resume_executif": "Analyse pour le secteur 'Agroalimentaire' : le projet n'est PAS encore bancable avec un Financing Readiness Index de 8/100. Le point fort du profil est le Green Score (77.1/100). Le principal frein est le Innovation Score (64.0/100), qui doit etre traite en priorite. 2 anomalie(s) detectee(s) et 2 blocker(s) identifie(s). Les actions prioritaires sont detaillees par dimension dans la section 'scores'."
+}

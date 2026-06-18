@@ -32,7 +32,7 @@
         "secteur": "agritech",
         "localisation": "Sfax",
         "equipe": "solo",
-        "rne": true,
+        "rne": false,
         "forme_juridique": null,
         "chiffre_affaires": 55500000.0,
         "anciennete_revenus": "Plus de 3 ans",

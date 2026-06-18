@@ -6,43 +6,6 @@ Conforme à :
 - AI_for_Entrepreneurship.pdf  §2.4 (5 scores, poids documentés, anomalies, guidance)
 - Briefings_Equipe.docx        §Membre 2 (format JSON de sortie F2, Financing Readiness Index,
                                 logique bloquante : Market < 30 OU Commercial < 25 => FRI <= 40)
-
-ENTRÉES (JSON / dict) :
-    sub_scores  : dict avec les 20 sous-scores  (MS1-MS4, CO1-CO4, IN1-IN4, SC1-SC4, GS1-GS4), 0-100
-    anomalies   : list de dicts  {"id": "ANOM_XX_Y", "description": "...", "penalty_points": N, "target_score": "..."}
-    blockers    : list de dicts  {"domaine": "...", "description": "...", "niveau": "rouge|orange|jaune"}
-    secteur     : str  (ex. "AgriTech / Agroalimentaire" ou alias "agritech")
-
-SORTIE (dict sérialisable JSON) — Contrat F2 :
-    {
-      "financing_readiness_index": int,         # 0-100, plafonné si critique
-      "fri_interpretation":  str,               # label lisible + statut bancabilité
-      "is_financeable": bool,                   # signal binaire pour le dashboard
-      "secteur_applique": str,                  # secteur après résolution d'alias
-      "scores": {
-          "market_score": {
-              "valeur": float,                  # score final de la dimension 0-100
-              "sous_scores": {                  # 4 sous-scores nominatifs
-                  "taille_marche": float,
-                  "concurrence": float,
-                  "validation_client": float,
-                  "modele_revenus": float
-              },
-              "poids_ahp": {...},               # poids AHP ajustés au secteur (%)
-              "penalite_appliquee": int,        # points déduits par anomalies
-              "justification": str,             # explication naturelle du score
-              "action": str,                    # action prioritaire pour améliorer le score
-              "anomalies_declenchees": [...]    # ids des anomalies concernant cette dimension
-          },
-          "commercial_offer_score": {...},
-          "innovation_score": {...},
-          "scalability_score": {...},
-          "green_score": {...}
-      },
-      "blockers_actifs": [...],                 # liste transmise depuis F1 enrichie
-      "anomalies_detectees": [...],             # liste complète des anomalies déclenchées
-      "resume_executif": str                    # paragraphe de synthèse complet
-    }
 """
 
 from __future__ import annotations
@@ -51,13 +14,13 @@ import os
 import numpy as np
 from typing import Any
 
-# Résolution du chemin : fonctionne que le script soit lancé depuis AINS/ ou depuis f2_scoring/
-_THIS_DIR   = os.path.dirname(os.path.abspath(__file__))   # …/AINS/f2_scoring
-_PARENT_DIR = os.path.dirname(_THIS_DIR)                    # …/AINS
+# Résolution du chemin
+_THIS_DIR   = os.path.dirname(os.path.abspath(__file__))
+_PARENT_DIR = os.path.dirname(_THIS_DIR)
 if _PARENT_DIR not in sys.path:
     sys.path.insert(0, _PARENT_DIR)
 
-# Imports internes — ne modifie rien dans ces fichiers
+# Imports internes
 from f2_scoring.ahp_engine import AHPEngine
 from f2_scoring.matrice_coeff import (
     AHP_MATRICES,
@@ -70,13 +33,10 @@ from f2_scoring.matrice_coeff import (
 # CONSTANTES MÉTIER
 # =========================================================================
 
-# Plafond du Financing Readiness Index si une dimension critique est trop faible
-# (Briefings_Equipe §Membre 2 — Logique non-linéaire bloquante)
-FRI_PLAFOND_CRITIQUE = 40          # Si Market < 30 OU Commercial < 25 → FRI <= 40
+FRI_PLAFOND_CRITIQUE = 40
 MARKET_SEUIL_BLOQUANT = 30
 COMMERCIAL_SEUIL_BLOQUANT = 25
 
-# Noms lisibles pour l'affichage (clé interne → label)
 DIMENSION_LABELS = {
     "market":           "Market Score",
     "commercial_offer": "Commercial Offer Score",
@@ -85,7 +45,6 @@ DIMENSION_LABELS = {
     "green":            "Green Score",
 }
 
-# Correspondance dimension → préfixe des 4 sous-scores
 DIM_PREFIX = {
     "market":           "MS",
     "commercial_offer": "CO",
@@ -94,7 +53,6 @@ DIM_PREFIX = {
     "green":            "GS",
 }
 
-# Noms lisibles des sous-scores par dimension
 SOUS_SCORE_LABELS = {
     "market":           ["taille_marche", "concurrence", "validation_client", "modele_revenus"],
     "commercial_offer": ["proposition_valeur", "maturite_produit", "strategie_prix", "alignement_besoins"],
@@ -103,7 +61,6 @@ SOUS_SCORE_LABELS = {
     "green":            ["climat_air", "eau", "sols_biodiversite", "ressources_dechets"],
 }
 
-# Poids globaux AHP inter-scores (Matrice 5x5 pré-calculée, CR=0.29%, conforme)
 GLOBAL_WEIGHTS_ORDERED = {
     "market":           0.2976,
     "commercial_offer": 0.1579,
@@ -113,29 +70,22 @@ GLOBAL_WEIGHTS_ORDERED = {
 }
 
 # =========================================================================
-# MOTEUR DE CALCUL INTERNE (ne dépend que de AHPEngine et matrice_coeff)
+# MOTEUR DE CALCUL INTERNE
 # =========================================================================
 
 def _resolve_sector(secteur: str) -> str:
-    """Résout les alias de secteur vers le nom complet."""
     secteur_lower = secteur.strip().lower()
     if secteur_lower in SECTOR_ALIASES:
         return SECTOR_ALIASES[secteur_lower]
-    # Tentative par correspondance partielle (insensible à la casse)
     for alias, full in SECTOR_ALIASES.items():
         if alias in secteur_lower or secteur_lower in full.lower():
             return full
-    return secteur  # Retourne tel quel si non trouvé
+    return secteur
 
 
 def _get_adjusted_weights(dimension: str, secteur_full: str) -> dict[str, float]:
-    """
-    Applique les ajustements sectoriels sur les poids AHP de base, puis
-    renormalise pour que la somme = 1.0.
-    Retourne {sous_score_label: poids_ajuste}.
-    """
     prefix = DIM_PREFIX[dimension]
-    base_w = AHP_WEIGHTS[dimension]  # {"MS1": 0.1205, ...}
+    base_w = AHP_WEIGHTS[dimension]
     adj_rules = SECTOR_ADJUSTMENTS.get(secteur_full, {}).get(dimension, {})
 
     labels = SOUS_SCORE_LABELS[dimension]
@@ -157,32 +107,17 @@ def _compute_dimension_score(
     secteur_full: str,
     anomalies: list[dict],
 ) -> dict[str, Any]:
-    """
-    Calcule le score final d'une dimension :
-    1. Récupère les 4 sous-scores bruts (MS1..MS4, etc.)
-    2. Applique les poids AHP ajustés au secteur
-    3. Déduit les pénalités liées aux anomalies de cette dimension
-    4. Construit le bloc de résultat attendu dans le contrat F2
-
-    Retourne un dict complet pour la clé de cette dimension dans "scores".
-    """
     prefix  = DIM_PREFIX[dimension]
     labels  = SOUS_SCORE_LABELS[dimension]
-    engine  = AHPEngine()
 
-    # --- Sous-scores bruts ---
     ss_values = {}
     for i, lbl in enumerate(labels):
         key_in = f"{prefix}{i+1}"
         ss_values[lbl] = float(sub_scores_raw.get(key_in, 0))
 
-    # --- Poids AHP ajustés ---
     poids = _get_adjusted_weights(dimension, secteur_full)
-
-    # --- Score brut pondéré ---
     score_brut = sum(poids[lbl] * ss_values[lbl] for lbl in labels)
 
-    # --- Pénalités ---
     target_keys = {
         "market":           ["market", "both_market_commercial"],
         "commercial_offer": ["commercial_offer", "both_market_commercial", "both_commercial_innovation"],
@@ -192,11 +127,8 @@ def _compute_dimension_score(
     }
     anoms_dim = [a for a in anomalies if a.get("target_score") in target_keys[dimension]]
     penalite  = sum(a.get("penalty_points", 0) for a in anoms_dim)
-    ids_anoms = [a.get("id", "?") for a in anoms_dim]
 
     score_final = round(max(0.0, score_brut - penalite), 1)
-
-    # --- Justification et action (texte naturel) ---
     justification, action = _generate_justification(dimension, ss_values, score_final, poids)
 
     return {
@@ -214,23 +146,14 @@ def _generate_justification(
     score_final: float,
     poids: dict[str, float],
 ) -> tuple[str, str]:
-    """
-    Génère une justification textuelle et une action prioritaire
-    pour chaque dimension en fonction des valeurs réelles des sous-scores.
-    La logique est déterministe et tracée — pas de LLM.
-    """
     labels  = SOUS_SCORE_LABELS[dimension]
-
-    # Identifier le sous-score le plus fort et le plus faible
     faible_lbl = min(labels, key=lambda l: sous_scores[l])
     fort_lbl   = max(labels, key=lambda l: sous_scores[l])
     faible_val = sous_scores[faible_lbl]
     fort_val   = sous_scores[fort_lbl]
 
-    # Etiquettes lisibles (remplace les underscores par des espaces)
     def human(lbl): return lbl.replace("_", " ").capitalize()
 
-    # Niveau global du score
     if score_final >= 70:
         niveau = "solide"
     elif score_final >= 45:
@@ -238,7 +161,6 @@ def _generate_justification(
     else:
         niveau = "critique"
 
-    # Templates par dimension et niveau
     justifications = {
         "market": {
             "solide":   f"Le marche est bien positionne : le critere '{human(fort_lbl)}' ({fort_val:.0f}/100) tire le score. Le marche adressable est credible et la traction validee.",
@@ -295,33 +217,19 @@ def _generate_justification(
         },
     }
 
-    just = justifications[dimension][niveau]
-    act  = actions[dimension][niveau]
-    return just, act
+    return justifications[dimension][niveau], actions[dimension][niveau]
 
 
 def _compute_fri(scores_dict: dict[str, float], global_penalty: int = 0) -> tuple[int, str, bool]:
-    """
-    Calcule le Financing Readiness Index (FRI) sur 100.
-    Applique la logique bloquante du Briefings_Equipe :
-      Si Market Score < 30 OU Commercial Score < 25 → FRI plafonné à 40.
-    Retourne : (fri_valeur, interpretation_texte, is_financeable)
-    """
     market_val = scores_dict.get("market", 0)
     commercial_val = scores_dict.get("commercial_offer", 0)
 
-    # Score global brut : somme pondérée AHP inter-scores
     fri_brut = sum(GLOBAL_WEIGHTS_ORDERED[dim] * val for dim, val in scores_dict.items())
-    fri_brut = round(fri_brut, 1)
+    fri_brut = max(0.0, round(fri_brut, 1) - global_penalty)
 
-    # Déduction de la pénalité globale
-    fri_brut = max(0.0, fri_brut - global_penalty)
-
-    # Application du plafond critique (logique non-linéaire bloquante)
     plafond_actif = (market_val < MARKET_SEUIL_BLOQUANT or commercial_val < COMMERCIAL_SEUIL_BLOQUANT)
     fri_final = int(min(fri_brut, FRI_PLAFOND_CRITIQUE)) if plafond_actif else int(fri_brut)
 
-    # Interprétation
     if fri_final >= 70:
         interp = f"Excellent ({fri_final}/100) — Profil bancable. Le projet peut initier une demarche de financement formelle."
         is_fin = True
@@ -350,22 +258,64 @@ def _build_resume_executif(
     nb_anomalies: int,
     nb_blockers: int,
 ) -> str:
-    """Génère un paragraphe de synthèse exécutif complet."""
     dim_faible = min(scores_dict, key=scores_dict.get)
     dim_forte  = max(scores_dict, key=scores_dict.get)
     status     = "est bancable" if is_fin else "n'est PAS encore bancable"
-    label_faible = DIMENSION_LABELS[dim_faible]
-    label_forte  = DIMENSION_LABELS[dim_forte]
 
     return (
         f"Analyse pour le secteur '{secteur}' : le projet {status} avec un Financing Readiness Index de {fri}/100. "
-        f"Le point fort du profil est le {label_forte} ({scores_dict[dim_forte]:.1f}/100). "
-        f"Le principal frein est le {label_faible} ({scores_dict[dim_faible]:.1f}/100), "
+        f"Le point fort du profil est le {DIMENSION_LABELS[dim_forte]} ({scores_dict[dim_forte]:.1f}/100). "
+        f"Le principal frein est le {DIMENSION_LABELS[dim_faible]} ({scores_dict[dim_faible]:.1f}/100), "
         f"qui doit etre traite en priorite. "
         f"{nb_anomalies} anomalie(s) detectee(s) et {nb_blockers} blocker(s) identifie(s). "
         f"Les actions prioritaires sont detaillees par dimension dans la section 'scores'."
     )
 
+def _evaluer_condition(condition: dict, contexte: dict) -> bool:
+    var = condition.get("variable")
+    op = condition.get("operator")
+    val_cible = condition.get("value")
+    
+    if var not in contexte:
+        return False
+        
+    val_reelle = contexte[var]
+    
+    if op == "==": return val_reelle == val_cible
+    if op == ">=": return val_reelle >= val_cible
+    if op == "<=": return val_reelle <= val_cible
+    if op == "in":
+        if isinstance(val_reelle, str) and isinstance(val_cible, list):
+            return val_reelle.lower() in [v.lower() for v in val_cible]
+        return val_reelle in val_cible
+    return False
+
+def _detecter_anomalies_scoring(sub_scores: dict, secteur_full: str, anomalies_phase_1: list[dict]) -> list[dict]:
+    from f2_scoring.matrice_coeff import ANOMALY_RULES
+    
+    contexte = {**sub_scores}
+    contexte["sector"] = secteur_full
+    
+    ids_phase_1 = {a.get("id") for a in anomalies_phase_1}
+    contexte["has_water_data"] = "ANOM_RECIPIENT_WATER_MISSING" not in ids_phase_1 
+    contexte["saas_physical_specified"] = "ANOM_MODEL_NOT_SPECIFIED" not in ids_phase_1
+    contexte["has_eie_document"] = "ANOM_EIE_MISSING" not in ids_phase_1
+
+    anomalies_calculees = []
+    for rule in ANOMALY_RULES:
+        conditions = rule.get("conditions", [])
+        if not conditions:
+            continue
+            
+        if all(_evaluer_condition(cond, contexte) for cond in conditions):
+            anomalies_calculees.append({
+                "id": rule["id"],
+                "penalty_points": rule["penalty_points"],
+                "target_score": rule["target_score"],
+                "description": rule.get("description", "")
+            })
+            
+    return anomalies_calculees
 
 # =========================================================================
 # POINT D'ENTRÉE PUBLIC
@@ -377,38 +327,22 @@ def calculer_scores(
     blockers: list[dict],
     secteur: str,
 ) -> dict[str, Any]:
-    """
-    Calcule les 5 scores composites + le Financing Readiness Index
-    et retourne le contrat F2 complet au format JSON-compatible.
-
-    Paramètres
-    ----------
-    sub_scores : dict
-        Les 20 sous-scores : {"MS1": float, "MS2": float, ..., "GS4": float}
-        Chaque valeur est comprise entre 0 et 100.
-    anomalies : list[dict]
-        Anomalies détectées (ex. issues de matrice_coeff.check_anomalies).
-        Chaque anomalie : {"id": str, "description": str,
-                           "penalty_points": int, "target_score": str}
-    blockers : list[dict]
-        Blockers identifiés par le module F1 (Diagnostic) ou détectés localement.
-        Format : {"domaine": str, "description": str, "niveau": "rouge|orange|jaune"}
-    secteur : str
-        Secteur de l'entreprise (nom complet ou alias court).
-
-    Retourne
-    --------
-    dict sérialisable JSON — Contrat F2 complet.
-    """
-    # --- Résolution du secteur ---
     secteur_full = _resolve_sector(secteur)
+    anomalies_scoring = _detecter_anomalies_scoring(sub_scores, secteur_full, anomalies)
+    toutes_anomalies = anomalies + anomalies_scoring
 
-    # --- Enrichissement des anomalies avec les templates de matrice_coeff.py ---
+    vu = set()
+    anomalies_uniques = []
+    for a in toutes_anomalies:
+        if a.get("id") not in vu:
+            vu.add(a.get("id"))
+            anomalies_uniques.append(a)
+
     from f2_scoring.matrice_coeff import ANOMALY_RULES
     rules_dict = {rule["id"]: rule for rule in ANOMALY_RULES}
     
     enriched_anomalies = []
-    for anom in anomalies:
+    for anom in anomalies_uniques:
         rule = rules_dict.get(anom.get("id"))
         if rule:
             merged = {**rule, **anom}
@@ -416,7 +350,6 @@ def calculer_scores(
         else:
             enriched_anomalies.append(anom)
 
-    # --- Calcul des 5 scores de dimension ---
     DIMS = ["market", "commercial_offer", "innovation", "scalability", "green"]
     scores_detail: dict[str, dict] = {}
     scores_valeurs: dict[str, float] = {}
@@ -426,7 +359,7 @@ def calculer_scores(
         scores_detail[f"{dim}_score"] = result
         scores_valeurs[dim] = result["valeur"]
 
-    # --- Formatage des templates d'anomalies et application aux justifications ---
+    # --- MODIFICATION ICI : Récupération et formatage flexible des templates ---
     class SafeDict(dict):
         def __missing__(self, key):
             return f"{{{key}}}"
@@ -434,7 +367,7 @@ def calculer_scores(
     fmt_context = SafeDict({
         **sub_scores,
         "sector": secteur_full,
-        "stage": "Ideation",  # Valeur par défaut
+        "stage": "Ideation",
         "market_score": scores_valeurs.get("market", 0.0),
         "commercial_offer_score": scores_valeurs.get("commercial_offer", 0.0),
         "innovation_score": scores_valeurs.get("innovation", 0.0),
@@ -447,22 +380,28 @@ def calculer_scores(
         a_copy = a.copy()
         fmt_context["kb_link"] = a.get("kb_link", "")
         
+        # Capture adaptative du texte de justification (gère 'justification' et 'justification_template')
+        raw_just = a.get("justification") or a.get("justification_template") or a.get("description", "")
         justification_text = ""
-        if "justification_template" in a:
+        if raw_just:
             try:
-                justification_text = a["justification_template"].format_map(fmt_context)
+                justification_text = raw_just.format_map(fmt_context)
             except Exception:
-                justification_text = a.get("description", "")
-        else:
-            justification_text = a.get("description", "")
-            
+                justification_text = raw_just
+        
+        # Capture adaptative de l'action
+        raw_action = a.get("action") or a.get("action_template", "")
         action_text = ""
-        if "action_template" in a:
+        if raw_action:
             try:
-                action_text = a["action_template"].format_map(fmt_context)
+                action_text = raw_action.format_map(fmt_context)
             except Exception:
-                action_text = ""
+                action_text = raw_action
                 
+        # Sauvegarde formelle pour l'output final
+        a_copy["justification_template"] = justification_text
+        a_copy["action_template"] = action_text
+
         if justification_text:
             a_copy["description"] = justification_text
             if action_text:
@@ -470,7 +409,7 @@ def calculer_scores(
                 
         formatted_anomalies.append(a_copy)
         
-        # Surcharge de la justification et de l'action de la dimension impactée
+        # Surcharge des blocs dimensionnels
         target = a.get("target_score", "")
         target_keys = {
             "market":           ["market", "both_market_commercial"],
@@ -491,13 +430,7 @@ def calculer_scores(
     global_penalty = sum(a.get("penalty_points", 0) for a in formatted_anomalies if a.get("target_score") == "global")
     fri, fri_interp, is_fin = _compute_fri(scores_valeurs, global_penalty)
 
-    # --- Résumé exécutif ---
-    resume = _build_resume_executif(
-        secteur_full, fri, is_fin,
-        scores_valeurs,
-        len(formatted_anomalies),
-        len(blockers),
-    )
+    resume = _build_resume_executif(secteur_full, fri, is_fin, scores_valeurs, len(formatted_anomalies), len(blockers))
 
     # --- Construction du contrat F2 ---
     contrat_f2 = {

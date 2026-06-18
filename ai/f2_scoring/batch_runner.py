@@ -1,78 +1,55 @@
-"""
-Batch Runner — Pipeline Complète avec Source JSON
-1. Charge les 10 profils depuis test_data.json
-2. Extrait la structure propre (extract_all_scenario_data)
-3. Chaîne le résultat comme entrée de l'évaluateur (evaluer_profil_complet)
-4. Génère les 20 fichiers JSON correspondants dans output_jsons/
-"""
-
-import os
-import sys
 import json
+import sys
+import os
 
-# Résolution des chemins pour le bon fonctionnement des imports
-_THIS_DIR = os.path.dirname(os.path.abspath(__file__))
-_PARENT_DIR = os.path.dirname(_THIS_DIR)
-if _PARENT_DIR not in sys.path:
-    sys.path.insert(0, _PARENT_DIR)
+# Ajustement du path pour détecter le module f2_scoring
+_ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
+if _ROOT_DIR not in sys.path:
+    sys.path.insert(0, _ROOT_DIR)
 
-# Import de tes briques de pipeline réelles
-from f2_scoring.extract_all_scenarios_data import extract_all_scenario_data
-from f2_scoring.evaluator import evaluer_profil_complet
+from calcul_scores import calculer_scores
 
-def run_all_tests():
-    # 1. Chemins des répertoires et fichiers
-    output_dir = os.path.join(_PARENT_DIR, "output_jsons")
-    os.makedirs(output_dir, exist_ok=True)
+def executer_calcul_direct(fichier_input, fichier_output="contrat_f2_output.json"):
+    print(f"Chargement des données depuis : {fichier_input}")
     
-    json_path = os.path.join(_THIS_DIR, "test_data.json")
-    
-    # 2. Chargement sécurisé du fichier test_data.json
-    if not os.path.exists(json_path):
-        print(f"[ERREUR] Le fichier de données est introuvable ici : {json_path}")
+    if not os.path.exists(fichier_input):
+        print(f"[Erreur] Le fichier '{fichier_input}' est introuvable à la racine.")
         return
 
-    with open(json_path, "r", encoding="utf-8") as f:
-        profils_test = json.load(f)
-
-    print(f"[INFO] 🚀 Lancement de la pipeline sur {len(profils_test)} profils (Source JSON)...")
-    
-    # 3. Boucle d'exécution sur chaque profil
-    for i, raw_profile in enumerate(profils_test, 1):
-        prof_id = raw_profile.get("entrepreneur_id", f"ENT-{i:03d}")
+    try:
+        # 1. Lecture du JSON pré-extrait
+        with open(fichier_input, "r", encoding="utf-8") as f:
+            data_extraite = json.load(f)
         
-        try:
-            # -----------------------------------------------------------------
-            # ÉTAPE 1 : Extraction & Normalisation Structurelle
-            # -----------------------------------------------------------------
-            payload_extrait = extract_all_scenario_data(raw_profile)
-            final_id = payload_extrait.get("id", f"PROF-{i:03d}")
-            
-            # Sauvegarde de l'extraction brute
-            extract_filename = f"contrat_f2_{final_id}_extracted.json"
-            extract_filepath = os.path.join(output_dir, extract_filename)
-            with open(extract_filepath, "w", encoding="utf-8") as f:
-                json.dump(payload_extrait, f, ensure_ascii=False, indent=2)
-                
-            # -----------------------------------------------------------------
-            # ÉTAPE 2 : Évaluation Métier (Chaînage d'Input direct)
-            # -----------------------------------------------------------------
-            payload_final = evaluer_profil_complet(payload_extrait)
-            
-            # Sauvegarde du rapport métier final
-            final_filename = f"contrat_f2_{final_id}_final.json"
-            final_filepath = os.path.join(output_dir, final_filename)
-            with open(final_filepath, "w", encoding="utf-8") as f:
-                json.dump(payload_final, f, ensure_ascii=False, indent=2)
-                
-            print(f"  -> [{final_id}] ✅ Pipeline franchie complète :")
-            print(f"     📄 [1/2] Extrait : {extract_filename}")
-            print(f"     🏆 [2/2] Évalué  : {final_filename}")
-            
-        except Exception as e:
-            print(f"  ❌ [{prof_id}] Erreur critique dans la pipeline : {str(e)}")
-            
-    print(f"\n[INFO] 🎉 Exécution terminée. Les fichiers d'extraction et finaux sont dans : {output_dir}")
+        # 2. Appel direct du moteur avec les clés du JSON
+        # Utilise .get() avec des valeurs par défaut pour éviter les crashs si une clé manque
+        contrat_f2 = calculer_scores(
+            sub_scores=data_extraite.get("sub_scores", {}),
+            anomalies=data_extraite.get("anomalies", []),
+            blockers=data_extraite.get("blockers", []),
+            secteur=data_extraite.get("secteur", data_extraite.get("secteur_applique", "agritech"))
+        )
+        
+        # 3. Affichage du résultat dans la console
+        print("\n================== OUTPUT CONTRAT F2 GENERE ==================")
+        print(json.dumps(contrat_f2, ensure_ascii=False, indent=4))
+        print("==============================================================")
+        
+        # 4. Sauvegarde dans un fichier d'output pour ton inspection ou tes assertions
+        with open(fichier_output, "w", encoding="utf-8") as f_out:
+            json.dump(contrat_f2, f_out, ensure_ascii=False, indent=4)
+        print(f"\n[Succès] L'output a été sauvegardé dans '{fichier_output}'.")
+
+    except json.JSONDecodeError:
+        print("[Erreur] Le fichier fourni n'est pas un JSON valide.")
+    except Exception as e:
+        print(f"[Erreur lors du calcul] {e}")
 
 if __name__ == "__main__":
-    run_all_tests()
+    # Vu que 'output_scenario_complet.json' est dans le même dossier que ce script,
+    # on utilise _ROOT_DIR pour construire un chemin absolu robuste.
+    fichier_cible = os.path.join(_ROOT_DIR, "output_scenario_complet.json")
+    fichier_destination = os.path.join(_ROOT_DIR, "contrat_f2_output.json")
+    
+    # Lancement du moteur de scoring
+    executer_calcul_direct(fichier_cible, fichier_destination)

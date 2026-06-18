@@ -33,7 +33,7 @@ def executer_pipeline_complet(profil_entrepreneur_json: str | dict[str, Any]) ->
     blockers_extraits = extract_blockers(profil_data)
     
     # Récupération du secteur (clé 'sector' souvent présente à la racine du profil)
-    secteur = profil_data.get("sector", "Général")
+    secteur = profil_data.get("secteur", "Général")
 
     # 3. Calcul des Scores et Enrichissement Phase 2
     contrat_f2 = calculer_scores(

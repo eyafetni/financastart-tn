@@ -113,8 +113,8 @@ AHP_CONSISTENCY_RATIOS = {
 # Selon le document méthodologique, ces coefficients viennent s'ajouter 
 # directement aux poids relatifs des sous-scores pour la dimension concernée.
 SECTOR_ADJUSTMENTS = {
-    # Agroalimentaire
-    "Agroalimentaire": {
+    # Agriculture
+    "Agriculture": {
         "market": {"MS1": 0.05, "MS2": 0.00, "MS3": 0.10, "MS4": 0.00},
         "commercial_offer": {"CO1": 0.00, "CO2": 0.00, "CO3": 0.10, "CO4": 0.05},
         "innovation": {"IN1": 0.10, "IN2": 0.00, "IN3": 0.00, "IN4": 0.05},
@@ -157,23 +157,27 @@ SECTOR_ADJUSTMENTS = {
 
 # Alias simplifiés pour faciliter les requêtes et assurer la compatibilité
 SECTOR_ALIASES = {
-    "agroalimentaire": "Agroalimentaire",
-    "agritech": "Agroalimentaire",
-    "agritech / agroalimentaire": "Agroalimentaire",
+    "agriculture_sylviculture_peche":"Agriculture",
+    "agroalimentaire": "Agriculture",
+    "Agriculture": "Agriculture",
+    "agritech / agroalimentaire": "Agriculture",
     "tech / digital": "Tech / Digital",
     "tech/digital": "Tech / Digital",
+    "Tech":"Tech / Digital",
     "tech": "Tech / Digital",
     "fintech": "Tech / Digital",
-    "fintech / services financiers": "Tech / Digital",
+    " services financiers": "Services",
     "edtech": "Tech / Digital",
     "edtech / formation": "Tech / Digital",
     "healthtech": "Tech / Digital",
     "healthtech / medtech": "Tech / Digital",
-    "industrie": "Industrie",
-    "industrie / manufacture": "Industrie",
+    "Industrie": "Industrie",
+    "Industrie / manufacture": "Industrie",
     "services": "Services",
     "tourisme": "Services",
+    "Services": "Services",
     "tourisme / culture": "Services",
+    "Commerce":"Commerce",
     "commerce": "Commerce",
     "ecommerce": "Commerce",
     "e-commerce / retail": "Commerce"
@@ -498,7 +502,7 @@ ANOMALY_RULES = [
         "target_score": "green",
         "conditions": [
             {"variable": "GS2", "operator": ">=", "value": 70},
-            {"variable": "sector", "operator": "in", "value": ["Agroalimentaire", "agroalimentaire"]},
+            {"variable": "sector", "operator": "in", "value": ["Agroalimentaire", "agroalimentaire","Agriculture"]},
             {"variable": "has_water_data", "operator": "==", "value": False}
         ],
         "justification_template": (
@@ -602,7 +606,7 @@ ANOMALY_RULES = [
         "penalty_points": 6,
         "target_score": "commercial_offer",
         "conditions": [
-            {"variable": "sector", "operator": "in", "value": ["Agroalimentaire", "agroalimentaire"]},
+            {"variable": "sector", "operator": "in", "value": ["Agriculture", "Agriculture"]},
             {"variable": "CO3", "operator": ">=", "value": 70},
             {"variable": "price_benchmarked_vs_distrib", "operator": "==", "value": False}
         ],
@@ -619,7 +623,7 @@ ANOMALY_RULES = [
         "penalty_points": 10,
         "target_score": "innovation",
         "conditions": [
-            {"variable": "sector", "operator": "in", "value": ["Tech / Digital", "tech"]},
+            {"variable": "sector", "operator": "in", "value": ["Tech / Digital", "Tech"]},
             {"variable": "IN2", "operator": ">=", "value": 80},
             {"variable": "has_tech_stack", "operator": "==", "value": False}
         ],
@@ -704,7 +708,7 @@ ANOMALY_RULES = [
         "penalty_points": 5,
         "target_score": "green",
         "conditions": [
-            {"variable": "sector", "operator": "in", "value": ["Tech / Digital", "tech"]},
+            {"variable": "sector", "operator": "in", "value": ["Tech / Digital", "Tech"]},
             {"variable": "GS1", "operator": ">=", "value": 70},
             {"variable": "green_hosting_policy", "operator": "==", "value": False}
         ],
@@ -799,7 +803,7 @@ ANOMALY_RULES = [
         "penalty_points": 12,
         "target_score": "global",
         "conditions": [
-            {"variable": "sector", "operator": "in", "value": ["Industrie", "industrie"]},
+            {"variable": "sector", "operator": "in", "value": ["Industrie", "Industrie"]},
             {"variable": "scalability_score", "operator": ">=", "value": 70},
             {"variable": "innovation_score", "operator": ">=", "value": 65},
             {"variable": "green_score", "operator": "<=", "value": 30}
@@ -818,7 +822,7 @@ ANOMALY_RULES = [
         "penalty_points": 10,
         "target_score": "global",
         "conditions": [
-            {"variable": "sector", "operator": "in", "value": ["Agroalimentaire", "agroalimentaire"]},
+            {"variable": "sector", "operator": "in", "value": ["Agriculture", "agriculture"]},
             {"variable": "market_score", "operator": ">=", "value": 70},
             {"variable": "GS2", "operator": "<=", "value": 25}
         ],

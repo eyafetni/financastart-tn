@@ -1,13 +1,18 @@
 {
-    "entrepreneur_id": "ENT-F9FD5C-MODIFIED",
+    "entrepreneur_id": "ENT-DBD323",
+    "timestamp": "2026-06-18T10:10:30.933553",
     "stade_reel": "Structuration",
-    "stade_percu": "Structuration",
-    "score_diagnostic": 38,
-    "gap_detecte": false,
-    "gap_explication": null,
+    "stade_percu": "Growth",
+    "score_diagnostic": 32,
+    "gap_detecte": true,
+    "gap_explication": "L'entrepreneur a surestimé son stade de 3 niveau(x). Il se perçoit en 'Growth' mais le diagnostic objectif indique 'Structuration'. Causes principales : Fondateur seul — équipe à constituer, Certifications sanitaires/phytosanitaires manquantes, Chaîne de froid / logistique non sécurisée.",
     "gaps": [
         "Fondateur seul — équipe à constituer",
-        "Pas de RNE enregistré"
+        "Certifications sanitaires/phytosanitaires manquantes",
+        "Chaîne de froid / logistique non sécurisée",
+        "Pas de RNE enregistré",
+        "Pas de business plan documenté",
+        "Produit / service existant sur le marché tunisien depuis plus de 2 ans"
     ],
     "blockers": [
         {
@@ -16,35 +21,54 @@
             "priorite": 2
         },
         {
+            "domaine": "réglementaire",
+            "description": "Absence de certification sanitaire ou phytosanitaire",
+            "priorite": 2
+        },
+        {
             "domaine": "légal",
             "description": "Entreprise non enregistrée",
             "priorite": 1
+        },
+        {
+            "domaine": "financier",
+            "description": "Absence de business plan",
+            "priorite": 2
         }
     ],
-    "secteur": "agritech",
-    "localisation": "Sfax",
-    "financement_recommande": "APII / ANPE",
-    "signaux_divergence": [],
+    "secteur": "agriculture_sylviculture_peche",
+    "secteur_label": "Agriculture / Sylviculture / Pêche",
+    "localisation": "Siliana",
     "profil_complet": {
-        "entrepreneur_id": "ENT-F9FD5C-MODIFIED",
-        "prenom": "ste charika",
-        "stade_percu": "Structuration",
-        "secteur": "agritech",
-        "localisation": "Sfax",
+        "description_libre": "agro siliana growth",
+        "entrepreneur_id": "ENT-DBD323",
+        "nom_entreprise": "fle7a",
+        "secteur": "agriculture_sylviculture_peche",
+        "secteur_label": "Agriculture / Sylviculture / Pêche",
+        "localisation": "Siliana",
+        "stade_percu": "Growth",
         "equipe": "solo",
+        "certifications_sanitaires": false,
+        "chaine_froid": false,
+        "saisonnalite": "Partiellement",
+        "acces_foncier": "Oui, location court terme",
         "rne": false,
         "forme_juridique": null,
-        "chiffre_affaires": 55500000.0,
+        "chiffre_affaires": 58852266.0,
         "anciennete_revenus": "Plus de 3 ans",
-        "business_plan": "en_cours",
-        "innovation_niveau": "moyenne",
+        "business_plan": "absent",
+        "innovation_niveau": "tres_faible",
         "accompagnement": "jamais",
         "financement": "aucun"
     },
-    "reponses_questionnaire": {
+    "signaux_divergence": [
+        "Vous vous croyez en 'Growth' mais n'avez pas de RNE — impossible de constituer un dossier bancable sans entité juridique.",
+        "Votre solution existe déjà sur le marché tunisien depuis plusieurs années. L'innovation perçue ne se traduit pas en différenciation réelle."
+    ],
+    "reponses": {
         "type_cible": {
-            "index": 2,
-            "valeur": "B2B_Enterprise"
+            "index": 4,
+            "valeur": "B2G"
         },
         "potentiel_financier_marche": {
             "index": 2,
@@ -59,10 +83,10 @@
             "valeur": "traction_initiale"
         },
         "modele_revenu": {
-            "index": 3,
-            "valeur": "abonnement_saas"
+            "index": 2,
+            "valeur": "commission_marketplace"
         },
-        "business_plan_maturite": {
+        "business_plan_f2": {
             "index": 2,
             "valeur": "en_cours_de_validation"
         },
@@ -71,20 +95,20 @@
             "valeur": "mvp_valide"
         },
         "strategie_prix": {
-            "index": 3,
-            "valeur": "valeur_percue"
+            "index": 2,
+            "valeur": "alignement_concurrence"
         },
         "alignement_besoins": {
-            "index": 3,
-            "valeur": "must_have_urgent"
+            "index": 2,
+            "valeur": "important_non_urgent"
         },
         "nouveaute_locale": {
             "index": 2,
             "valeur": "adaptation_locale"
         },
         "intensite_tech": {
-            "index": 3,
-            "valeur": "ia_proprietaire"
+            "index": 2,
+            "valeur": "integration_avancee"
         },
         "barrieres_entree": {
             "index": 2,
@@ -95,36 +119,36 @@
             "valeur": "transformation_process"
         },
         "replicabilite": {
-            "index": 3,
-            "valeur": "facilement_replicable"
+            "index": 2,
+            "valeur": "deploiement_operationnel_modere"
         },
         "independance_manuelle": {
-            "index": 3,
-            "valeur": "haute_automatisation"
+            "index": 2,
+            "valeur": "paliers_de_croissance"
         },
         "couts_deploiement": {
             "index": 2,
             "valeur": "besoin_modere"
         },
         "potentiel_geo": {
-            "index": 3,
-            "valeur": "continental_mena"
+            "index": 2,
+            "valeur": "national"
         },
         "climat_air": {
-            "index": 3,
-            "valeur": "impact_positif_mesurable"
+            "index": 2,
+            "valeur": "neutralite_passive"
         },
         "donnees_eau_fournies": {
-            "index": 3,
-            "valeur": "suivi_digital_temps_reel"
+            "index": 2,
+            "valeur": "suivi_manuel_partiel"
         },
         "sols_biodiversite": {
             "index": 2,
             "valeur": "preservation_passive"
         },
         "ressources_dechets": {
-            "index": 3,
-            "valeur": "revalorisation_upcycling"
+            "index": 2,
+            "valeur": "reduction_a_la_source"
         }
     }
 }

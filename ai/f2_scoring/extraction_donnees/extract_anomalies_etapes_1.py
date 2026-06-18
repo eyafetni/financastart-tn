@@ -84,19 +84,6 @@ RULES_DATABASE = [
         "kb_link": "KB-ECO-GREEN-005"
     },
     {
-        "id": "ANOM_REGIONAL_ISOLATION",
-        "dimension": "ecosystem_integration",
-        "penalty_points": 10,
-        "target_score": "global",
-        "conditions": [
-            {"variable": "localisation", "operator": "not_in", "value": ["Tunis", "Ariana", "Ben Arous", "Manouba", "Autre région"]},
-            {"variable": "accompagnement", "operator": "==", "value": "jamais"}
-        ],
-        "justification_template": "Isolement entrepreneurial : Opérer à {localisation} sans accompagnement réduit vos chances de validation. Des pépinières APII et centres d'affaires existent pourtant dans votre gouvernorat.",
-        "action_template": "Rapprochez-vous de la pépinière d'entreprises locale de l'APII à {localisation}.",
-        "kb_link": "KB-ECO-REGIONS-011"
-    },
-    {
         "id": "ANOM_TECH_GHOST_INNOVATION",
         "dimension": "product_tech_score",
         "penalty_points": 15,

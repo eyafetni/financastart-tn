@@ -257,19 +257,43 @@ def _build_resume_executif(
     scores_dict: dict[str, float],
     nb_anomalies: int,
     nb_blockers: int,
+    global_penalty: int = 0,  # Nouvelle variable passée au build
 ) -> str:
     dim_faible = min(scores_dict, key=scores_dict.get)
     dim_forte  = max(scores_dict, key=scores_dict.get)
-    status     = "est bancable" if is_fin else "n'est PAS encore bancable"
+    
+    status = "est bancable" if is_fin else "n'est PAS encore bancable"
+    
+    # 1. Introduction globale
+    debut = f"Analyse pour le secteur '{secteur}' : le projet {status} avec un Financing Readiness Index de {fri}/100. "
+    
+    # 2. Analyse des forces
+    forces = f"Le point fort intrinsèque du profil est le {DIMENSION_LABELS[dim_forte]} ({scores_dict[dim_forte]:.1f}/100). "
+    
+    # 3. Détermination dynamique de la cause principale de l'échec / frein
+    if global_penalty >= 40:
+        freins = (
+            f"Cependant, la viabilité financière est lourdement compromise par une alerte de conformité réglementaire majeure "
+            f"(-{global_penalty} points appliqués au score global). "
+        )
+    elif nb_blockers > 0 and fri <= 40:
+        freins = (
+            f"Le profil est actuellement bloqué par {nb_blockers} critère(s) éliminatoire(s) actif(s) "
+            f"(notamment sur le plan organisationnel ou légal), ce qui active automatiquement un plafond critique de vigilance. "
+        )
+    else:
+        freins = f"Le principal levier d'amélioration est le {DIMENSION_LABELS[dim_faible]} ({scores_dict[dim_faible]:.1f}/100). "
+        
+    # 4. Conclusion / Appel à l'action
+    if nb_anomalies > 0 or nb_blockers > 0:
+        conclusion = (
+            f"Au total, {nb_anomalies} anomalie(s) et {nb_blockers} bloqueur(s) requièrent une résolution immédiate. "
+            f"Les actions correctives prioritaires sont détaillées dans les sections dédiées."
+        )
+    else:
+        conclusion = "Le projet présente un profil régulier, les optimisations mineures sont disponibles dans la section 'scores'."
 
-    return (
-        f"Analyse pour le secteur '{secteur}' : le projet {status} avec un Financing Readiness Index de {fri}/100. "
-        f"Le point fort du profil est le {DIMENSION_LABELS[dim_forte]} ({scores_dict[dim_forte]:.1f}/100). "
-        f"Le principal frein est le {DIMENSION_LABELS[dim_faible]} ({scores_dict[dim_faible]:.1f}/100), "
-        f"qui doit etre traite en priorite. "
-        f"{nb_anomalies} anomalie(s) detectee(s) et {nb_blockers} blocker(s) identifie(s). "
-        f"Les actions prioritaires sont detaillees par dimension dans la section 'scores'."
-    )
+    return debut + forces + freins + conclusion
 
 def _evaluer_condition(condition: dict, contexte: dict) -> bool:
     var = condition.get("variable")
@@ -430,7 +454,16 @@ def calculer_scores(
     global_penalty = sum(a.get("penalty_points", 0) for a in formatted_anomalies if a.get("target_score") == "global")
     fri, fri_interp, is_fin = _compute_fri(scores_valeurs, global_penalty)
 
-    resume = _build_resume_executif(secteur_full, fri, is_fin, scores_valeurs, len(formatted_anomalies), len(blockers))
+    # --- MODIFICATION COMPATIBILITÉ : Ajout de global_penalty pour un résumé intelligent ---
+    resume = _build_resume_executif(
+        secteur_full, 
+        fri, 
+        is_fin, 
+        scores_valeurs, 
+        len(formatted_anomalies), 
+        len(blockers), 
+        global_penalty
+    )
 
     # --- Construction du contrat F2 ---
     contrat_f2 = {
@@ -456,7 +489,6 @@ def calculer_scores(
     }
 
     return contrat_f2
-
 
 # =========================================================================
 # DÉMO AUTONOME (exécutable directement)

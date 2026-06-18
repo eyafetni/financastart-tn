@@ -1209,8 +1209,6 @@ def run_diagnostic():
         "profil_complet": profil,
         "signaux_divergence": engine.signaux_divergence,
         "financement_recommande": stade_info["financement"],
-        "dimensions": DIMENSIONS_F2,
-        "questions": QUESTIONS_F2,
         "reponses": reponses_f2,
     }
 

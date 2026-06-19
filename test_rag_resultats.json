@@ -1,0 +1,777 @@
+[
+  {
+    "profil": "Cas A — Jeune diplômé sans apport (pense être en Fundraising)",
+    "output": {
+      "stade_diagnostique": "Structuration",
+      "gaps_detectes": [
+        "manque_apport_personnel",
+        "jeune_diplome",
+        "business_model_flou",
+        "structuration_incomplete"
+      ],
+      "scores_faibles": [
+        "market",
+        "commercial_offer",
+        "scalability"
+      ],
+      "requete_rag": "Entrepreneur stade Structuration. Gaps identifiés: manque_apport_personnel, jeune_diplome, business_model_flou, structuration_incomplete. Scores faibles: market, commercial_offer, scalability. Besoin financement Tunisie PME startup",
+      "ressources_recommandees": [
+        {
+          "id": "BERD-001",
+          "nom": "BERD _ Small Business Support (Assistance Technique & Conseil)",
+          "organisme": "Banque Europeenne pour la Reconstruction et le Developpement",
+          "type": "accompagnement_conseil",
+          "categorie": "",
+          "stades_eligibles": [
+            "Market Validation",
+            "Growth"
+          ],
+          "montant_min": 0,
+          "montant_max": 0,
+          "taux": "Prise en charge du cout du consultant jusqu'a 75%",
+          "devise": "TND",
+          "url_source": "https://www.ebrd.com/tunisia.html",
+          "score_pertinence": 66.4,
+          "gaps_adresses_matches": [],
+          "justification": "Cette ressource est recommandée car elle correspond au stade Structuration et adresse les gaps: . Pertinence RAG: 66.4%."
+        },
+        {
+          "id": "HACKATHON-AINS",
+          "nom": "AINS Hackathon – Concours et financement projets IA entrepreneurship",
+          "organisme": "AINS 4.0 / PNUD / GEWEET / ODC / IEEE / APII",
+          "type": "concours_financement",
+          "categorie": "programme_startup",
+          "stades_eligibles": [
+            "Ideation",
+            "Market Validation",
+            "Structuration"
+          ],
+          "montant_min": 0,
+          "montant_max": 0,
+          "taux": "N/A (prix + visibilité + réseau)",
+          "devise": "TND",
+          "url_source": "https://www.apii.nat.tn/",
+          "score_pertinence": 65.6,
+          "gaps_adresses_matches": [],
+          "justification": "Cette ressource est recommandée car elle correspond au stade Structuration et adresse les gaps: . Pertinence RAG: 65.6%."
+        },
+        {
+          "id": "FLAT6-001",
+          "nom": "Flat6Labs Tunisia _ Programme d'Acceleration et d'Investissement",
+          "organisme": "Flat6Labs Tunisia",
+          "type": "acceleration_investissement",
+          "categorie": "",
+          "stades_eligibles": [
+            "Ideation",
+            "Market Validation",
+            "Structuration",
+            "Launch Planning"
+          ],
+          "montant_min": 50000,
+          "montant_max": 250000,
+          "taux": "Participation au capital (generalement 6% a 10% d'equity)",
+          "devise": "TND",
+          "url_source": "https://flat6labs.com/programs-type/programs-for-entrepreneurs/",
+          "score_pertinence": 59.8,
+          "gaps_adresses_matches": [],
+          "justification": "Cette ressource est recommandée car elle correspond au stade Structuration et adresse les gaps: . Pertinence RAG: 59.8%."
+        },
+        {
+          "id": "STARTUP-ACT-003",
+          "nom": "Startup Act Tunisie _ Cadre Avantages & Labellisation",
+          "organisme": "Smart Capital / Ministere des Technologies de la Communication",
+          "type": "cadre_legal_avantages",
+          "categorie": "",
+          "stades_eligibles": [
+            "Ideation",
+            "Market Validation",
+            "Structuration",
+            "Launch Planning"
+          ],
+          "montant_min": 0,
+          "montant_max": 0,
+          "taux": "Exonerations fiscales et bourses d'incubation",
+          "devise": "TND",
+          "url_source": "https://support.startup.gov.tn/support/solutions",
+          "score_pertinence": 59.5,
+          "gaps_adresses_matches": [],
+          "justification": "Cette ressource est recommandée car elle correspond au stade Structuration et adresse les gaps: . Pertinence RAG: 59.5%."
+        },
+        {
+          "id": "FIN-001",
+          "nom": "Financini _ Boussole Digitale d'Orientation Financement PME",
+          "organisme": "Financini (Ecosystème Smart Capital / CDC)",
+          "type": "accompagnement_conseil",
+          "categorie": "",
+          "stades_eligibles": [
+            "Ideation",
+            "Market Validation",
+            "Growth"
+          ],
+          "montant_min": 0,
+          "montant_max": 0,
+          "taux": "Acces gratuit a l'information et a la cartographie d'orientation",
+          "devise": "TND",
+          "url_source": "https://www.financini.org.tn/",
+          "score_pertinence": 59.3,
+          "gaps_adresses_matches": [],
+          "justification": "Cette ressource est recommandée car elle correspond au stade Structuration et adresse les gaps: . Pertinence RAG: 59.3%."
+        }
+      ],
+      "roadmap_actions": {
+        "stade_actuel": "Structuration",
+        "immediat_0_30_jours": [
+          "Créer la société (RNE) si pas encore fait",
+          "Constituer dossier BFPME (business plan modèle GIZ)",
+          "Évaluer apport personnel disponible",
+          "Action prioritaire: Contacter Banque Europeenne pour la Reconstruction et le Developpement → BERD _ Small Business Support (Assistance Technique & Conseil) (https://www.ebrd.com/tunisia.html)"
+        ],
+        "court_terme_1_3_mois": [
+          "Déposer dossier FOPRODI APII pour prime investissement",
+          "Vérifier éligibilité SOTUGAR (garantie)",
+          "Finaliser plan de financement avec banque cofinancière"
+        ],
+        "moyen_terme_3_12_mois": [
+          "Obtenir accord BFPME",
+          "Lancer recrutement équipe clé",
+          "Mettre en place comptabilité formelle"
+        ],
+        "ordre_logique": "Les actions immédiates débloquent les suivantes. Ne pas sauter d'étape."
+      },
+      "sources_tracees": [
+        "https://www.ebrd.com/tunisia.html",
+        "https://www.apii.nat.tn/",
+        "https://flat6labs.com/programs-type/programs-for-entrepreneurs/",
+        "https://support.startup.gov.tn/support/solutions",
+        "https://www.financini.org.tn/"
+      ],
+      "note_tracabilite": "Chaque recommandation est tracée à une source officielle vérifiée. Aucune information inventée. Toutes les URLs sont des sites officiels tunisiens.",
+      "profil_entrepreneur": {
+        "nom_test": "Cas A — Jeune diplômé sans apport (pense être en Fundraising)",
+        "stade_declare": "Fundraising",
+        "stade_diagnostique": "Structuration",
+        "gaps_detectes": [
+          "manque_apport_personnel",
+          "jeune_diplome",
+          "business_model_flou",
+          "structuration_incomplete"
+        ],
+        "scores": {
+          "market": 40,
+          "commercial_offer": 35,
+          "innovation": 60,
+          "scalability": 45,
+          "green": 50
+        },
+        "montant_besoin": 200000,
+        "secteur": "Technologie"
+      },
+      "perception_gap": {
+        "stade_declare": "Fundraising",
+        "stade_reel": "Structuration",
+        "divergence_detectee": true,
+        "message": "⚠️ Vous pensez être en phase 'Fundraising' mais notre diagnostic situe votre projet en phase 'Structuration'. Voici les ressources adaptées à votre stade RÉEL."
+      }
+    }
+  },
+  {
+    "profil": "Cas B — Micro-projet artisanat zone rurale",
+    "output": {
+      "stade_diagnostique": "Ideation",
+      "gaps_detectes": [
+        "faible_revenu",
+        "exclusion_bancaire",
+        "micro_projet",
+        "absence_business_plan"
+      ],
+      "scores_faibles": [
+        "market",
+        "commercial_offer",
+        "innovation",
+        "scalability",
+        "green"
+      ],
+      "requete_rag": "Entrepreneur stade Ideation. Gaps identifiés: faible_revenu, exclusion_bancaire, micro_projet, absence_business_plan. Scores faibles: market, commercial_offer, innovation, scalability, green. Besoin financement Tunisie PME startup",
+      "ressources_recommandees": [
+        {
+          "id": "HACKATHON-AINS",
+          "nom": "AINS Hackathon – Concours et financement projets IA entrepreneurship",
+          "organisme": "AINS 4.0 / PNUD / GEWEET / ODC / IEEE / APII",
+          "type": "concours_financement",
+          "categorie": "programme_startup",
+          "stades_eligibles": [
+            "Ideation",
+            "Market Validation",
+            "Structuration"
+          ],
+          "montant_min": 0,
+          "montant_max": 0,
+          "taux": "N/A (prix + visibilité + réseau)",
+          "devise": "TND",
+          "url_source": "https://www.apii.nat.tn/",
+          "score_pertinence": 69.8,
+          "gaps_adresses_matches": [],
+          "justification": "Cette ressource est recommandée car elle correspond au stade Ideation et adresse les gaps: . Pertinence RAG: 69.8%."
+        },
+        {
+          "id": "BERD-001",
+          "nom": "BERD _ Small Business Support (Assistance Technique & Conseil)",
+          "organisme": "Banque Europeenne pour la Reconstruction et le Developpement",
+          "type": "accompagnement_conseil",
+          "categorie": "",
+          "stades_eligibles": [
+            "Market Validation",
+            "Growth"
+          ],
+          "montant_min": 0,
+          "montant_max": 0,
+          "taux": "Prise en charge du cout du consultant jusqu'a 75%",
+          "devise": "TND",
+          "url_source": "https://www.ebrd.com/tunisia.html",
+          "score_pertinence": 68.3,
+          "gaps_adresses_matches": [],
+          "justification": "Cette ressource est recommandée car elle correspond au stade Ideation et adresse les gaps: . Pertinence RAG: 68.3%."
+        },
+        {
+          "id": "FIN-001",
+          "nom": "Financini _ Boussole Digitale d'Orientation Financement PME",
+          "organisme": "Financini (Ecosystème Smart Capital / CDC)",
+          "type": "accompagnement_conseil",
+          "categorie": "",
+          "stades_eligibles": [
+            "Ideation",
+            "Market Validation",
+            "Growth"
+          ],
+          "montant_min": 0,
+          "montant_max": 0,
+          "taux": "Acces gratuit a l'information et a la cartographie d'orientation",
+          "devise": "TND",
+          "url_source": "https://www.financini.org.tn/",
+          "score_pertinence": 63.8,
+          "gaps_adresses_matches": [],
+          "justification": "Cette ressource est recommandée car elle correspond au stade Ideation et adresse les gaps: . Pertinence RAG: 63.8%."
+        },
+        {
+          "id": "STARTUP-ACT-003",
+          "nom": "Startup Act Tunisie _ Cadre Avantages & Labellisation",
+          "organisme": "Smart Capital / Ministere des Technologies de la Communication",
+          "type": "cadre_legal_avantages",
+          "categorie": "",
+          "stades_eligibles": [
+            "Ideation",
+            "Market Validation",
+            "Structuration",
+            "Launch Planning"
+          ],
+          "montant_min": 0,
+          "montant_max": 0,
+          "taux": "Exonerations fiscales et bourses d'incubation",
+          "devise": "TND",
+          "url_source": "https://support.startup.gov.tn/support/solutions",
+          "score_pertinence": 59.9,
+          "gaps_adresses_matches": [],
+          "justification": "Cette ressource est recommandée car elle correspond au stade Ideation et adresse les gaps: . Pertinence RAG: 59.9%."
+        }
+      ],
+      "roadmap_actions": {
+        "stade_actuel": "Ideation",
+        "immediat_0_30_jours": [
+          "Formaliser l'idée projet sur papier (1-2 pages)",
+          "Contacter Espaces Entreprendre APII (gratuit)",
+          "Vérifier éligibilité programme ANETI/PAPPE",
+          "Action prioritaire: Contacter AINS 4.0 / PNUD / GEWEET / ODC / IEEE / APII → AINS Hackathon – Concours et financement projets IA entrepreneurship (https://www.apii.nat.tn/)"
+        ],
+        "court_terme_1_3_mois": [
+          "Réaliser étude de marché préliminaire",
+          "Constituer équipe fondatrice",
+          "Déposer dossier BTS micro-crédit si besoin financement immédiat"
+        ],
+        "moyen_terme_3_12_mois": [
+          "Structurer le business plan complet",
+          "Décider forme juridique (SUARL conseillée pour 1er projet)",
+          "Envisager label Startup Act si projet innovant"
+        ],
+        "ordre_logique": "Les actions immédiates débloquent les suivantes. Ne pas sauter d'étape."
+      },
+      "sources_tracees": [
+        "https://www.apii.nat.tn/",
+        "https://www.ebrd.com/tunisia.html",
+        "https://www.financini.org.tn/",
+        "https://support.startup.gov.tn/support/solutions"
+      ],
+      "note_tracabilite": "Chaque recommandation est tracée à une source officielle vérifiée. Aucune information inventée. Toutes les URLs sont des sites officiels tunisiens.",
+      "profil_entrepreneur": {
+        "nom_test": "Cas B — Micro-projet artisanat zone rurale",
+        "stade_declare": "Ideation",
+        "stade_diagnostique": "Ideation",
+        "gaps_detectes": [
+          "faible_revenu",
+          "exclusion_bancaire",
+          "micro_projet",
+          "absence_business_plan"
+        ],
+        "scores": {
+          "market": 30,
+          "commercial_offer": 25,
+          "innovation": 20,
+          "scalability": 15,
+          "green": 45
+        },
+        "montant_besoin": 3000,
+        "secteur": "Artisanat"
+      },
+      "perception_gap": {
+        "stade_declare": "Ideation",
+        "stade_reel": "Ideation",
+        "divergence_detectee": false,
+        "message": "✅ Votre auto-évaluation correspond à notre diagnostic."
+      }
+    }
+  },
+  {
+    "profil": "Cas C — Startup tech MVP prête pour levée de fonds",
+    "output": {
+      "stade_diagnostique": "Fundraising",
+      "gaps_detectes": [
+        "besoin_levee_fonds_prive",
+        "equity_gap",
+        "manque_reseau_investisseurs"
+      ],
+      "scores_faibles": [],
+      "requete_rag": "Entrepreneur stade Fundraising. Gaps identifiés: besoin_levee_fonds_prive, equity_gap, manque_reseau_investisseurs. Scores faibles: . Besoin financement Tunisie PME startup",
+      "ressources_recommandees": [
+        {
+          "id": "SMART-CAPITAL-002",
+          "nom": "Smart Capital – Fonds direct PME innovantes (hors ANAVA)",
+          "organisme": "Smart Capital Tunisie",
+          "type": "capital_investissement",
+          "categorie": "fonds_pme_innovantes",
+          "stades_eligibles": [
+            "Market Validation",
+            "Structuration",
+            "Fundraising"
+          ],
+          "montant_min": 200000,
+          "montant_max": 3000000,
+          "taux": "N/A (prise de participation minoritaire)",
+          "devise": "TND",
+          "url_source": "https://smartcapital.tn/",
+          "score_pertinence": 65.9,
+          "gaps_adresses_matches": [],
+          "justification": "Cette ressource est recommandée car elle correspond au stade Fundraising et adresse les gaps: . Pertinence RAG: 65.9%."
+        },
+        {
+          "id": "HACKATHON-AINS",
+          "nom": "AINS Hackathon – Concours et financement projets IA entrepreneurship",
+          "organisme": "AINS 4.0 / PNUD / GEWEET / ODC / IEEE / APII",
+          "type": "concours_financement",
+          "categorie": "programme_startup",
+          "stades_eligibles": [
+            "Ideation",
+            "Market Validation",
+            "Structuration"
+          ],
+          "montant_min": 0,
+          "montant_max": 0,
+          "taux": "N/A (prix + visibilité + réseau)",
+          "devise": "TND",
+          "url_source": "https://www.apii.nat.tn/",
+          "score_pertinence": 65.1,
+          "gaps_adresses_matches": [],
+          "justification": "Cette ressource est recommandée car elle correspond au stade Fundraising et adresse les gaps: . Pertinence RAG: 65.1%."
+        },
+        {
+          "id": "BFPME-003",
+          "nom": "BFPME _ Financement du Besoin en Fonds de Roulement (BFR)",
+          "organisme": "BFPME",
+          "type": "tresorerie",
+          "categorie": "",
+          "stades_eligibles": [
+            "Launch Planning",
+            "Growth"
+          ],
+          "montant_min": 50000,
+          "montant_max": 500000,
+          "taux": "TMM + 2 a 4 points",
+          "devise": "TND",
+          "url_source": "https://www.bfpme.com.tn/fr/produits",
+          "score_pertinence": 64.2,
+          "gaps_adresses_matches": [],
+          "justification": "Cette ressource est recommandée car elle correspond au stade Fundraising et adresse les gaps: . Pertinence RAG: 64.2%."
+        }
+      ],
+      "roadmap_actions": {
+        "stade_actuel": "Fundraising",
+        "immediat_0_30_jours": [
+          "Préparer data room complète (états financiers, KPIs)",
+          "Contacter réseau business angels (CBA)",
+          "Vérifier éligibilité label Startup Act",
+          "Action prioritaire: Contacter Smart Capital Tunisie → Smart Capital – Fonds direct PME innovantes (hors ANAVA) (https://smartcapital.tn/)"
+        ],
+        "court_terme_1_3_mois": [
+          "Pitcher 3+ investisseurs minimum",
+          "Déposer dossier Smart Capital / ANAVA",
+          "Négocier term sheet avec conseiller juridique"
+        ],
+        "moyen_terme_3_12_mois": [
+          "Clôturer tour de table",
+          "Utiliser fonds levés selon plan",
+          "Préparer reporting investisseurs"
+        ],
+        "ordre_logique": "Les actions immédiates débloquent les suivantes. Ne pas sauter d'étape."
+      },
+      "sources_tracees": [
+        "https://smartcapital.tn/",
+        "https://www.apii.nat.tn/",
+        "https://www.bfpme.com.tn/fr/produits"
+      ],
+      "note_tracabilite": "Chaque recommandation est tracée à une source officielle vérifiée. Aucune information inventée. Toutes les URLs sont des sites officiels tunisiens.",
+      "profil_entrepreneur": {
+        "nom_test": "Cas C — Startup tech MVP prête pour levée de fonds",
+        "stade_declare": "Fundraising",
+        "stade_diagnostique": "Fundraising",
+        "gaps_detectes": [
+          "besoin_levee_fonds_prive",
+          "equity_gap",
+          "manque_reseau_investisseurs"
+        ],
+        "scores": {
+          "market": 70,
+          "commercial_offer": 65,
+          "innovation": 80,
+          "scalability": 75,
+          "green": 55
+        },
+        "montant_besoin": 500000,
+        "secteur": "FinTech"
+      },
+      "perception_gap": {
+        "stade_declare": "Fundraising",
+        "stade_reel": "Fundraising",
+        "divergence_detectee": false,
+        "message": "✅ Votre auto-évaluation correspond à notre diagnostic."
+      }
+    }
+  },
+  {
+    "profil": "Cas D — PME industrielle cherche extension",
+    "output": {
+      "stade_diagnostique": "Growth",
+      "gaps_detectes": [
+        "besoin_capital_croissance",
+        "extension_activite",
+        "competitivite_faible"
+      ],
+      "scores_faibles": [
+        "innovation",
+        "green"
+      ],
+      "requete_rag": "Entrepreneur stade Growth. Gaps identifiés: besoin_capital_croissance, extension_activite, competitivite_faible. Scores faibles: innovation, green. Besoin financement Tunisie PME startup",
+      "ressources_recommandees": [
+        {
+          "id": "BERD-001",
+          "nom": "BERD _ Small Business Support (Assistance Technique & Conseil)",
+          "organisme": "Banque Europeenne pour la Reconstruction et le Developpement",
+          "type": "accompagnement_conseil",
+          "categorie": "",
+          "stades_eligibles": [
+            "Market Validation",
+            "Growth"
+          ],
+          "montant_min": 0,
+          "montant_max": 0,
+          "taux": "Prise en charge du cout du consultant jusqu'a 75%",
+          "devise": "TND",
+          "url_source": "https://www.ebrd.com/tunisia.html",
+          "score_pertinence": 66.5,
+          "gaps_adresses_matches": [],
+          "justification": "Cette ressource est recommandée car elle correspond au stade Growth et adresse les gaps: . Pertinence RAG: 66.5%."
+        },
+        {
+          "id": "CDC-001",
+          "nom": "CDC Tunisie _ Co-investissement et Haut de Bilan",
+          "organisme": "Caisse des Depots et Consignations Tunisie",
+          "type": "financement_croissance",
+          "categorie": "",
+          "stades_eligibles": [
+            "Growth"
+          ],
+          "montant_min": 500000,
+          "montant_max": 5000000,
+          "taux": "Prise de participation minoritaire / Quasi-equity",
+          "devise": "TND",
+          "url_source": "https://www.cdc.tn/",
+          "score_pertinence": 59.8,
+          "gaps_adresses_matches": [],
+          "justification": "Cette ressource est recommandée car elle correspond au stade Growth et adresse les gaps: . Pertinence RAG: 59.8%."
+        },
+        {
+          "id": "STARTUP-ACT-003",
+          "nom": "Startup Act Tunisie _ Cadre Avantages & Labellisation",
+          "organisme": "Smart Capital / Ministere des Technologies de la Communication",
+          "type": "cadre_legal_avantages",
+          "categorie": "",
+          "stades_eligibles": [
+            "Ideation",
+            "Market Validation",
+            "Structuration",
+            "Launch Planning"
+          ],
+          "montant_min": 0,
+          "montant_max": 0,
+          "taux": "Exonerations fiscales et bourses d'incubation",
+          "devise": "TND",
+          "url_source": "https://support.startup.gov.tn/support/solutions",
+          "score_pertinence": 59.1,
+          "gaps_adresses_matches": [],
+          "justification": "Cette ressource est recommandée car elle correspond au stade Growth et adresse les gaps: . Pertinence RAG: 59.1%."
+        },
+        {
+          "id": "FIN-001",
+          "nom": "Financini _ Boussole Digitale d'Orientation Financement PME",
+          "organisme": "Financini (Ecosystème Smart Capital / CDC)",
+          "type": "accompagnement_conseil",
+          "categorie": "",
+          "stades_eligibles": [
+            "Ideation",
+            "Market Validation",
+            "Growth"
+          ],
+          "montant_min": 0,
+          "montant_max": 0,
+          "taux": "Acces gratuit a l'information et a la cartographie d'orientation",
+          "devise": "TND",
+          "url_source": "https://www.financini.org.tn/",
+          "score_pertinence": 58.6,
+          "gaps_adresses_matches": [],
+          "justification": "Cette ressource est recommandée car elle correspond au stade Growth et adresse les gaps: . Pertinence RAG: 58.6%."
+        }
+      ],
+      "roadmap_actions": {
+        "stade_actuel": "Growth",
+        "immediat_0_30_jours": [
+          "Analyser goulots d'étranglement croissance",
+          "Évaluer besoins financement extension",
+          "Contacter APII programme mise à niveau (PMN)",
+          "Action prioritaire: Contacter Banque Europeenne pour la Reconstruction et le Developpement → BERD _ Small Business Support (Assistance Technique & Conseil) (https://www.ebrd.com/tunisia.html)"
+        ],
+        "court_terme_1_3_mois": [
+          "Dossier BFPME prêt extension ou BFR",
+          "Activer FOPRODEX si export",
+          "Étudier levée Series A (AfricInvest, ANAVA child funds)"
+        ],
+        "moyen_terme_3_12_mois": [
+          "Déployer nouveau marché géographique",
+          "Structurer management intermédiaire",
+          "Préparer exit ou nouveau tour"
+        ],
+        "ordre_logique": "Les actions immédiates débloquent les suivantes. Ne pas sauter d'étape."
+      },
+      "sources_tracees": [
+        "https://www.ebrd.com/tunisia.html",
+        "https://www.cdc.tn/",
+        "https://support.startup.gov.tn/support/solutions",
+        "https://www.financini.org.tn/"
+      ],
+      "note_tracabilite": "Chaque recommandation est tracée à une source officielle vérifiée. Aucune information inventée. Toutes les URLs sont des sites officiels tunisiens.",
+      "profil_entrepreneur": {
+        "nom_test": "Cas D — PME industrielle cherche extension",
+        "stade_declare": "Growth",
+        "stade_diagnostique": "Growth",
+        "gaps_detectes": [
+          "besoin_capital_croissance",
+          "extension_activite",
+          "competitivite_faible"
+        ],
+        "scores": {
+          "market": 60,
+          "commercial_offer": 70,
+          "innovation": 35,
+          "scalability": 55,
+          "green": 40
+        },
+        "montant_besoin": 1500000,
+        "secteur": "Industrie"
+      },
+      "perception_gap": {
+        "stade_declare": "Growth",
+        "stade_reel": "Growth",
+        "divergence_detectee": false,
+        "message": "✅ Votre auto-évaluation correspond à notre diagnostic."
+      }
+    }
+  },
+  {
+    "profil": "Cas E — Projet agri-tech à fort impact vert",
+    "output": {
+      "stade_diagnostique": "Market Validation",
+      "gaps_detectes": [
+        "absence_validation_marche",
+        "secteur_agricole",
+        "innovation_score_faible",
+        "besoin_prototype"
+      ],
+      "scores_faibles": [
+        "market",
+        "commercial_offer"
+      ],
+      "requete_rag": "Entrepreneur stade Market Validation. Gaps identifiés: absence_validation_marche, secteur_agricole, innovation_score_faible, besoin_prototype. Scores faibles: market, commercial_offer. Besoin financement Tunisie PME startup",
+      "ressources_recommandees": [
+        {
+          "id": "HACKATHON-AINS",
+          "nom": "AINS Hackathon – Concours et financement projets IA entrepreneurship",
+          "organisme": "AINS 4.0 / PNUD / GEWEET / ODC / IEEE / APII",
+          "type": "concours_financement",
+          "categorie": "programme_startup",
+          "stades_eligibles": [
+            "Ideation",
+            "Market Validation",
+            "Structuration"
+          ],
+          "montant_min": 0,
+          "montant_max": 0,
+          "taux": "N/A (prix + visibilité + réseau)",
+          "devise": "TND",
+          "url_source": "https://www.apii.nat.tn/",
+          "score_pertinence": 61.9,
+          "gaps_adresses_matches": [],
+          "justification": "Cette ressource est recommandée car elle correspond au stade Market Validation et adresse les gaps: . Pertinence RAG: 61.9%."
+        },
+        {
+          "id": "BERD-001",
+          "nom": "BERD _ Small Business Support (Assistance Technique & Conseil)",
+          "organisme": "Banque Europeenne pour la Reconstruction et le Developpement",
+          "type": "accompagnement_conseil",
+          "categorie": "",
+          "stades_eligibles": [
+            "Market Validation",
+            "Growth"
+          ],
+          "montant_min": 0,
+          "montant_max": 0,
+          "taux": "Prise en charge du cout du consultant jusqu'a 75%",
+          "devise": "TND",
+          "url_source": "https://www.ebrd.com/tunisia.html",
+          "score_pertinence": 60.5,
+          "gaps_adresses_matches": [],
+          "justification": "Cette ressource est recommandée car elle correspond au stade Market Validation et adresse les gaps: . Pertinence RAG: 60.5%."
+        },
+        {
+          "id": "FIN-001",
+          "nom": "Financini _ Boussole Digitale d'Orientation Financement PME",
+          "organisme": "Financini (Ecosystème Smart Capital / CDC)",
+          "type": "accompagnement_conseil",
+          "categorie": "",
+          "stades_eligibles": [
+            "Ideation",
+            "Market Validation",
+            "Growth"
+          ],
+          "montant_min": 0,
+          "montant_max": 0,
+          "taux": "Acces gratuit a l'information et a la cartographie d'orientation",
+          "devise": "TND",
+          "url_source": "https://www.financini.org.tn/",
+          "score_pertinence": 58.0,
+          "gaps_adresses_matches": [],
+          "justification": "Cette ressource est recommandée car elle correspond au stade Market Validation et adresse les gaps: . Pertinence RAG: 58.0%."
+        },
+        {
+          "id": "INNOVI-001",
+          "nom": "Innov'i _ Subventions Relance, Innovation et Appui Ecosysteme",
+          "organisme": "Expertise France / Union Europeenne",
+          "type": "accompagnement_conseil",
+          "categorie": "",
+          "stades_eligibles": [
+            "Ideation",
+            "Market Validation"
+          ],
+          "montant_min": 10000,
+          "montant_max": 80000,
+          "taux": "Subvention d'appui a l'innovation (Non remboursable)",
+          "devise": "TND",
+          "url_source": "https://www.facebook.com/innovi.tn/",
+          "score_pertinence": 57.5,
+          "gaps_adresses_matches": [
+            "innovation_score_faible"
+          ],
+          "justification": "Cette ressource est recommandée car elle correspond au stade Market Validation et adresse les gaps: innovation_score_faible. Pertinence RAG: 57.5%."
+        },
+        {
+          "id": "AFD-003",
+          "nom": "AFD _ Programme Intelak (Appui a la Creation Mutuelle d'Entreprises)",
+          "organisme": "Agence Francaise de Developpement (AFD)",
+          "type": "financement_initial",
+          "categorie": "",
+          "stades_eligibles": [
+            "Ideation",
+            "Market Validation"
+          ],
+          "montant_min": 5000,
+          "montant_max": 80000,
+          "taux": "Pret d'honneur sans interet ni garantie (0% interet)",
+          "devise": "TND",
+          "url_source": "https://www.afd.fr/fr/page-region-tunisie",
+          "score_pertinence": 56.8,
+          "gaps_adresses_matches": [],
+          "justification": "Cette ressource est recommandée car elle correspond au stade Market Validation et adresse les gaps: . Pertinence RAG: 56.8%."
+        }
+      ],
+      "roadmap_actions": {
+        "stade_actuel": "Market Validation",
+        "immediat_0_30_jours": [
+          "Tester hypothèses avec 10+ clients potentiels",
+          "Construire un MVP minimal",
+          "Documenter les preuves de traction",
+          "Action prioritaire: Contacter AINS 4.0 / PNUD / GEWEET / ODC / IEEE / APII → AINS Hackathon – Concours et financement projets IA entrepreneurship (https://www.apii.nat.tn/)"
+        ],
+        "court_terme_1_3_mois": [
+          "Postuler Flat6Labs Tunis (prochaine cohorte)",
+          "Déposer candidature Startup Act si innovant",
+          "Établir premier modèle économique validé"
+        ],
+        "moyen_terme_3_12_mois": [
+          "Préparer pitch deck pour investisseurs",
+          "Contacter Carthage Business Angels",
+          "Viser premier chiffre d'affaires"
+        ],
+        "ordre_logique": "Les actions immédiates débloquent les suivantes. Ne pas sauter d'étape."
+      },
+      "sources_tracees": [
+        "https://www.apii.nat.tn/",
+        "https://www.ebrd.com/tunisia.html",
+        "https://www.financini.org.tn/",
+        "https://www.facebook.com/innovi.tn/",
+        "https://www.afd.fr/fr/page-region-tunisie"
+      ],
+      "note_tracabilite": "Chaque recommandation est tracée à une source officielle vérifiée. Aucune information inventée. Toutes les URLs sont des sites officiels tunisiens.",
+      "profil_entrepreneur": {
+        "nom_test": "Cas E — Projet agri-tech à fort impact vert",
+        "stade_declare": "Structuration",
+        "stade_diagnostique": "Market Validation",
+        "gaps_detectes": [
+          "absence_validation_marche",
+          "secteur_agricole",
+          "innovation_score_faible",
+          "besoin_prototype"
+        ],
+        "scores": {
+          "market": 45,
+          "commercial_offer": 40,
+          "innovation": 55,
+          "scalability": 50,
+          "green": 85
+        },
+        "montant_besoin": 80000,
+        "secteur": "AgriTech"
+      },
+      "perception_gap": {
+        "stade_declare": "Structuration",
+        "stade_reel": "Market Validation",
+        "divergence_detectee": true,
+        "message": "⚠️ Vous pensez être en phase 'Structuration' mais notre diagnostic situe votre projet en phase 'Market Validation'. Voici les ressources adaptées à votre stade RÉEL."
+      }
+    }
+  }
+]

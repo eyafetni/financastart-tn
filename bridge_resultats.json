@@ -1,0 +1,438 @@
+[
+  {
+    "entrepreneur_id": "ENT-CAS01",
+    "localisation": "Sfax",
+    "stade_reel": "Structuration",
+    "stade_percu": "Fundraising",
+    "secteur": "Agriculture/Sylviculture/Peche",
+    "divergence_detectee": true,
+    "message_perception_gap": "⚠️  Vous pensez être en 'Fundraising' mais votre stade réel est 'Structuration'.",
+    "ressources_recommandees": [
+      {
+        "id": "STARTUP-ACT-003",
+        "nom": "Startup Act Tunisie _ Cadre Avantages & Labellisation",
+        "organisme": "Smart Capital / Ministere des Technologies de la Communication",
+        "taux": "Exonerations fiscales et bourses d'incubation",
+        "url_source": "https://support.startup.gov.tn/support/solutions",
+        "pertinence": 61.6,
+        "gaps_matches": [],
+        "justification": "Recommandé pour stade 'Structuration'. Adresse: profil général. Pertinence RAG: 61.6%."
+      },
+      {
+        "id": "FLAT6-001",
+        "nom": "Flat6Labs Tunisia _ Programme d'Acceleration et d'Investissement",
+        "organisme": "Flat6Labs Tunisia",
+        "taux": "Participation au capital (generalement 6% a 10% d'equity)",
+        "url_source": "https://flat6labs.com/programs-type/programs-for-entrepreneurs/",
+        "pertinence": 60.7,
+        "gaps_matches": [],
+        "justification": "Recommandé pour stade 'Structuration'. Adresse: profil général. Pertinence RAG: 60.7%."
+      },
+      {
+        "id": "CBA-001",
+        "nom": "Carthage Business Angels",
+        "organisme": "Reseau Carthage Business Angels",
+        "taux": "Prise de participation minoritaire en capital",
+        "url_source": "https://www.carthageangels.tn/",
+        "pertinence": 58.1,
+        "gaps_matches": [],
+        "justification": "Recommandé pour stade 'Structuration'. Adresse: profil général. Pertinence RAG: 58.1%."
+      },
+      {
+        "id": "STARTUP-ACT-004",
+        "nom": "Startup Label (Le Label de Startup)",
+        "organisme": "Smart Capital / College des Startups",
+        "taux": "Acces au compte special en devises, decharge douaniere",
+        "url_source": "https://support.startup.gov.tn/support/solutions",
+        "pertinence": 54.7,
+        "gaps_matches": [],
+        "justification": "Recommandé pour stade 'Structuration'. Adresse: profil général. Pertinence RAG: 54.7%."
+      },
+      {
+        "id": "FNG-001",
+        "nom": "Fonds National de Garantie (FNG)",
+        "organisme": "SOTUGAR / Ministere des Finances",
+        "taux": "Prelevement unique ou annuel minime",
+        "url_source": "http://www.finances.gov.tn/",
+        "pertinence": 52.2,
+        "gaps_matches": [
+          "manque_garanties"
+        ],
+        "justification": "Recommandé pour stade 'Structuration'. Adresse: manque_garanties. Pertinence RAG: 52.2%."
+      }
+    ],
+    "roadmap": {
+      "stade": "Structuration",
+      "immediat_0_30j": [
+        "Créer société au RNE si pas encore fait",
+        "Constituer dossier BFPME (business plan modèle GIZ)",
+        "Évaluer apport personnel disponible"
+      ],
+      "court_terme_1_3m": [
+        "Déposer dossier FOPRODI APII pour prime investissement",
+        "Vérifier éligibilité garantie SOTUGAR",
+        "Finaliser plan cofinancement avec banque partenaire"
+      ],
+      "moyen_terme_3_12m": [
+        "Obtenir accord BFPME",
+        "Recruter équipe clé",
+        "Mettre en place comptabilité formelle"
+      ]
+    },
+    "sources_tracees": [
+      "https://support.startup.gov.tn/support/solutions",
+      "https://flat6labs.com/programs-type/programs-for-entrepreneurs/",
+      "https://www.carthageangels.tn/",
+      "https://support.startup.gov.tn/support/solutions",
+      "http://www.finances.gov.tn/"
+    ],
+    "diagnostic_f1": {
+      "stade_reel": "Structuration",
+      "stade_percu": "Fundraising",
+      "score_diagnostic": 22,
+      "gap_detecte": true,
+      "gap_explication": "Pas de RNE et aucun business plan. BFPME impossible.",
+      "gaps_texte_libre": [
+        "Pas de RNE enregistré",
+        "Pas de business plan documenté",
+        "Zéro client payant"
+      ],
+      "blockers": [
+        {
+          "domaine": "légal",
+          "description": "Entreprise non enregistrée",
+          "priorite": 1
+        },
+        {
+          "domaine": "financier",
+          "description": "Absence de business plan",
+          "priorite": 2
+        },
+        {
+          "domaine": "marché",
+          "description": "Validation client insuffisante",
+          "priorite": 3
+        }
+      ],
+      "signaux_divergence": [
+        "Pas de RNE → impossible de constituer un dossier bancable."
+      ],
+      "financement_hint": "Microfinance / BTS"
+    },
+    "bridge": {
+      "secteur_m1_original": "agri-food",
+      "secteur_traduit": "Agriculture/Sylviculture/Peche",
+      "gaps_texte_libre": [
+        "Pas de RNE enregistré",
+        "Pas de business plan documenté",
+        "Zéro client payant"
+      ],
+      "gaps_codes_rag": [
+        "fonds_propres_insuffisants",
+        "manque_garanties",
+        "absence_structure_juridique",
+        "absence_validation_marche",
+        "faible_revenu",
+        "manque_etude_marche",
+        "absence_business_plan"
+      ],
+      "scores_utilises": {
+        "market": 50,
+        "commercial_offer": 45,
+        "innovation": 50,
+        "scalability": 40,
+        "green": 55
+      },
+      "montant_estime": 150000
+    }
+  },
+  {
+    "entrepreneur_id": "ENT-CAS02",
+    "localisation": "Tunis",
+    "stade_reel": "Ideation",
+    "stade_percu": "Market Validation",
+    "secteur": "Technologie/Service-Entreprise",
+    "divergence_detectee": true,
+    "message_perception_gap": "⚠️  Vous pensez être en 'Market Validation' mais votre stade réel est 'Ideation'.",
+    "ressources_recommandees": [
+      {
+        "id": "STARTUP-ACT-003",
+        "nom": "Startup Act Tunisie _ Cadre Avantages & Labellisation",
+        "organisme": "Smart Capital / Ministere des Technologies de la Communication",
+        "taux": "Exonerations fiscales et bourses d'incubation",
+        "url_source": "https://support.startup.gov.tn/support/solutions",
+        "pertinence": 62.1,
+        "gaps_matches": [],
+        "justification": "Recommandé pour stade 'Ideation'. Adresse: profil général. Pertinence RAG: 62.1%."
+      },
+      {
+        "id": "STARTUP-ACT-004",
+        "nom": "Startup Label (Le Label de Startup)",
+        "organisme": "Smart Capital / College des Startups",
+        "taux": "Acces au compte special en devises, decharge douaniere",
+        "url_source": "https://support.startup.gov.tn/support/solutions",
+        "pertinence": 55.7,
+        "gaps_matches": [],
+        "justification": "Recommandé pour stade 'Ideation'. Adresse: profil général. Pertinence RAG: 55.7%."
+      },
+      {
+        "id": "STARTUP-ACT-001",
+        "nom": "Bourse de la Startup (Startup Grant)",
+        "organisme": "Smart Capital / Ministere des Technologies de la Communication",
+        "taux": "Sans objet (Allocation mensuelle non remboursable)",
+        "url_source": "https://support.startup.gov.tn/support/solutions/articles/73000565012-qu-est-ce-que-le-startup-act-",
+        "pertinence": 52.9,
+        "gaps_matches": [],
+        "justification": "Recommandé pour stade 'Ideation'. Adresse: profil général. Pertinence RAG: 52.9%."
+      },
+      {
+        "id": "FNG-001",
+        "nom": "Fonds National de Garantie (FNG)",
+        "organisme": "SOTUGAR / Ministere des Finances",
+        "taux": "Prelevement unique ou annuel minime",
+        "url_source": "http://www.finances.gov.tn/",
+        "pertinence": 52.8,
+        "gaps_matches": [],
+        "justification": "Recommandé pour stade 'Ideation'. Adresse: profil général. Pertinence RAG: 52.8%."
+      },
+      {
+        "id": "INNOVIT-001",
+        "nom": "Programme Innovation IT / R&D Numerique",
+        "organisme": "ANPR (Agence Nationale de la Promotion de la Recherche Scientifique) / Partenaires Internationaux",
+        "taux": "Fonds perdus dedies a l'innovation",
+        "url_source": "https://www.anpr.tn/les-programmes-et-les-mecanismes-de-financement-de-la-r-d/",
+        "pertinence": 48.3,
+        "gaps_matches": [],
+        "justification": "Recommandé pour stade 'Ideation'. Adresse: profil général. Pertinence RAG: 48.3%."
+      }
+    ],
+    "roadmap": {
+      "stade": "Ideation",
+      "immediat_0_30j": [
+        "Contacter Espaces Entreprendre APII (gratuit)",
+        "Déposer dossier ANETI/PAPPE (indemnisé)",
+        "Formaliser l'idée en 2 pages écrites"
+      ],
+      "court_terme_1_3m": [
+        "Réaliser étude de marché préliminaire (10+ interviews)",
+        "Tester avec 10 clients potentiels réels",
+        "Décider forme juridique (SUARL conseillée)"
+      ],
+      "moyen_terme_3_12m": [
+        "Rédiger business plan complet",
+        "Inscrire au RNE",
+        "Postuler BTS micro-crédit si besoin financement immédiat"
+      ]
+    },
+    "sources_tracees": [
+      "https://support.startup.gov.tn/support/solutions",
+      "https://support.startup.gov.tn/support/solutions",
+      "https://support.startup.gov.tn/support/solutions/articles/73000565012-qu-est-ce-que-le-startup-act-",
+      "http://www.finances.gov.tn/",
+      "https://www.anpr.tn/les-programmes-et-les-mecanismes-de-financement-de-la-r-d/"
+    ],
+    "diagnostic_f1": {
+      "stade_reel": "Ideation",
+      "stade_percu": "Market Validation",
+      "score_diagnostic": 8,
+      "gap_detecte": true,
+      "gap_explication": "Amis intéressés ≠ traction marché. Aucun client payant.",
+      "gaps_texte_libre": [
+        "Aucun client payant",
+        "Validation uniquement par des proches",
+        "Pas de contrats ni lettres d'intention",
+        "Aucune étude de marché formelle"
+      ],
+      "blockers": [
+        {
+          "domaine": "marché",
+          "description": "Traction non prouvée",
+          "priorite": 1
+        },
+        {
+          "domaine": "financier",
+          "description": "Zéro revenu",
+          "priorite": 2
+        }
+      ],
+      "signaux_divergence": [
+        "Amis intéressés ≠ traction réelle."
+      ],
+      "financement_hint": "Love money / Concours"
+    },
+    "bridge": {
+      "secteur_m1_original": "tech_digital",
+      "secteur_traduit": "Technologie/Service-Entreprise",
+      "gaps_texte_libre": [
+        "Aucun client payant",
+        "Validation uniquement par des proches",
+        "Pas de contrats ni lettres d'intention",
+        "Aucune étude de marché formelle"
+      ],
+      "gaps_codes_rag": [
+        "fonds_propres_insuffisants",
+        "phase_ideation",
+        "absence_validation_marche",
+        "micro_projet",
+        "manque_etude_marche",
+        "absence_business_plan"
+      ],
+      "scores_utilises": {
+        "market": 20,
+        "commercial_offer": 15,
+        "innovation": 30,
+        "scalability": 10,
+        "green": 40
+      },
+      "montant_estime": 5000
+    }
+  },
+  {
+    "entrepreneur_id": "ENT-CAS03",
+    "localisation": "Sousse",
+    "stade_reel": "Market Validation",
+    "stade_percu": "Launch Planning",
+    "secteur": "Technologie/Service-Entreprise",
+    "divergence_detectee": true,
+    "message_perception_gap": "⚠️  Vous pensez être en 'Launch Planning' mais votre stade réel est 'Market Validation'.",
+    "ressources_recommandees": [
+      {
+        "id": "STARTUP-ACT-003",
+        "nom": "Startup Act Tunisie _ Cadre Avantages & Labellisation",
+        "organisme": "Smart Capital / Ministere des Technologies de la Communication",
+        "taux": "Exonerations fiscales et bourses d'incubation",
+        "url_source": "https://support.startup.gov.tn/support/solutions",
+        "pertinence": 56.4,
+        "gaps_matches": [],
+        "justification": "Recommandé pour stade 'Market Validation'. Adresse: profil général. Pertinence RAG: 56.4%."
+      },
+      {
+        "id": "FLAT6-001",
+        "nom": "Flat6Labs Tunisia _ Programme d'Acceleration et d'Investissement",
+        "organisme": "Flat6Labs Tunisia",
+        "taux": "Participation au capital (generalement 6% a 10% d'equity)",
+        "url_source": "https://flat6labs.com/programs-type/programs-for-entrepreneurs/",
+        "pertinence": 56.0,
+        "gaps_matches": [],
+        "justification": "Recommandé pour stade 'Market Validation'. Adresse: profil général. Pertinence RAG: 56.0%."
+      },
+      {
+        "id": "CBA-001",
+        "nom": "Carthage Business Angels",
+        "organisme": "Reseau Carthage Business Angels",
+        "taux": "Prise de participation minoritaire en capital",
+        "url_source": "https://www.carthageangels.tn/",
+        "pertinence": 53.8,
+        "gaps_matches": [],
+        "justification": "Recommandé pour stade 'Market Validation'. Adresse: profil général. Pertinence RAG: 53.8%."
+      },
+      {
+        "id": "STARTUP-ACT-004",
+        "nom": "Startup Label (Le Label de Startup)",
+        "organisme": "Smart Capital / College des Startups",
+        "taux": "Acces au compte special en devises, decharge douaniere",
+        "url_source": "https://support.startup.gov.tn/support/solutions",
+        "pertinence": 53.1,
+        "gaps_matches": [],
+        "justification": "Recommandé pour stade 'Market Validation'. Adresse: profil général. Pertinence RAG: 53.1%."
+      },
+      {
+        "id": "STARTUP-ACT-001",
+        "nom": "Bourse de la Startup (Startup Grant)",
+        "organisme": "Smart Capital / Ministere des Technologies de la Communication",
+        "taux": "Sans objet (Allocation mensuelle non remboursable)",
+        "url_source": "https://support.startup.gov.tn/support/solutions/articles/73000565012-qu-est-ce-que-le-startup-act-",
+        "pertinence": 43.8,
+        "gaps_matches": [],
+        "justification": "Recommandé pour stade 'Market Validation'. Adresse: profil général. Pertinence RAG: 43.8%."
+      }
+    ],
+    "roadmap": {
+      "stade": "Market Validation",
+      "immediat_0_30j": [
+        "Construire MVP minimal testable",
+        "Documenter preuves de traction (témoignages, commandes)",
+        "Postuler Flat6Labs prochaine cohorte"
+      ],
+      "court_terme_1_3m": [
+        "Pitcher 5+ clients potentiels",
+        "Déposer candidature Startup Act si innovant",
+        "Valider modèle économique chiffré"
+      ],
+      "moyen_terme_3_12m": [
+        "Contacter Carthage Business Angels",
+        "Préparer pitch deck investisseurs",
+        "Viser premier chiffre d'affaires"
+      ]
+    },
+    "sources_tracees": [
+      "https://support.startup.gov.tn/support/solutions",
+      "https://flat6labs.com/programs-type/programs-for-entrepreneurs/",
+      "https://www.carthageangels.tn/",
+      "https://support.startup.gov.tn/support/solutions",
+      "https://support.startup.gov.tn/support/solutions/articles/73000565012-qu-est-ce-que-le-startup-act-"
+    ],
+    "diagnostic_f1": {
+      "stade_reel": "Market Validation",
+      "stade_percu": "Launch Planning",
+      "score_diagnostic": 28,
+      "gap_detecte": true,
+      "gap_explication": "Produit identique existe depuis 3 ans en Tunisie.",
+      "gaps_texte_libre": [
+        "Produit identique sur marché tunisien",
+        "Pas de barrière à l'entrée",
+        "Différenciation non documentée",
+        "Pas de propriété intellectuelle"
+      ],
+      "blockers": [
+        {
+          "domaine": "marché",
+          "description": "Concurrents établis",
+          "priorite": 1
+        },
+        {
+          "domaine": "technique",
+          "description": "Aucune protection IP",
+          "priorite": 2
+        },
+        {
+          "domaine": "organisationnel",
+          "description": "Positionnement flou",
+          "priorite": 3
+        }
+      ],
+      "signaux_divergence": [
+        "Solution déjà existante depuis 3 ans."
+      ],
+      "financement_hint": "Microfinance / BTS"
+    },
+    "bridge": {
+      "secteur_m1_original": "tech_digital",
+      "secteur_traduit": "Technologie/Service-Entreprise",
+      "gaps_texte_libre": [
+        "Produit identique sur marché tunisien",
+        "Pas de barrière à l'entrée",
+        "Différenciation non documentée",
+        "Pas de propriété intellectuelle"
+      ],
+      "gaps_codes_rag": [
+        "manque_garanties",
+        "absence_validation_marche",
+        "equipe_incomplete",
+        "faible_revenu",
+        "innovation_score_faible",
+        "manque_etude_marche",
+        "besoin_prototype",
+        "absence_business_plan"
+      ],
+      "scores_utilises": {
+        "market": 40,
+        "commercial_offer": 35,
+        "innovation": 45,
+        "scalability": 30,
+        "green": 50
+      },
+      "montant_estime": 30000
+    }
+  }
+]

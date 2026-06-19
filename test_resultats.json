@@ -1,0 +1,443 @@
+[
+  {
+    "profil": "Cas A — Jeune diplômé sans apport (pense être en Fundraising)",
+    "output": {
+      "stade_reel": "Structuration",
+      "stade_declare": "Fundraising",
+      "divergence_detectee": true,
+      "message_perception_gap": "⚠️  Vous pensez être en 'Fundraising' mais votre stade réel est 'Structuration'.",
+      "ressources_recommandees": [
+        {
+          "id": "HACKATHON-AINS",
+          "nom": "AINS Hackathon – Concours et financement projets IA entrepreneurship",
+          "organisme": "AINS 4.0 / PNUD / GEWEET / ODC / IEEE / APII",
+          "taux": "N/A (prix + visibilité + réseau)",
+          "url_source": "https://www.apii.nat.tn/",
+          "pertinence": 66.6,
+          "gaps_matches": [],
+          "justification": "Recommandé pour stade 'Structuration'. Adresse: profil général. Pertinence RAG: 66.6%."
+        },
+        {
+          "id": "STARTUP-ACT-003",
+          "nom": "Startup Act Tunisie _ Cadre Avantages & Labellisation",
+          "organisme": "Smart Capital / Ministere des Technologies de la Communication",
+          "taux": "Exonerations fiscales et bourses d'incubation",
+          "url_source": "https://support.startup.gov.tn/support/solutions",
+          "pertinence": 62.3,
+          "gaps_matches": [],
+          "justification": "Recommandé pour stade 'Structuration'. Adresse: profil général. Pertinence RAG: 62.3%."
+        },
+        {
+          "id": "FLAT6-001",
+          "nom": "Flat6Labs Tunisia _ Programme d'Acceleration et d'Investissement",
+          "organisme": "Flat6Labs Tunisia",
+          "taux": "Participation au capital (generalement 6% a 10% d'equity)",
+          "url_source": "https://flat6labs.com/programs-type/programs-for-entrepreneurs/",
+          "pertinence": 61.3,
+          "gaps_matches": [],
+          "justification": "Recommandé pour stade 'Structuration'. Adresse: profil général. Pertinence RAG: 61.3%."
+        },
+        {
+          "id": "SMART-CAPITAL-002",
+          "nom": "Smart Capital – Fonds direct PME innovantes (hors ANAVA)",
+          "organisme": "Smart Capital Tunisie",
+          "taux": "N/A (prise de participation minoritaire)",
+          "url_source": "https://smartcapital.tn/",
+          "pertinence": 58.0,
+          "gaps_matches": [],
+          "justification": "Recommandé pour stade 'Structuration'. Adresse: profil général. Pertinence RAG: 58.0%."
+        },
+        {
+          "id": "CBA-001",
+          "nom": "Carthage Business Angels",
+          "organisme": "Reseau Carthage Business Angels",
+          "taux": "Prise de participation minoritaire en capital",
+          "url_source": "https://www.carthageangels.tn/",
+          "pertinence": 55.9,
+          "gaps_matches": [],
+          "justification": "Recommandé pour stade 'Structuration'. Adresse: profil général. Pertinence RAG: 55.9%."
+        }
+      ],
+      "roadmap": {
+        "stade": "Structuration",
+        "immediat_0_30j": [
+          "Créer société au RNE si pas encore fait",
+          "Constituer dossier BFPME (business plan modèle GIZ)",
+          "Évaluer apport personnel disponible"
+        ],
+        "court_terme_1_3m": [
+          "Déposer dossier FOPRODI APII pour prime investissement",
+          "Vérifier éligibilité garantie SOTUGAR",
+          "Finaliser plan cofinancement avec banque partenaire"
+        ],
+        "moyen_terme_3_12m": [
+          "Obtenir accord BFPME",
+          "Recruter équipe clé",
+          "Mettre en place comptabilité formelle"
+        ]
+      },
+      "sources_tracees": [
+        "https://www.apii.nat.tn/",
+        "https://support.startup.gov.tn/support/solutions",
+        "https://flat6labs.com/programs-type/programs-for-entrepreneurs/",
+        "https://smartcapital.tn/",
+        "https://www.carthageangels.tn/"
+      ],
+      "note": "Zéro hallucination — chaque ressource tracée à une URL officielle vérifiée."
+    }
+  },
+  {
+    "profil": "Cas B — Micro-projet artisanat zone rurale",
+    "output": {
+      "stade_reel": "Ideation",
+      "stade_declare": "Ideation",
+      "divergence_detectee": false,
+      "message_perception_gap": "✅ Auto-évaluation correcte.",
+      "ressources_recommandees": [
+        {
+          "id": "HACKATHON-AINS",
+          "nom": "AINS Hackathon – Concours et financement projets IA entrepreneurship",
+          "organisme": "AINS 4.0 / PNUD / GEWEET / ODC / IEEE / APII",
+          "taux": "N/A (prix + visibilité + réseau)",
+          "url_source": "https://www.apii.nat.tn/",
+          "pertinence": 71.2,
+          "gaps_matches": [],
+          "justification": "Recommandé pour stade 'Ideation'. Adresse: profil général. Pertinence RAG: 71.2%."
+        },
+        {
+          "id": "STARTUP-ACT-003",
+          "nom": "Startup Act Tunisie _ Cadre Avantages & Labellisation",
+          "organisme": "Smart Capital / Ministere des Technologies de la Communication",
+          "taux": "Exonerations fiscales et bourses d'incubation",
+          "url_source": "https://support.startup.gov.tn/support/solutions",
+          "pertinence": 62.8,
+          "gaps_matches": [],
+          "justification": "Recommandé pour stade 'Ideation'. Adresse: profil général. Pertinence RAG: 62.8%."
+        },
+        {
+          "id": "ODESYPANO-001",
+          "nom": "ODESYPANO – Soutien développement sylvo-pastoral Nord-Ouest",
+          "organisme": "Office de Développement Sylvo-Pastoral du Nord-Ouest (ODESYPANO)",
+          "taux": "Subvention directe (taux à vérifier sur site officiel)",
+          "url_source": "https://www.odesypano.nat.tn/",
+          "pertinence": 56.7,
+          "gaps_matches": [],
+          "justification": "Recommandé pour stade 'Ideation'. Adresse: profil général. Pertinence RAG: 56.7%."
+        },
+        {
+          "id": "STARTUP-ACT-004",
+          "nom": "Startup Label (Le Label de Startup)",
+          "organisme": "Smart Capital / College des Startups",
+          "taux": "Acces au compte special en devises, decharge douaniere",
+          "url_source": "https://support.startup.gov.tn/support/solutions",
+          "pertinence": 55.1,
+          "gaps_matches": [],
+          "justification": "Recommandé pour stade 'Ideation'. Adresse: profil général. Pertinence RAG: 55.1%."
+        },
+        {
+          "id": "FNG-001",
+          "nom": "Fonds National de Garantie (FNG)",
+          "organisme": "SOTUGAR / Ministere des Finances",
+          "taux": "Prelevement unique ou annuel minime",
+          "url_source": "http://www.finances.gov.tn/",
+          "pertinence": 51.3,
+          "gaps_matches": [],
+          "justification": "Recommandé pour stade 'Ideation'. Adresse: profil général. Pertinence RAG: 51.3%."
+        }
+      ],
+      "roadmap": {
+        "stade": "Ideation",
+        "immediat_0_30j": [
+          "Contacter Espaces Entreprendre APII (gratuit)",
+          "Déposer dossier ANETI/PAPPE (indemnisé)",
+          "Formaliser l'idée en 2 pages écrites"
+        ],
+        "court_terme_1_3m": [
+          "Réaliser étude de marché préliminaire (10+ interviews)",
+          "Tester avec 10 clients potentiels réels",
+          "Décider forme juridique (SUARL conseillée)"
+        ],
+        "moyen_terme_3_12m": [
+          "Rédiger business plan complet",
+          "Inscrire au RNE",
+          "Postuler BTS micro-crédit si besoin financement immédiat"
+        ]
+      },
+      "sources_tracees": [
+        "https://www.apii.nat.tn/",
+        "https://support.startup.gov.tn/support/solutions",
+        "https://www.odesypano.nat.tn/",
+        "https://support.startup.gov.tn/support/solutions",
+        "http://www.finances.gov.tn/"
+      ],
+      "note": "Zéro hallucination — chaque ressource tracée à une URL officielle vérifiée."
+    }
+  },
+  {
+    "profil": "Cas C — Startup tech MVP prête levée de fonds",
+    "output": {
+      "stade_reel": "Fundraising",
+      "stade_declare": "Fundraising",
+      "divergence_detectee": false,
+      "message_perception_gap": "✅ Auto-évaluation correcte.",
+      "ressources_recommandees": [
+        {
+          "id": "SMART-CAPITAL-002",
+          "nom": "Smart Capital – Fonds direct PME innovantes (hors ANAVA)",
+          "organisme": "Smart Capital Tunisie",
+          "taux": "N/A (prise de participation minoritaire)",
+          "url_source": "https://smartcapital.tn/",
+          "pertinence": 68.0,
+          "gaps_matches": [],
+          "justification": "Recommandé pour stade 'Fundraising'. Adresse: profil général. Pertinence RAG: 68.0%."
+        },
+        {
+          "id": "HACKATHON-AINS",
+          "nom": "AINS Hackathon – Concours et financement projets IA entrepreneurship",
+          "organisme": "AINS 4.0 / PNUD / GEWEET / ODC / IEEE / APII",
+          "taux": "N/A (prix + visibilité + réseau)",
+          "url_source": "https://www.apii.nat.tn/",
+          "pertinence": 66.1,
+          "gaps_matches": [],
+          "justification": "Recommandé pour stade 'Fundraising'. Adresse: profil général. Pertinence RAG: 66.1%."
+        },
+        {
+          "id": "CBA-001",
+          "nom": "Carthage Business Angels",
+          "organisme": "Reseau Carthage Business Angels",
+          "taux": "Prise de participation minoritaire en capital",
+          "url_source": "https://www.carthageangels.tn/",
+          "pertinence": 64.7,
+          "gaps_matches": [
+            "besoin_levee_fonds_prive",
+            "equity_gap",
+            "manque_reseau_investisseurs"
+          ],
+          "justification": "Recommandé pour stade 'Fundraising'. Adresse: besoin_levee_fonds_prive, equity_gap, manque_reseau_investisseurs. Pertinence RAG: 64.7%."
+        },
+        {
+          "id": "SOTUGAR-001",
+          "nom": "SOTUGAR – Garantie crédits PME (fonds national garantie)",
+          "organisme": "Société Tunisienne de Garantie (SOTUGAR)",
+          "taux": "Commission garantie 1-2% (selon programme)",
+          "url_source": "https://www.sotugar.com.tn/",
+          "pertinence": 63.4,
+          "gaps_matches": [],
+          "justification": "Recommandé pour stade 'Fundraising'. Adresse: profil général. Pertinence RAG: 63.4%."
+        },
+        {
+          "id": "FLAT6-001",
+          "nom": "Flat6Labs Tunisia _ Programme d'Acceleration et d'Investissement",
+          "organisme": "Flat6Labs Tunisia",
+          "taux": "Participation au capital (generalement 6% a 10% d'equity)",
+          "url_source": "https://flat6labs.com/programs-type/programs-for-entrepreneurs/",
+          "pertinence": 63.1,
+          "gaps_matches": [],
+          "justification": "Recommandé pour stade 'Fundraising'. Adresse: profil général. Pertinence RAG: 63.1%."
+        }
+      ],
+      "roadmap": {
+        "stade": "Fundraising",
+        "immediat_0_30j": [
+          "Préparer data room complète (KPIs, états financiers)",
+          "Contacter réseau Carthage Business Angels",
+          "Vérifier éligibilité label Startup Act"
+        ],
+        "court_terme_1_3m": [
+          "Pitcher minimum 3 investisseurs",
+          "Déposer dossier Smart Capital / ANAVA",
+          "Négocier term sheet avec conseil juridique"
+        ],
+        "moyen_terme_3_12m": [
+          "Clôturer tour de table",
+          "Déployer fonds selon plan d'affaires",
+          "Préparer reporting investisseurs trimestriel"
+        ]
+      },
+      "sources_tracees": [
+        "https://smartcapital.tn/",
+        "https://www.apii.nat.tn/",
+        "https://www.carthageangels.tn/",
+        "https://www.sotugar.com.tn/",
+        "https://flat6labs.com/programs-type/programs-for-entrepreneurs/"
+      ],
+      "note": "Zéro hallucination — chaque ressource tracée à une URL officielle vérifiée."
+    }
+  },
+  {
+    "profil": "Cas D — PME industrielle cherche extension",
+    "output": {
+      "stade_reel": "Growth",
+      "stade_declare": "Growth",
+      "divergence_detectee": false,
+      "message_perception_gap": "✅ Auto-évaluation correcte.",
+      "ressources_recommandees": [
+        {
+          "id": "STARTUP-ACT-003",
+          "nom": "Startup Act Tunisie _ Cadre Avantages & Labellisation",
+          "organisme": "Smart Capital / Ministere des Technologies de la Communication",
+          "taux": "Exonerations fiscales et bourses d'incubation",
+          "url_source": "https://support.startup.gov.tn/support/solutions",
+          "pertinence": 63.5,
+          "gaps_matches": [],
+          "justification": "Recommandé pour stade 'Growth'. Adresse: profil général. Pertinence RAG: 63.5%."
+        },
+        {
+          "id": "CEPEX-001",
+          "nom": "CEPEX _ Accompagnement a l'exportation",
+          "organisme": "CEPEX (Centre de Promotion des Exportations)",
+          "taux": "Prise en charge de frais de participation aux salons",
+          "url_source": "http://www.tunisiaexport.tn/",
+          "pertinence": 57.8,
+          "gaps_matches": [],
+          "justification": "Recommandé pour stade 'Growth'. Adresse: profil général. Pertinence RAG: 57.8%."
+        },
+        {
+          "id": "STARTUP-ACT-002",
+          "nom": "Statut d'Operateur economique Agree pour Startups",
+          "organisme": "Direction Generale de la Douane Tunisienne / Smart Capital",
+          "taux": "Simplifications douanieres et dedouanement accelere",
+          "url_source": "https://support.startup.gov.tn/support/solutions/articles/73000565065-quels-sont-les-crit%C3%A8res-d-%C3%A9ligibilit%C3%A9-%C3%A0-l-avantage-de-l-op%C3%A9rateur-%C3%A9conomique-agr%C3%A9%C3%A9-",
+          "pertinence": 55.8,
+          "gaps_matches": [],
+          "justification": "Recommandé pour stade 'Growth'. Adresse: profil général. Pertinence RAG: 55.8%."
+        },
+        {
+          "id": "CEPEX-002",
+          "nom": "CEPEX – Labellisation Made in Tunisia (export industrie)",
+          "organisme": "Centre de Promotion des Exportations (CEPEX)",
+          "taux": "N/A (label + accompagnement)",
+          "url_source": "https://www.cepex.nat.tn/",
+          "pertinence": 55.0,
+          "gaps_matches": [],
+          "justification": "Recommandé pour stade 'Growth'. Adresse: profil général. Pertinence RAG: 55.0%."
+        },
+        {
+          "id": "APII-002",
+          "nom": "APII _ Programme de Mise a Niveau Industrielle (PMN)",
+          "organisme": "APII (Bureau de Mise a Niveau)",
+          "taux": "Sans objet (Primes d'investissement sur immateriel et materiel)",
+          "url_source": "http://www.tunisieindustrie.nat.tn/",
+          "pertinence": 53.8,
+          "gaps_matches": [
+            "competitivite_faible"
+          ],
+          "justification": "Recommandé pour stade 'Growth'. Adresse: competitivite_faible. Pertinence RAG: 53.8%."
+        }
+      ],
+      "roadmap": {
+        "stade": "Growth",
+        "immediat_0_30j": [
+          "Analyser goulots d'étranglement croissance",
+          "Évaluer besoins financement extension",
+          "Contacter APII programme mise à niveau PMN"
+        ],
+        "court_terme_1_3m": [
+          "Dossier BFPME prêt extension ou BFR",
+          "Activer FOPRODEX si export",
+          "Étudier levée Series A (AfricInvest, ANAVA)"
+        ],
+        "moyen_terme_3_12m": [
+          "Déployer sur nouveau marché géographique",
+          "Structurer management intermédiaire",
+          "Préparer exit ou prochain tour financement"
+        ]
+      },
+      "sources_tracees": [
+        "https://support.startup.gov.tn/support/solutions",
+        "http://www.tunisiaexport.tn/",
+        "https://support.startup.gov.tn/support/solutions/articles/73000565065-quels-sont-les-crit%C3%A8res-d-%C3%A9ligibilit%C3%A9-%C3%A0-l-avantage-de-l-op%C3%A9rateur-%C3%A9conomique-agr%C3%A9%C3%A9-",
+        "https://www.cepex.nat.tn/",
+        "http://www.tunisieindustrie.nat.tn/"
+      ],
+      "note": "Zéro hallucination — chaque ressource tracée à une URL officielle vérifiée."
+    }
+  },
+  {
+    "profil": "Cas E — Agri-tech impact vert",
+    "output": {
+      "stade_reel": "Market Validation",
+      "stade_declare": "Structuration",
+      "divergence_detectee": true,
+      "message_perception_gap": "⚠️  Vous pensez être en 'Structuration' mais votre stade réel est 'Market Validation'.",
+      "ressources_recommandees": [
+        {
+          "id": "HACKATHON-AINS",
+          "nom": "AINS Hackathon – Concours et financement projets IA entrepreneurship",
+          "organisme": "AINS 4.0 / PNUD / GEWEET / ODC / IEEE / APII",
+          "taux": "N/A (prix + visibilité + réseau)",
+          "url_source": "https://www.apii.nat.tn/",
+          "pertinence": 62.6,
+          "gaps_matches": [],
+          "justification": "Recommandé pour stade 'Market Validation'. Adresse: profil général. Pertinence RAG: 62.6%."
+        },
+        {
+          "id": "STARTUP-ACT-003",
+          "nom": "Startup Act Tunisie _ Cadre Avantages & Labellisation",
+          "organisme": "Smart Capital / Ministere des Technologies de la Communication",
+          "taux": "Exonerations fiscales et bourses d'incubation",
+          "url_source": "https://support.startup.gov.tn/support/solutions",
+          "pertinence": 59.5,
+          "gaps_matches": [],
+          "justification": "Recommandé pour stade 'Market Validation'. Adresse: profil général. Pertinence RAG: 59.5%."
+        },
+        {
+          "id": "SMART-CAPITAL-002",
+          "nom": "Smart Capital – Fonds direct PME innovantes (hors ANAVA)",
+          "organisme": "Smart Capital Tunisie",
+          "taux": "N/A (prise de participation minoritaire)",
+          "url_source": "https://smartcapital.tn/",
+          "pertinence": 57.9,
+          "gaps_matches": [],
+          "justification": "Recommandé pour stade 'Market Validation'. Adresse: profil général. Pertinence RAG: 57.9%."
+        },
+        {
+          "id": "CBA-001",
+          "nom": "Carthage Business Angels",
+          "organisme": "Reseau Carthage Business Angels",
+          "taux": "Prise de participation minoritaire en capital",
+          "url_source": "https://www.carthageangels.tn/",
+          "pertinence": 57.6,
+          "gaps_matches": [],
+          "justification": "Recommandé pour stade 'Market Validation'. Adresse: profil général. Pertinence RAG: 57.6%."
+        },
+        {
+          "id": "FLAT6-001",
+          "nom": "Flat6Labs Tunisia _ Programme d'Acceleration et d'Investissement",
+          "organisme": "Flat6Labs Tunisia",
+          "taux": "Participation au capital (generalement 6% a 10% d'equity)",
+          "url_source": "https://flat6labs.com/programs-type/programs-for-entrepreneurs/",
+          "pertinence": 56.6,
+          "gaps_matches": [],
+          "justification": "Recommandé pour stade 'Market Validation'. Adresse: profil général. Pertinence RAG: 56.6%."
+        }
+      ],
+      "roadmap": {
+        "stade": "Market Validation",
+        "immediat_0_30j": [
+          "Construire MVP minimal testable",
+          "Documenter preuves de traction (témoignages, commandes)",
+          "Postuler Flat6Labs prochaine cohorte"
+        ],
+        "court_terme_1_3m": [
+          "Pitcher 5+ clients potentiels",
+          "Déposer candidature Startup Act si innovant",
+          "Valider modèle économique chiffré"
+        ],
+        "moyen_terme_3_12m": [
+          "Contacter Carthage Business Angels",
+          "Préparer pitch deck investisseurs",
+          "Viser premier chiffre d'affaires"
+        ]
+      },
+      "sources_tracees": [
+        "https://www.apii.nat.tn/",
+        "https://support.startup.gov.tn/support/solutions",
+        "https://smartcapital.tn/",
+        "https://www.carthageangels.tn/",
+        "https://flat6labs.com/programs-type/programs-for-entrepreneurs/"
+      ],
+      "note": "Zéro hallucination — chaque ressource tracée à une URL officielle vérifiée."
+    }
+  }
+]

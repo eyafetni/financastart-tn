@@ -1,7 +1,7 @@
 {
     "entrepreneur_id": "ENT-DBD323",
     "timestamp": "2026-06-18T10:10:30.933553",
-    "stade_reel": "Structuration",
+    "stade_reel": "Growth",
     "stade_percu": "Growth",
     "score_diagnostic": 32,
     "gap_detecte": true,
@@ -14,28 +14,7 @@
         "Pas de business plan documenté",
         "Produit / service existant sur le marché tunisien depuis plus de 2 ans"
     ],
-    "blockers": [
-        {
-            "domaine": "organisationnel",
-            "description": "Absence d'équipe fondatrice",
-            "priorite": 2
-        },
-        {
-            "domaine": "réglementaire",
-            "description": "Absence de certification sanitaire ou phytosanitaire",
-            "priorite": 2
-        },
-        {
-            "domaine": "légal",
-            "description": "Entreprise non enregistrée",
-            "priorite": 1
-        },
-        {
-            "domaine": "financier",
-            "description": "Absence de business plan",
-            "priorite": 2
-        }
-    ],
+    "blockers": [],
     "secteur": "agriculture_sylviculture_peche",
     "secteur_label": "Agriculture / Sylviculture / Pêche",
     "localisation": "Siliana",
@@ -67,87 +46,87 @@
     ],
     "reponses": {
         "type_cible": {
-            "index": 4,
+            "index": 1,
             "valeur": "B2G"
         },
         "potentiel_financier_marche": {
-            "index": 2,
+            "index": 0,
             "valeur": "marche_national_intermediaire"
         },
         "intensite_concurrence": {
-            "index": 2,
+            "index": 0,
             "valeur": "marche_partage"
         },
         "niveau_traction": {
-            "index": 2,
+            "index": 0,
             "valeur": "traction_initiale"
         },
         "modele_revenu": {
-            "index": 2,
+            "index": 1,
             "valeur": "commission_marketplace"
         },
         "business_plan_f2": {
-            "index": 2,
+            "index": 1,
             "valeur": "en_cours_de_validation"
         },
         "maturite_produit": {
-            "index": 2,
+            "index": 1,
             "valeur": "mvp_valide"
         },
         "strategie_prix": {
-            "index": 2,
+            "index": 1,
             "valeur": "alignement_concurrence"
         },
         "alignement_besoins": {
-            "index": 2,
+            "index": 1,
             "valeur": "important_non_urgent"
         },
         "nouveaute_locale": {
-            "index": 2,
+            "index": 4,
             "valeur": "adaptation_locale"
         },
         "intensite_tech": {
-            "index": 2,
+            "index": 4,
             "valeur": "integration_avancee"
         },
         "barrieres_entree": {
-            "index": 2,
+            "index": 4,
             "valeur": "moat_commercial"
         },
         "degre_rupture": {
-            "index": 2,
+            "index": 4,
             "valeur": "transformation_process"
         },
         "replicabilite": {
-            "index": 2,
+            "index": 4,
             "valeur": "deploiement_operationnel_modere"
         },
         "independance_manuelle": {
-            "index": 2,
+            "index": 4,
             "valeur": "paliers_de_croissance"
         },
         "couts_deploiement": {
-            "index": 2,
+            "index": 4,
             "valeur": "besoin_modere"
         },
         "potentiel_geo": {
-            "index": 2,
+            "index": 4,
             "valeur": "national"
         },
         "climat_air": {
-            "index": 2,
+            "index": 4,
             "valeur": "neutralite_passive"
         },
         "donnees_eau_fournies": {
-            "index": 2,
+            "index": 4,
             "valeur": "suivi_manuel_partiel"
         },
         "sols_biodiversite": {
-            "index": 2,
+            "index": 4,
             "valeur": "preservation_passive"
         },
         "ressources_dechets": {
-            "index": 2,
+            "index": 4,
             "valeur": "reduction_a_la_source"
         }
     }

@@ -1,0 +1,41 @@
+{
+    "id": "PROF-DBD323",
+    "nom_scenario": "Cas Démo : Agriculture_sylviculture_peche Siliana - Analyse Réelle complète",
+    "secteur": "agriculture_sylviculture_peche",
+    "stade_reel": "Growth",
+    "sub_scores": {
+        "MS1": 40,
+        "MS2": 40,
+        "MS3": 40,
+        "MS4": 40,
+        "CO1": 40,
+        "CO2": 40,
+        "CO3": 40,
+        "CO4": 40,
+        "IN1": 90,
+        "IN2": 90,
+        "IN3": 90,
+        "IN4": 90,
+        "SC1": 90,
+        "SC2": 90,
+        "SC3": 90,
+        "SC4": 90,
+        "GS1": 90,
+        "GS2": 90,
+        "GS3": 90,
+        "GS4": 90
+    },
+    "anomalies": [
+        {
+            "id": "ANOM_TEAM_SOLO_FATIGUE",
+            "justification": "Risque de Burnout : Gérer seul une startup en phase de 'Growth' est un goulot d'étranglement majeur (Key-Man Risk) rédhibitoire pour les investisseurs.",
+            "dimension": "team_viability",
+            "penalty_points": 10,
+            "target_score": "team_score",
+            "action": "Recrutez un bras droit opérationnel (COO) ou ouvrez votre capital pour intégrer un co-fondateur.",
+            "kb_link": "KB-TEAM-SCALING-007"
+        }
+    ],
+    "blockers": [],
+    "attendu": "FRI calculé selon les pondérations cibles du système expert."
+}

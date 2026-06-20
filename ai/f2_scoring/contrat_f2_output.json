@@ -1,92 +1,90 @@
 {
-    "financing_readiness_index": 27,
-    "fri_interpretation": "Non bancable (27/100) — Le score est inférieur au seuil de viabilité (55). Un accompagnement structurant est indispensable.",
+    "financing_readiness_index": 40,
+    "fri_interpretation": "Le score global est plafonné à 40/100 en raison de la faiblesse critique du score Marché (<30). (Score réel calculé : 40/100)",
     "is_financeable": false,
     "secteur_applique": "Agriculture",
     "scores": {
         "market_score": {
-            "valeur": 60.0,
+            "valeur": 16.3,
             "sous_scores": {
-                "taille_marche": 60.0,
-                "concurrence": 60.0,
-                "validation_client": 60.0,
-                "modele_revenus": 60.0
+                "taille_marche": 10.0,
+                "concurrence": 10.0,
+                "validation_client": 10.0,
+                "modele_revenus": 40.0
             },
-            "justification_template": "Le marche est partiellement valide. Point fort : 'Taille marche' (60/100). Faiblesse identifiee : 'Taille marche' (60/100) qui penalise la bancabilite.",
-            "action_template": "Priorite : ameliorer 'Taille marche' — obtenir 3 lettres d'intention clients ou preuves de traction payante avant tout depot de dossier.",
+            "justification_template": "Le Market Score est insuffisant (16.3/100). Le critere 'Taille marche' (10/100) constitue un bloqueur majeur pour toute demarche de financement.",
+            "action_template": "ACTION URGENTE : 'Taille marche' doit passer au-dessus de 30/100. Sans cela, aucun financement n'est envisageable.",
             "kb_link": ""
         },
         "commercial_offer_score": {
-            "valeur": 60.0,
+            "valeur": 40.0,
             "sous_scores": {
-                "proposition_valeur": 60.0,
-                "maturite_produit": 60.0,
-                "strategie_prix": 60.0,
-                "alignement_besoins": 60.0
+                "proposition_valeur": 40.0,
+                "maturite_produit": 40.0,
+                "strategie_prix": 40.0,
+                "alignement_besoins": 40.0
             },
-            "justification_template": "L'offre commerciale necessite des ajustements. Le critere 'Proposition valeur' (60/100) fragilise la proposition de valeur globale.",
-            "action_template": "Travailler 'Proposition valeur' : rediger une fiche de proposition de valeur claire (1 page) et la tester avec 5 clients potentiels.",
+            "justification_template": "L'offre commerciale est trop fragile (40.0/100). La 'Proposition valeur' (40/100) doit etre refondee avant toute approche d'investisseur.",
+            "action_template": "ACTION URGENTE : redefinir 'Proposition valeur' (score 40/100). Engager un atelier job-to-be-done avec de vrais utilisateurs.",
             "kb_link": ""
         },
         "innovation_score": {
-            "valeur": 60.0,
+            "valeur": 85.0,
             "sous_scores": {
-                "nouveaute_locale": 60.0,
-                "intensite_tech": 60.0,
-                "barrieres_entree": 60.0,
-                "degre_rupture": 60.0
+                "nouveaute_locale": 90.0,
+                "intensite_tech": 90.0,
+                "barrieres_entree": 90.0,
+                "degre_rupture": 90.0
             },
-            "justification_template": "L'innovation est presente mais insuffisamment defenisble. Le critere 'Nouveaute locale' (60/100) limite la protection competitive.",
-            "action_template": "Renforcer 'Nouveaute locale' : documenter la differentiation par rapport aux solutions existantes sur le marche tunisien.",
-            "kb_link": ""
+            "justification_template": "Une rupture disruptive majeure est déclarée (90/100), mais la taille de votre marché (TAM) est très faible (10/100). Les fonds de capital-risque (VC) tunisiens évitent les innovations lourdes confinées à des niches trop restreintes, car le retour sur investissement y est insuffisant.",
+            "action_template": "Explorez des cas d'usage adjacents ou une stratégie d'internationalisation précoce en suivant la méthodologie du guide KB-ANAVA-SCALE-007.",
+            "kb_link": "KB-ANAVA-SCALE-007"
         },
         "scalability_score": {
-            "valeur": 60.0,
+            "valeur": 90.0,
             "sous_scores": {
-                "replicabilite": 60.0,
-                "independance_manuelle": 60.0,
-                "couts_deploiement": 60.0,
-                "potentiel_geo": 60.0
+                "replicabilite": 90.0,
+                "independance_manuelle": 90.0,
+                "couts_deploiement": 90.0,
+                "potentiel_geo": 90.0
             },
-            "justification_template": "La scalabilite est partielle. Le critere 'Replicabilite' (60/100) limite la trajectoire de croissance attendue par les financeurs.",
-            "action_template": "Reduire la dependance sur 'Replicabilite' : identifier 2 processus manuels a automatiser dans les 3 prochains mois.",
+            "justification_template": "Le modele est fortement scalable. La 'Replicabilite' (90/100) confirme la capacite de croissance sans augmentation lineaire des couts.",
+            "action_template": "Modeliser les economies d'echelle a 3 ans pour le dossier de levee de fonds.",
             "kb_link": ""
         },
         "green_score": {
-            "valeur": 60.0,
+            "valeur": 90.0,
             "sous_scores": {
-                "climat_air": 60.0,
-                "eau": 60.0,
-                "sols_biodiversite": 60.0,
-                "ressources_dechets": 60.0
+                "climat_air": 90.0,
+                "eau": 90.0,
+                "sols_biodiversite": 90.0,
+                "ressources_dechets": 90.0
             },
-            "justification_template": "La dimension green est partiellement couverte. Le pilier 'Climat air' (60/100) necessite des actions correctives documentees.",
-            "action_template": "Produire un plan d'action sur le pilier 'Climat air' : mesures correctives, calendrier, indicateurs suivis.",
+            "justification_template": "L'impact environnemental est bien maitrise. Le pilier 'Climat air' (90/100) est un atout dans le contexte PNUD/ODD.",
+            "action_template": "Formaliser le bilan carbone et l'aligner sur les ODD pour les dossiers de financement PNUD/AFD.",
             "kb_link": ""
         }
     },
-    "blockers_actifs": [
+    "blockers_actifs": [],
+    "anomalies_detectees": [
         {
-            "domaine": "Organisationnel",
-            "description": "Absence d'équipe fondatrice",
-            "niveau": "orange"
+            "id": "ANOM_TEAM_SOLO_FATIGUE",
+            "justification": "Risque de Burnout : Gérer seul une startup en phase de 'Growth' est un goulot d'étranglement majeur (Key-Man Risk) rédhibitoire pour les investisseurs. ACTION : Recrutez un bras droit opérationnel (COO) ou ouvrez votre capital pour intégrer un co-fondateur.",
+            "penalite": 10,
+            "dimension_impactee": "team_score",
+            "justification_template": "Risque de Burnout : Gérer seul une startup en phase de 'Growth' est un goulot d'étranglement majeur (Key-Man Risk) rédhibitoire pour les investisseurs.",
+            "action_template": "Recrutez un bras droit opérationnel (COO) ou ouvrez votre capital pour intégrer un co-fondateur.",
+            "kb_link": "KB-TEAM-SCALING-007"
         },
         {
-            "domaine": "Réglementaire",
-            "description": "Absence de certification sanitaire ou phytosanitaire",
-            "niveau": "orange"
-        },
-        {
-            "domaine": "Légal",
-            "description": "Entreprise non enregistrée",
-            "niveau": "rouge"
-        },
-        {
-            "domaine": "Financier",
-            "description": "Absence de business plan",
-            "niveau": "orange"
+            "id": "ANOM_IN_4",
+            "justification": "Une rupture disruptive majeure est déclarée (90/100), mais la taille de votre marché (TAM) est très faible (10/100). Les fonds de capital-risque (VC) tunisiens évitent les innovations lourdes confinées à des niches trop restreintes, car le retour sur investissement y est insuffisant. ACTION : Explorez des cas d'usage adjacents ou une stratégie d'internationalisation précoce en suivant la méthodologie du guide KB-ANAVA-SCALE-007.",
+            "penalite": 5,
+            "dimension_impactee": "innovation",
+            "justification_template": "Une rupture disruptive majeure est déclarée (90/100), mais la taille de votre marché (TAM) est très faible (10/100). Les fonds de capital-risque (VC) tunisiens évitent les innovations lourdes confinées à des niches trop restreintes, car le retour sur investissement y est insuffisant.",
+            "action_template": "Explorez des cas d'usage adjacents ou une stratégie d'internationalisation précoce en suivant la méthodologie du guide KB-ANAVA-SCALE-007.",
+            "kb_link": "KB-ANAVA-SCALE-007"
         }
     ],
-    "anomalies_detectees": [],
-    "resume_executif": "Analyse pour le secteur 'Agriculture' : le projet n'est PAS encore bancable avec un Financing Readiness Index de 27/100. Le point fort du projet est le Market Score avec un score de 60.0/100, tandis que le Market Score constitue le principal axe de progression avec seulement 60.0/100. ⚠ 1 bloqueur(s) critique(s) RED ont été détectés : l'absence d'immatriculation au RNE bloque toute démarche de financement ou de facturation légale. Ces points paralysent le projet et doivent être traités en urgence absolue. S'y ajoutent 3 bloqueur(s) secondaire(s) : bloqueur majeur (ORGANISATIONNEL) — le projet repose sur un fondateur unique sans équipe constituée, ce qui fragilise la crédibilité opérationnelle auprès des financeurs ; bloqueur majeur (RÉGLEMENTAIRE) — Absence de certification sanitaire ou phytosanitaire ; bloqueur majeur (FINANCIER) — l'absence de modélisation financière empêche tout dépôt de dossier auprès des institutions de financement tunisiennes. Au total, 0 anomalie(s) et 4 bloqueur(s) identifiés dont 1 critique(s). Aucune levée de fonds ne peut aboutir sans lever les bloqueurs rouges en premier."
+    "resume_executif": "⚠ INFORMATION : Le score global est plafonné à 40/100 en raison de la faiblesse critique du score Marché (<30). Analyse pour le secteur 'Agriculture' : le projet n'est PAS encore bancable avec un Financing Readiness Index de 40/100. Le point fort du projet est le Scalability Score avec un score de 90.0/100, tandis que le Market Score constitue le principal axe de progression avec seulement 16.3/100. Aucun bloqueur structurel détecté. Le principal levier reste le Market Score (16.3/100). Concentrez l'effort sur l'axe Market Score pour progresser."
 }

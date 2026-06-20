@@ -82,9 +82,9 @@ def _appliquer_penalites_exponentielles(score_base: float, blockers: list[dict])
     # Facteurs de sévérité (lambda)
     # Plus le lambda est élevé, plus l'impact exponentiel est fort
     SEVERITE = {
-        "jaune": 0.05,  # -5% de dégradation de confiance
-        "orange": 0.15, # -15% de dégradation de confiance
-        "rouge": 0.4  # -30% de dégradation de confiance
+        "jaune": 0.1,  # -5% de dégradation de confiance
+        "orange": 0.25, # -15% de dégradation de confiance
+        "rouge": 0.7 # -30% de dégradation de confiance
     }
     
     total_lambda = sum(SEVERITE.get(b.get("niveau", "").lower(), 0.1) for b in blockers)
@@ -287,6 +287,7 @@ def _build_resume_executif(
     nb_anomalies: int,
     blockers: list[dict],
     global_penalty: int = 0,
+    msg_plafond: str = ""  # <--- Ajout de l'argument optionnel
 ) -> str:
 
     BLOCKER_MESSAGES = {
@@ -321,6 +322,9 @@ def _build_resume_executif(
     status     = "est bancable" if is_fin else "n'est PAS encore bancable"
     nb_bl      = len(blockers)
 
+    # ── 0. Message de plafonnement (si activé) ───────────────────
+    plafond_alert = f"⚠ INFORMATION : {msg_plafond} " if msg_plafond else ""
+
     # ── 1. Introduction ──────────────────────────────────────────
     debut = (
         f"Analyse pour le secteur '{secteur}' : le projet {status} "
@@ -335,11 +339,10 @@ def _build_resume_executif(
         f"axe de progression avec seulement {scores_dict[dim_faible]:.1f}/100. "
     )
 
-    # ── 3. Blockers avec niveau rouge en priorité ─────────────────
+    # ── 3. Blockers ──────────────────────────────────────────────
     if nb_bl > 0:
         blockers_rouges  = [b for b in blockers if b.get("niveau") == "rouge"]
         blockers_autres  = [b for b in blockers if b.get("niveau") != "rouge"]
-
         sections = []
 
         if blockers_rouges:
@@ -349,8 +352,7 @@ def _build_resume_executif(
             )
             sections.append(
                 f"⚠ {len(blockers_rouges)} bloqueur(s) critique(s) RED ont été détectés : "
-                f"{msgs_rouges}. "
-                "Ces points paralysent le projet et doivent être traités en urgence absolue. "
+                f"{msgs_rouges}. Ces points paralysent le projet. "
             )
 
         if blockers_autres:
@@ -361,42 +363,24 @@ def _build_resume_executif(
                 + BLOCKER_MESSAGES.get(b["description"], b["description"])
                 for b in sorted_autres
             )
-            sections.append(
-                f"S'y ajoutent {len(blockers_autres)} bloqueur(s) secondaire(s) : {liste_autres}. "
-            )
+            sections.append(f"S'y ajoutent {len(blockers_autres)} bloqueur(s) secondaire(s) : {liste_autres}. ")
 
         freins = "".join(sections)
-
     elif global_penalty >= 20:
-        freins = (
-            f"La viabilité est impactée par des alertes de conformité "
-            f"cumulées (-{global_penalty} pts). "
-        )
+        freins = f"La viabilité est impactée par des alertes de conformité cumulées (-{global_penalty} pts). "
     else:
-        freins = (
-            f"Aucun bloqueur structurel détecté. Le principal levier reste "
-            f"le {DIMENSION_LABELS[dim_faible]} ({scores_dict[dim_faible]:.1f}/100). "
-        )
+        freins = f"Aucun bloqueur structurel détecté. Le principal levier reste le {DIMENSION_LABELS[dim_faible]} ({scores_dict[dim_faible]:.1f}/100). "
 
     # ── 4. Conclusion ─────────────────────────────────────────────
-    if blockers_rouges if nb_bl > 0 else False:
-        conclusion = (
-            f"Au total, {nb_anomalies} anomalie(s) et {nb_bl} bloqueur(s) identifiés "
-            f"dont {len(blockers_rouges)} critique(s). "
-            "Aucune levée de fonds ne peut aboutir sans lever les bloqueurs rouges en premier."
-        )
+    # (Logique de conclusion inchangée)
+    if nb_bl > 0 and any(b.get("niveau") == "rouge" for b in blockers):
+        conclusion = "Aucune levée de fonds ne peut aboutir sans lever les bloqueurs rouges en premier."
     elif nb_bl > 0:
-        conclusion = (
-            f"Au total, {nb_anomalies} anomalie(s) et {nb_bl} bloqueur(s) identifiés. "
-            "Les actions correctives doivent cibler les bloqueurs par ordre de priorité."
-        )
+        conclusion = "Les actions correctives doivent cibler les bloqueurs par ordre de priorité."
     else:
-        conclusion = (
-            f"Au total, {nb_anomalies} anomalie(s) détectées. "
-            f"Concentrez l'effort sur l'axe {DIMENSION_LABELS[dim_faible]} pour progresser."
-        )
+        conclusion = f"Concentrez l'effort sur l'axe {DIMENSION_LABELS[dim_faible]} pour progresser."
 
-    return debut + forces + freins + conclusion
+    return plafond_alert + debut + forces + freins + conclusion
 def _evaluer_condition(condition: dict, contexte: dict) -> bool:
     var = condition.get("variable")
     op = condition.get("operator")
@@ -555,6 +539,24 @@ def calculer_scores(
     # --- Financing Readiness Index ---
     global_penalty = sum(a.get("penalty_points", 0) for a in formatted_anomalies if a.get("target_score") == "global")
     fri, fri_interp, is_fin = _compute_fri(scores_valeurs, blockers, global_penalty)
+    # 2. APPLICATION DU PLAFONNEMENT FINAL (HARD CAPPING)
+    # Règle : Si Market < 30, le score final est plafonné à 40
+    # Règle : Si Commercial < 25, le score final est plafonné à 40
+    
+    msg_plafond = ""
+    
+    if scores_valeurs.get("market", 100) < 30:
+        fri = min(fri, 40)
+        msg_plafond = "Le score global est plafonné à 40/100 en raison de la faiblesse critique du score Marché (<30)."
+    
+    elif scores_valeurs.get("commercial_offer", 100) < 25:
+        fri = min(fri, 40)
+        msg_plafond = "Le score global est plafonné à 40/100 en raison de la faiblesse critique de l'offre commerciale (<25)."
+
+    # 3. Mise à jour de l'interprétation si plafonné
+    if msg_plafond:
+        fri_interp = f"{msg_plafond} (Score réel calculé : {fri}/100)"
+        is_fin = False # On force le statut en non-bancable si plafonné
 
     # --- MODIFICATION COMPATIBILITÉ : Ajout de global_penalty pour un résumé intelligent ---
     resume = _build_resume_executif(
@@ -564,7 +566,8 @@ def calculer_scores(
         scores_dict=scores_valeurs, 
         nb_anomalies=len(formatted_anomalies), 
         blockers=blockers,      # On transmet la liste complète au lieu de len(blockers)
-        global_penalty=global_penalty
+        global_penalty=global_penalty,
+        msg_plafond=msg_plafond
     )
 
     # --- Construction du contrat F2 ---

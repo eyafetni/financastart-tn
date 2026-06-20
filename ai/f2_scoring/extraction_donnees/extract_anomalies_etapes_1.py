@@ -5,19 +5,6 @@ import json
 # ==========================================
 RULES_DATABASE = [
     {
-        "id": "ANOM_FRAUD_CA_NO_RNE",
-        "dimension": "legal_compliance",
-        "penalty_points": 50,
-        "target_score": "global",
-        "conditions": [
-            {"variable": "chiffre_affaires", "operator": ">", "value": 0},
-            {"variable": "rne", "operator": "==", "value": False}
-        ],
-        "justification_template": "Alerte de conformité sévère : Vous déclarez un chiffre d'affaires de {chiffre_affaires} TND sans être immatriculé au Registre National des Entreprises (RNE). En Tunisie, générer des revenus commerciaux sans existence légale relève du marché informel.",
-        "action_template": "Stoppez toute levée de fonds et procédez immédiatement à la création de votre statut juridique via la plateforme du RNE.",
-        "kb_link": "KB-LEGAL-RNE-001"
-    },
-    {
         "id": "ANOM_FRAUD_MEGALOMANIA_STAGE",
         "dimension": "mindset_coachability",
         "penalty_points": 30,
@@ -56,19 +43,6 @@ RULES_DATABASE = [
         "justification_template": "Incohérence déclarative : Vous indiquez être financé par des 'subventions' tout en n'ayant aucune existence légale (RNE: false). Les bailleurs tunisiens n'octroient aucune subvention à des entités non enregistrées.",
         "action_template": "Clarifiez la nature de vos fonds et régularisez votre statut juridique pour accéder aux véritables subventions d'État.",
         "kb_link": "KB-FIN-GRANTS-008"
-    },
-    {
-        "id": "ANOM_EXEC_PREMATURE_SCALE",
-        "dimension": "strategy",
-        "penalty_points": 15,
-        "target_score": "commercial_offer_score",
-        "conditions": [
-            {"variable": "stade_reel", "operator": "in", "value": ["Market Validation", "Growth"]},
-            {"variable": "business_plan", "operator": "==", "value": "non_commence"}
-        ],
-        "justification_template": "Risque d'exécution : Vous êtes à l'étape de {stade_reel} mais votre Business Plan n'est pas commencé. Naviguer sans modèle financier formalisé vous expose à un risque mortel de rupture de trésorerie.",
-        "action_template": "Stoppez l'acquisition client à perte et modélisez d'urgence vos coûts et revenus sur les 12 prochains mois.",
-        "kb_link": "KB-STRAT-BP-002"
     },
     {
         "id": "ANOM_ECO_GREEN_NO_SUPPORT",
@@ -177,19 +151,6 @@ RULES_DATABASE = [
         "justification_template": "Leviers régionaux inexploités : Vous êtes légalement constitué (RNE valide) à {localisation} mais ne bénéficiez d'aucun financement. Vous passez à côté de primes de développement régional spécifiques (PDRI).",
         "action_template": "Sollicitez le bureau régional de l'APII de {localisation} pour déposer un dossier de prime d'investissement régional.",
         "kb_link": "KB-FIN-REGIONAL-006"
-    },
-    {
-        "id": "ANOM_LEGAL_MARKET_WITHOUT_RNE",
-        "dimension": "legal_compliance",
-        "penalty_points": 20,
-        "target_score": "global",
-        "conditions": [
-            {"variable": "stade_reel", "operator": "==", "value": "Market Validation"},
-            {"variable": "rne", "operator": "==", "value": False}
-        ],
-        "justification_template": "Risque commercial : Vous êtes en phase de 'Market Validation', ce qui implique de facturer des pilotes. L'absence d'immatriculation (RNE) empêchera toute entreprise de vous payer légalement.",
-        "action_template": "Créez a minima une patente ou une entreprise individuelle pour pouvoir émettre des factures légales.",
-        "kb_link": "KB-LEGAL-BILLING-004"
     },
     {
         "id": "ANOM_TECH_HIGH_INNOV_NO_FUNDS",

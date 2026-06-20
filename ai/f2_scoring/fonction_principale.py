@@ -40,6 +40,7 @@ def process_entrepreneur_profile(profil_input: str | dict[str, Any]) -> dict[str
     sub_scores_extraits = extract_sub_scores(profil_data)
     anomalies_p1 = extract_anomalies_p1(profil_data)
     blockers_extraits = extract_blockers(profil_data)
+    print(blockers_extraits)
     
     # Récupération sécurisée du secteur
     secteur = profil_data.get("secteur", "Général")

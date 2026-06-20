@@ -72,7 +72,27 @@ GLOBAL_WEIGHTS_ORDERED = {
 # =========================================================================
 # MOTEUR DE CALCUL INTERNE
 # =========================================================================
+import math
 
+def _appliquer_penalites_exponentielles(score_base: float, blockers: list[dict]) -> float:
+    """
+    Applique une réduction exponentielle basée sur la sévérité des blockers.
+    Inspiré du rationnement du crédit (Stiglitz & Weiss).
+    """
+    # Facteurs de sévérité (lambda)
+    # Plus le lambda est élevé, plus l'impact exponentiel est fort
+    SEVERITE = {
+        "jaune": 0.05,  # -5% de dégradation de confiance
+        "orange": 0.15, # -15% de dégradation de confiance
+        "rouge": 0.4  # -30% de dégradation de confiance
+    }
+    
+    total_lambda = sum(SEVERITE.get(b.get("niveau", "").lower(), 0.1) for b in blockers)
+    
+    # Calcul : Score * exp(-somme_lambda)
+    score_final = score_base * math.exp(-total_lambda)
+    
+    return round(score_final, 1)
 def _resolve_sector(secteur: str) -> str:
     secteur_lower = secteur.strip().lower()
     if secteur_lower in SECTOR_ALIASES:
@@ -220,35 +240,44 @@ def _generate_justification(
     return justifications[dimension][niveau], actions[dimension][niveau]
 
 
-def _compute_fri(scores_dict: dict[str, float], global_penalty: int = 0) -> tuple[int, str, bool]:
-    market_val = scores_dict.get("market", 0)
-    commercial_val = scores_dict.get("commercial_offer", 0)
-
+def _compute_fri(
+    scores_dict: dict[str, float], 
+    blockers: list[dict], 
+    global_penalty: int = 0
+) -> tuple[int, str, bool]:
+    
+    # 1. Calcul du score brut (AHP)
     fri_brut = sum(GLOBAL_WEIGHTS_ORDERED[dim] * val for dim, val in scores_dict.items())
-    fri_brut = max(0.0, round(fri_brut, 1) - global_penalty)
-
-    plafond_actif = (market_val < MARKET_SEUIL_BLOQUANT or commercial_val < COMMERCIAL_SEUIL_BLOQUANT)
-    fri_final = int(min(fri_brut, FRI_PLAFOND_CRITIQUE)) if plafond_actif else int(fri_brut)
-
-    if fri_final >= 70:
-        interp = f"Excellent ({fri_final}/100) — Profil bancable. Le projet peut initier une demarche de financement formelle."
+    
+    # 2. Application de la pénalité exponentielle (Logique Stiglitz & Weiss)
+    # Utilise ta fonction _appliquer_penalites_exponentielles définie précédemment
+    fri_apres_penalites = _appliquer_penalites_exponentielles(fri_brut, blockers)
+    
+    # 3. Application de la pénalité globale additionnelle (anomalies) et bornage
+    fri_final = int(max(0.0, min(100.0, round(fri_apres_penalites - global_penalty, 1))))
+    
+    # 4. Logique de bancabilité avec seuil à 60
+    # >= 75 : Excellent / Bancable
+    # >= 60 : Favorable / Bancable sous conditions
+    # < 60  : Non bancable
+    
+    if fri_final >= 75:
+        interp = f"Excellent ({fri_final}/100) — Profil très robuste, hautement bancable."
         is_fin = True
-    elif fri_final >= 50:
-        interp = f"Favorable ({fri_final}/100) — Profil potentiellement bancable avec des renforcements cibles."
+    elif fri_final >= 55:
+        interp = f"Favorable ({fri_final}/100) — Profil bancable, prêt pour une due diligence avec quelques ajustements."
         is_fin = True
-    elif fri_final >= 40:
-        interp = f"Insuffisant ({fri_final}/100) — Des blockers majeurs doivent etre resolus avant toute approche bancaire."
-        is_fin = False
     else:
-        if plafond_actif:
-            raison = "Market Score < 30" if market_val < MARKET_SEUIL_BLOQUANT else "Commercial Score < 25"
-            interp = f"Non bancable ({fri_final}/100) — Plafond active : {raison}. Ce projet ne peut PAS acceder a un financement dans son etat actuel."
-        else:
-            interp = f"Non bancable ({fri_final}/100) — Les scores cumulatifs sont trop faibles. Un accompagnement structurant est indispensable."
+        interp = f"Non bancable ({fri_final}/100) — Le score est inférieur au seuil de viabilité (55). Un accompagnement structurant est indispensable."
         is_fin = False
 
     return fri_final, interp, is_fin
 
+BLOCKER_NIVEAU_LABELS = {
+    "rouge": "bloqueur critique",
+    "orange": "bloqueur majeur",
+    "jaune": "point de vigilance",
+}
 
 def _build_resume_executif(
     secteur: str,
@@ -256,45 +285,118 @@ def _build_resume_executif(
     is_fin: bool,
     scores_dict: dict[str, float],
     nb_anomalies: int,
-    nb_blockers: int,
-    global_penalty: int = 0,  # Nouvelle variable passée au build
+    blockers: list[dict],
+    global_penalty: int = 0,
 ) -> str:
+
+    BLOCKER_MESSAGES = {
+        "Absence d'équipe fondatrice": (
+            "le projet repose sur un fondateur unique sans équipe constituée, "
+            "ce qui fragilise la crédibilité opérationnelle auprès des financeurs"
+        ),
+        "Entreprise non enregistrée": (
+            "l'absence d'immatriculation au RNE bloque toute démarche de "
+            "financement ou de facturation légale"
+        ),
+        "Besoin d'investissement équipements / matériel": (
+            "les équipements de production sont absents ou non financés, "
+            "rendant le démarrage opérationnel impossible"
+        ),
+        "Pas de produit ou service développé": (
+            "aucun MVP ni offre concrète n'existe encore, "
+            "le projet reste au stade de l'intention"
+        ),
+        "Idée non validée par le marché": (
+            "aucune validation terrain n'a été réalisée auprès de clients réels "
+            "ou d'experts sectoriels"
+        ),
+        "Absence de business plan": (
+            "l'absence de modélisation financière empêche tout dépôt de dossier "
+            "auprès des institutions de financement tunisiennes"
+        ),
+    }
+
     dim_faible = min(scores_dict, key=scores_dict.get)
     dim_forte  = max(scores_dict, key=scores_dict.get)
-    
-    status = "est bancable" if is_fin else "n'est PAS encore bancable"
-    
-    # 1. Introduction globale
-    debut = f"Analyse pour le secteur '{secteur}' : le projet {status} avec un Financing Readiness Index de {fri}/100. "
-    
-    # 2. Analyse des forces
-    forces = f"Le point fort intrinsèque du profil est le {DIMENSION_LABELS[dim_forte]} ({scores_dict[dim_forte]:.1f}/100). "
-    
-    # 3. Détermination dynamique de la cause principale de l'échec / frein
-    if global_penalty >= 40:
+    status     = "est bancable" if is_fin else "n'est PAS encore bancable"
+    nb_bl      = len(blockers)
+
+    # ── 1. Introduction ──────────────────────────────────────────
+    debut = (
+        f"Analyse pour le secteur '{secteur}' : le projet {status} "
+        f"avec un Financing Readiness Index de {fri}/100. "
+    )
+
+    # ── 2. Forces et faiblesses avec scores ──────────────────────
+    forces = (
+        f"Le point fort du projet est le {DIMENSION_LABELS[dim_forte]} "
+        f"avec un score de {scores_dict[dim_forte]:.1f}/100, "
+        f"tandis que le {DIMENSION_LABELS[dim_faible]} constitue le principal "
+        f"axe de progression avec seulement {scores_dict[dim_faible]:.1f}/100. "
+    )
+
+    # ── 3. Blockers avec niveau rouge en priorité ─────────────────
+    if nb_bl > 0:
+        blockers_rouges  = [b for b in blockers if b.get("niveau") == "rouge"]
+        blockers_autres  = [b for b in blockers if b.get("niveau") != "rouge"]
+
+        sections = []
+
+        if blockers_rouges:
+            msgs_rouges = " De plus, ".join(
+                BLOCKER_MESSAGES.get(b["description"], b["description"])
+                for b in blockers_rouges
+            )
+            sections.append(
+                f"⚠ {len(blockers_rouges)} bloqueur(s) critique(s) RED ont été détectés : "
+                f"{msgs_rouges}. "
+                "Ces points paralysent le projet et doivent être traités en urgence absolue. "
+            )
+
+        if blockers_autres:
+            sorted_autres = sorted(blockers_autres, key=lambda b: b.get("priorite", 99))
+            liste_autres = " ; ".join(
+                f"{BLOCKER_NIVEAU_LABELS.get(b.get('niveau', ''), b.get('niveau', ''))} "
+                f"({b['domaine'].upper()}) — "
+                + BLOCKER_MESSAGES.get(b["description"], b["description"])
+                for b in sorted_autres
+            )
+            sections.append(
+                f"S'y ajoutent {len(blockers_autres)} bloqueur(s) secondaire(s) : {liste_autres}. "
+            )
+
+        freins = "".join(sections)
+
+    elif global_penalty >= 20:
         freins = (
-            f"Cependant, la viabilité financière est lourdement compromise par une alerte de conformité réglementaire majeure "
-            f"(-{global_penalty} points appliqués au score global). "
-        )
-    elif nb_blockers > 0 and fri <= 40:
-        freins = (
-            f"Le profil est actuellement bloqué par {nb_blockers} critère(s) éliminatoire(s) actif(s) "
-            f"(notamment sur le plan organisationnel ou légal), ce qui active automatiquement un plafond critique de vigilance. "
+            f"La viabilité est impactée par des alertes de conformité "
+            f"cumulées (-{global_penalty} pts). "
         )
     else:
-        freins = f"Le principal levier d'amélioration est le {DIMENSION_LABELS[dim_faible]} ({scores_dict[dim_faible]:.1f}/100). "
-        
-    # 4. Conclusion / Appel à l'action
-    if nb_anomalies > 0 or nb_blockers > 0:
+        freins = (
+            f"Aucun bloqueur structurel détecté. Le principal levier reste "
+            f"le {DIMENSION_LABELS[dim_faible]} ({scores_dict[dim_faible]:.1f}/100). "
+        )
+
+    # ── 4. Conclusion ─────────────────────────────────────────────
+    if blockers_rouges if nb_bl > 0 else False:
         conclusion = (
-            f"Au total, {nb_anomalies} anomalie(s) et {nb_blockers} bloqueur(s) requièrent une résolution immédiate. "
-            f"Les actions correctives prioritaires sont détaillées dans les sections dédiées."
+            f"Au total, {nb_anomalies} anomalie(s) et {nb_bl} bloqueur(s) identifiés "
+            f"dont {len(blockers_rouges)} critique(s). "
+            "Aucune levée de fonds ne peut aboutir sans lever les bloqueurs rouges en premier."
+        )
+    elif nb_bl > 0:
+        conclusion = (
+            f"Au total, {nb_anomalies} anomalie(s) et {nb_bl} bloqueur(s) identifiés. "
+            "Les actions correctives doivent cibler les bloqueurs par ordre de priorité."
         )
     else:
-        conclusion = "Le projet présente un profil régulier, les optimisations mineures sont disponibles dans la section 'scores'."
+        conclusion = (
+            f"Au total, {nb_anomalies} anomalie(s) détectées. "
+            f"Concentrez l'effort sur l'axe {DIMENSION_LABELS[dim_faible]} pour progresser."
+        )
 
     return debut + forces + freins + conclusion
-
 def _evaluer_condition(condition: dict, contexte: dict) -> bool:
     var = condition.get("variable")
     op = condition.get("operator")
@@ -452,17 +554,17 @@ def calculer_scores(
 
     # --- Financing Readiness Index ---
     global_penalty = sum(a.get("penalty_points", 0) for a in formatted_anomalies if a.get("target_score") == "global")
-    fri, fri_interp, is_fin = _compute_fri(scores_valeurs, global_penalty)
+    fri, fri_interp, is_fin = _compute_fri(scores_valeurs, blockers, global_penalty)
 
     # --- MODIFICATION COMPATIBILITÉ : Ajout de global_penalty pour un résumé intelligent ---
     resume = _build_resume_executif(
-        secteur_full, 
-        fri, 
-        is_fin, 
-        scores_valeurs, 
-        len(formatted_anomalies), 
-        len(blockers), 
-        global_penalty
+        secteur=secteur_full, 
+        fri=fri, 
+        is_fin=is_fin, 
+        scores_dict=scores_valeurs, 
+        nb_anomalies=len(formatted_anomalies), 
+        blockers=blockers,      # On transmet la liste complète au lieu de len(blockers)
+        global_penalty=global_penalty
     )
 
     # --- Construction du contrat F2 ---

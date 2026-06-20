@@ -3,21 +3,32 @@ def extract_blockers(profil_data):
     blockers_bruts = profil_data.get("blockers", [])
     blockers_nettoyes = []
     
+    # Dictionnaire de correspondance pour associer la priorité à la couleur du niveau
+    mapping_niveaux = {
+        "1": "rouge",
+        "2": "orange",
+        "3": "jaune"
+    }
+    
     for blk in blockers_bruts:
-        # CAS 1 : Le blocker est un dictionnaire complet (ex: {"domaine": "Légal", "description": "..."})
+        # CAS 1 : Le blocker est un dictionnaire complet
         if isinstance(blk, dict):
+            # ON CHERCHE "priorite" ICI (valeur par défaut "2" si absente)
+            priorite_brute = str(blk.get("priorite", "2")).strip()
+            
             blockers_nettoyes.append({
                 "domaine": blk.get("domaine", "Général").capitalize(),
                 "description": blk.get("description", ""),
-                "niveau": blk.get("niveau", "orange")
+                # On transforme la priorité en couleur sous la clé "niveau"
+                "niveau": mapping_niveaux.get(priorite_brute, "orange")
             })
         
-        # CAS 2 : Le blocker est juste une chaîne de texte brute (ton cas actuel dans test_partie_1)
+        # CAS 2 : Le blocker est juste une chaîne de texte brute
         elif isinstance(blk, str):
             blockers_nettoyes.append({
-                "domaine": "Général",  # Valeur par défaut
-                "description": blk,    # Le texte de la chaîne devient la description
-                "niveau": "orange"     # Niveau par défaut
+                "domaine": "Général",
+                "description": blk,
+                "niveau": "orange"  # Niveau par défaut
             })
             
     return blockers_nettoyes

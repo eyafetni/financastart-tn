@@ -12,10 +12,34 @@
       },
       "type": "radio",
       "options": [
-        { "value": "auto-entrepreneur", "label": { "fr": "Auto-entrepreneur", "ar": "عامل حر" } },
-        { "value": "sarl", "label": { "fr": "SARL", "ar": "شركة ذات مسؤولية محدودة" } },
-        { "value": "sas", "label": { "fr": "SAS", "ar": "شركة مساهمة مبسطة" } },
-        { "value": "none", "label": { "fr": "Aucune structure enregistrée", "ar": "لا توجد هيكلة قانونية" } }
+        {
+          "value": "auto-entrepreneur",
+          "label": {
+            "fr": "Auto-entrepreneur",
+            "ar": "عامل حر"
+          }
+        },
+        {
+          "value": "sarl",
+          "label": {
+            "fr": "SARL",
+            "ar": "شركة ذات مسؤولية محدودة"
+          }
+        },
+        {
+          "value": "sas",
+          "label": {
+            "fr": "SAS",
+            "ar": "شركة مساهمة مبسطة"
+          }
+        },
+        {
+          "value": "none",
+          "label": {
+            "fr": "Aucune structure enregistrée",
+            "ar": "لا توجد هيكلة قانونية"
+          }
+        }
       ]
     },
     {
@@ -26,10 +50,34 @@
       },
       "type": "checkbox",
       "options": [
-        { "value": "interviews", "label": { "fr": "Entretiens utilisateurs", "ar": "مقابلات المستخدمين" } },
-        { "value": "prototype_test", "label": { "fr": "Test de prototype", "ar": "اختبار النموذج" } },
-        { "value": "beta_users", "label": { "fr": "Utilisateurs bêta", "ar": "المستخدمون التجريبيون" } },
-        { "value": "none", "label": { "fr": "Aucune validation", "ar": "بدون تحقق" } }
+        {
+          "value": "interviews",
+          "label": {
+            "fr": "Entretiens utilisateurs",
+            "ar": "مقابلات المستخدمين"
+          }
+        },
+        {
+          "value": "prototype_test",
+          "label": {
+            "fr": "Test de prototype",
+            "ar": "اختبار النموذج"
+          }
+        },
+        {
+          "value": "beta_users",
+          "label": {
+            "fr": "Utilisateurs bêta",
+            "ar": "المستخدمون التجريبيون"
+          }
+        },
+        {
+          "value": "none",
+          "label": {
+            "fr": "Aucune validation",
+            "ar": "بدون تحقق"
+          }
+        }
       ]
     },
     {
@@ -40,10 +88,34 @@
       },
       "type": "radio",
       "options": [
-        { "value": "production", "label": { "fr": "Production/Transformation", "ar": "الإنتاج/التحويل" } },
-        { "value": "distribution", "label": { "fr": "Distribution/Logistique", "ar": "التوزيع/الخدمات اللوجستية" } },
-        { "value": "retail", "label": { "fr": "Vente au détail", "ar": "البيع بالتجزئة" } },
-        { "value": "tech", "label": { "fr": "Solution technologique agri", "ar": "حل تكنولوجي زراعي" } }
+        {
+          "value": "production",
+          "label": {
+            "fr": "Production/Transformation",
+            "ar": "الإنتاج/التحويل"
+          }
+        },
+        {
+          "value": "distribution",
+          "label": {
+            "fr": "Distribution/Logistique",
+            "ar": "التوزيع/الخدمات اللوجستية"
+          }
+        },
+        {
+          "value": "retail",
+          "label": {
+            "fr": "Vente au détail",
+            "ar": "البيع بالتجزئة"
+          }
+        },
+        {
+          "value": "tech",
+          "label": {
+            "fr": "Solution technologique agri",
+            "ar": "حل تكنولوجي زراعي"
+          }
+        }
       ]
     },
     {
@@ -54,9 +126,27 @@
       },
       "type": "radio",
       "options": [
-        { "value": "very_ready", "label": { "fr": "Très prêt - tout est en place", "ar": "مستعد جداً - كل شيء جاهز" } },
-        { "value": "partially_ready", "label": { "fr": "Partiellement - besoin de clarifications", "ar": "جزئياً - بحاجة لتوضيحات" } },
-        { "value": "not_ready", "label": { "fr": "Pas prêt - besoin de travail", "ar": "غير مستعد - بحاجة للعمل" } }
+        {
+          "value": "very_ready",
+          "label": {
+            "fr": "Très prêt - tout est en place",
+            "ar": "مستعد جداً - كل شيء جاهز"
+          }
+        },
+        {
+          "value": "partially_ready",
+          "label": {
+            "fr": "Partiellement - besoin de clarifications",
+            "ar": "جزئياً - بحاجة لتوضيحات"
+          }
+        },
+        {
+          "value": "not_ready",
+          "label": {
+            "fr": "Pas prêt - besoin de travail",
+            "ar": "غير مستعد - بحاجة للعمل"
+          }
+        }
       ]
     },
     {
@@ -79,10 +169,34 @@
       },
       "type": "radio",
       "options": [
-        { "value": "b2b", "label": { "fr": "B2B (Entreprise à Entreprise)", "ar": "B2B" } },
-        { "value": "b2c", "label": { "fr": "B2C (Entreprise à Consommateur)", "ar": "B2C" } },
-        { "value": "hybrid", "label": { "fr": "Hybride", "ar": "مختلط" } },
-        { "value": "subscription", "label": { "fr": "Abonnement", "ar": "الاشتراك" } }
+        {
+          "value": "b2b",
+          "label": {
+            "fr": "B2B (Entreprise à Entreprise)",
+            "ar": "B2B"
+          }
+        },
+        {
+          "value": "b2c",
+          "label": {
+            "fr": "B2C (Entreprise à Consommateur)",
+            "ar": "B2C"
+          }
+        },
+        {
+          "value": "hybrid",
+          "label": {
+            "fr": "Hybride",
+            "ar": "مختلط"
+          }
+        },
+        {
+          "value": "subscription",
+          "label": {
+            "fr": "Abonnement",
+            "ar": "الاشتراك"
+          }
+        }
       ]
     },
     {
@@ -93,10 +207,34 @@
       },
       "type": "radio",
       "options": [
-        { "value": "0-3months", "label": { "fr": "0-3 mois", "ar": "0-3 أشهر" } },
-        { "value": "3-6months", "label": { "fr": "3-6 mois", "ar": "3-6 أشهر" } },
-        { "value": "6-12months", "label": { "fr": "6-12 mois", "ar": "6-12 شهراً" } },
-        { "value": "after_1year", "label": { "fr": "Plus d'1 an", "ar": "أكثر من سنة" } }
+        {
+          "value": "0-3months",
+          "label": {
+            "fr": "0-3 mois",
+            "ar": "0-3 أشهر"
+          }
+        },
+        {
+          "value": "3-6months",
+          "label": {
+            "fr": "3-6 mois",
+            "ar": "3-6 أشهر"
+          }
+        },
+        {
+          "value": "6-12months",
+          "label": {
+            "fr": "6-12 mois",
+            "ar": "6-12 شهراً"
+          }
+        },
+        {
+          "value": "after_1year",
+          "label": {
+            "fr": "Plus d'1 an",
+            "ar": "أكثر من سنة"
+          }
+        }
       ]
     },
     {
@@ -112,5 +250,10 @@
       }
     }
   ],
-  "answers": []
+  "answers": [
+    {
+      "id": "legal_status",
+      "valeur": "auto-entrepreneur"
+    }
+  ]
 }

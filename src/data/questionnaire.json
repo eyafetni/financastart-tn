@@ -1,22 +1,9 @@
 {
-  "description": "",
+  "description": "agriculture tunis growth\n",
   "stade_reel": "",
   "stade_percu": "",
   "divergence_explication": "",
   "questions": [
-    {
-      "id": "description_libre",
-      "etape": "Présentation du projet",
-      "texte": {
-        "fr": "Votre description (appuyez sur Entrée quand vous avez terminé) :",
-        "ar": "وصف مشروعك (اضغط على Enter عند الانتهاء) :"
-      },
-      "type": "textarea",
-      "placeholder": {
-        "fr": "Décrivez votre projet ici...",
-        "ar": "صف مشروعك هنا..."
-      }
-    },
     {
       "id": "nom_entreprise",
       "etape": "Présentation du projet",
@@ -28,6 +15,19 @@
       "placeholder": {
         "fr": "Nom de l'entreprise ou du projet",
         "ar": "اسم الشركة أو المشروع"
+      }
+    },
+    {
+      "id": "description_libre",
+      "etape": "Présentation du projet",
+      "texte": {
+        "fr": "Décrivez votre projet en quelques lignes en précisant :\n    • Le secteur d'activité :\n      — Agriculture/Sylviculture/Pêche\n      — Industrie/Construction\n      — Commerce/Transport/Logistique\n      — Service/Tourisme\n      — Technologie et Services Entreprise\n    • La région où vous êtes basé (ex: Tunis, Sfax, Sousse...)\n    • Selon vous, à quel stade en êtes-vous aujourd'hui ?\n      (Ideation / Market Validation / Structuration / Fundraising / Launch Planning / Growth)\nSelon cette description, le système doit repérer automatiquement le secteur, la région et le stade.",
+        "ar": "صف مشروعك في بضع أسطر مع تحديد:\n    • قطاع النشاط:\n      — الفلاحة / الغابات / الصيد\n      — الصناعة / البناء\n      — التجارة / النقل / اللوجستيك\n      — الخدمات / السياحة\n      — التكنولوجيا وخدمات المؤسسات\n    • الجهة التي تتمركز فيها (مثال: تونس، صفاقس، سوسة...)\n    • حسب رأيك، في أي مرحلة أنتم الآن؟\n      (مرحلة الفكرة / التحقق من السوق / الهيكلة / جمع التمويل / تخطيط الإطلاق / النمو)\nحسب هذا الوصف، يجب أن يحدد النظام تلقائيًا القطاع، الجهة والمرحلة."
+      },
+      "type": "textarea",
+      "placeholder": {
+        "fr": "Décrivez votre projet...",
+        "ar": "صف مشروعك..."
       }
     },
     {
@@ -1546,6 +1546,993 @@
           }
         }
       ]
+    },
+    {
+      "id": "mkt_cible",
+      "etape": "Étape 8 — Suivi et perspectives",
+      "dimension": "MKT",
+      "texte": {
+        "fr": "Quel est le modèle d'interaction et la cible prioritaire de votre solution ?",
+        "ar": "ما هو نموذج التفاعل والجمهور المستهدف الرئيسي لحلك ؟"
+      },
+      "type": "radio",
+      "options": [
+        {
+          "value": "b2c",
+          "label": {
+            "fr": "Grand public / Utilisateurs individuels",
+            "ar": "عموم الجمهور / المستخدمون الأفراد"
+          }
+        },
+        {
+          "value": "b2b_pme",
+          "label": {
+            "fr": "Petites et Moyennes Entreprises / Professionnels indépendants",
+            "ar": "المؤسسات الصغيرة والمتوسطة / المهنيون المستقلون"
+          }
+        },
+        {
+          "value": "b2b_grands_comptes",
+          "label": {
+            "fr": "Grands Comptes / Groupes Industriels / Corporates",
+            "ar": "الحسابات الكبرى / المجموعات الصناعية / الشركات الكبرى"
+          }
+        },
+        {
+          "value": "b2b2c",
+          "label": {
+            "fr": "Modèle intermédiaire (via un partenaire pour toucher le client final)",
+            "ar": "نموذج وسيط (عبر شريك للوصول إلى العميل النهائي)"
+          }
+        },
+        {
+          "value": "b2g",
+          "label": {
+            "fr": "Gouvernements / Ministères / Collectivités Publiques",
+            "ar": "الحكومات / الوزارات / الجماعات العمومية"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mkt_som",
+      "etape": "Étape 8 — Suivi et perspectives",
+      "dimension": "MKT",
+      "texte": {
+        "fr": "Quelle est la valeur financière annuelle estimée de votre marché immédiatement accessible (SOM) ?",
+        "ar": "ما هي القيمة المالية السنوية التقديرية لسوقك المتاح فورًا (SOM) ؟"
+      },
+      "type": "radio",
+      "options": [
+        {
+          "value": "moins_1m",
+          "label": {
+            "fr": "Marché de niche très restreint (Moins de 1M DT / an)",
+            "ar": "سوق متخصص محدود جداً (أقل من مليون دينار / سنة)"
+          }
+        },
+        {
+          "value": "1m_5m",
+          "label": {
+            "fr": "Marché local avec un plafond rapide (1M à 5M DT / an)",
+            "ar": "سوق محلي بسقف سريع (من مليون إلى 5 ملايين دينار / سنة)"
+          }
+        },
+        {
+          "value": "5m_20m",
+          "label": {
+            "fr": "Marché national significatif (5M à 20M DT / an)",
+            "ar": "سوق وطني مهم (من 5 إلى 20 مليون دينار / سنة)"
+          }
+        },
+        {
+          "value": "20m_50m",
+          "label": {
+            "fr": "Marché à fort potentiel d'extension régionale (20M à 50M DT / an)",
+            "ar": "سوق بإمكانية توسع إقليمي كبيرة (من 20 إلى 50 مليون دينار / سنة)"
+          }
+        },
+        {
+          "value": "plus_50m",
+          "label": {
+            "fr": "Marché de masse international (Plus de 50M DT / an)",
+            "ar": "سوق جماهيري دولي (أكثر من 50 مليون دينار / سنة)"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mkt_concurrence",
+      "etape": "Étape 8 — Suivi et perspectives",
+      "dimension": "MKT",
+      "texte": {
+        "fr": "Comment se structure l'intensité concurrentielle sur votre segment cible ?",
+        "ar": "كيف تتشكّل حدة المنافسة في قطاعك المستهدف ؟"
+      },
+      "type": "radio",
+      "options": [
+        {
+          "value": "sature",
+          "label": {
+            "fr": "Marché saturé, guerre des prix féroce avec des géants installés",
+            "ar": "سوق مشبع، حرب أسعار شرسة مع عمالقة راسخين"
+          }
+        },
+        {
+          "value": "acteurs_finances",
+          "label": {
+            "fr": "Plusieurs acteurs directs bien financés et identifiés",
+            "ar": "عدة منافسين مباشرين ممولين جيداً ومحددين"
+          }
+        },
+        {
+          "value": "moderee",
+          "label": {
+            "fr": "Concurrence modérée, fragmentation permettant de prendre des parts",
+            "ar": "منافسة معتدلة، تشتّت يتيح اكتساب حصص سوقية"
+          }
+        },
+        {
+          "value": "emergent",
+          "label": {
+            "fr": "Marché émergent, solutions alternatives indirectes ou obsolètes",
+            "ar": "سوق ناشئ، بدائل غير مباشرة أو متقادمة"
+          }
+        },
+        {
+          "value": "pionnier",
+          "label": {
+            "fr": "Pionnier absolu, aucun concurrent direct sur cette proposition de valeur",
+            "ar": "ريادة مطلقة، لا منافس مباشر على هذا العرض القيمي"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mkt_traction",
+      "etape": "Étape 8 — Suivi et perspectives",
+      "dimension": "MKT",
+      "texte": {
+        "fr": "Quel est l'état réel et mesurable de votre validation commerciale sur le terrain ?",
+        "ar": "ما هو الوضع الفعلي والقابل للقياس لتحقق التجاري الميداني ؟"
+      },
+      "type": "radio",
+      "options": [
+        {
+          "value": "zero_utilisateur",
+          "label": {
+            "fr": "Zéro utilisateur, validation théorique uniquement",
+            "ar": "صفر مستخدم، تحقق نظري فقط"
+          }
+        },
+        {
+          "value": "beta_testeurs",
+          "label": {
+            "fr": "Bêta-testeurs actifs ou utilisateurs pilotes non-payants",
+            "ar": "مختبرو نسخة بيتا نشطون أو مستخدمون تجريبيون غير مدفوعين"
+          }
+        },
+        {
+          "value": "premieres_transactions",
+          "label": {
+            "fr": "Premières transactions ou contrats signés (Preuve de Concept payante)",
+            "ar": "أولى المعاملات أو العقود الموقعة (إثبات مفهوم مدفوع)"
+          }
+        },
+        {
+          "value": "portefeuille_croissance",
+          "label": {
+            "fr": "Portefeuille clients en croissance régulière et acquisition active",
+            "ar": "محفظة عملاء في نمو منتظم واكتساب نشط"
+          }
+        },
+        {
+          "value": "mrr_stable",
+          "label": {
+            "fr": "Revenus récurrents stables (MRR/ARR) avec fort taux de rétention",
+            "ar": "إيرادات متكررة مستقرة (MRR/ARR) مع معدل احتفاظ مرتفع"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mkt_monetisation",
+      "etape": "Étape 8 — Suivi et perspectives",
+      "dimension": "MKT",
+      "texte": {
+        "fr": "Où en est la validation empirique de votre mécanisme de capture de valeur ?",
+        "ar": "أين تقف في التحقق التجريبي من آلية تحقيق القيمة لديك ؟"
+      },
+      "type": "radio",
+      "options": [
+        {
+          "value": "flou",
+          "label": {
+            "fr": "Modèle de revenus flou, gratuité totale sans stratégie de conversion",
+            "ar": "نموذج إيرادات ضبابي، مجانية كاملة بدون استراتيجية تحويل"
+          }
+        },
+        {
+          "value": "one_shot",
+          "label": {
+            "fr": "Vente unique (one-shot), revenus dépendants de chaque acte de vente",
+            "ar": "بيع لمرة واحدة، إيرادات مرتبطة بكل عملية بيع"
+          }
+        },
+        {
+          "value": "transaction",
+          "label": {
+            "fr": "Modèle basé sur des frais de transaction ou de mise en relation",
+            "ar": "نموذج قائم على رسوم المعاملات أو الوساطة"
+          }
+        },
+        {
+          "value": "recurrent",
+          "label": {
+            "fr": "Revenus récurrents prévisibles (SaaS, abonnements périodiques)",
+            "ar": "إيرادات متكررة متوقعة (SaaS، اشتراكات دورية)"
+          }
+        },
+        {
+          "value": "hybride",
+          "label": {
+            "fr": "Modèle hybride validé (Abonnement + Commissions + Options premium)",
+            "ar": "نموذج هجين مُتحقق منه (اشتراك + عمولات + خيارات مميزة)"
+          }
+        }
+      ]
+    },
+    {
+      "id": "com_modelisation",
+      "etape": "Étape 8 — Suivi et perspectives",
+      "dimension": "COM",
+      "texte": {
+        "fr": "Quel est le niveau de maturité de votre modélisation financière et stratégique ?",
+        "ar": "ما هو مستوى نضج نمذجتك المالية والاستراتيجية ؟"
+      },
+      "type": "radio",
+      "options": [
+        {
+          "value": "aucun",
+          "label": {
+            "fr": "Aucune projection financière ni business plan formalisé",
+            "ar": "لا توجد توقعات مالية ولا خطة أعمال رسمية"
+          }
+        },
+        {
+          "value": "basique",
+          "label": {
+            "fr": "Structure de coûts basique estimée sans métriques clés (LTV, CAC)",
+            "ar": "هيكل تكاليف أساسي تقديري بدون مؤشرات رئيسية (LTV، CAC)"
+          }
+        },
+        {
+          "value": "bmc_complet",
+          "label": {
+            "fr": "Business Model Canvas complet avec prévisions financières à 3 ans",
+            "ar": "نموذج عمل شامل مع توقعات مالية لـ 3 سنوات"
+          }
+        },
+        {
+          "value": "valide_mentors",
+          "label": {
+            "fr": "Modèle financier complet validé par des mentors ou experts internes",
+            "ar": "نموذج مالي كامل مُتحقق منه بواسطة موجّهين أو خبراء داخليين"
+          }
+        },
+        {
+          "value": "audite_investisseurs",
+          "label": {
+            "fr": "Plan d'affaires validé et audité par des investisseurs ou cabinets tiers",
+            "ar": "خطة أعمال مُتحقق منها ومراجَعة من مستثمرين أو مكاتب مستقلة"
+          }
+        }
+      ]
+    },
+    {
+      "id": "com_maturite_tech",
+      "etape": "Étape 8 — Suivi et perspectives",
+      "dimension": "COM",
+      "texte": {
+        "fr": "Où se situe votre solution sur l'échelle de développement technique ?",
+        "ar": "أين تقع حلولك على سلّم النضج التقني ؟"
+      },
+      "type": "radio",
+      "options": [
+        {
+          "value": "maquettes",
+          "label": {
+            "fr": "Maquettes graphiques, storyboards ou slides de présentation uniquement",
+            "ar": "نماذج تصميمية، لوحات قصصية أو شرائح عرض فقط"
+          }
+        },
+        {
+          "value": "prototype",
+          "label": {
+            "fr": "Prototype de laboratoire fonctionnel mais instable (Preuve de Concept)",
+            "ar": "نموذج أولي مختبري وظيفي لكنه غير مستقر (إثبات المفهوم)"
+          }
+        },
+        {
+          "value": "mvp",
+          "label": {
+            "fr": "Produit Minimum Viable déployé et testé en conditions réelles",
+            "ar": "منتج قابل للتطبيق بحد أدنى (MVP) مُطبَّق ومُختبَر في ظروف حقيقية"
+          }
+        },
+        {
+          "value": "produit_fini",
+          "label": {
+            "fr": "Produit fini, stable, sécurisé et prêt pour un déploiement massif",
+            "ar": "منتج مكتمل، مستقر، آمن وجاهز للانتشار الواسع"
+          }
+        },
+        {
+          "value": "disponible_international",
+          "label": {
+            "fr": "Produit hautement disponible, API-fié et prêt pour l'international",
+            "ar": "منتج عالي التوفر، متوفر عبر API وجاهز للتوسع الدولي"
+          }
+        }
+      ]
+    },
+    {
+      "id": "com_pricing",
+      "etape": "Étape 8 — Suivi et perspectives",
+      "dimension": "COM",
+      "texte": {
+        "fr": "Comment votre structure tarifaire (pricing) est-elle perçue par le marché ?",
+        "ar": "كيف يُنظر إلى هيكل تسعيرتك في السوق ؟"
+      },
+      "type": "radio",
+      "options": [
+        {
+          "value": "intuitif",
+          "label": {
+            "fr": "Prix fixé au hasard ou à l'intuition sans étude terrain",
+            "ar": "سعر محدد عشوائياً أو بالحدس دون دراسة ميدانية"
+          }
+        },
+        {
+          "value": "cout_marge",
+          "label": {
+            "fr": "Tarification basique calculée uniquement sur les coûts + une marge fixe",
+            "ar": "تسعير أساسي محسوب على التكاليف فقط + هامش ربح ثابت"
+          }
+        },
+        {
+          "value": "calque_concurrents",
+          "label": {
+            "fr": "Prix calqué horizontalement sur les solutions existantes",
+            "ar": "سعر مقتبس أفقياً من الحلول القائمة"
+          }
+        },
+        {
+          "value": "roi_client",
+          "label": {
+            "fr": "Prix indexé sur le ROI (Retour sur Investissement) généré pour le client",
+            "ar": "سعر مرتبط بالعائد على الاستثمار (ROI) الذي يحققه العميل"
+          }
+        },
+        {
+          "value": "optimise",
+          "label": {
+            "fr": "Pricing hautement optimisé à l'usage, testé et validé par des cohortes",
+            "ar": "تسعير مُحسَّن للغاية حسب الاستخدام، مُختبَر ومُتحقق منه بمجموعات"
+          }
+        }
+      ]
+    },
+    {
+      "id": "com_pain_point",
+      "etape": "Étape 8 — Suivi et perspectives",
+      "dimension": "COM",
+      "texte": {
+        "fr": "À quel point votre produit résout-il un problème critique (Pain Point) pour votre cible ?",
+        "ar": "إلى أي حد يحل منتجك مشكلة حرجة (نقطة ألم) لجمهورك المستهدف ؟"
+      },
+      "type": "radio",
+      "options": [
+        {
+          "value": "inexistant",
+          "label": {
+            "fr": "Le problème ciblé n'intéresse pas le marché ou n'existe pas",
+            "ar": "المشكلة المستهدفة لا تهم السوق أو غير موجودة"
+          }
+        },
+        {
+          "value": "confort",
+          "label": {
+            "fr": "Outil de confort secondaire, déclenche peu d'intentions d'achat",
+            "ar": "أداة راحة ثانوية، تُفضي إلى القليل من نوايا الشراء"
+          }
+        },
+        {
+          "value": "reel_differe",
+          "label": {
+            "fr": "Problème réel mais le client remet souvent l'achat à plus tard",
+            "ar": "مشكلة حقيقية لكن العميل يؤجل الشراء في أغلب الأحيان"
+          }
+        },
+        {
+          "value": "critique",
+          "label": {
+            "fr": "Besoin critique, les clients recherchent activement une solution",
+            "ar": "حاجة ملحّة، العملاء يبحثون بنشاط عن حل"
+          }
+        },
+        {
+          "value": "pmf",
+          "label": {
+            "fr": "Dépendance forte au produit, rétention exceptionnelle (Product-Market Fit validé)",
+            "ar": "اعتماد قوي على المنتج، احتفاظ استثنائي (Product-Market Fit مُتحقق منه)"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ino_originalite",
+      "etape": "Étape 8 — Suivi et perspectives",
+      "dimension": "INO",
+      "texte": {
+        "fr": "Quelle est l'originalité de votre positionnement sur votre zone géographique cible ?",
+        "ar": "ما مدى أصالة تموضعك في منطقتك الجغرافية المستهدفة ؟"
+      },
+      "type": "radio",
+      "options": [
+        {
+          "value": "replication",
+          "label": {
+            "fr": "Réplication exacte d'un service déjà omniprésent localement",
+            "ar": "نسخ طبق الأصل لخدمة موجودة في كل مكان محلياً"
+          }
+        },
+        {
+          "value": "option_plus",
+          "label": {
+            "fr": "Même concept que les concurrents avec une simple option en plus",
+            "ar": "نفس مفهوم المنافسين مع ميزة إضافية بسيطة"
+          }
+        },
+        {
+          "value": "importation",
+          "label": {
+            "fr": "Importation et adaptation d'un concept étranger inexistant ici",
+            "ar": "استيراد وتكييف مفهوم أجنبي غير موجود محلياً"
+          }
+        },
+        {
+          "value": "inedit_pays",
+          "label": {
+            "fr": "Concept totalement inédit et pionnier à l'échelle du pays",
+            "ar": "مفهوم فريد تماماً ورائد على مستوى البلد"
+          }
+        },
+        {
+          "value": "rupture_internationale",
+          "label": {
+            "fr": "Innovation de rupture sans équivalent à l'échelle internationale",
+            "ar": "ابتكار تحويلي لا مثيل له على المستوى الدولي"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ino_technologie",
+      "etape": "Étape 8 — Suivi et perspectives",
+      "dimension": "INO",
+      "texte": {
+        "fr": "Quelle est l'épaisseur technologique sous-jacente à votre solution ?",
+        "ar": "ما هو عمق التكنولوجيا الكامنة وراء حلّك ؟"
+      },
+      "type": "radio",
+      "options": [
+        {
+          "value": "assemblage",
+          "label": {
+            "fr": "Assemblage d'outils tiers existants sans aucun code propriétaire",
+            "ar": "تجميع أدوات خارجية قائمة بدون أي كود خاص"
+          }
+        },
+        {
+          "value": "app_standard",
+          "label": {
+            "fr": "Application Web ou Mobile standard sans complexité technique",
+            "ar": "تطبيق ويب أو موبايل عادي بدون تعقيد تقني"
+          }
+        },
+        {
+          "value": "cloud_api",
+          "label": {
+            "fr": "Système connecté avec des architectures Cloud et intégration poussée d'API",
+            "ar": "نظام متصل بمعماريات سحابية وتكامل متقدم مع API"
+          }
+        },
+        {
+          "value": "ia_data",
+          "label": {
+            "fr": "Algorithmes d'Intelligence Artificielle ou traitement de données propriétaires",
+            "ar": "خوارزميات ذكاء اصطناعي أو معالجة بيانات خاصة"
+          }
+        },
+        {
+          "value": "deeptech",
+          "label": {
+            "fr": "DeepTech issue de laboratoires de recherche, biotechnologies ou hardware complexe",
+            "ar": "تقنية عميقة (DeepTech) من مختبرات بحثية، تقنية حيوية أو عتاد معقد"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ino_barriere",
+      "etape": "Étape 8 — Suivi et perspectives",
+      "dimension": "INO",
+      "texte": {
+        "fr": "De quel avantage défensif disposez-vous pour empêcher une copie rapide par un concurrent ?",
+        "ar": "ما هي الميزة الدفاعية التي تمنع منافساً من نسخ حلّك بسرعة ؟"
+      },
+      "type": "radio",
+      "options": [
+        {
+          "value": "copiable",
+          "label": {
+            "fr": "N'importe quel développeur peut copier le concept en deux semaines",
+            "ar": "أي مطوّر يستطيع نسخ المفهوم في أسبوعين"
+          }
+        },
+        {
+          "value": "execution",
+          "label": {
+            "fr": "Simple avantage de rapidité d'exécution ou de communication",
+            "ar": "مجرد ميزة في سرعة التنفيذ أو التواصل"
+          }
+        },
+        {
+          "value": "exclusivites",
+          "label": {
+            "fr": "Exclusivités commerciales, partenariats clés ou base de données qualifiée",
+            "ar": "حقوق تجارية حصرية، شراكات رئيسية أو قاعدة بيانات مؤهلة"
+          }
+        },
+        {
+          "value": "reseau",
+          "label": {
+            "fr": "Barrière forte grâce aux effets de réseau (plus d'utilisateurs = incopiable)",
+            "ar": "حاجز قوي بفضل تأثيرات الشبكة (المزيد من المستخدمين = غير قابل للنسخ)"
+          }
+        },
+        {
+          "value": "brevet",
+          "label": {
+            "fr": "Brevet déposé, secret industriel strict ou technologie hautement complexe",
+            "ar": "براءة اختراع مسجلة، سر صناعي صارم أو تقنية بالغة التعقيد"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ino_disruption",
+      "etape": "Étape 8 — Suivi et perspectives",
+      "dimension": "INO",
+      "texte": {
+        "fr": "Comment votre innovation modifie-t-elle les habitudes des acteurs du secteur ?",
+        "ar": "كيف يغيّر ابتكارك عادات الفاعلين في القطاع ؟"
+      },
+      "type": "radio",
+      "options": [
+        {
+          "value": "aucun_changement",
+          "label": {
+            "fr": "L'utilisateur ne change absolument rien à ses processus actuels",
+            "ar": "المستخدم لا يغيّر أي شيء في عملياته الحالية"
+          }
+        },
+        {
+          "value": "gain_marginal",
+          "label": {
+            "fr": "Simple gain de temps ou économie marginale sur un processus existant",
+            "ar": "مجرد ربح وقت أو توفير هامشي في عملية قائمة"
+          }
+        },
+        {
+          "value": "modification_visible",
+          "label": {
+            "fr": "Modification visible des habitudes de travail ou de consommation",
+            "ar": "تغيير ملحوظ في عادات العمل أو الاستهلاك"
+          }
+        },
+        {
+          "value": "obsolescence",
+          "label": {
+            "fr": "Rend obsolètes les anciennes méthodes pour une grande partie des utilisateurs",
+            "ar": "يجعل الأساليب القديمة متقادمة لدى شريحة كبيرة من المستخدمين"
+          }
+        },
+        {
+          "value": "nouvel_usage",
+          "label": {
+            "fr": "Crée un nouvel usage ou une nouvelle industrie à part entière",
+            "ar": "يخلق استخداماً جديداً أو صناعة كاملة مستقلة"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sca_deploiement",
+      "etape": "Étape 8 — Suivi et perspectives",
+      "dimension": "SCA",
+      "texte": {
+        "fr": "Quel est le niveau de complexité pour déployer votre solution sur un nouveau territoire ?",
+        "ar": "ما مستوى تعقيد نشر حلّك على منطقة جغرافية جديدة ؟"
+      },
+      "type": "radio",
+      "options": [
+        {
+          "value": "infrastructure_lourde",
+          "label": {
+            "fr": "Nécessite des infrastructures lourdes, des locaux et des équipes physiques",
+            "ar": "يتطلب بنية تحتية ضخمة ومقرات وفرقاً ميدانية"
+          }
+        },
+        {
+          "value": "autorisations",
+          "label": {
+            "fr": "Soumis à des autorisations légales longues et complexes par pays",
+            "ar": "خاضع لتراخيص قانونية طويلة ومعقدة في كل دولة"
+          }
+        },
+        {
+          "value": "bureau_reduit",
+          "label": {
+            "fr": "Nécessite l'ouverture d'un bureau réduit et du support local",
+            "ar": "يتطلب فتح مكتب صغير ودعماً محلياً"
+          }
+        },
+        {
+          "value": "standardise",
+          "label": {
+            "fr": "Processus hautement standardisés, déploiement rapide sans gros ajustements",
+            "ar": "عمليات موحّدة للغاية، نشر سريع بدون تعديلات كبيرة"
+          }
+        },
+        {
+          "value": "full_digital",
+          "label": {
+            "fr": "Modèle 100% digital, expansion internationale instantanée sans barrière",
+            "ar": "نموذج 100% رقمي، توسع دولي فوري بلا حواجز"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sca_masse_salariale",
+      "etape": "Étape 8 — Suivi et perspectives",
+      "dimension": "SCA",
+      "texte": {
+        "fr": "Comment évolue votre masse salariale par rapport à l'augmentation de vos clients ?",
+        "ar": "كيف تتطور كتلة أجورك مقارنةً بنمو قاعدة عملائك ؟"
+      },
+      "type": "radio",
+      "options": [
+        {
+          "value": "lineaire",
+          "label": {
+            "fr": "Progression strictement linéaire (Plus de clients = besoin d'autant de staff)",
+            "ar": "تطور خطي صارم (المزيد من العملاء = حاجة لنفس القدر من الموظفين)"
+          }
+        },
+        {
+          "value": "humain_central",
+          "label": {
+            "fr": "L'humain reste au cœur de la livraison de valeur, goulot d'étranglement fort",
+            "ar": "الإنسان يبقى في قلب تقديم القيمة، اختناق تشغيلي قوي"
+          }
+        },
+        {
+          "value": "vagues",
+          "label": {
+            "fr": "Recrutements par vagues nécessaires pour soutenir la charge technique",
+            "ar": "توظيف على دفعات ضروري لاستيعاب العبء التقني"
+          }
+        },
+        {
+          "value": "infrastructure",
+          "label": {
+            "fr": "L'infrastructure gère la hausse, le staff n'augmente que pour le support",
+            "ar": "البنية التحتية تستوعب النمو، الكادر لا يزيد إلا للدعم"
+          }
+        },
+        {
+          "value": "automatise",
+          "label": {
+            "fr": "Automatisation totale, coût marginal de livraison d'un nouveau client quasi nul",
+            "ar": "أتمتة كاملة، التكلفة الحدية لاستقطاب عميل جديد شبه معدومة"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sca_capex",
+      "etape": "Étape 8 — Suivi et perspectives",
+      "dimension": "SCA",
+      "texte": {
+        "fr": "Quel est le niveau d'investissement financier (CAPEX) requis pour onboarder un grand volume de clients ?",
+        "ar": "ما مستوى الاستثمار المالي (CAPEX) المطلوب لاستقطاب حجم كبير من العملاء ؟"
+      },
+      "type": "radio",
+      "options": [
+        {
+          "value": "millions",
+          "label": {
+            "fr": "Nécessite des millions d'investissements matériels ou marketing préalables",
+            "ar": "يتطلب ملايين من الاستثمارات المادية أو التسويقية المسبقة"
+          }
+        },
+        {
+          "value": "lever_fonds",
+          "label": {
+            "fr": "Besoin de lever des fonds massifs pour financer le fonds de roulement",
+            "ar": "حاجة لجمع تمويل ضخم لتمويل رأس المال العامل"
+          }
+        },
+        {
+          "value": "absorbable",
+          "label": {
+            "fr": "Coûts d'acquisition d'infrastructure absorbables par la marge opérationnelle",
+            "ar": "تكاليف اقتناء البنية التحتية قابلة للامتصاص بالهامش التشغيلي"
+          }
+        },
+        {
+          "value": "faible",
+          "label": {
+            "fr": "Coût de configuration initial très faible pour chaque groupe de clients",
+            "ar": "تكلفة الإعداد الأولي منخفضة جداً لكل مجموعة عملاء"
+          }
+        },
+        {
+          "value": "marginal_nul",
+          "label": {
+            "fr": "Coût marginal d'infrastructure transparent, autofinancement par le volume",
+            "ar": "تكلفة حدية للبنية التحتية شفافة، تمويل ذاتي بالحجم"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sca_geographie",
+      "etape": "Étape 8 — Suivi et perspectives",
+      "dimension": "SCA",
+      "texte": {
+        "fr": "Quelle est l'échelle géographique inscrite dans l'architecture même de votre projet ?",
+        "ar": "ما النطاق الجغرافي المضمَّن في صميم بنية مشروعك ؟"
+      },
+      "type": "radio",
+      "options": [
+        {
+          "value": "ville",
+          "label": {
+            "fr": "Solution viable uniquement à l'échelle d'une ville ou communauté restreinte",
+            "ar": "حل قابل للتطبيق فقط على مستوى مدينة أو مجتمع محدود"
+          }
+        },
+        {
+          "value": "gouvernorats",
+          "label": {
+            "fr": "Portée limitée à quelques gouvernorats ou régions spécifiques",
+            "ar": "نطاق مقتصر على بعض الولايات أو المناطق المحددة"
+          }
+        },
+        {
+          "value": "national",
+          "label": {
+            "fr": "Conçu pour couvrir l'intégralité du territoire national uniquement",
+            "ar": "مُصمَّم لتغطية كامل التراب الوطني فقط"
+          }
+        },
+        {
+          "value": "mena",
+          "label": {
+            "fr": "Adapté nativement pour cibler l'Afrique du Nord et le Moyen-Orient (MENA)",
+            "ar": "مُهيَّأ أصلاً لاستهداف شمال أفريقيا والشرق الأوسط (MENA)"
+          }
+        },
+        {
+          "value": "born_global",
+          "label": {
+            "fr": "Produit 'Born Global', conçu sans frontières géographiques ni culturelles",
+            "ar": "منتج 'Born Global' مُصمَّم بلا حدود جغرافية أو ثقافية"
+          }
+        }
+      ]
+    },
+    {
+      "id": "esg_carbone",
+      "etape": "Étape 8 — Suivi et perspectives",
+      "dimension": "ESG",
+      "texte": {
+        "fr": "Quelle est la contribution directe ou indirecte de votre entreprise sur l'empreinte carbone ?",
+        "ar": "ما هو الأثر المباشر أو غير المباشر لشركتك على البصمة الكربونية ؟"
+      },
+      "type": "radio",
+      "options": [
+        {
+          "value": "fortement_carbone",
+          "label": {
+            "fr": "Activité fortement carbonée sans politique de réduction ou compensation",
+            "ar": "نشاط مكثف الكربون بدون سياسة لتخفيضه أو تعويضه"
+          }
+        },
+        {
+          "value": "efforts_optimisation",
+          "label": {
+            "fr": "Génère des émissions de GES mais des efforts d'optimisation sont en cours",
+            "ar": "ينتج غازات دفيئة لكن جهود التحسين جارية"
+          }
+        },
+        {
+          "value": "neutre",
+          "label": {
+            "fr": "Impact neutre par défaut (services numériques de base non éco-conçus)",
+            "ar": "أثر محايد بالافتراض (خدمات رقمية أساسية غير مصممة بيئياً)"
+          }
+        },
+        {
+          "value": "reduction_active",
+          "label": {
+            "fr": "Réduction active et prouvée des émissions (efficacité, circuits courts)",
+            "ar": "خفض نشط وموثوق للانبعاثات (كفاءة، سلاسل توريد قصيرة)"
+          }
+        },
+        {
+          "value": "captation",
+          "label": {
+            "fr": "Modèle de captation carbone ou solution réduisant l'impact de tout un secteur",
+            "ar": "نموذج لامتصاص الكربون أو حل يقلص أثر قطاع بأكمله"
+          }
+        }
+      ]
+    },
+    {
+      "id": "esg_eau",
+      "etape": "Étape 8 — Suivi et perspectives",
+      "dimension": "ESG",
+      "texte": {
+        "fr": "Quel niveau d'intelligence et de précision intégrez-vous dans la gestion ou la préservation de l'eau ?",
+        "ar": "ما مستوى الذكاء والدقة الذي تُدمجه في إدارة المياه أو الحفاظ عليها ؟"
+      },
+      "type": "radio",
+      "options": [
+        {
+          "value": "non_mesure",
+          "label": {
+            "fr": "Consommation d'eau non mesurée, aucune conscience de la ressource",
+            "ar": "استهلاك المياه غير مقاس، لا وعي بالمورد"
+          }
+        },
+        {
+          "value": "moyennes_floues",
+          "label": {
+            "fr": "Évaluation de l'empreinte eau basée sur des moyennes théoriques floues",
+            "ar": "تقييم بصمة المياه مبني على متوسطات نظرية ضبابية"
+          }
+        },
+        {
+          "value": "releves_manuels",
+          "label": {
+            "fr": "Relevés réguliers mais manuels de la consommation avec correctifs tardifs",
+            "ar": "قراءات منتظمة لكن يدوية للاستهلاك مع إجراءات تصحيح متأخرة"
+          }
+        },
+        {
+          "value": "iot_monitoring",
+          "label": {
+            "fr": "Monitoring digital continu (IoT/Capteurs) avec alertes instantanées",
+            "ar": "مراقبة رقمية مستمرة (IoT / أجهزة استشعار) مع تنبيهات فورية"
+          }
+        },
+        {
+          "value": "ia_eau",
+          "label": {
+            "fr": "Pilotage automatisé par IA prédisant les besoins et réduisant au strict minimum",
+            "ar": "توجيه آلي بالذكاء الاصطناعي يتوقع الاحتياجات ويقلصها إلى الحد الأدنى"
+          }
+        }
+      ]
+    },
+    {
+      "id": "esg_sols",
+      "etape": "Étape 8 — Suivi et perspectives",
+      "dimension": "ESG",
+      "texte": {
+        "fr": "Comment votre activité interagit-elle avec la santé des sols et les écosystèmes vivants ?",
+        "ar": "كيف يتفاعل نشاطك مع صحة التربة والنظم البيئية الحية ؟"
+      },
+      "type": "radio",
+      "options": [
+        {
+          "value": "intrants_chimiques",
+          "label": {
+            "fr": "Utilisation d'intrants chimiques ou processus accélérant l'érosion",
+            "ar": "استخدام مدخلات كيميائية أو عمليات تُسرّع التعرية"
+          }
+        },
+        {
+          "value": "aucun_impact",
+          "label": {
+            "fr": "Aucun impact direct évident et aucune métrique d'impact collectée",
+            "ar": "لا أثر مباشر واضح ولا مقاييس أثر مجمَّعة"
+          }
+        },
+        {
+          "value": "pratiques_limitant",
+          "label": {
+            "fr": "Pratiques limitant la casse (réduction des déchets, respect des lois)",
+            "ar": "ممارسات تحدّ من الأضرار (تقليص النفايات، احترام القوانين)"
+          }
+        },
+        {
+          "value": "amelioration_mesurable",
+          "label": {
+            "fr": "Amélioration mesurable de la qualité des terres ou baisse drastique des intrants",
+            "ar": "تحسين قابل للقياس في جودة الأراضي أو انخفاض جذري في المدخلات"
+          }
+        },
+        {
+          "value": "restauration",
+          "label": {
+            "fr": "Restauration active de la biodiversité locale ou des sols (agriculture verte)",
+            "ar": "استعادة نشطة للتنوع البيولوجي المحلي أو التربة (الزراعة الخضراء)"
+          }
+        }
+      ]
+    },
+    {
+      "id": "esg_dechets",
+      "etape": "Étape 8 — Suivi et perspectives",
+      "dimension": "ESG",
+      "texte": {
+        "fr": "Quel est le cycle de vie des matières premières et des déchets générés par votre chaîne de valeur ?",
+        "ar": "ما هو دورة حياة المواد الخام والنفايات الناتجة عن سلسلة قيمتك ؟"
+      },
+      "type": "radio",
+      "options": [
+        {
+          "value": "extraire_jeter",
+          "label": {
+            "fr": "Modèle 'Extraire, Fabriquer, Jeter' avec production résiduelle massive",
+            "ar": "نموذج 'استخراج، تصنيع، رمي' مع مخلفات ضخمة"
+          }
+        },
+        {
+          "value": "tri_basique",
+          "label": {
+            "fr": "Tri basique et respect des réglementations municipales de gestion standard",
+            "ar": "فرز أساسي واحترام اللوائح البلدية للإدارة القياسية"
+          }
+        },
+        {
+          "value": "reduction_amont",
+          "label": {
+            "fr": "Actions concrètes pour réduire la consommation de matières en amont",
+            "ar": "إجراءات ملموسة لتقليص استهلاك المواد في المرحلة الأولى"
+          }
+        },
+        {
+          "value": "valorisation",
+          "label": {
+            "fr": "Transformation des déchets ou sous-produits en nouvelles matières marchandes",
+            "ar": "تحويل النفايات أو المنتجات الثانوية إلى مواد تجارية جديدة"
+          }
+        },
+        {
+          "value": "zero_dechet",
+          "label": {
+            "fr": "Modèle Zéro-Déchet natif où 100% des extrants réintègrent un cycle vertueux",
+            "ar": "نموذج صفر نفايات أصيل حيث 100% من المخرجات تعود إلى دورة فاضلة"
+          }
+        }
+      ]
     }
   ],
   "answers": {
@@ -1567,6 +2554,9 @@
     "business_plan": "complet",
     "innovation": "differencie",
     "accompagnement": "programme_termine",
-    "financement_externe": "capital_risque"
+    "financement_externe": "capital_risque",
+    "description_libre": "agriculture tunis growth\n"
+
+
   }
 }

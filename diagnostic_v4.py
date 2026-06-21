@@ -9,9 +9,7 @@ import uuid
 from datetime import datetime
 
 
-# ─────────────────────────────────────────────
-# TAXONOMIE DES 6 STADES
-# ─────────────────────────────────────────────
+
 STADES = {
     1: {"nom": "Ideation", "description": "Idée sans validation ni équipe complète", "financement": "Love money / Concours", "score_min": 0, "score_max": 15},
     2: {"nom": "Market Validation", "description": "Premiers clients / traction naissante", "financement": "Microfinance / BTS", "score_min": 16, "score_max": 30},
@@ -22,35 +20,35 @@ STADES = {
 }
 
 
-# ─────────────────────────────────────────────
-# DÉFINITION DES SECTEURS
-# ─────────────────────────────────────────────
+
 SECTEURS = {
     "agriculture_sylviculture_peche": {
         "label": "Agriculture / Sylviculture / Pêche",
         "mots_cles": [
-            "agri", "agro", "agricol", "agroaliment", "food", "sylvicult",
-            "forêt", "peche", "pêche", "élevage", "elevage",
-            "cultures", "céréales", "cereales", "maraich", "arboricult",
-            "aquaculture", "halieutique" , "argi-tech"
+            "agri", "agro", "agricol", "agroaliment", "food", "sylvicult","sylvi",
+            "forêt","foret", "peche", "pêche", "élevage", "elevage",
+            "cultures", "céréales", "cereales", "maraich", "arboricult","aqua",
+            "aquaculture", "halieutique" , "argi-tech", "agri-tech", "agritech", "foodtech"
         ]
     },
     "industrie_construction": {
         "label": "Industrie / Construction",
         "mots_cles": [
-            "industrie", "manufactur", "usine", "fabricat", "product",
-            "construct", "bâtiment", "batiment", "travaux", "btp",
+            "indus", "industrie", "manufactur", "usine", "fabricat", "product","prod",
+            "construct", "bâtiment", "batiment","trav", "travaux", "btp","immo",
             "immobilier", "génie civil", "genie civil", "matériaux", "materiaux",
-            "mécanique", "mecanique", "metallurgi", "chimie", "plasturgie"
+            "mécanique", "mecanique", "metal","metallurgi", "chimie","chimique","textil",
+            "plasturgi", "automobile", "aéronautique", "aeronautique", "énergie", "energie",
         ]
     },
     "commerce_transport_logistique": {
         "label": "Commerce / Transport / Logistique",
         "mots_cles": [
-            "commerce", "vente", "retail", "boutique", "distribut",
-            "transport", "logistique", "livraison", "fret", "import",
-            "export", "supply chain", "entrepôt", "entrepot", "transit",
-            "grossiste", "détaillant", "detaillant"
+            "commerce", "vente", "retail", "boutique", "distribut","logistique",
+            "transport", "livraison", "fret", "import","export","supply chain", "supply", "chain",
+            "entrepôt", "entrepot", "transit","grossiste","detail","gros", "détaillant",
+            "detaillant","e-commerce", "ecommerce", "marketplace", "transport",
+            "mobilité", "mobilite", "last mile", "last-mile"
         ]
     },
     "service_tourisme": {
@@ -60,7 +58,7 @@ SECTEURS = {
             "hôtel", "hotel", "restaurant", "café", "cafe", "restaurat",
             "hébergement", "hebergement", "voyage", "agence de voyage",
             "bien-être", "bien être", "santé", "sante", "éducation", "education",
-            "immobilier service", "nettoyage", "maintenance"
+            "immobilier service", "nettoyage", "maintenance",
         ]
     },
     "tech_services_entreprise": {
@@ -68,16 +66,13 @@ SECTEURS = {
         "mots_cles": [
             "tech", "digital", "logiciel", "app", "web", "ia", "ai", "saas",
             "software", "développement", "developpement", "informatique",
-            "cybersecurité", "cybersécurité", "cloud", "data", "fintech",
+            "cyber","cybersecurité", "cybersécurité", "cloud", "data", "fintech",
             "edtech", "healthtech", "b2b", "erp", "crm", "automatisation",
-            "robotique", "iot", "blockchain", "marketplace"
+            "robotique", "iot", "blockchain", "marketplace","platform", "plateforme"
         ]
     },
 }
 
-# ─────────────────────────────────────────────
-# DÉFINITION DES QUESTIONS F2 — SCORING MULTI-DIMENSIONNEL
-# ─────────────────────────────────────────────
 
 DIMENSIONS_F2 = {
     "MKT": "Marché & Traction",
@@ -344,10 +339,6 @@ QUESTIONS_F2 = {
 
 
 def poser_scoring_f2():
-    """
-    Pose les 21 questions de scoring F2 et retourne un dict reponses
-    au format {"question_id": {"index": X, "valeur": "..."}}
-    """
     reponses = {}
 
     dim_courante = None
@@ -355,11 +346,6 @@ def poser_scoring_f2():
         # Afficher un séparateur de dimension à chaque changement
         if q["dimension"] != dim_courante:
             dim_courante = q["dimension"]
-            label_dim = DIMENSIONS_F2[dim_courante]
-            print(f"\n\n  {'═'*50}")
-            print(f"  DIMENSION : {dim_courante} — {label_dim}")
-            print(f"  {'═'*50}")
-
         textes_options = [opt["texte"] for opt in q["options"]]
         reponse_texte  = poser_question(q["question"], textes_options)
 
@@ -371,10 +357,6 @@ def poser_scoring_f2():
 
     return reponses
 
-
-# ─────────────────────────────────────────────
-# HELPERS UI
-# ─────────────────────────────────────────────
 
 def afficher_titre():
     print("═" * 60)
@@ -421,10 +403,6 @@ def alerte_divergence(message):
     print(f"\n  ⚠️  SIGNAL DÉTECTÉ : {message}")
 
 
-# ─────────────────────────────────────────────
-# MOTEUR DE SCORE
-# ─────────────────────────────────────────────
-
 class ScoreEngine:
     def __init__(self):
         self.score = 0
@@ -459,9 +437,7 @@ class ScoreEngine:
         return STADES[1]["nom"], 1
 
 
-# ─────────────────────────────────────────────
-# BRANCHES SECTORIELLES
-# ─────────────────────────────────────────────
+
 
 def branche_agriculture_sylviculture_peche(engine, profil):
     print("\n Section spécifique : Agriculture / Sylviculture / Pêche")
@@ -735,15 +711,7 @@ def branche_tech_services_entreprise(engine, profil):
     profil["scalabilite"] = scalabilite
 
 
-# ─────────────────────────────────────────────
-# DÉTECTION AUTOMATIQUE DU SECTEUR
-# ─────────────────────────────────────────────
-
 def detecter_secteur(desc_lower):
-    """
-    Détecte automatiquement le secteur depuis la description libre.
-    Retourne la clé du secteur ou None si non détecté.
-    """
     scores = {}
     for cle, info in SECTEURS.items():
         score = sum(1 for mot in info["mots_cles"] if mot in desc_lower)
@@ -755,18 +723,22 @@ def detecter_secteur(desc_lower):
     return None
 
 
-# ─────────────────────────────────────────────
-# QUESTIONNAIRE PRINCIPAL
-# ─────────────────────────────────────────────
-
 def run_diagnostic():
     afficher_titre()
     engine = ScoreEngine()
     profil = {}
 
-    # ── BLOC 1 : Profil de base + Auto-évaluation (texte libre) ──
+    
+
+
     print("\n ÉTAPE 1 — Présentation de votre projet")
-    print("  " + "─" * 50)
+    nom_entreprise = poser_question(
+        "Nom de votre entreprise / projet :",
+        type_reponse="texte"
+    )
+    profil["nom_entreprise"] = nom_entreprise
+
+    print("─" * 50)
     print("  Décrivez votre projet en quelques lignes en précisant :")
     print("    • Le secteur d'activité :")
     print("      — Agriculture/Sylviculture/Pêche")
@@ -780,6 +752,9 @@ def run_diagnostic():
     print("      (Ideation / Market Validation / Structuration /")
     print("       Fundraising / Launch Planning / Growth)")
 
+    
+    
+    
     description_libre = poser_question(
         "Votre description (appuyez sur Entrée quand vous avez terminé) :",
         type_reponse="texte"
@@ -792,11 +767,7 @@ def run_diagnostic():
     # ── Extraction guidée depuis la description libre ──
     print("\n  Merci ! Quelques précisions rapides pour compléter votre profil :\n")
 
-    nom_entreprise = poser_question(
-        "Nom de votre entreprise / projet :",
-        type_reponse="texte"
-    )
-    profil["nom_entreprise"] = nom_entreprise
+
 
     # ── Détection automatique du secteur ──
     desc_lower = description_libre.lower()
@@ -900,7 +871,6 @@ def run_diagnostic():
         engine.ajouter_blocker("organisationnel", "Absence d'équipe fondatrice", 2)
         profil["equipe"] = "solo"
 
-    # ── BLOC 2 : Branches sectorielles ──
     print("\n ÉTAPE 2 — Questions sectorielles")
 
     if secteur_cle == "agriculture_sylviculture_peche":
@@ -914,7 +884,6 @@ def run_diagnostic():
     elif secteur_cle == "tech_services_entreprise":
         branche_tech_services_entreprise(engine, profil)
 
-    # ── BLOC 3 : Structure juridique ──
     print("\n ÉTAPE 3 — Structure juridique")
 
     rne = poser_question(
@@ -945,7 +914,7 @@ def run_diagnostic():
                 "impossible de constituer un dossier bancable sans entité juridique."
             )
 
-    # ── BLOC 4 : Revenus et validation marché ──
+
     print("\n ÉTAPE 4 — Revenus et validation marché")
 
     a_revenus = poser_question(
@@ -1028,7 +997,7 @@ def run_diagnostic():
                 engine.ajouter_blocker("marché", "Idée non validée par le marché", 1)
                 profil["validation_type"] = "aucune"
 
-    # ── BLOC 5 : Business Plan et dossier ──
+    
     print("\n ÉTAPE 5 — Business Plan et dossier")
 
     bp = poser_question(
@@ -1128,7 +1097,7 @@ def run_diagnostic():
 
     # ── BLOC 8 : Scoring Multi-Dimensionnel F2 ──
     print("\n ÉTAPE 8 — Évaluation Multi-Dimensionnelle")
-    print("  " + "─" * 50)
+    print("─" * 50)
     print("  Ces questions évaluent votre projet sur 5 dimensions :")
     print("  Marché, Offre Commerciale, Innovation, Scalabilité, Impact.")
     reponses_f2 = poser_scoring_f2()
@@ -1189,9 +1158,6 @@ def run_diagnostic():
     print(f"\n Financement adapté à votre stade réel : {stade_info['financement']}")
     print("\n")
 
-    # ─────────────────────────────────────────────
-    # EXPORT JSON — Contrat F1
-    # ─────────────────────────────────────────────
 
     output = {
         "entrepreneur_id": entrepreneur_id,
@@ -1220,166 +1186,5 @@ def run_diagnostic():
     print("═" * 60 + "\n")
 
     return output
-
-
-# ─────────────────────────────────────────────
-# CAS DE DIVERGENCE DOCUMENTÉS (Tests)
-# ─────────────────────────────────────────────
-
-def run_cas_divergence():
-    """
-    Simule les 3 cas de divergence documentés sans interaction utilisateur.
-    Retourne les 3 JSONs pour documentation et tests.
-    """
-
-    cas = []
-
-    # ── CAS 1 : Prêt pour BFPME (Fundraising) → Structuration ──
-    # Secteur : Agriculture / Sylviculture / Pêche
-    cas1 = {
-        "entrepreneur_id": "ENT-CAS01",
-        "timestamp": datetime.now().isoformat(),
-        "stade_reel": "Structuration",
-        "stade_percu": "Fundraising",
-        "score_diagnostic": 22,
-        "gap_detecte": True,
-        "gap_explication": (
-            "L'entrepreneur se croit prêt pour financement BFPME mais n'a pas de RNE enregistré "
-            "et aucun business plan documenté. La BFPME exige une entité juridique formelle "
-            "et un dossier bancable complet — deux prérequis absents ici."
-        ),
-        "gaps": [
-            "Pas de RNE enregistré",
-            "Pas de business plan documenté",
-            "Certifications phytosanitaires manquantes",
-            "Zéro client payant"
-        ],
-        "blockers": [
-            {"domaine": "légal", "description": "Entreprise non enregistrée", "priorite": 1},
-            {"domaine": "financier", "description": "Absence de business plan", "priorite": 2},
-            {"domaine": "réglementaire", "description": "Absence de certification phytosanitaire", "priorite": 3},
-            {"domaine": "marché", "description": "Validation client insuffisante", "priorite": 4}
-        ],
-        "secteur": "agriculture_sylviculture_peche",
-        "secteur_label": "Agriculture / Sylviculture / Pêche",
-        "localisation": "Sfax",
-        "signaux_divergence": [
-            "Vous vous croyez en 'Fundraising' mais n'avez pas de RNE — impossible de constituer un dossier bancable.",
-            "Vous vous positionnez en 'Fundraising' mais n'avez pas de business plan."
-        ],
-        "financement_recommande": "Microfinance / BTS",
-        "cas_reference": "CAS-01",
-        "cas_description": "Entrepreneur agricole convaincu d'être prêt pour la BFPME sans structure juridique ni BP"
-    }
-    cas.append(cas1)
-
-    # ── CAS 2 : J'ai de la traction marché → Ideation ──
-    # Secteur : Commerce / Transport / Logistique
-    cas2 = {
-        "entrepreneur_id": "ENT-CAS02",
-        "timestamp": datetime.now().isoformat(),
-        "stade_reel": "Ideation",
-        "stade_percu": "Market Validation",
-        "score_diagnostic": 8,
-        "gap_detecte": True,
-        "gap_explication": (
-            "L'entrepreneur interprète l'enthousiasme de son entourage comme de la traction marché. "
-            "Aucun client payant, aucune lettre d'intention, aucune validation par des experts sectoriels. "
-            "Des amis intéressés ≠ demande marché réelle. Le projet est en stade idéation."
-        ),
-        "gaps": [
-            "Aucun client payant identifié",
-            "Validation uniquement par des proches — non représentative",
-            "Pas de contrats ni lettres d'intention",
-            "Réseau de distribution non établi",
-            "Capacité logistique / transport non assurée"
-        ],
-        "blockers": [
-            {"domaine": "marché", "description": "Traction non prouvée par des clients réels", "priorite": 1},
-            {"domaine": "financier", "description": "Zéro revenu généré", "priorite": 2}
-        ],
-        "secteur": "commerce_transport_logistique",
-        "secteur_label": "Commerce / Transport / Logistique",
-        "localisation": "Tunis",
-        "signaux_divergence": [
-            "Des amis ou de la famille intéressés par votre idée ≠ traction marché réelle. Aucun client payant détecté."
-        ],
-        "financement_recommande": "Love money / Concours",
-        "cas_reference": "CAS-02",
-        "cas_description": "Entrepreneur commerce/logistique confondant intérêt de l'entourage avec validation marché"
-    }
-    cas.append(cas2)
-
-    # ── CAS 3 : Mon projet est très innovant → Innovation Score faible ──
-    # Secteur : Technologie et Services Entreprise
-    cas3 = {
-        "entrepreneur_id": "ENT-CAS03",
-        "timestamp": datetime.now().isoformat(),
-        "stade_reel": "Market Validation",
-        "stade_percu": "Launch Planning",
-        "score_diagnostic": 28,
-        "gap_detecte": True,
-        "gap_explication": (
-            "L'entrepreneur se perçoit comme très innovant et prêt au lancement, "
-            "mais un produit identique existe sur le marché tunisien depuis plus de 3 ans. "
-            "L'innovation perçue est subjective — le diagnostic objectif révèle une différenciation "
-            "insuffisante et un positionnement non défendu face aux concurrents établis."
-        ),
-        "gaps": [
-            "Produit identique existant sur le marché tunisien depuis 3+ ans",
-            "Pas de barrière à l'entrée identifiée",
-            "Différenciation non documentée face aux concurrents",
-            "Pas de propriété intellectuelle protégée",
-            "Modèle peu scalable — croissance coûteuse"
-        ],
-        "blockers": [
-            {"domaine": "marché", "description": "Concurrents établis non adressés dans la stratégie", "priorite": 1},
-            {"domaine": "technique", "description": "Aucune protection IP", "priorite": 2},
-            {"domaine": "organisationnel", "description": "Positionnement marché flou", "priorite": 3}
-        ],
-        "secteur": "tech_services_entreprise",
-        "secteur_label": "Technologie et Services Entreprise",
-        "localisation": "Sousse",
-        "signaux_divergence": [
-            "Votre solution existe déjà sur le marché tunisien depuis plusieurs années. "
-            "L'innovation perçue ne se traduit pas en différenciation réelle."
-        ],
-        "financement_recommande": "Microfinance / BTS",
-        "cas_reference": "CAS-03",
-        "cas_description": "Entrepreneur tech surestimant l'innovation d'un produit déjà existant en Tunisie"
-    }
-    cas.append(cas3)
-
-    return cas
-
-
-# ─────────────────────────────────────────────
-# POINT D'ENTRÉE
-# ─────────────────────────────────────────────
-
 if __name__ == "__main__":
-    import sys
-
-    if len(sys.argv) > 1 and sys.argv[1] == "--cas-divergence":
-        print("\n" + "═" * 60)
-        print("   📋  CAS DE DIVERGENCE DOCUMENTÉS")
-        print("═" * 60)
-
-        cas = run_cas_divergence()
-
-        for c in cas:
-            print(f"\n  🔍 {c['cas_reference']} : {c['cas_description']}")
-            print(f"     Secteur      : {c['secteur_label']}")
-            print(f"     Stade perçu  : {c['stade_percu']}")
-            print(f"     Stade réel   : {c['stade_reel']}")
-            print(f"     Explication  : {c['gap_explication'][:100]}...")
-
-            filename = f"cas_divergence_{c['cas_reference']}.json"
-            with open(filename, "w", encoding="utf-8") as f:
-                json.dump(c, f, ensure_ascii=False, indent=2)
-            print(f"     → Exporté : {filename}")
-
-        print("\n  ✅ 3 cas exportés avec succès.\n")
-
-    else:
-        result = run_diagnostic()
+    result = run_diagnostic()

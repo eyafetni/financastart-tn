@@ -1,259 +1,1572 @@
 {
   "description": "",
-  "stade_reel": "Structuration",
-  "stade_percu": "Fundraising",
-  "divergence_explication": "L'entrepreneur se croit prêt pour le financement mais n'a pas de structure juridique enregistrée.",
+  "stade_reel": "",
+  "stade_percu": "",
+  "divergence_explication": "",
   "questions": [
     {
-      "id": "legal_status",
+      "id": "description_libre",
+      "etape": "Présentation du projet",
       "texte": {
-        "fr": "Statut légal de l'entreprise",
-        "ar": "الحالة القانونية للشركة"
+        "fr": "Votre description (appuyez sur Entrée quand vous avez terminé) :",
+        "ar": "وصف مشروعك (اضغط على Enter عند الانتهاء) :"
+      },
+      "type": "textarea",
+      "placeholder": {
+        "fr": "Décrivez votre projet ici...",
+        "ar": "صف مشروعك هنا..."
+      }
+    },
+    {
+      "id": "nom_entreprise",
+      "etape": "Présentation du projet",
+      "texte": {
+        "fr": "Nom de votre entreprise / projet :",
+        "ar": "اسم شركتك / مشروعك :"
+      },
+      "type": "text",
+      "placeholder": {
+        "fr": "Nom de l'entreprise ou du projet",
+        "ar": "اسم الشركة أو المشروع"
+      }
+    },
+    {
+      "id": "confirmation_secteur",
+      "etape": "Présentation du projet",
+      "texte": {
+        "fr": "Secteur détecté depuis votre description : {label} — Est-ce correct ?",
+        "ar": "القطاع المكتشف من وصفك : {label} — هل هذا صحيح ؟"
       },
       "type": "radio",
       "options": [
         {
-          "value": "auto-entrepreneur",
+          "value": "oui",
           "label": {
-            "fr": "Auto-entrepreneur",
-            "ar": "عامل حر"
+            "fr": "Oui",
+            "ar": "نعم"
           }
         },
+        {
+          "value": "non",
+          "label": {
+            "fr": "Non",
+            "ar": "لا"
+          }
+        }
+      ],
+      "next": {
+        "oui": null,
+        "non": "choix_secteur"
+      }
+    },
+    {
+      "id": "choix_secteur",
+      "etape": "Présentation du projet",
+      "texte": {
+        "fr": "Confirmez votre secteur d'activité :",
+        "ar": "حدد قطاع نشاطك :"
+      },
+      "type": "radio",
+      "condition": "confirmation_secteur=non",
+      "options": [
+        {
+          "value": "agriculture",
+          "label": {
+            "fr": "Agriculture / Sylviculture / Pêche",
+            "ar": "الفلاحة / الغابات / الصيد"
+          }
+        },
+        {
+          "value": "industrie",
+          "label": {
+            "fr": "Industrie / Construction",
+            "ar": "الصناعة / البناء"
+          }
+        },
+        {
+          "value": "commerce",
+          "label": {
+            "fr": "Commerce / Transport / Logistique",
+            "ar": "التجارة / النقل / اللوجستيك"
+          }
+        },
+        {
+          "value": "service",
+          "label": {
+            "fr": "Service / Tourisme",
+            "ar": "الخدمات / السياحة"
+          }
+        },
+        {
+          "value": "technologie",
+          "label": {
+            "fr": "Technologie et Services Entreprise",
+            "ar": "التكنولوجيا وخدمات الشركات"
+          }
+        }
+      ]
+    },
+    {
+      "id": "confirmation_region",
+      "etape": "Présentation du projet",
+      "texte": {
+        "fr": "Région détectée depuis votre description : {région} — Est-ce correct ?",
+        "ar": "الجهة المكتشفة من وصفك : {région} — هل هذا صحيح ؟"
+      },
+      "type": "radio",
+      "options": [
+        {
+          "value": "oui",
+          "label": {
+            "fr": "Oui",
+            "ar": "نعم"
+          }
+        },
+        {
+          "value": "non",
+          "label": {
+            "fr": "Non",
+            "ar": "لا"
+          }
+        }
+      ],
+      "next": {
+        "oui": null,
+        "non": "choix_region"
+      }
+    },
+    {
+      "id": "choix_region",
+      "etape": "Présentation du projet",
+      "texte": {
+        "fr": "Confirmez votre région :",
+        "ar": "حدد جهتك :"
+      },
+      "type": "radio",
+      "condition": "confirmation_region=non",
+      "options": [
+        {
+          "value": "bizerte",
+          "label": {
+            "fr": "Bizerte",
+            "ar": "بنزرت"
+          }
+        },
+        {
+          "value": "tunis",
+          "label": {
+            "fr": "Tunis",
+            "ar": "تونس"
+          }
+        },
+        {
+          "value": "ariana",
+          "label": {
+            "fr": "Ariana",
+            "ar": "أريانة"
+          }
+        },
+        {
+          "value": "ben_arous",
+          "label": {
+            "fr": "Ben Arous",
+            "ar": "بن عروس"
+          }
+        },
+        {
+          "value": "manouba",
+          "label": {
+            "fr": "Manouba",
+            "ar": "منوبة"
+          }
+        },
+        {
+          "value": "nabeul",
+          "label": {
+            "fr": "Nabeul",
+            "ar": "نابل"
+          }
+        },
+        {
+          "value": "sfax",
+          "label": {
+            "fr": "Sfax",
+            "ar": "صفاقس"
+          }
+        },
+        {
+          "value": "zaghouan",
+          "label": {
+            "fr": "Zaghouan",
+            "ar": "زغوان"
+          }
+        },
+        {
+          "value": "beja",
+          "label": {
+            "fr": "Beja",
+            "ar": "باجة"
+          }
+        },
+        {
+          "value": "jendouba",
+          "label": {
+            "fr": "Jendouba",
+            "ar": "جندوبة"
+          }
+        },
+        {
+          "value": "siliana",
+          "label": {
+            "fr": "Siliana",
+            "ar": "سليانة"
+          }
+        },
+        {
+          "value": "kasserine",
+          "label": {
+            "fr": "Kasserine",
+            "ar": "القصرين"
+          }
+        },
+        {
+          "value": "kef",
+          "label": {
+            "fr": "Kef",
+            "ar": "الكاف"
+          }
+        },
+        {
+          "value": "kairouan",
+          "label": {
+            "fr": "Kairouan",
+            "ar": "القيروان"
+          }
+        },
+        {
+          "value": "sousse",
+          "label": {
+            "fr": "Sousse",
+            "ar": "سوسة"
+          }
+        },
+        {
+          "value": "monastir",
+          "label": {
+            "fr": "Monastir",
+            "ar": "المنستير"
+          }
+        },
+        {
+          "value": "mahdia",
+          "label": {
+            "fr": "Mahdia",
+            "ar": "المهدية"
+          }
+        },
+        {
+          "value": "sidi_bouzid",
+          "label": {
+            "fr": "Sidi Bouzid",
+            "ar": "سيدي بوزيد"
+          }
+        },
+        {
+          "value": "tozeur",
+          "label": {
+            "fr": "Tozeur",
+            "ar": "توزر"
+          }
+        },
+        {
+          "value": "kebili",
+          "label": {
+            "fr": "Kebili",
+            "ar": "قبلي"
+          }
+        },
+        {
+          "value": "gabes",
+          "label": {
+            "fr": "Gabes",
+            "ar": "قابس"
+          }
+        },
+        {
+          "value": "gafsa",
+          "label": {
+            "fr": "Gafsa",
+            "ar": "قفصة"
+          }
+        },
+        {
+          "value": "medenine",
+          "label": {
+            "fr": "Medenine",
+            "ar": "مدنين"
+          }
+        },
+        {
+          "value": "tataouine",
+          "label": {
+            "fr": "Tataouine",
+            "ar": "تطاوين"
+          }
+        }
+      ]
+    },
+    {
+      "id": "confirmation_stade",
+      "etape": "Présentation du projet",
+      "texte": {
+        "fr": "Stade perçu détecté depuis votre description : {stade} — Est-ce correct ?",
+        "ar": "المرحلة المكتشفة من وصفك : {stade} — هل هذا صحيح ؟"
+      },
+      "type": "radio",
+      "options": [
+        {
+          "value": "oui",
+          "label": {
+            "fr": "Oui",
+            "ar": "نعم"
+          }
+        },
+        {
+          "value": "non",
+          "label": {
+            "fr": "Non",
+            "ar": "لا"
+          }
+        }
+      ],
+      "next": {
+        "oui": null,
+        "non": "choix_stade"
+      }
+    },
+    {
+      "id": "choix_stade",
+      "etape": "Présentation du projet",
+      "texte": {
+        "fr": "Selon vous, à quel stade est votre projet aujourd'hui ?",
+        "ar": "في رأيك، في أي مرحلة يوجد مشروعك اليوم ؟"
+      },
+      "type": "radio",
+      "condition": "confirmation_stade=non",
+      "options": [
+        {
+          "value": "ideation",
+          "label": {
+            "fr": "Ideation",
+            "ar": "مرحلة الفكرة"
+          }
+        },
+        {
+          "value": "market_validation",
+          "label": {
+            "fr": "Market Validation",
+            "ar": "التحقق من السوق"
+          }
+        },
+        {
+          "value": "structuration",
+          "label": {
+            "fr": "Structuration",
+            "ar": "الهيكلة"
+          }
+        },
+        {
+          "value": "fundraising",
+          "label": {
+            "fr": "Fundraising",
+            "ar": "جمع التمويل"
+          }
+        },
+        {
+          "value": "launch_planning",
+          "label": {
+            "fr": "Launch Planning",
+            "ar": "التخطيط للإطلاق"
+          }
+        },
+        {
+          "value": "growth",
+          "label": {
+            "fr": "Growth",
+            "ar": "النمو"
+          }
+        }
+      ]
+    },
+    {
+      "id": "equipe",
+      "etape": "Présentation du projet",
+      "texte": {
+        "fr": "Votre équipe fondatrice est-elle complète ?",
+        "ar": "هل فريقك التأسيسي مكتمل ؟"
+      },
+      "type": "radio",
+      "options": [
+        {
+          "value": "complete",
+          "label": {
+            "fr": "Oui, équipe complète avec rôles définis",
+            "ar": "نعم، الفريق مكتمل مع أدوار محددة"
+          }
+        },
+        {
+          "value": "partielle",
+          "label": {
+            "fr": "Partiellement (certains rôles clés manquants)",
+            "ar": "جزئيًا (بعض الأدوار الرئيسية غائبة)"
+          }
+        },
+        {
+          "value": "seul",
+          "label": {
+            "fr": "Non, je suis seul pour l'instant",
+            "ar": "لا، أنا وحدي في الوقت الحالي"
+          }
+        }
+      ]
+    },
+    {
+      "id": "agri_certifications",
+      "etape": "Questions sectorielles",
+      "texte": {
+        "fr": "Avez-vous des certifications sanitaires ou phytosanitaires (ISO 22000, HACCP, GlobalG.A.P., etc.) ?",
+        "ar": "هل تمتلك شهادات صحية أو نباتية (ISO 22000، HACCP، GlobalG.A.P.، إلخ) ؟"
+      },
+      "type": "radio",
+      "condition": "choix_secteur=agriculture",
+      "branch": [
+        "agriculture"
+      ],
+      "options": [
+        {
+          "value": "oui",
+          "label": {
+            "fr": "Oui",
+            "ar": "نعم"
+          }
+        },
+        {
+          "value": "non",
+          "label": {
+            "fr": "Non",
+            "ar": "لا"
+          }
+        }
+      ]
+    },
+    {
+      "id": "agri_chaine_froid",
+      "etape": "Questions sectorielles",
+      "texte": {
+        "fr": "Avez-vous une chaîne de froid opérationnelle ou un accord avec un prestataire logistique ?",
+        "ar": "هل تمتلك سلسلة تبريد جاهزة أو اتفاقية مع مزود خدمات لوجستية ؟"
+      },
+      "type": "radio",
+      "condition": "choix_secteur=agriculture",
+      "branch": [
+        "agriculture"
+      ],
+      "options": [
+        {
+          "value": "oui",
+          "label": {
+            "fr": "Oui",
+            "ar": "نعم"
+          }
+        },
+        {
+          "value": "non",
+          "label": {
+            "fr": "Non",
+            "ar": "لا"
+          }
+        }
+      ]
+    },
+    {
+      "id": "agri_saisonnalite",
+      "etape": "Questions sectorielles",
+      "texte": {
+        "fr": "Votre activité est-elle saisonnière ?",
+        "ar": "هل نشاطك موسمي ؟"
+      },
+      "type": "radio",
+      "condition": "choix_secteur=agriculture",
+      "branch": [
+        "agriculture"
+      ],
+      "options": [
+        {
+          "value": "fortement",
+          "label": {
+            "fr": "Oui, fortement saisonnière",
+            "ar": "نعم، موسمي بشكل كبير"
+          }
+        },
+        {
+          "value": "partiellement",
+          "label": {
+            "fr": "Partiellement",
+            "ar": "جزئيًا"
+          }
+        },
+        {
+          "value": "non",
+          "label": {
+            "fr": "Non, activité régulière toute l'année",
+            "ar": "لا، نشاط منتظم طوال السنة"
+          }
+        }
+      ]
+    },
+    {
+      "id": "agri_foncier",
+      "etape": "Questions sectorielles",
+      "texte": {
+        "fr": "Disposez-vous d'un accès sécurisé au foncier (terres, concession maritime, forêt) ?",
+        "ar": "هل لديك حق وصول مضمون إلى الأراضي (أراضٍ زراعية، امتياز بحري، غابات) ؟"
+      },
+      "type": "radio",
+      "condition": "choix_secteur=agriculture",
+      "branch": [
+        "agriculture"
+      ],
+      "options": [
+        {
+          "value": "propriete_bail",
+          "label": {
+            "fr": "Oui, propriété ou bail long terme",
+            "ar": "نعم، ملكية أو عقد إيجار طويل الأمد"
+          }
+        },
+        {
+          "value": "location_court",
+          "label": {
+            "fr": "Oui, location court terme",
+            "ar": "نعم، إيجار قصير الأمد"
+          }
+        },
+        {
+          "value": "non",
+          "label": {
+            "fr": "Non, accès incertain",
+            "ar": "لا، الوصول غير مضمون"
+          }
+        }
+      ]
+    },
+    {
+      "id": "indus_equipements",
+      "etape": "Questions sectorielles",
+      "texte": {
+        "fr": "Avez-vous les équipements de production / chantier nécessaires ?",
+        "ar": "هل تمتلك المعدات اللازمة للإنتاج / الورشة ؟"
+      },
+      "type": "radio",
+      "condition": "choix_secteur=industrie",
+      "branch": [
+        "industrie"
+      ],
+      "options": [
+        {
+          "value": "operationnels",
+          "label": {
+            "fr": "Oui, opérationnels et amortis",
+            "ar": "نعم، جاهزة ومستهلكة"
+          }
+        },
+        {
+          "value": "acquisition",
+          "label": {
+            "fr": "Oui, en cours d'acquisition",
+            "ar": "نعم، في طور الاقتناء"
+          }
+        },
+        {
+          "value": "besoin_financement",
+          "label": {
+            "fr": "Non, besoin de financement",
+            "ar": "لا، أحتاج إلى تمويل"
+          }
+        },
+        {
+          "value": "non",
+          "label": {
+            "fr": "Non",
+            "ar": "لا"
+          }
+        }
+      ]
+    },
+    {
+      "id": "indus_iso",
+      "etape": "Questions sectorielles",
+      "texte": {
+        "fr": "Êtes-vous certifié ISO ou en cours de certification ?",
+        "ar": "هل تحمل شهادة ISO أو في طور الحصول عليها ؟"
+      },
+      "type": "radio",
+      "condition": "choix_secteur=industrie",
+      "branch": [
+        "industrie"
+      ],
+      "options": [
+        {
+          "value": "certifie",
+          "label": {
+            "fr": "Certifié (ISO 9001, ISO 14001 ou autre)",
+            "ar": "حاصل على شهادة (ISO 9001، ISO 14001 أو غيرها)"
+          }
+        },
+        {
+          "value": "en_cours",
+          "label": {
+            "fr": "En cours de certification",
+            "ar": "في طور الحصول على الشهادة"
+          }
+        },
+        {
+          "value": "non",
+          "label": {
+            "fr": "Non, pas encore",
+            "ar": "لا، ليس بعد"
+          }
+        }
+      ]
+    },
+    {
+      "id": "indus_foprodi",
+      "etape": "Questions sectorielles",
+      "texte": {
+        "fr": "Avez-vous déposé un dossier FOPRODI ou sollicité un appui APII/UTICA ?",
+        "ar": "هل قدمت ملفًا لـ FOPRODI أو طلبت دعمًا من APII/UTICA ؟"
+      },
+      "type": "radio",
+      "condition": "choix_secteur=industrie",
+      "branch": [
+        "industrie"
+      ],
+      "options": [
+        {
+          "value": "oui",
+          "label": {
+            "fr": "Oui",
+            "ar": "نعم"
+          }
+        },
+        {
+          "value": "non",
+          "label": {
+            "fr": "Non",
+            "ar": "لا"
+          }
+        }
+      ]
+    },
+    {
+      "id": "indus_donneurs_ordre",
+      "etape": "Questions sectorielles",
+      "texte": {
+        "fr": "Travaillez-vous avec des donneurs d'ordre ou en sous-traitance ?",
+        "ar": "هل تعمل مع موكلين أو في إطار مقاولة من الباطن ؟"
+      },
+      "type": "radio",
+      "condition": "choix_secteur=industrie",
+      "branch": [
+        "industrie"
+      ],
+      "options": [
+        {
+          "value": "contrats_formels",
+          "label": {
+            "fr": "Oui, contrats formels signés",
+            "ar": "نعم، عقود رسمية موقعة"
+          }
+        },
+        {
+          "value": "informellement",
+          "label": {
+            "fr": "Oui, informellement",
+            "ar": "نعم، بشكل غير رسمي"
+          }
+        },
+        {
+          "value": "non",
+          "label": {
+            "fr": "Non, clientèle directe uniquement",
+            "ar": "لا، عملاء مباشرون فقط"
+          }
+        }
+      ]
+    },
+    {
+      "id": "com_distribution",
+      "etape": "Questions sectorielles",
+      "texte": {
+        "fr": "Avez-vous un réseau de distribution ou des points de vente établis ?",
+        "ar": "هل لديك شبكة توزيع أو نقاط بيع راسخة ؟"
+      },
+      "type": "radio",
+      "condition": "choix_secteur=commerce",
+      "branch": [
+        "commerce"
+      ],
+      "options": [
+        {
+          "value": "multicanaux",
+          "label": {
+            "fr": "Oui, réseau structuré multi-canaux",
+            "ar": "نعم، شبكة منظمة متعددة القنوات"
+          }
+        },
+        {
+          "value": "un_deux_points",
+          "label": {
+            "fr": "Oui, un ou deux points de vente",
+            "ar": "نعم، نقطة بيع أو نقطتان"
+          }
+        },
+        {
+          "value": "non",
+          "label": {
+            "fr": "Non, encore en construction",
+            "ar": "لا، لا تزال في طور البناء"
+          }
+        }
+      ]
+    },
+    {
+      "id": "com_transport",
+      "etape": "Questions sectorielles",
+      "texte": {
+        "fr": "Pour le transport / la logistique : disposez-vous d'un parc de véhicules ou d'un accord avec un transporteur ?",
+        "ar": "فيما يخص النقل / اللوجستيك: هل تمتلك أسطولًا من المركبات أو اتفاقية مع ناقل ؟"
+      },
+      "type": "radio",
+      "condition": "choix_secteur=commerce",
+      "branch": [
+        "commerce"
+      ],
+      "options": [
+        {
+          "value": "parc_propre",
+          "label": {
+            "fr": "Oui, parc propre opérationnel",
+            "ar": "نعم، أسطول خاص جاهز للتشغيل"
+          }
+        },
+        {
+          "value": "accord_prestataire",
+          "label": {
+            "fr": "Oui, accord avec prestataire",
+            "ar": "نعم، اتفاقية مع مزود خدمة"
+          }
+        },
+        {
+          "value": "non",
+          "label": {
+            "fr": "Non",
+            "ar": "لا"
+          }
+        }
+      ]
+    },
+    {
+      "id": "com_digital",
+      "etape": "Questions sectorielles",
+      "texte": {
+        "fr": "Avez-vous une présence digitale ou une plateforme e-commerce ?",
+        "ar": "هل لديك حضور رقمي أو منصة للتجارة الإلكترونية ؟"
+      },
+      "type": "radio",
+      "condition": "choix_secteur=commerce",
+      "branch": [
+        "commerce"
+      ],
+      "options": [
+        {
+          "value": "ecommerce_actif",
+          "label": {
+            "fr": "Oui, e-commerce actif avec commandes",
+            "ar": "نعم، تجارة إلكترونية نشطة مع طلبات"
+          }
+        },
+        {
+          "value": "presence_digitale",
+          "label": {
+            "fr": "Oui, présence digitale (réseaux sociaux/site)",
+            "ar": "نعم، حضور رقمي (شبكات اجتماعية/موقع)"
+          }
+        },
+        {
+          "value": "non",
+          "label": {
+            "fr": "Non",
+            "ar": "لا"
+          }
+        }
+      ]
+    },
+    {
+      "id": "com_stock",
+      "etape": "Questions sectorielles",
+      "texte": {
+        "fr": "Gérez-vous un stock ou des approvisionnements de manière structurée ?",
+        "ar": "هل تدير مخزونًا أو إمدادات بصورة منظمة ؟"
+      },
+      "type": "radio",
+      "condition": "choix_secteur=commerce",
+      "branch": [
+        "commerce"
+      ],
+      "options": [
+        {
+          "value": "systeme_gestion",
+          "label": {
+            "fr": "Oui, avec un système de gestion de stock",
+            "ar": "نعم، بواسطة نظام لإدارة المخزون"
+          }
+        },
+        {
+          "value": "manuellement",
+          "label": {
+            "fr": "Oui, manuellement",
+            "ar": "نعم، يدويًا"
+          }
+        },
+        {
+          "value": "non",
+          "label": {
+            "fr": "Non",
+            "ar": "لا"
+          }
+        }
+      ]
+    },
+    {
+      "id": "serv_classement",
+      "etape": "Questions sectorielles",
+      "texte": {
+        "fr": "Votre établissement est-il classé ou agréé (hôtel classé, agence de voyage agréée, etc.) ?",
+        "ar": "هل مؤسستك مصنفة أو معتمدة (فندق مصنف، وكالة سفر معتمدة، إلخ) ؟"
+      },
+      "type": "radio",
+      "condition": "choix_secteur=service",
+      "branch": [
+        "service"
+      ],
+      "options": [
+        {
+          "value": "classe_agree",
+          "label": {
+            "fr": "Oui, classé / agréé officiellement",
+            "ar": "نعم، مصنف / معتمد رسميًا"
+          }
+        },
+        {
+          "value": "en_cours",
+          "label": {
+            "fr": "En cours de classement / agrément",
+            "ar": "في طور التصنيف / الاعتماد"
+          }
+        },
+        {
+          "value": "non",
+          "label": {
+            "fr": "Non / Non applicable",
+            "ar": "لا / لا ينطبق"
+          }
+        }
+      ]
+    },
+    {
+      "id": "serv_fidelisation",
+      "etape": "Questions sectorielles",
+      "texte": {
+        "fr": "Avez-vous une base de clients fidèles ou un programme de fidélisation ?",
+        "ar": "هل لديك قاعدة عملاء وفيين أو برنامج ولاء ؟"
+      },
+      "type": "radio",
+      "condition": "choix_secteur=service",
+      "branch": [
+        "service"
+      ],
+      "options": [
+        {
+          "value": "programme_structure",
+          "label": {
+            "fr": "Oui, base de données clients active et programme structuré",
+            "ar": "نعم، قاعدة بيانات عملاء نشطة وبرنامج منظم"
+          }
+        },
+        {
+          "value": "clientele_reguliere",
+          "label": {
+            "fr": "Oui, clientèle régulière sans programme formel",
+            "ar": "نعم، عملاء منتظمون بدون برنامج رسمي"
+          }
+        },
+        {
+          "value": "non",
+          "label": {
+            "fr": "Non, clientèle de passage",
+            "ar": "لا، عملاء عابرون"
+          }
+        }
+      ]
+    },
+    {
+      "id": "serv_numerique",
+      "etape": "Questions sectorielles",
+      "texte": {
+        "fr": "Utilisez-vous des outils numériques pour la gestion (réservations en ligne, CRM, etc.) ?",
+        "ar": "هل تستخدم أدوات رقمية للإدارة (الحجز الإلكتروني، CRM، إلخ) ؟"
+      },
+      "type": "radio",
+      "condition": "choix_secteur=service",
+      "branch": [
+        "service"
+      ],
+      "options": [
+        {
+          "value": "plateforme_crm",
+          "label": {
+            "fr": "Oui, plateforme de réservation / CRM opérationnel",
+            "ar": "نعم، منصة حجز / CRM جاهزة للتشغيل"
+          }
+        },
+        {
+          "value": "partiellement",
+          "label": {
+            "fr": "Partiellement",
+            "ar": "جزئيًا"
+          }
+        },
+        {
+          "value": "non",
+          "label": {
+            "fr": "Non",
+            "ar": "لا"
+          }
+        }
+      ]
+    },
+    {
+      "id": "serv_saisonnalite",
+      "etape": "Questions sectorielles",
+      "texte": {
+        "fr": "Votre activité est-elle fortement saisonnière (ex : tourisme estival) ?",
+        "ar": "هل نشاطك موسمي بشكل كبير (مثلاً: السياحة الصيفية) ؟"
+      },
+      "type": "radio",
+      "condition": "choix_secteur=service",
+      "branch": [
+        "service"
+      ],
+      "options": [
+        {
+          "value": "fortement",
+          "label": {
+            "fr": "Oui, fortement saisonnière",
+            "ar": "نعم، موسمي بشكل كبير"
+          }
+        },
+        {
+          "value": "partiellement",
+          "label": {
+            "fr": "Partiellement",
+            "ar": "جزئيًا"
+          }
+        },
+        {
+          "value": "non",
+          "label": {
+            "fr": "Non, activité régulière toute l'année",
+            "ar": "لا، نشاط منتظم طوال السنة"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tech_mvp",
+      "etape": "Questions sectorielles",
+      "texte": {
+        "fr": "Avez-vous un MVP (produit minimum viable) ou une offre de service formalisée ?",
+        "ar": "هل لديك MVP (منتج قابل للتطبيق بحد أدنى) أو عرض خدمة رسمي ؟"
+      },
+      "type": "radio",
+      "condition": "choix_secteur=technologie",
+      "branch": [
+        "technologie"
+      ],
+      "options": [
+        {
+          "value": "production_clients",
+          "label": {
+            "fr": "Oui, en production / déployé chez des clients",
+            "ar": "نعم، في الإنتاج / مُطبَّق لدى عملاء"
+          }
+        },
+        {
+          "value": "test_pilotes",
+          "label": {
+            "fr": "Oui, en test avec utilisateurs / clients pilotes réels",
+            "ar": "نعم، في مرحلة اختبار مع مستخدمين / عملاء تجريبيين حقيقيين"
+          }
+        },
+        {
+          "value": "en_developpement",
+          "label": {
+            "fr": "En développement / conception",
+            "ar": "في طور التطوير / التصميم"
+          }
+        },
+        {
+          "value": "non",
+          "label": {
+            "fr": "Non",
+            "ar": "لا"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tech_mrr",
+      "etape": "Questions sectorielles",
+      "texte": {
+        "fr": "Avez-vous un MRR (revenu mensuel récurrent) ou des contrats de service récurrents ?",
+        "ar": "هل لديك MRR (إيرادات شهرية متكررة) أو عقود خدمة متكررة ؟"
+      },
+      "type": "radio",
+      "condition": "choix_secteur=technologie",
+      "branch": [
+        "technologie"
+      ],
+      "options": [
+        {
+          "value": "plus_5000",
+          "label": {
+            "fr": "Oui, > 5 000 TND/mois",
+            "ar": "نعم، أكثر من 5000 دينار / شهر"
+          }
+        },
+        {
+          "value": "moins_5000",
+          "label": {
+            "fr": "Oui, < 5 000 TND/mois",
+            "ar": "نعم، أقل من 5000 دينار / شهر"
+          }
+        },
+        {
+          "value": "utilisateurs_actifs",
+          "label": {
+            "fr": "Non, mais des utilisateurs / clients actifs",
+            "ar": "لا، لكن توجد مستخدمون / عملاء نشطون"
+          }
+        },
+        {
+          "value": "non",
+          "label": {
+            "fr": "Non",
+            "ar": "لا"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tech_propriete_intellectuelle",
+      "etape": "Questions sectorielles",
+      "texte": {
+        "fr": "Avez-vous protégé votre propriété intellectuelle (brevet, marque déposée, droits logiciels) ?",
+        "ar": "هل حميت ملكيتك الفكرية (براءة اختراع، علامة تجارية مسجلة، حقوق برامج) ؟"
+      },
+      "type": "radio",
+      "condition": "choix_secteur=technologie",
+      "branch": [
+        "technologie"
+      ],
+      "options": [
+        {
+          "value": "oui",
+          "label": {
+            "fr": "Oui",
+            "ar": "نعم"
+          }
+        },
+        {
+          "value": "non",
+          "label": {
+            "fr": "Non",
+            "ar": "لا"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tech_scalabilite",
+      "etape": "Questions sectorielles",
+      "texte": {
+        "fr": "Votre modèle est-il scalable sans augmentation proportionnelle des coûts ?",
+        "ar": "هل نموذجك قابل للتوسع دون زيادة متناسبة في التكاليف ؟"
+      },
+      "type": "radio",
+      "condition": "choix_secteur=technologie",
+      "branch": [
+        "technologie"
+      ],
+      "options": [
+        {
+          "value": "fortement_scalable",
+          "label": {
+            "fr": "Oui, fortement scalable (SaaS, plateforme)",
+            "ar": "نعم، قابل للتوسع بشكل كبير (SaaS، منصة)"
+          }
+        },
+        {
+          "value": "partiellement",
+          "label": {
+            "fr": "Partiellement scalable",
+            "ar": "قابل للتوسع جزئيًا"
+          }
+        },
+        {
+          "value": "non",
+          "label": {
+            "fr": "Non, croissance = coûts linéaires",
+            "ar": "لا، النمو = تكاليف خطية"
+          }
+        }
+      ]
+    },
+    {
+      "id": "rne",
+      "etape": "Structure juridique",
+      "texte": {
+        "fr": "Avez-vous un RNE (Registre National des Entreprises) ?",
+        "ar": "هل لديك سجل تجاري وطني (RNE) ؟"
+      },
+      "type": "radio",
+      "options": [
+        {
+          "value": "oui",
+          "label": {
+            "fr": "Oui",
+            "ar": "نعم"
+          }
+        },
+        {
+          "value": "non",
+          "label": {
+            "fr": "Non",
+            "ar": "لا"
+          }
+        }
+      ],
+      "next": {
+        "oui": "forme_juridique",
+        "non": null
+      }
+    },
+    {
+      "id": "forme_juridique",
+      "etape": "Structure juridique",
+      "texte": {
+        "fr": "Quelle est votre forme juridique ?",
+        "ar": "ما هي صيغتك القانونية ؟"
+      },
+      "type": "radio",
+      "condition": "rne=oui",
+      "options": [
         {
           "value": "sarl",
           "label": {
             "fr": "SARL",
-            "ar": "شركة ذات مسؤولية محدودة"
+            "ar": "شركة ذات مسؤولية محدودة (SARL)"
           }
         },
         {
-          "value": "sas",
+          "value": "sa",
           "label": {
-            "fr": "SAS",
-            "ar": "شركة مساهمة مبسطة"
+            "fr": "SA",
+            "ar": "شركة مساهمة (SA)"
           }
         },
         {
-          "value": "none",
+          "value": "entreprise_individuelle",
           "label": {
-            "fr": "Aucune structure enregistrée",
-            "ar": "لا توجد هيكلة قانونية"
+            "fr": "Entreprise individuelle",
+            "ar": "مؤسسة فردية"
+          }
+        },
+        {
+          "value": "association_ong",
+          "label": {
+            "fr": "Association / ONG",
+            "ar": "جمعية / منظمة غير حكومية"
+          }
+        },
+        {
+          "value": "startup_act",
+          "label": {
+            "fr": "Startup Act labellisée",
+            "ar": "مؤسسة ناشئة حاملة لختم Startup Act"
           }
         }
       ]
     },
     {
-      "id": "market_validation",
+      "id": "revenus",
+      "etape": "Revenus et validation marché",
       "texte": {
-        "fr": "Quelles validations client avez-vous effectuées?",
-        "ar": "ما هي التحققات من العملاء التي أجريتها؟"
-      },
-      "type": "checkbox",
-      "options": [
-        {
-          "value": "interviews",
-          "label": {
-            "fr": "Entretiens utilisateurs",
-            "ar": "مقابلات المستخدمين"
-          }
-        },
-        {
-          "value": "prototype_test",
-          "label": {
-            "fr": "Test de prototype",
-            "ar": "اختبار النموذج"
-          }
-        },
-        {
-          "value": "beta_users",
-          "label": {
-            "fr": "Utilisateurs bêta",
-            "ar": "المستخدمون التجريبيون"
-          }
-        },
-        {
-          "value": "none",
-          "label": {
-            "fr": "Aucune validation",
-            "ar": "بدون تحقق"
-          }
-        }
-      ]
-    },
-    {
-      "id": "agri_specifics",
-      "texte": {
-        "fr": "Produits agricoles: Type de chaîne de valeur",
-        "ar": "المنتجات الزراعية: نوع سلسلة القيمة"
+        "fr": "Avez-vous des revenus générés par votre activité ?",
+        "ar": "هل تحقق إيرادات من نشاطك ؟"
       },
       "type": "radio",
       "options": [
         {
-          "value": "production",
+          "value": "oui",
           "label": {
-            "fr": "Production/Transformation",
-            "ar": "الإنتاج/التحويل"
+            "fr": "Oui",
+            "ar": "نعم"
           }
         },
         {
-          "value": "distribution",
+          "value": "non",
           "label": {
-            "fr": "Distribution/Logistique",
-            "ar": "التوزيع/الخدمات اللوجستية"
-          }
-        },
-        {
-          "value": "retail",
-          "label": {
-            "fr": "Vente au détail",
-            "ar": "البيع بالتجزئة"
-          }
-        },
-        {
-          "value": "tech",
-          "label": {
-            "fr": "Solution technologique agri",
-            "ar": "حل تكنولوجي زراعي"
+            "fr": "Non",
+            "ar": "لا"
           }
         }
-      ]
-    },
-    {
-      "id": "funding_readiness",
-      "texte": {
-        "fr": "Êtes-vous réellement prêt pour le financement?",
-        "ar": "هل أنت حقاً مستعداً للتمويل؟"
-      },
-      "type": "radio",
-      "options": [
-        {
-          "value": "very_ready",
-          "label": {
-            "fr": "Très prêt - tout est en place",
-            "ar": "مستعد جداً - كل شيء جاهز"
-          }
-        },
-        {
-          "value": "partially_ready",
-          "label": {
-            "fr": "Partiellement - besoin de clarifications",
-            "ar": "جزئياً - بحاجة لتوضيحات"
-          }
-        },
-        {
-          "value": "not_ready",
-          "label": {
-            "fr": "Pas prêt - besoin de travail",
-            "ar": "غير مستعد - بحاجة للعمل"
-          }
-        }
-      ]
-    },
-    {
-      "id": "legal_structure_details",
-      "texte": {
-        "fr": "Prochaines étapes pour structurer légalement (détails)",
-        "ar": "الخطوات التالية للهيكلة القانونية (التفاصيل)"
-      },
-      "type": "textarea",
-      "placeholder": {
-        "fr": "Décrivez vos plans...",
-        "ar": "صف خطتك..."
+      ],
+      "next": {
+        "oui": "chiffre_affaires",
+        "non": "clients_payants"
       }
     },
     {
-      "id": "revenue_model",
+      "id": "chiffre_affaires",
+      "etape": "Revenus et validation marché",
       "texte": {
-        "fr": "Modèle de revenu principal",
-        "ar": "نموذج الإيرادات الرئيسي"
-      },
-      "type": "radio",
-      "options": [
-        {
-          "value": "b2b",
-          "label": {
-            "fr": "B2B (Entreprise à Entreprise)",
-            "ar": "B2B"
-          }
-        },
-        {
-          "value": "b2c",
-          "label": {
-            "fr": "B2C (Entreprise à Consommateur)",
-            "ar": "B2C"
-          }
-        },
-        {
-          "value": "hybrid",
-          "label": {
-            "fr": "Hybride",
-            "ar": "مختلط"
-          }
-        },
-        {
-          "value": "subscription",
-          "label": {
-            "fr": "Abonnement",
-            "ar": "الاشتراك"
-          }
-        }
-      ]
-    },
-    {
-      "id": "time_to_market",
-      "texte": {
-        "fr": "Délai estimé avant lancement commercial",
-        "ar": "الوقت المتوقع قبل الإطلاق التجاري"
-      },
-      "type": "radio",
-      "options": [
-        {
-          "value": "0-3months",
-          "label": {
-            "fr": "0-3 mois",
-            "ar": "0-3 أشهر"
-          }
-        },
-        {
-          "value": "3-6months",
-          "label": {
-            "fr": "3-6 mois",
-            "ar": "3-6 أشهر"
-          }
-        },
-        {
-          "value": "6-12months",
-          "label": {
-            "fr": "6-12 mois",
-            "ar": "6-12 شهراً"
-          }
-        },
-        {
-          "value": "after_1year",
-          "label": {
-            "fr": "Plus d'1 an",
-            "ar": "أكثر من سنة"
-          }
-        }
-      ]
-    },
-    {
-      "id": "employee_count",
-      "texte": {
-        "fr": "Nombre d'employés prévus à plein temps",
-        "ar": "عدد الموظفين المتوقع بدوام كامل"
+        "fr": "Quel est votre chiffre d'affaires annuel approximatif (en TND) ?",
+        "ar": "ما هو رقم أعمالك السنوي التقريبي (بالدينار التونسي) ؟"
       },
       "type": "number",
+      "condition": "revenus=oui",
       "placeholder": {
-        "fr": "Exemple: 5",
-        "ar": "مثال: 5"
+        "fr": "Montant en TND",
+        "ar": "المبلغ بالدينار التونسي"
       }
+    },
+    {
+      "id": "duree_revenus",
+      "etape": "Revenus et validation marché",
+      "texte": {
+        "fr": "Depuis combien de temps générez-vous ces revenus ?",
+        "ar": "منذ متى وأنت تحقق هذه الإيرادات ؟"
+      },
+      "type": "radio",
+      "condition": "revenus=oui",
+      "options": [
+        {
+          "value": "moins_6_mois",
+          "label": {
+            "fr": "Moins de 6 mois",
+            "ar": "أقل من 6 أشهر"
+          }
+        },
+        {
+          "value": "6_a_12_mois",
+          "label": {
+            "fr": "6 à 12 mois",
+            "ar": "من 6 إلى 12 شهرًا"
+          }
+        },
+        {
+          "value": "1_a_3_ans",
+          "label": {
+            "fr": "1 à 3 ans",
+            "ar": "من سنة إلى 3 سنوات"
+          }
+        },
+        {
+          "value": "plus_3_ans",
+          "label": {
+            "fr": "Plus de 3 ans",
+            "ar": "أكثر من 3 سنوات"
+          }
+        }
+      ]
+    },
+    {
+      "id": "clients_payants",
+      "etape": "Revenus et validation marché",
+      "texte": {
+        "fr": "Avez-vous des clients payants (même sans CA récurrent) ?",
+        "ar": "هل لديك عملاء يدفعون (حتى بدون رقم أعمال متكرر) ؟"
+      },
+      "type": "radio",
+      "condition": "revenus=non",
+      "options": [
+        {
+          "value": "oui",
+          "label": {
+            "fr": "Oui",
+            "ar": "نعم"
+          }
+        },
+        {
+          "value": "non",
+          "label": {
+            "fr": "Non",
+            "ar": "لا"
+          }
+        }
+      ],
+      "next": {
+        "oui": "lettres_intention",
+        "non": "validation_idee"
+      }
+    },
+    {
+      "id": "lettres_intention",
+      "etape": "Revenus et validation marché",
+      "texte": {
+        "fr": "Avez-vous des lettres d'intention ou contrats signés ?",
+        "ar": "هل لديك خطابات نوايا أو عقود موقعة ؟"
+      },
+      "type": "radio",
+      "condition": "clients_payants=oui",
+      "options": [
+        {
+          "value": "oui",
+          "label": {
+            "fr": "Oui",
+            "ar": "نعم"
+          }
+        },
+        {
+          "value": "non",
+          "label": {
+            "fr": "Non",
+            "ar": "لا"
+          }
+        }
+      ]
+    },
+    {
+      "id": "validation_idee",
+      "etape": "Revenus et validation marché",
+      "texte": {
+        "fr": "Qui a validé votre idée jusqu'à présent ?",
+        "ar": "من قام بالتحقق من صحة فكرتك حتى الآن ؟"
+      },
+      "type": "radio",
+      "condition": "clients_payants=non",
+      "options": [
+        {
+          "value": "experts",
+          "label": {
+            "fr": "Des experts du secteur (mentors, professionnels)",
+            "ar": "خبراء في القطاع (مرشدون، محترفون)"
+          }
+        },
+        {
+          "value": "proches",
+          "label": {
+            "fr": "Des proches / famille / amis",
+            "ar": "المقربون / العائلة / الأصدقاء"
+          }
+        },
+        {
+          "value": "personne",
+          "label": {
+            "fr": "Personne encore",
+            "ar": "لا أحد حتى الآن"
+          }
+        },
+        {
+          "value": "clients_potentiels",
+          "label": {
+            "fr": "Des clients potentiels lors d'entretiens formels",
+            "ar": "عملاء محتملون خلال مقابلات رسمية"
+          }
+        }
+      ]
+    },
+    {
+      "id": "business_plan",
+      "etape": "Business Plan",
+      "texte": {
+        "fr": "Avez-vous un business plan documenté ?",
+        "ar": "هل لديك خطة عمل موثقة ؟"
+      },
+      "type": "radio",
+      "options": [
+        {
+          "value": "complet",
+          "label": {
+            "fr": "Oui, complet avec projections financières sur 3 ans",
+            "ar": "نعم، كامل مع توقعات مالية لمدة 3 سنوات"
+          }
+        },
+        {
+          "value": "incomplet",
+          "label": {
+            "fr": "Oui, mais incomplet ou sans projections",
+            "ar": "نعم، لكنه غير مكتمل أو بدون توقعات"
+          }
+        },
+        {
+          "value": "en_cours",
+          "label": {
+            "fr": "En cours de rédaction",
+            "ar": "في طور الإعداد"
+          }
+        },
+        {
+          "value": "non",
+          "label": {
+            "fr": "Non",
+            "ar": "لا"
+          }
+        }
+      ]
+    },
+    {
+      "id": "innovation",
+      "etape": "Innovation et différenciation",
+      "texte": {
+        "fr": "Votre solution existe-t-elle déjà sur le marché tunisien ?",
+        "ar": "هل حلك موجود بالفعل في السوق التونسية ؟"
+      },
+      "type": "radio",
+      "options": [
+        {
+          "value": "nouveau",
+          "label": {
+            "fr": "Non, c'est totalement nouveau en Tunisie",
+            "ar": "لا، هو جديد كليًا في تونس"
+          }
+        },
+        {
+          "value": "differencie",
+          "label": {
+            "fr": "Des solutions similaires existent mais la mienne est différenciée",
+            "ar": "توجد حلول مشابهة لكن حلي متميز"
+          }
+        },
+        {
+          "value": "identique_recent",
+          "label": {
+            "fr": "Des solutions identiques existent depuis moins de 2 ans",
+            "ar": "توجد حلول مطابقة منذ أقل من سنتين"
+          }
+        },
+        {
+          "value": "identique_ancien",
+          "label": {
+            "fr": "Des solutions identiques existent depuis plus de 2 ans",
+            "ar": "توجد حلول مطابقة منذ أكثر من سنتين"
+          }
+        }
+      ]
+    },
+    {
+      "id": "accompagnement",
+      "etape": "Accompagnement et financement",
+      "texte": {
+        "fr": "Avez-vous bénéficié d'un programme d'accompagnement ?",
+        "ar": "هل استفدت من برنامج مرافقة ؟"
+      },
+      "type": "radio",
+      "options": [
+        {
+          "value": "en_incubateur",
+          "label": {
+            "fr": "Oui, actuellement en incubateur/accélérateur",
+            "ar": "نعم، حاليًا في حاضنة / مسرّع"
+          }
+        },
+        {
+          "value": "programme_termine",
+          "label": {
+            "fr": "Oui, programme terminé",
+            "ar": "نعم، انتهى البرنامج"
+          }
+        },
+        {
+          "value": "non",
+          "label": {
+            "fr": "Non, jamais",
+            "ar": "لا، أبدًا"
+          }
+        }
+      ]
+    },
+    {
+      "id": "financement_externe",
+      "etape": "Accompagnement et financement",
+      "texte": {
+        "fr": "Avez-vous déjà obtenu un financement externe ?",
+        "ar": "هل حصلت على تمويل خارجي سابقًا ؟"
+      },
+      "type": "radio",
+      "options": [
+        {
+          "value": "capital_risque",
+          "label": {
+            "fr": "Oui, capital-risque ou business angel",
+            "ar": "نعم، رأس مال مخاطر أو مستثمر ملاك"
+          }
+        },
+        {
+          "value": "financement_public",
+          "label": {
+            "fr": "Oui, financement public (APII, BFPME, BTS...)",
+            "ar": "نعم، تمويل عمومي (APII، BFPME، BTS...)"
+          }
+        },
+        {
+          "value": "love_money",
+          "label": {
+            "fr": "Oui, love money uniquement",
+            "ar": "نعم، love money فقط"
+          }
+        },
+        {
+          "value": "non",
+          "label": {
+            "fr": "Non, aucun financement externe",
+            "ar": "لا، لا يوجد تمويل خارجي"
+          }
+        }
+      ]
     }
   ],
-  "answers": [
-    {
-      "id": "legal_status",
-      "valeur": "auto-entrepreneur"
-    }
-  ]
+  "answers": {
+    "nom_entreprise": "l",
+    "confirmation_secteur": "non",
+    "choix_secteur": "industrie",
+    "confirmation_region": "non",
+    "choix_region": "ariana",
+    "confirmation_stade": "oui",
+    "equipe": "complete",
+    "indus_equipements": "operationnels",
+    "indus_iso": "certifie",
+    "indus_foprodi": "oui",
+    "indus_donneurs_ordre": "contrats_formels",
+    "rne": "non",
+    "revenus": "oui",
+    "chiffre_affaires": "12",
+    "duree_revenus": "6_a_12_mois",
+    "business_plan": "complet",
+    "innovation": "differencie",
+    "accompagnement": "programme_termine",
+    "financement_externe": "capital_risque"
+  }
 }

@@ -36,7 +36,25 @@ const questionnairePlugin = () => ({
           req.on('end', () => {
             try {
               const data = JSON.parse(body);
-              fs.writeFileSync(filePath, JSON.stringify(data, null, 2), 'utf-8');
+              let existingData = {};
+              if (fs.existsSync(filePath)) {
+                try {
+                  const content = fs.readFileSync(filePath, 'utf-8');
+                  if (content.trim()) {
+                    existingData = JSON.parse(content);
+                  }
+                } catch (e) {
+                  console.error('Error reading existing questionnaire:', e);
+                }
+              }
+              
+              const mergedData = {
+                ...existingData,
+                ...data,
+                questions: (data.questions && data.questions.length > 0) ? data.questions : (existingData.questions || [])
+              };
+
+              fs.writeFileSync(filePath, JSON.stringify(mergedData, null, 2), 'utf-8');
               res.setHeader('Content-Type', 'application/json');
               res.end(JSON.stringify({ success: true }));
             } catch (error) {
@@ -61,5 +79,10 @@ export default defineConfig({
     tailwindcss(),
     questionnairePlugin()
   ],
+  server: {
+    watch: {
+      ignored: ['**/src/data/questionnaire.json']
+    }
+  }
 })
 

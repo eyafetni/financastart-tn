@@ -213,7 +213,12 @@ export default function MyPath({ lang }) {
         if (loadingQuestionnaire || !questionnaireData) return null;
         
         const description = questionnaireData.description || '';
-        const answersArray = questionnaireData.answers || [];
+        let answersArray = [];
+        if (Array.isArray(questionnaireData.answers)) {
+          answersArray = questionnaireData.answers;
+        } else if (questionnaireData.answers && typeof questionnaireData.answers === 'object') {
+          answersArray = Object.entries(questionnaireData.answers).map(([id, valeur]) => ({ id, valeur }));
+        }
         const hasAnswers = answersArray.length > 0;
         
         if (!hasAnswers && !description) return null;

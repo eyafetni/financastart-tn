@@ -400,23 +400,54 @@ def _evaluer_condition(condition: dict, contexte: dict) -> bool:
         return val_reelle in val_cible
     return False
 
-def _detecter_anomalies_scoring(sub_scores: dict, secteur_full: str, anomalies_phase_1: list[dict]) -> list[dict]:
+def _detecter_anomalies_scoring(
+    sub_scores: dict,
+    secteur_full: str,
+    anomalies_phase_1: list[dict],
+    profil_complet: dict | None = None,
+    reponses_f2: dict | None = None,
+) -> list[dict]:
     from f2_scoring.matrice_coeff import ANOMALY_RULES
-    
+
+    profil_complet = profil_complet or {}
+    reponses_f2 = reponses_f2 or {}
+
+    # ── Base : sous-scores numériques calculés (MS1, CO2, ...) ──
     contexte = {**sub_scores}
     contexte["sector"] = secteur_full
-    
-    ids_phase_1 = {a.get("id") for a in anomalies_phase_1}
-    contexte["has_water_data"] = "ANOM_RECIPIENT_WATER_MISSING" not in ids_phase_1 
-    contexte["saas_physical_specified"] = "ANOM_MODEL_NOT_SPECIFIED" not in ids_phase_1
-    contexte["has_eie_document"] = "ANOM_EIE_MISSING" not in ids_phase_1
 
+    # ── Valeurs brutes des réponses F2 (intensite_concurrence, niveau_traction, etc.) ──
+    # On ne prend que la "valeur" textuelle de chaque réponse — si une clé n'existe
+    # pas dans reponses_f2, elle n'apparaît simplement pas dans le contexte.
+    for qid, rep in reponses_f2.items():
+        if isinstance(rep, dict) and "valeur" in rep:
+            contexte[qid] = rep["valeur"]
+        elif isinstance(rep, str):
+            contexte[qid] = rep
+
+    # ── Champs du profil_complet, ajoutés seulement s'ils existent réellement ──
+    # Liste exhaustive des clés que les ANOMALY_RULES sont susceptibles de lire.
+    # Si une clé est absente du profil, elle est simplement omise du contexte —
+    # aucune règle qui en dépend ne sera évaluée à tort.
+    champs_profil_utiles = [
+        "rne", "equipe", "financement", "accompagnement", "business_plan",
+        "chiffre_affaires", "anciennete_revenus", "innovation_niveau",
+        "certifications_sanitaires", "chaine_froid", "saisonnalite", "acces_foncier",
+        "equipements", "certification_iso", "foprodi_apii", "sous_traitance",
+        "reseau_distribution", "capacite_logistique", "presence_digitale", "gestion_stock",
+        "classement_agree", "fidelisation", "numerisation_service",
+        "mvp_statut", "mrr", "propriete_intellectuelle", "scalabilite",
+        "forme_juridique", "validation_type", "lettres_intention", "localisation",
+    ]
+    for champ in champs_profil_utiles:
+        if champ in profil_complet:
+            contexte[champ] = profil_complet[champ]
     anomalies_calculees = []
     for rule in ANOMALY_RULES:
         conditions = rule.get("conditions", [])
         if not conditions:
             continue
-            
+
         if all(_evaluer_condition(cond, contexte) for cond in conditions):
             anomalies_calculees.append({
                 "id": rule["id"],
@@ -424,7 +455,7 @@ def _detecter_anomalies_scoring(sub_scores: dict, secteur_full: str, anomalies_p
                 "target_score": rule["target_score"],
                 "description": rule.get("description", "")
             })
-            
+
     return anomalies_calculees
 
 # =========================================================================
@@ -436,36 +467,24 @@ def calculer_scores(
     anomalies: list[dict],
     blockers: list[dict],
     secteur: str,
+    profil_complet: dict | None = None,
+    reponses_f2: dict | None = None,
 ) -> dict[str, Any]:
     secteur_full = _resolve_sector(secteur)
-    anomalies_scoring = _detecter_anomalies_scoring(sub_scores, secteur_full, anomalies)
+    anomalies_scoring = _detecter_anomalies_scoring(
+        sub_scores, secteur_full, anomalies,
+        profil_complet=profil_complet,
+        reponses_f2=reponses_f2,
+    )
     toutes_anomalies = anomalies + anomalies_scoring
-
-    vu = set()
-    anomalies_uniques = []
-    for a in toutes_anomalies:
-        if a.get("id") not in vu:
-            vu.add(a.get("id"))
-            anomalies_uniques.append(a)
-
-    from f2_scoring.matrice_coeff import ANOMALY_RULES
-    rules_dict = {rule["id"]: rule for rule in ANOMALY_RULES}
-    
-    enriched_anomalies = []
-    for anom in anomalies_uniques:
-        rule = rules_dict.get(anom.get("id"))
-        if rule:
-            merged = {**rule, **anom}
-            enriched_anomalies.append(merged)
-        else:
-            enriched_anomalies.append(anom)
+    # ... reste inchangé
 
     DIMS = ["market", "commercial_offer", "innovation", "scalability", "green"]
     scores_detail: dict[str, dict] = {}
     scores_valeurs: dict[str, float] = {}
 
     for dim in DIMS:
-        result = _compute_dimension_score(dim, sub_scores, secteur_full, enriched_anomalies)
+        result = _compute_dimension_score(dim, sub_scores, secteur_full, toutes_anomalies)
         scores_detail[f"{dim}_score"] = result
         scores_valeurs[dim] = result["valeur"]
 
@@ -486,7 +505,7 @@ def calculer_scores(
     })
 
     formatted_anomalies = []
-    for a in enriched_anomalies:
+    for a in toutes_anomalies:
         a_copy = a.copy()
         fmt_context["kb_link"] = a.get("kb_link", "")
         

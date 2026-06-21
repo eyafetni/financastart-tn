@@ -833,7 +833,228 @@ ANOMALY_RULES = [
         ),
         "action_template": "Adoptez des technologies d'économie d'eau (circuit fermé, recyclage) en vous référant au plan d'urgence agricole de la note sectorielle {kb_link}.",
         "kb_link": "KB-APII-AGRO-005"
+    },
+    # ── MARCHÉ ──
+    {
+        "id": "ANOM_MKT_OCEAN_BLEU_IDEATION",
+        "dimension": "market",
+        "penalty_points": 12,
+        "target_score": "market",
+        "conditions": [
+            {"variable": "intensite_concurrence", "operator": "==", "value": "ocean_bleu"},
+            {"variable": "niveau_traction", "operator": "==", "value": "ideation_pure"},
+            {"variable": "modele_revenu", "operator": "==", "value": "non_defini"}
+        ],
+        "justification_template": (
+            "Océan Bleu non exploré — Triptyque à risque maximal : Vous revendiquez "
+            "un marché sans concurrence, zéro traction et un modèle de revenus non défini. "
+            "Un marché sans concurrence peut signifier une vraie opportunité ou l'absence "
+            "de demande solvable. Sans traction ni modèle de revenus, la distinction "
+            "est impossible — et le risque de créer un produit sans marché est maximal."
+        ),
+        "action_template": "Menez une étude de demande latente (enquête terrain, simulation d'offre) pour valider l'existence d'une WTP réelle selon {kb_link}.",
+        "kb_link": "KB-AINS-MARKET-LATENT-002"
+    },
+    {
+        "id": "ANOM_MKT_TRACTION_FORTE_MODELE_FLOU",
+        "dimension": "market",
+        "penalty_points": 15,
+        "target_score": "market",
+        "conditions": [
+            {"variable": "niveau_traction", "operator": "==", "value": "croissance_organique"},
+            {"variable": "modele_revenu", "operator": "==", "value": "non_defini"}
+        ],
+        "justification_template": (
+            "Croissance organique sans capture de valeur — Philanthropie involontaire : "
+            "Vous affirmez avoir des revenus récurrents stables avec fort taux de rétention, "
+            "mais votre modèle de revenus est non défini. Cette contradiction indique "
+            "soit une incohérence déclarative grave, soit un freemium non converti. "
+            "Une traction forte sans monétisation est non financeable : vous construisez "
+            "de la valeur pour vos clients sans en capturer pour votre entreprise."
+        ),
+        "action_template": "Définissez et activez votre mécanisme de tarification dans les 30 jours avec le framework value-based décrit dans {kb_link}.",
+        "kb_link": "KB-BFPME-PRICING-TRACTION-004"
+    },
+
+    # ── OFFRE COMMERCIALE ──
+    {
+        "id": "ANOM_COM_PMF_SANS_TRACTION",
+        "dimension": "commercial_offer",
+        "penalty_points": 22,
+        "target_score": "commercial_offer",
+        "conditions": [
+            {"variable": "alignement_besoins", "operator": "==", "value": "total_pmf"},
+            {"variable": "niveau_traction", "operator": "in", "value": ["ideation_pure", "premiers_testeurs"]},
+            {"variable": "modele_revenu", "operator": "==", "value": "non_defini"}
+        ],
+        "justification_template": (
+            "Auto-déclaration de Product-Market Fit sans preuves : Vous affirmez avoir "
+            "atteint le PMF (dépendance forte, rétention exceptionnelle) avec au mieux "
+            "des bêta-testeurs non-payants et un modèle de revenus non défini. "
+            "Le PMF réel requiert que plus de 40% de vos clients payants soient "
+            "'très déçus' si votre produit disparaissait. Sans clients payants, "
+            "il ne peut pas être mesuré."
+        ),
+        "action_template": "Conduisez le test de Sean Ellis sur votre base d'utilisateurs et documentez les résultats réels selon {kb_link}.",
+        "kb_link": "KB-IEEE-PMF-TEST-006"
+    },
+    {
+        "id": "ANOM_COM_MUST_HAVE_SANS_RECURRENCE",
+        "dimension": "commercial_offer",
+        "penalty_points": 18,
+        "target_score": "both_commercial_innovation",
+        "conditions": [
+            {"variable": "alignement_besoins", "operator": "==", "value": "must_have_urgent"},
+            {"variable": "modele_revenu", "operator": "in", "value": ["non_defini", "transactionnel_standard"]},
+            {"variable": "niveau_traction", "operator": "in", "value": ["traction_initiale", "traction_significative"]}
+        ],
+        "justification_template": (
+            "Besoin critique validé — Monétisation sous-optimisée : Votre produit répond "
+            "à un besoin urgent et critique avec de la traction réelle, mais votre modèle "
+            "se limite à la vente one-shot. Un besoin Must-Have est le signal parfait "
+            "pour un abonnement récurrent (SaaS, retainer) qui maximisera votre LTV "
+            "et réduira votre CAC. La vente unique sur un besoin récurrent "
+            "sous-valorise structurellement votre entreprise."
+        ),
+        "action_template": "Convertissez votre modèle one-shot en abonnement récurrent : testez d'abord une facturation mensuelle sur 10 clients existants selon {kb_link}.",
+        "kb_link": "KB-ANAVA-SUBSCRIPTION-MODEL-002"
+    },
+
+    # ── INNOVATION ──
+    {
+        "id": "ANOM_INO_DEEPTECH_SANS_ANCRAGE",
+        "dimension": "innovation",
+        "penalty_points": 20,
+        "target_score": "innovation",
+        "conditions": [
+            {"variable": "intensite_tech", "operator": "==", "value": "deeptech_science"},
+            {"variable": "accompagnement", "operator": "==", "value": "jamais"},
+            {"variable": "financement", "operator": "==", "value": "aucun"}
+        ],
+        "justification_template": (
+            "DeepTech sans écosystème de recherche — Risque technologique maximal : "
+            "Vous revendiquez une technologie issue de la recherche ou des biotechnologies "
+            "sans aucun programme d'accompagnement ni financement externe. La DeepTech "
+            "tunisienne nécessite un ancrage institutionnel : partenariat universitaire "
+            "(ENIT, ESPRIT, INAT), financement ANPR ou bourse Smart Capital Amorçage. "
+            "Sans ces leviers, la transformation d'une recherche en produit commercial "
+            "dépasse les capacités individuelles."
+        ),
+        "action_template": "Identifiez votre laboratoire tuteur et déposez une demande à l'ANPR pour un financement de valorisation selon {kb_link}.",
+        "kb_link": "KB-ANPR-DEEPTECH-TRANSFER-001"
+    },
+    {
+        "id": "ANOM_INO_BARRIERE_RESEAU_SANS_MASSE",
+        "dimension": "innovation",
+        "penalty_points": 12,
+        "target_score": "innovation",
+        "conditions": [
+            {"variable": "barrieres_entree", "operator": "==", "value": "effet_de_reseau"},
+            {"variable": "niveau_traction", "operator": "in", "value": ["ideation_pure", "premiers_testeurs"]},
+            {"variable": "potentiel_financier_marche", "operator": "in", "value": ["niche_ultra_locale", "marche_local_limite"]}
+        ],
+        "justification_template": (
+            "Effet de réseau revendiqué sans masse critique — Catch-22 de la plateforme : "
+            "Vous fondez votre barrière à l'entrée sur les effets de réseau avec seulement "
+            "des bêta-testeurs sur un marché restreint. L'effet de réseau n'existe pas "
+            "avant la masse critique : en-dessous de ce seuil, le produit a moins de valeur "
+            "que ses concurrents. Cette barrière hypothétique ne protège pas votre projet "
+            "face à un concurrent mieux financé."
+        ),
+        "action_template": "Définissez votre stratégie de bootstrapping de la masse critique (cold start problem) selon la méthodologie {kb_link}.",
+        "kb_link": "KB-TACT-NETWORK-COLDSTART-003"
+    },
+
+    # ── SCALABILITÉ ──
+    {
+        "id": "ANOM_SCA_BORN_GLOBAL_SANS_LEGAL",
+        "dimension": "scalability",
+        "penalty_points": 16,
+        "target_score": "scalability",
+        "conditions": [
+            {"variable": "potentiel_geo", "operator": "==", "value": "global_born_global"},
+            {"variable": "niveau_traction", "operator": "in", "value": ["ideation_pure", "premiers_testeurs"]},
+            {"variable": "rne", "operator": "==", "value": False}
+        ],
+        "justification_template": (
+            "Born Global sans existence légale — Ambition internationale sans base locale : "
+            "Vous concevez votre produit comme 'Born Global' mais sans RNE et sans traction. "
+            "La loi des changes tunisienne (BCT) interdit toute transaction en devises "
+            "étrangères sans compte spécial (Art. 17 du Startup Act 2018-20). "
+            "Sans entité légale, vous ne pouvez pas recevoir de paiements internationaux "
+            "ni ouvrir les comptes bancaires nécessaires à l'opération mondiale."
+        ),
+        "action_template": "Enregistrez votre startup et obtenez le label Startup Act pour accéder au compte spécial en devises prévu à l'Article 17. Guide : {kb_link}.",
+        "kb_link": "KB-BCT-DEVISES-STARTUPACT-001"
+    },
+    {
+        "id": "ANOM_SCA_CAPEX_ELEVE_SANS_GARANTIE",
+        "dimension": "financial_health",
+        "penalty_points": 22,
+        "target_score": "global",
+        "conditions": [
+            {"variable": "couts_deploiement", "operator": "==", "value": "capex_prohibitif"},
+            {"variable": "financement", "operator": "==", "value": "aucun"},
+            {"variable": "stade_reel", "operator": "in", "value": ["Ideation", "Market Validation"]}
+        ],
+        "justification_template": (
+            "CAPEX prohibitif sans financement ni garantie — Projet bloqué à la source : "
+            "Votre modèle nécessite des millions d'investissements préalables sans aucun "
+            "financement sécurisé au stade '{stade_reel}'. Selon Stiglitz & Weiss (1981), "
+            "les banques rationneront le crédit car elles ne distinguent pas les projets "
+            "CAPEX-intensifs viables des projets risqués. Sans fonds propres (≥30% du CAPEX) "
+            "ou garantie SOTUGAR, aucune institution financière tunisienne ne financera ce profil."
+        ),
+        "action_template": "Structurez un apport en fonds propres minimum et montez un dossier SOTUGAR pour déclencher le financement bancaire selon {kb_link}.",
+        "kb_link": "KB-SOTUGAR-CAPEX-GUARANTEE-001"
+    },
+
+    # ── ESG ──
+    {
+        "id": "ANOM_ESG_IMPACT_POSITIF_SANS_MESURE",
+        "dimension": "green",
+        "penalty_points": 12,
+        "target_score": "green",
+        "conditions": [
+            {"variable": "climat_air", "operator": "==", "value": "impact_positif_mesurable"},
+            {"variable": "accompagnement", "operator": "==", "value": "jamais"}
+        ],
+        "justification_template": (
+            "Impact carbone positif auto-déclaré sans méthodologie de mesure : "
+            "Vous affirmez réduire activement vos émissions de GES sans avoir jamais "
+            "bénéficié d'un programme d'accompagnement susceptible de valider cet impact. "
+            "Les bailleurs à impact (PNUD, GCF, BAD actifs en Tunisie) exigent une "
+            "méthodologie standardisée (GHG Protocol, Bilan Carbone® ADEME) et un audit "
+            "tiers. Une auto-déclaration non auditée est assimilée à du greenwashing."
+        ),
+        "action_template": "Faites réaliser un bilan carbone par un cabinet accrédité et documentez vos indicateurs d'impact selon {kb_link}.",
+        "kb_link": "KB-PNUD-GHG-MEASURE-003"
+    },
+
+    # ── INTER-SCORES ──
+    {
+        "id": "ANOM_INTER_SCALE_ARTISANAL_MENA",
+        "dimension": "global",
+        "penalty_points": 20,
+        "target_score": "global",
+        "conditions": [
+            {"variable": "potentiel_geo", "operator": "in", "value": ["continental_mena", "global_born_global"]},
+            {"variable": "independance_manuelle", "operator": "==", "value": "modele_artisanal"},
+            {"variable": "couts_deploiement", "operator": "in", "value": ["capex_prohibitif", "investissements_lourds"]}
+        ],
+        "justification_template": (
+            "Ambition MENA/globale avec modèle artisanal et CAPEX lourd — "
+            "Triangle de l'impossibilité : Vous visez une expansion régionale ou globale "
+            "avec un modèle où chaque nouveau client nécessite autant de staff que lui, "
+            "et des investissements massifs à l'entrée. Ces paramètres sont mathématiquement "
+            "incompatibles avec une croissance régionale : le coût de déploiement par pays "
+            "consommera tout le capital avant la profitabilité unitaire. Aucun fonds MENA "
+            "(Wamda, BECO, Algebra) ne financera ce profil."
+        ),
+        "action_template": "Restructurez votre modèle de déploiement (franchise, agent commercial, SaaS) pour atteindre l'indépendance opérationnelle avant de cibler le marché régional selon {kb_link}.",
+        "kb_link": "KB-CEPEX-MENA-DEPLOY-MODEL-001"
     }
+
 ]
 
 # =====================================================================

@@ -1,9 +1,180 @@
 import json
-
-# ==========================================
-# 1. BASE DE DONNÉES DES 20 RÈGLES
-# ==========================================
 RULES_DATABASE = [
+    # ── AGRICULTURE ──
+    {
+        "id": "ANOM_AGRI_SAISONNALITE_SANS_PLAN",
+        "dimension": "strategy",
+        "penalty_points": 12,
+        "target_score": "commercial_offer_score",
+        "conditions": [
+            {"variable": "secteur", "operator": "==", "value": "agriculture_sylviculture_peche"},
+            {"variable": "saisonnalite", "operator": "==", "value": "Oui, fortement saisonnière"},
+            {"variable": "business_plan", "operator": "in", "value": ["absent", "incomplet"]}
+        ],
+        "justification_template": (
+            "Risque de trésorerie saisonnier non couvert : Votre activité est fortement "
+            "saisonnière mais votre modélisation financière est absente ou incomplète. "
+            "Sans projection des flux de trésorerie inter-saisons, aucune banque tunisienne "
+            "(BTS, BFPME) ne financera votre cycle d'exploitation agricole. La saisonnalité "
+            "exige un plan de financement du fonds de roulement spécifique."
+        ),
+        "action_template": "Construisez un plan de trésorerie mensuel sur 18 mois intégrant les pics et creux saisonniers selon le modèle {kb_link}.",
+        "kb_link": "KB-BTS-AGRO-CASHFLOW-006"
+    },
+    {
+        "id": "ANOM_AGRI_CHAINE_FROID_REVENUS",
+        "dimension": "financial_health",
+        "penalty_points": 20,
+        "target_score": "global",
+        "conditions": [
+            {"variable": "secteur", "operator": "==", "value": "agriculture_sylviculture_peche"},
+            {"variable": "chaine_froid", "operator": "==", "value": False},
+            {"variable": "chiffre_affaires", "operator": ">", "value": 50000}
+        ],
+        "justification_template": (
+            "Incohérence logistique critique : Vous déclarez {chiffre_affaires} TND de chiffre "
+            "d'affaires dans le secteur agro-alimentaire/pêche sans chaîne de froid "
+            "opérationnelle ni accord logistique. La traçabilité et la conservation sont "
+            "des obligations réglementaires ANCSEP et un prérequis à tout contrat de "
+            "fourniture formalisé avec la GMS ou l'export."
+        ),
+        "action_template": "Contractualisez avec un prestataire frigorifique et documentez votre traçabilité selon le référentiel {kb_link}.",
+        "kb_link": "KB-ANPE-AGRO-COLD-003"
+    },
+
+    # ── INDUSTRIE ──
+    {
+        "id": "ANOM_IND_ISO_SOUS_TRAITANCE_GAP",
+        "dimension": "strategy",
+        "penalty_points": 14,
+        "target_score": "commercial_offer_score",
+        "conditions": [
+            {"variable": "secteur", "operator": "==", "value": "industrie_construction"},
+            {"variable": "certification_iso", "operator": "==", "value": "absent"},
+            {"variable": "sous_traitance", "operator": "==", "value": "Oui, contrats formels signés"}
+        ],
+        "justification_template": (
+            "Dépendance contractuelle sans qualification qualité : Vous travaillez en "
+            "sous-traitance avec des contrats formels, mais sans certification ISO. "
+            "Les donneurs d'ordre industriels tunisiens et internationaux imposent "
+            "la certification qualité comme critère d'homologation fournisseur. "
+            "Votre position contractuelle ne résistera pas à un audit de supply chain."
+        ),
+        "action_template": "Lancez le processus ISO 9001 via l'INNORPI en priorisant les chapitres opérationnels selon {kb_link}.",
+        "kb_link": "KB-INNORPI-ISO-IND-004"
+    },
+
+    # ── COMMERCE / LOGISTIQUE ──
+    {
+        "id": "ANOM_COM_RESEAU_SANS_BP",
+        "dimension": "mindset_coachability",
+        "penalty_points": 13,
+        "target_score": "team_score",
+        "conditions": [
+            {"variable": "secteur", "operator": "==", "value": "commerce_transport_logistique"},
+            {"variable": "reseau_distribution", "operator": "==", "value": "Oui, réseau structuré multi-canaux"},
+            {"variable": "business_plan", "operator": "in", "value": ["absent", "incomplet"]}
+        ],
+        "justification_template": (
+            "Réseau de distribution actif sans modélisation financière : Vous opérez "
+            "un réseau commercial multi-canaux structuré mais sans business plan documenté. "
+            "Sans projection de marges par canal et sans CAC par point de vente, "
+            "vous gérez un réseau de distribution à l'aveugle. Les banques tunisiennes "
+            "refuseront tout financement de croissance en l'absence de ce document."
+        ),
+        "action_template": "Modélisez la rentabilité de chaque canal (marges, CAC, rotation stock) avec le canevas financier {kb_link}.",
+        "kb_link": "KB-BFPME-DISTRIB-FIN-005"
+    },
+
+    # ── TOURISME / SERVICES ──
+    {
+        "id": "ANOM_SERV_FIDELISATION_SAISONNALITE",
+        "dimension": "strategy",
+        "penalty_points": 14,
+        "target_score": "commercial_offer_score",
+        "conditions": [
+            {"variable": "secteur", "operator": "==", "value": "service_tourisme"},
+            {"variable": "saisonnalite", "operator": "==", "value": "Oui, fortement saisonnière"},
+            {"variable": "fidelisation", "operator": "==", "value": "Non, clientèle de passage"}
+        ],
+        "justification_template": (
+            "Double vulnérabilité saisonnière : Votre activité touristique est fortement "
+            "saisonnière et repose exclusivement sur une clientèle de passage sans programme "
+            "de fidélisation. Cette combinaison génère une dépendance totale aux flux "
+            "conjoncturels sans aucun revenu garanti hors-saison. Le modèle n'est "
+            "pas bancable sans lissage des revenus sur 12 mois."
+        ),
+        "action_template": "Développez une offre hors-saison (MICE, clientèle domestique) et un programme de fidélité numérique selon le modèle {kb_link}.",
+        "kb_link": "KB-ONTT-OFFSEASON-004"
+    },
+
+    # ── TECH ──
+    {
+        "id": "ANOM_TECH_IP_SANS_ARTICLE12",
+        "dimension": "strategy",
+        "penalty_points": 22,
+        "target_score": "product_tech_score",
+        "conditions": [
+            {"variable": "secteur", "operator": "==", "value": "tech_services_entreprise"},
+            {"variable": "propriete_intellectuelle", "operator": "==", "value": False},
+            {"variable": "mrr", "operator": "in", "value": ["fort", "faible"]},
+            {"variable": "rne", "operator": "==", "value": True}
+        ],
+        "justification_template": (
+            "Valeur technologique non protégée malgré des revenus actifs : Vous générez "
+            "des revenus récurrents avec une solution tech mais sans aucune propriété "
+            "intellectuelle protégée (brevet, marque, droits logiciels). L'Article 12 "
+            "de la Loi Startup Act 2018-20 prévoit la prise en charge intégrale par "
+            "l'État des frais de dépôt de brevet. Chaque mois sans dépôt est une "
+            "fenêtre ouverte pour qu'un concurrent copie votre solution sans recours légal."
+        ),
+        "action_template": "Initiez le dépôt via le portail Startup Act (Art. 12) — zéro frais, traitement prioritaire. Procédure détaillée dans {kb_link}.",
+        "kb_link": "KB-TACT-ART12-TECH-002"
+    },
+    {
+        "id": "ANOM_TECH_MRR_FORT_SANS_ACCOMPAGNEMENT",
+        "dimension": "ecosystem_integration",
+        "penalty_points": 8,
+        "target_score": "global",
+        "conditions": [
+            {"variable": "secteur", "operator": "==", "value": "tech_services_entreprise"},
+            {"variable": "mrr", "operator": "==", "value": "fort"},
+            {"variable": "accompagnement", "operator": "==", "value": "jamais"},
+            {"variable": "financement", "operator": "==", "value": "aucun"}
+        ],
+        "justification_template": (
+            "Traction forte isolée de l'écosystème — Opportunité d'accélération manquée : "
+            "Vous générez plus de 5 000 TND/mois sans avoir jamais bénéficié d'un "
+            "programme d'accompagnement ni de financement externe. À ce niveau de traction, "
+            "vous êtes directement éligible aux programmes d'accélération Flat6Labs, "
+            "ANAVA Growth ou Wamda, qui apportent capital, mentors et réseau régional. "
+            "Rester hors écosystème à ce stade ralentit votre croissance de façon mesurable."
+        ),
+        "action_template": "Postulez aux programmes d'accélération Scale-up actifs (Flat6Labs Tunis, ANAVA Scale) avec le kit de dossier disponible dans {kb_link}.",
+        "kb_link": "KB-ANAVA-SCALE-APPLY-001"
+    },
+
+    # ── CROSS-SECTORIEL ──
+    {
+        "id": "ANOM_GLOBAL_ACCOMP_TERMINE_STAGNATION",
+        "dimension": "mindset_coachability",
+        "penalty_points": 13,
+        "target_score": "team_score",
+        "conditions": [
+            {"variable": "accompagnement", "operator": "==", "value": "termine"},
+            {"variable": "stade_reel", "operator": "==", "value": "Ideation"},
+            {"variable": "chiffre_affaires", "operator": "==", "value": 0}
+        ],
+        "justification_template": (
+            "Post-incubation sans progression : Vous avez terminé un programme "
+            "d'accompagnement mais votre diagnostic vous place toujours en 'Ideation' "
+            "avec un CA nul. Soit le programme était inadapté, soit l'exécution "
+            "post-programme a été nulle. Repasser en incubateur sans analyser les "
+            "causes d'échec reproduira le même résultat."
+        ),
+        "action_template": "Réalisez un post-mortem de votre période d'incubation et identifiez vos 3 blockers d'exécution principaux selon le framework {kb_link}.",
+        "kb_link": "KB-EXEC-POSTMORTEM-INCUB-001"
+    },
     {
         "id": "ANOM_FRAUD_MEGALOMANIA_STAGE",
         "dimension": "mindset_coachability",

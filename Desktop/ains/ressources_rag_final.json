@@ -1,0 +1,1777 @@
+[
+  {
+    "id": "APII-003",
+    "nom": "APII _ Centres d'Affaires (Espaces Entreprendre)",
+    "organisme": "APII / Reseau des Centres d'Affaires Nationaux",
+    "type": "accompagnement_conseil",
+    "stades_eligibles": [
+      "Ideation",
+      "Market Validation"
+    ],
+    "montant_min": 0,
+    "montant_max": 0,
+    "taux": "Services publics gratuits d'orientation",
+    "criteres_eligibilite": [
+      "Porteurs d'idees de projets industriels ou de services non structurees (besoin de gap-filling)",
+      "Demande d'aide pour la redaction du premier profil de projet ou l'accomplissement des demarches de creation",
+      "Tout entrepreneur ou jeune diplome en quete d'information sectorielle"
+    ],
+    "documents_requis": [
+      "Formulaire d'accueil et d'orientation complete",
+      "Note d'idee sommaire ou description textuelle du concept",
+      "Piece d'identite"
+    ],
+    "url_source": "http://www.tunisieindustrie.nat.tn/",
+    "date_scraping": "2026-06-16",
+    "gaps_adresses": [
+      "idee_non_structuree",
+      "absence_business_plan",
+      "orientation_initiale",
+      "manque_information",
+      "phase_ideation"
+    ],
+    "rag_description": "APII Centres Affaires Espaces Entreprendre: orientation gratuite porteurs projets industriels. Aide rédaction premier business plan, démarches création, information sectorielle.",
+    "texte_complet": "SECTEUR: Agriculture/Sylviculture/Peche Industrie/Construction Commerce/Transport/Logistique Service/Tourisme Technologie/Service-Entreprise. agriculture agricole agriculteur exploitation agricole peche pecheur aquaculture maritime sylviculture foret rural zone rurale culture elevage irrigation mecanisation agroalimentaire agri-food semences intrants industrie industriel usine manufacture production construction batiment btp travaux equipements industriels machines outils transformation produits finis secteur industriel commerce commercial vente distribution retail transport logistique livraison chaine approvisionnement import export commerce international douane marketplace e-commerce boutique service services prestation conseil tourisme touristique hotel hebergement restaurant restauration gite maison hotes agence voyage guide touristique technologie tech digital numerique informatique startup innovation saas logiciel application intelligence artificielle ia deeptech fintech service entreprise b2b conseil expertise. APII _ Centres d'Affaires (Espaces Entreprendre) APII / Reseau des Centres d'Affaires Nationaux. APII Centres Affaires Espaces Entreprendre: orientation gratuite porteurs projets industriels. Aide rédaction premier business plan, démarches création, information sectorielle.. Stades eligibles: Ideation Market Validation. Gaps adresses: idee_non_structuree absence_business_plan orientation_initiale manque_information phase_ideation. Porteurs d'idees de projets industriels ou de services non structurees (besoin de gap-filling) Demande d'aide pour la redaction du premier profil de projet ou l'accomplissement des demarches de creation Tout entrepreneur ou jeune diplome en quete d'information sectorielle. Type: accompagnement_conseil. Ressource pour: Agriculture/Sylviculture/Peche Industrie/Construction Commerce/Transport/Logistique Service/Tourisme Technologie/Service-Entreprise.",
+    "devise": "TND",
+    "derniere_mise_a_jour": "2026-06-16",
+    "source_verified": true,
+    "url_accessible": "403_anti_robot_normal",
+    "secteur_cible": [
+      "Agriculture/Sylviculture/Peche",
+      "Industrie/Construction",
+      "Commerce/Transport/Logistique",
+      "Service/Tourisme",
+      "Technologie/Service-Entreprise"
+    ]
+  },
+  {
+    "id": "BTS-001",
+    "nom": "BTS _ Financement de Micro-projets",
+    "organisme": "BTS (Banque Tunisienne de Solidarite)",
+    "type": "micro_finance",
+    "stades_eligibles": [
+      "Ideation",
+      "Structuration",
+      "Launch Planning"
+    ],
+    "montant_min": 300,
+    "montant_max": 5000,
+    "taux": "5% (Taux d'interet fixe)",
+    "criteres_eligibilite": [
+      "Personnes issues de couches sociales a faible revenu",
+      "Objectif de creation de sources de revenus ou d'amelioration des conditions de vie",
+      "Projet porte dans le cadre d'activites productives (plafond 5000 DT) ou d'amelioration des conditions de vie (plafond 1000 DT)",
+      "Non-cumul de credits dans le cadre du meme systeme ou avec d'autres sources de financement public"
+    ],
+    "documents_requis": [
+      "Dossier de demande de micro-credit aupres de l'association locale agreee",
+      "Justificatifs d'identite et de situation socio-economique",
+      "Note explicative simplifiee de l'activite ou du besoin"
+    ],
+    "url_source": "http://www.bts.com.tn/systeme-des-micro-credits/",
+    "date_scraping": "2026-06-16",
+    "gaps_adresses": [
+      "faible_revenu",
+      "exclusion_bancaire",
+      "phase_ideation",
+      "manque_garanties",
+      "micro_projet"
+    ],
+    "rag_description": "Micro-crédit BTS pour personnes à faible revenu. Financement micro-projets productifs de 300 à 5000 TND à taux 5%. Couches sociales vulnérables, activités génératrices de revenus.",
+    "texte_complet": "SECTEUR: Agriculture/Sylviculture/Peche Industrie/Construction Commerce/Transport/Logistique Service/Tourisme Technologie/Service-Entreprise. agriculture agricole agriculteur exploitation agricole peche pecheur aquaculture maritime sylviculture foret rural zone rurale culture elevage irrigation mecanisation agroalimentaire agri-food semences intrants industrie industriel usine manufacture production construction batiment btp travaux equipements industriels machines outils transformation produits finis secteur industriel commerce commercial vente distribution retail transport logistique livraison chaine approvisionnement import export commerce international douane marketplace e-commerce boutique service services prestation conseil tourisme touristique hotel hebergement restaurant restauration gite maison hotes agence voyage guide touristique technologie tech digital numerique informatique startup innovation saas logiciel application intelligence artificielle ia deeptech fintech service entreprise b2b conseil expertise. BTS _ Financement de Micro-projets BTS (Banque Tunisienne de Solidarite). Micro-crédit BTS pour personnes à faible revenu. Financement micro-projets productifs de 300 à 5000 TND à taux 5%. Couches sociales vulnérables, activités génératrices de revenus.. Stades eligibles: Ideation Structuration Launch Planning. Gaps adresses: faible_revenu exclusion_bancaire phase_ideation manque_garanties micro_projet. Personnes issues de couches sociales a faible revenu Objectif de creation de sources de revenus ou d'amelioration des conditions de vie Projet porte dans le cadre d'activites productives (plafond 5000 DT) ou d'amelioration des conditions de vie (plafond 1000 DT) Non-cumul de credits dans le cadre du meme systeme ou avec d'autres sources de financement public. Type: micro_finance. Ressource pour: Agriculture/Sylviculture/Peche Industrie/Construction Commerce/Transport/Logistique Service/Tourisme Technologie/Service-Entreprise.",
+    "devise": "TND",
+    "derniere_mise_a_jour": "2026-06-16",
+    "source_verified": true,
+    "url_accessible": "403_anti_robot_normal",
+    "secteur_cible": [
+      "Agriculture/Sylviculture/Peche",
+      "Industrie/Construction",
+      "Commerce/Transport/Logistique",
+      "Service/Tourisme",
+      "Technologie/Service-Entreprise"
+    ]
+  },
+  {
+    "id": "FLAT6-001",
+    "nom": "Flat6Labs Tunisia _ Programme d'Acceleration et d'Investissement",
+    "organisme": "Flat6Labs Tunisia",
+    "type": "acceleration_investissement",
+    "stades_eligibles": [
+      "Ideation",
+      "Market Validation",
+      "Structuration",
+      "Launch Planning"
+    ],
+    "montant_min": 50000,
+    "montant_max": 250000,
+    "taux": "Participation au capital (generalement 6% a 10% d'equity)",
+    "criteres_eligibilite": [
+      "Startups technologiques a un stade Early Stage (MVP disponible ou prototype avance)",
+      "Equipe complementaire devouee a plein temps sur le projet",
+      "Marche cible large ou scalable a l'international"
+    ],
+    "documents_requis": [
+      "Formulaire d'application en ligne lors des cohortes d'appels a projets",
+      "Pitch deck commercial",
+      "Demonstration video du produit / MVP"
+    ],
+    "url_source": "https://flat6labs.com/programs-type/programs-for-entrepreneurs/",
+    "date_scraping": "2026-06-16",
+    "gaps_adresses": [
+      "besoin_accompagnement",
+      "manque_reseau",
+      "besoin_mentorat",
+      "early_stage",
+      "acceleration",
+      "pre_series_a"
+    ],
+    "rag_description": "Flat6Labs Tunis: accélérateur investisseur early stage. Investissement 50 000 à 250 000 TND contre 6-10% equity. Programme accompagnement cohorte, MVP requis, équipe plein temps.",
+    "texte_complet": "SECTEUR: Technologie/Service-Entreprise Service/Tourisme Commerce/Transport/Logistique. technologie tech digital numerique informatique startup innovation saas logiciel application intelligence artificielle ia deeptech fintech service entreprise b2b conseil expertise service services prestation conseil tourisme touristique hotel hebergement restaurant restauration gite maison hotes agence voyage guide touristique commerce commercial vente distribution retail transport logistique livraison chaine approvisionnement import export commerce international douane marketplace e-commerce boutique. Flat6Labs Tunisia _ Programme d'Acceleration et d'Investissement Flat6Labs Tunisia. Flat6Labs Tunis: accélérateur investisseur early stage. Investissement 50 000 à 250 000 TND contre 6-10% equity. Programme accompagnement cohorte, MVP requis, équipe plein temps.. Stades eligibles: Ideation Market Validation Structuration Launch Planning. Gaps adresses: besoin_accompagnement manque_reseau besoin_mentorat early_stage acceleration pre_series_a. Startups technologiques a un stade Early Stage (MVP disponible ou prototype avance) Equipe complementaire devouee a plein temps sur le projet Marche cible large ou scalable a l'international. Type: acceleration_investissement. Ressource pour: Technologie/Service-Entreprise Service/Tourisme Commerce/Transport/Logistique.",
+    "devise": "TND",
+    "derniere_mise_a_jour": "2026-06-16",
+    "source_verified": true,
+    "url_accessible": "403_anti_robot_normal",
+    "secteur_cible": [
+      "Technologie/Service-Entreprise",
+      "Service/Tourisme",
+      "Commerce/Transport/Logistique"
+    ]
+  },
+  {
+    "id": "INNOVIT-001",
+    "nom": "Programme Innovation IT / R&D Numerique",
+    "organisme": "ANPR (Agence Nationale de la Promotion de la Recherche Scientifique) / Partenaires Internationaux",
+    "type": "subvention_recherche",
+    "stades_eligibles": [
+      "Ideation",
+      "Market Validation",
+      "Structuration"
+    ],
+    "montant_min": 10000,
+    "montant_max": 150000,
+    "taux": "Fonds perdus dedies a l'innovation",
+    "criteres_eligibilite": [
+      "Besoin fort de R&D (Recherche et Developpement) pour concevoir un nouveau produit technologique",
+      "Consortium ou collaboration entre une startup/PME et un laboratoire de recherche public tunisien",
+      "Verrou technologique clair a lever"
+    ],
+    "documents_requis": [
+      "Protocole d'accord de partenariat de recherche",
+      "Description technique detaillee de l'innovation visee",
+      "Budget previsionnel ventile des depenses de R&D (equipements de test, prototypage, personnel)"
+    ],
+    "url_source": "https://www.anpr.tn/les-programmes-et-les-mecanismes-de-financement-de-la-r-d/",
+    "date_scraping": "2026-06-16",
+    "gaps_adresses": [
+      "innovation_score_faible",
+      "rd_necessaire",
+      "verrou_technologique",
+      "consortium_recherche",
+      "prototype"
+    ],
+    "rag_description": "Programme innovation R&D numérique ANPR: fonds perdus 10 000-150 000 TND. Consortium startup et laboratoire recherche public, verrou technologique à lever.",
+    "texte_complet": "SECTEUR: Technologie/Service-Entreprise Industrie/Construction. technologie tech digital numerique informatique startup innovation saas logiciel application intelligence artificielle ia deeptech fintech service entreprise b2b conseil expertise industrie industriel usine manufacture production construction batiment btp travaux equipements industriels machines outils transformation produits finis secteur industriel. Programme Innovation IT / R&D Numerique ANPR (Agence Nationale de la Promotion de la Recherche Scientifique) / Partenaires Internationaux. Programme innovation R&D numérique ANPR: fonds perdus 10 000-150 000 TND. Consortium startup et laboratoire recherche public, verrou technologique à lever.. Stades eligibles: Ideation Market Validation Structuration. Gaps adresses: innovation_score_faible rd_necessaire verrou_technologique consortium_recherche prototype. Besoin fort de R&D (Recherche et Developpement) pour concevoir un nouveau produit technologique Consortium ou collaboration entre une startup/PME et un laboratoire de recherche public tunisien Verrou technologique clair a lever. Type: subvention_recherche. Ressource pour: Technologie/Service-Entreprise Industrie/Construction.",
+    "devise": "TND",
+    "derniere_mise_a_jour": "2026-06-16",
+    "source_verified": true,
+    "url_accessible": "403_anti_robot_normal",
+    "secteur_cible": [
+      "Technologie/Service-Entreprise",
+      "Industrie/Construction"
+    ]
+  },
+  {
+    "id": "PEPAGRI-001",
+    "nom": "Pepinieres d'Entreprises Agricoles",
+    "organisme": "APIA / Etablissements de recherche et d'enseignement superieur agricoles",
+    "type": "accompagnement_incubation",
+    "stades_eligibles": [
+      "Ideation",
+      "Market Validation",
+      "Structuration"
+    ],
+    "montant_min": 0,
+    "montant_max": 0,
+    "taux": "Gratuit (Hebergement et coaching technique)",
+    "criteres_eligibilite": [
+      "Jeunes promoteurs diplomes ou chercheurs ayant une idee de projet agricole innovant",
+      "Projet integrant de nouvelles technologies (AgriTech, hydroponie, valorisation des dechets)",
+      "Besoin d'un espace de test pour valider le modele de production avant lancement commercial"
+    ],
+    "documents_requis": [
+      "Dossier de candidature decrivant l'idee innovante",
+      "Copie des diplomes academiques",
+      "Entretien de selection devant le comite de la pepiniere"
+    ],
+    "url_source": "http://www.apia.com.tn/",
+    "date_scraping": "2026-06-16",
+    "gaps_adresses": [
+      "secteur_agricole",
+      "ideation_agritech",
+      "incubation_agricole",
+      "jeune_agri",
+      "validation_modele"
+    ],
+    "rag_description": "Pépinières entreprises agricoles APIA: incubation gratuite jeunes promoteurs AgriTech hydroponie. Hébergement coaching technique pour valider modèle production.",
+    "texte_complet": "SECTEUR: Agriculture/Sylviculture/Peche Technologie/Service-Entreprise. agriculture agricole agriculteur exploitation agricole peche pecheur aquaculture maritime sylviculture foret rural zone rurale culture elevage irrigation mecanisation agroalimentaire agri-food semences intrants technologie tech digital numerique informatique startup innovation saas logiciel application intelligence artificielle ia deeptech fintech service entreprise b2b conseil expertise. Pepinieres d'Entreprises Agricoles APIA / Etablissements de recherche et d'enseignement superieur agricoles. Pépinières entreprises agricoles APIA: incubation gratuite jeunes promoteurs AgriTech hydroponie. Hébergement coaching technique pour valider modèle production.. Stades eligibles: Ideation Market Validation Structuration. Gaps adresses: secteur_agricole ideation_agritech incubation_agricole jeune_agri validation_modele. Jeunes promoteurs diplomes ou chercheurs ayant une idee de projet agricole innovant Projet integrant de nouvelles technologies (AgriTech, hydroponie, valorisation des dechets) Besoin d'un espace de test pour valider le modele de production avant lancement commercial. Type: accompagnement_incubation. Ressource pour: Agriculture/Sylviculture/Peche Technologie/Service-Entreprise.",
+    "devise": "TND",
+    "derniere_mise_a_jour": "2026-06-16",
+    "source_verified": true,
+    "url_accessible": "403_anti_robot_normal",
+    "secteur_cible": [
+      "Agriculture/Sylviculture/Peche",
+      "Technologie/Service-Entreprise"
+    ]
+  },
+  {
+    "id": "STARTUP-ACT-001",
+    "nom": "Bourse de la Startup (Startup Grant)",
+    "organisme": "Smart Capital / Ministere des Technologies de la Communication",
+    "type": "subvention_incitation",
+    "stades_eligibles": [
+      "Ideation",
+      "Market Validation",
+      "Structuration"
+    ],
+    "montant_min": 12000,
+    "montant_max": 60000,
+    "taux": "Sans objet (Allocation mensuelle non remboursable)",
+    "criteres_eligibilite": [
+      "Etre co-fondateur et actionnaire d'une startup ayant recu le Label Startup",
+      "S'engager a se consacrer exclusivement et a plein temps a la startup",
+      "Etre diplome de l'enseignement superieur ou avoir une qualification equivalente",
+      "La bourse est calculee sur la base du salaire moyen net des 12 derniers mois pour les salaries (plafonnee a 5000 DT/mois) ou une allocation fixe pour les independants/chomeurs (minimum 1000 DT/mois)"
+    ],
+    "documents_requis": [
+      "Attestation d'octroi du Label Startup Act",
+      "Declaration sur l'honneur d'exclusivite d'activite",
+      "Historique des salaires CNSS ou fiches de paie des 12 derniers mois (pour les anciens salaries)",
+      "Copie du diplome universitaire"
+    ],
+    "url_source": "https://support.startup.gov.tn/support/solutions/articles/73000565012-qu-est-ce-que-le-startup-act-",
+    "date_scraping": "2026-06-16",
+    "gaps_adresses": [
+      "jeune_fondateur",
+      "besoin_salaire_creation",
+      "label_startup",
+      "risque_financier_personnel"
+    ],
+    "rag_description": "Bourse Startup Act mensuelle non remboursable pour fondateurs labellisés. Allocation basée sur salaire antérieur, plafond 5000 TND/mois, minimum 1000 TND/mois pour indépendants.",
+    "texte_complet": "SECTEUR: Technologie/Service-Entreprise Industrie/Construction Service/Tourisme. technologie tech digital numerique informatique startup innovation saas logiciel application intelligence artificielle ia deeptech fintech service entreprise b2b conseil expertise industrie industriel usine manufacture production construction batiment btp travaux equipements industriels machines outils transformation produits finis secteur industriel service services prestation conseil tourisme touristique hotel hebergement restaurant restauration gite maison hotes agence voyage guide touristique. Bourse de la Startup (Startup Grant) Smart Capital / Ministere des Technologies de la Communication. Bourse Startup Act mensuelle non remboursable pour fondateurs labellisés. Allocation basée sur salaire antérieur, plafond 5000 TND/mois, minimum 1000 TND/mois pour indépendants.. Stades eligibles: Ideation Market Validation Structuration. Gaps adresses: jeune_fondateur besoin_salaire_creation label_startup risque_financier_personnel. Etre co-fondateur et actionnaire d'une startup ayant recu le Label Startup S'engager a se consacrer exclusivement et a plein temps a la startup Etre diplome de l'enseignement superieur ou avoir une qualification equivalente La bourse est calculee sur la base du salaire moyen net des 12 derniers mois pour les salaries (plafonnee a 5000 DT/mois) ou une allocation fixe pour les independants/chomeurs (minimum 1000 DT/mois). Type: subvention_incitation. Ressource pour: Technologie/Service-Entreprise Industrie/Construction Service/Tourisme.",
+    "devise": "TND",
+    "derniere_mise_a_jour": "2026-06-16",
+    "source_verified": true,
+    "url_accessible": "403_anti_robot_normal",
+    "secteur_cible": [
+      "Technologie/Service-Entreprise",
+      "Industrie/Construction",
+      "Service/Tourisme"
+    ]
+  },
+  {
+    "id": "STARTUP-ACT-003",
+    "nom": "Startup Act Tunisie _ Cadre Avantages & Labellisation",
+    "organisme": "Smart Capital / Ministere des Technologies de la Communication",
+    "type": "cadre_legal_avantages",
+    "stades_eligibles": [
+      "Ideation",
+      "Market Validation",
+      "Structuration",
+      "Launch Planning"
+    ],
+    "montant_min": 0,
+    "montant_max": 0,
+    "taux": "Exonerations fiscales et bourses d'incubation",
+    "criteres_eligibilite": [
+      "Age de l'entreprise inferieur a 8 ans depuis sa constitution",
+      "Taille de l'entreprise humaine (< 100 employes) et total bilan inferieur a 15 MDT",
+      "Le capital social doit etre detenu a plus de 66% par des personnes physiques, fonds de capital-risque ou investisseurs independants",
+      "Modele economique scalable, fort potentiel de croissance et forte dimension innovante"
+    ],
+    "documents_requis": [
+      "Pitch deck detaille du projet innovant",
+      "Formulaire de candidature en ligne sur la plateforme Startup.tn",
+      "Registres legaux (RNE, statuts, identifiant unique)",
+      "Demonstration de l'innovation (Brevet, prototype, architecture technologique)"
+    ],
+    "url_source": "https://support.startup.gov.tn/support/solutions",
+    "date_scraping": "2026-06-16",
+    "gaps_adresses": [
+      "besoin_cadre_legal",
+      "scalabilite",
+      "innovation_score",
+      "creation_startup",
+      "avantages_fiscaux"
+    ],
+    "rag_description": "Cadre légal Startup Act: label startup innovante, exonérations fiscales 8 ans, compte devises BCT, accès fonds capital-risque. Entreprise moins de 8 ans, moins de 100 employés.",
+    "texte_complet": "SECTEUR: Technologie/Service-Entreprise Industrie/Construction. technologie tech digital numerique informatique startup innovation saas logiciel application intelligence artificielle ia deeptech fintech service entreprise b2b conseil expertise industrie industriel usine manufacture production construction batiment btp travaux equipements industriels machines outils transformation produits finis secteur industriel. Startup Act Tunisie _ Cadre Avantages & Labellisation Smart Capital / Ministere des Technologies de la Communication. Cadre légal Startup Act: label startup innovante, exonérations fiscales 8 ans, compte devises BCT, accès fonds capital-risque. Entreprise moins de 8 ans, moins de 100 employés.. Stades eligibles: Ideation Market Validation Structuration Launch Planning. Gaps adresses: besoin_cadre_legal scalabilite innovation_score creation_startup avantages_fiscaux. Age de l'entreprise inferieur a 8 ans depuis sa constitution Taille de l'entreprise humaine (< 100 employes) et total bilan inferieur a 15 MDT Le capital social doit etre detenu a plus de 66% par des personnes physiques, fonds de capital-risque ou investisseurs independants Modele economique scalable, fort potentiel de croissance et forte dimension innovante. Type: cadre_legal_avantages. Ressource pour: Technologie/Service-Entreprise Industrie/Construction.",
+    "devise": "TND",
+    "derniere_mise_a_jour": "2026-06-16",
+    "source_verified": true,
+    "url_accessible": "403_anti_robot_normal",
+    "secteur_cible": [
+      "Technologie/Service-Entreprise",
+      "Industrie/Construction"
+    ]
+  },
+  {
+    "id": "APIA-001",
+    "nom": "APIA _ Avantages et Incitations Agricoles",
+    "organisme": "APIA (Agence de Promotion des Investissements Agricoles)",
+    "type": "subvention_investissement",
+    "stades_eligibles": [
+      "Structuration",
+      "Fundraising",
+      "Launch Planning"
+    ],
+    "montant_min": 10000,
+    "montant_max": 5000000,
+    "taux": "Primes financieres non remboursables reglementees par la Loi sur l'Investissement",
+    "criteres_eligibilite": [
+      "Investissements dans les secteurs de l'agriculture, de la peche, de l'aquaculture et des services lies",
+      "Projets de categories A, B ou C selon l'envergure de l'exploitation agricole",
+      "Modernisation des structures de production ou transition vers l'agroalimentaire de transformation"
+    ],
+    "documents_requis": [
+      "Declaration d'investissement APIA",
+      "Attestation de propriete ou contrat de location de la terre agricole (enregistre)",
+      "Etude technico-economique du projet agricole",
+      "Factures pro-forma des equipements de production"
+    ],
+    "url_source": "http://www.apia.com.tn/",
+    "date_scraping": "2026-06-16",
+    "gaps_adresses": [
+      "secteur_agricole",
+      "investissement_agricole",
+      "creation_exploitation",
+      "subvention_agriculture"
+    ],
+    "rag_description": "APIA Avantages Agricoles: primes financières non remboursables agriculture pêche aquaculture. Projets catégories A B C selon envergure exploitation.",
+    "texte_complet": "SECTEUR: Agriculture/Sylviculture/Peche. agriculture agricole agriculteur exploitation agricole peche pecheur aquaculture maritime sylviculture foret rural zone rurale culture elevage irrigation mecanisation agroalimentaire agri-food semences intrants. APIA _ Avantages et Incitations Agricoles APIA (Agence de Promotion des Investissements Agricoles). APIA Avantages Agricoles: primes financières non remboursables agriculture pêche aquaculture. Projets catégories A B C selon envergure exploitation.. Stades eligibles: Structuration Fundraising Launch Planning. Gaps adresses: secteur_agricole investissement_agricole creation_exploitation subvention_agriculture. Investissements dans les secteurs de l'agriculture, de la peche, de l'aquaculture et des services lies Projets de categories A, B ou C selon l'envergure de l'exploitation agricole Modernisation des structures de production ou transition vers l'agroalimentaire de transformation. Type: subvention_investissement. Ressource pour: Agriculture/Sylviculture/Peche.",
+    "devise": "TND",
+    "derniere_mise_a_jour": "2026-06-16",
+    "source_verified": true,
+    "url_accessible": "403_anti_robot_normal",
+    "secteur_cible": [
+      "Agriculture/Sylviculture/Peche"
+    ]
+  },
+  {
+    "id": "APII-001",
+    "nom": "APII _ Fonds de Promotion Industrielle (FOPRODI)",
+    "organisme": "APII (Agence de Promotion de l'Industrie et de l'Innovation)",
+    "type": "subvention_incitation",
+    "stades_eligibles": [
+      "Structuration",
+      "Fundraising"
+    ],
+    "montant_min": 10000,
+    "montant_max": 1000000,
+    "taux": "Sans objet (Subventions et dotations en capital)",
+    "criteres_eligibilite": [
+      "Secteur industriel ou services lies a l'industrie",
+      "Projets de creation d'usine ou de creation de nouvelles entites",
+      "Investissements de modernisation ou d'extension importante",
+      "Respect des criteres de participation au capital ou de primes d'investissement (loi sur l'investissement)"
+    ],
+    "documents_requis": [
+      "Declaration de projet aupres de l'APII",
+      "Dossier de demande d'avantages financiers FOPRODI",
+      "Business plan valide et schema de financement",
+      "Justificatifs de la liberation du capital social initial"
+    ],
+    "url_source": "http://www.tunisieindustrie.nat.tn/",
+    "date_scraping": "2026-06-16",
+    "gaps_adresses": [
+      "secteur_industriel",
+      "structuration_incomplete",
+      "manque_apport",
+      "creation_usine",
+      "besoin_subvention"
+    ],
+    "rag_description": "FOPRODI APII: subventions et dotations en capital pour création industrielle. Primes investissement et participation capital pour nouveaux promoteurs industrie.",
+    "texte_complet": "SECTEUR: Industrie/Construction Technologie/Service-Entreprise. industrie industriel usine manufacture production construction batiment btp travaux equipements industriels machines outils transformation produits finis secteur industriel technologie tech digital numerique informatique startup innovation saas logiciel application intelligence artificielle ia deeptech fintech service entreprise b2b conseil expertise. APII _ Fonds de Promotion Industrielle (FOPRODI) APII (Agence de Promotion de l'Industrie et de l'Innovation). FOPRODI APII: subventions et dotations en capital pour création industrielle. Primes investissement et participation capital pour nouveaux promoteurs industrie.. Stades eligibles: Structuration Fundraising. Gaps adresses: secteur_industriel structuration_incomplete manque_apport creation_usine besoin_subvention. Secteur industriel ou services lies a l'industrie Projets de creation d'usine ou de creation de nouvelles entites Investissements de modernisation ou d'extension importante Respect des criteres de participation au capital ou de primes d'investissement (loi sur l'investissement). Type: subvention_incitation. Ressource pour: Industrie/Construction Technologie/Service-Entreprise.",
+    "devise": "TND",
+    "derniere_mise_a_jour": "2026-06-16",
+    "source_verified": true,
+    "url_accessible": "403_anti_robot_normal",
+    "secteur_cible": [
+      "Industrie/Construction",
+      "Technologie/Service-Entreprise"
+    ]
+  },
+  {
+    "id": "BFPME-001",
+    "nom": "Credit a Moyen et Long Terme (CMLT)",
+    "organisme": "BFPME",
+    "type": "financement_bancaire",
+    "stades_eligibles": [
+      "Structuration",
+      "Fundraising",
+      "Launch Planning"
+    ],
+    "montant_min": 100000,
+    "montant_max": 2500000,
+    "taux": "TMM + 2% a TMM + 4%",
+    "criteres_eligibilite": [
+      "PME tunisienne",
+      "Cout d'investissement total entre 150 000 DT et 15 000 000 DT",
+      "Plafond du credit fixe a 65% du cout de l'investissement",
+      "Apport en fonds propres minimum exige",
+      "Secteurs eligibles (hors hotellerie/tourisme d'hebergement et promotion immobiliere d'habitation)",
+      "Cofinancement obligatoire avec une banque de la place (sauf cas specifiques d'extension <= 1 MDT)"
+    ],
+    "documents_requis": [
+      "Demande de financement formelle BFPME",
+      "Business plan detaille (modele BFPME/GIZ)",
+      "Etats financiers previsionnels complets",
+      "Statuts juridiques de la societe",
+      "Dossier de garanties (SOTUGAR, caution personnelle, etc.)"
+    ],
+    "url_source": "https://www.bfpme.com.tn/fr/produits",
+    "date_scraping": "2026-06-16",
+    "gaps_adresses": [
+      "structuration_incomplete",
+      "business_model_flou",
+      "besoin_financement_long_terme",
+      "absence_financement",
+      "projet_productif",
+      "manque_capitaux"
+    ],
+    "rag_description": "Crédit Moyen Long Terme BFPME pour création de PME. Financement entre 150 000 et 15 000 000 TND. Plafond CMLT 65% du coût plafonné à 2,5M TND. Taux TMM+2% à 4,5%. Cofinancement bancaire obligatoire. Garanties: SOTUGAR, caution personnelle, hypothèque. Secteurs exclus: hôtellerie hébergement principal, immobilier résidentiel. Gîtes ruraux éligibles.",
+    "texte_complet": "SECTEUR: Industrie/Construction Commerce/Transport/Logistique Service/Tourisme Agriculture/Sylviculture/Peche Technologie/Service-Entreprise. industrie industriel usine manufacture production construction batiment btp travaux equipements industriels machines outils transformation produits finis secteur industriel commerce commercial vente distribution retail transport logistique livraison chaine approvisionnement import export commerce international douane marketplace e-commerce boutique service services prestation conseil tourisme touristique hotel hebergement restaurant restauration gite maison hotes agence voyage guide touristique agriculture agricole agriculteur exploitation agricole peche pecheur aquaculture maritime sylviculture foret rural zone rurale culture elevage irrigation mecanisation agroalimentaire agri-food semences intrants technologie tech digital numerique informatique startup innovation saas logiciel application intelligence artificielle ia deeptech fintech service entreprise b2b conseil expertise. Credit a Moyen et Long Terme (CMLT) BFPME. Crédit Moyen Long Terme BFPME pour création de PME. Financement entre 150 000 et 15 000 000 TND. Plafond CMLT 65% du coût plafonné à 2,5M TND. Taux TMM+2% à 4,5%. Cofinancement bancaire obligatoire. Garanties: SOTUGAR, caution personnelle, hypothèque. Secteurs exclus: hôtellerie hébergement principal, immobilier résidentiel. Gîtes ruraux éligibles.. Stades eligibles: Structuration Fundraising Launch Planning. Gaps adresses: structuration_incomplete business_model_flou besoin_financement_long_terme absence_financement projet_productif manque_capitaux. PME tunisienne Cout d'investissement total entre 150 000 DT et 15 000 000 DT Plafond du credit fixe a 65% du cout de l'investissement Apport en fonds propres minimum exige Secteurs eligibles (hors hotellerie/tourisme d'hebergement et promotion immobiliere d'habitation) Cofinancement obligatoire avec une banque de la place (sauf cas specifiques d'extension <= 1 MDT). Type: financement_bancaire. Ressource pour: Industrie/Construction Commerce/Transport/Logistique Service/Tourisme Agriculture/Sylviculture/Peche Technologie/Service-Entreprise.",
+    "devise": "TND",
+    "derniere_mise_a_jour": "2026-06-16",
+    "source_verified": true,
+    "url_accessible": "403_anti_robot_normal",
+    "secteur_cible": [
+      "Industrie/Construction",
+      "Commerce/Transport/Logistique",
+      "Service/Tourisme",
+      "Agriculture/Sylviculture/Peche",
+      "Technologie/Service-Entreprise"
+    ]
+  },
+  {
+    "id": "BFPME-005",
+    "nom": "BFPME _ Intilak 2",
+    "organisme": "BFPME",
+    "type": "pret_participatif",
+    "stades_eligibles": [
+      "Market Validation",
+      "Structuration",
+      "Fundraising"
+    ],
+    "montant_min": 30000,
+    "montant_max": 300000,
+    "taux": "Taux preferentiel (generalement sans interet ou taux fixe reduit)",
+    "criteres_eligibilite": [
+      "Nouveaux promoteurs ou diplomes de l'enseignement superieur",
+      "Fonds propres initiaux faibles ou insuffisants pour couvrir l'apport exige par les banques",
+      "Projet eligible au cofinancement avec la BFPME"
+    ],
+    "documents_requis": [
+      "Diplomes et CV du promoteur",
+      "Etude de faisabilite / Business plan valide par la BFPME",
+      "Demande d'octroi de pret participatif",
+      "Attestation d'inscription au bureau de l'emploi (si applicable)"
+    ],
+    "url_source": "https://www.bfpme.com.tn/fr/produits",
+    "date_scraping": "2026-06-16",
+    "gaps_adresses": [
+      "manque_apport_personnel",
+      "jeune_diplome",
+      "fonds_propres_insuffisants",
+      "structuration_incomplete"
+    ],
+    "rag_description": "Intilak 2 BFPME: prêt participatif pour jeunes diplômés sans apport. Renforce fonds propres pour accéder au cofinancement BFPME principal.",
+    "texte_complet": "SECTEUR: Industrie/Construction Technologie/Service-Entreprise Service/Tourisme. industrie industriel usine manufacture production construction batiment btp travaux equipements industriels machines outils transformation produits finis secteur industriel technologie tech digital numerique informatique startup innovation saas logiciel application intelligence artificielle ia deeptech fintech service entreprise b2b conseil expertise service services prestation conseil tourisme touristique hotel hebergement restaurant restauration gite maison hotes agence voyage guide touristique. BFPME _ Intilak 2 BFPME. Intilak 2 BFPME: prêt participatif pour jeunes diplômés sans apport. Renforce fonds propres pour accéder au cofinancement BFPME principal.. Stades eligibles: Market Validation Structuration Fundraising. Gaps adresses: manque_apport_personnel jeune_diplome fonds_propres_insuffisants structuration_incomplete. Nouveaux promoteurs ou diplomes de l'enseignement superieur Fonds propres initiaux faibles ou insuffisants pour couvrir l'apport exige par les banques Projet eligible au cofinancement avec la BFPME. Type: pret_participatif. Ressource pour: Industrie/Construction Technologie/Service-Entreprise Service/Tourisme.",
+    "devise": "TND",
+    "derniere_mise_a_jour": "2026-06-16",
+    "source_verified": true,
+    "url_accessible": "403_anti_robot_normal",
+    "secteur_cible": [
+      "Industrie/Construction",
+      "Technologie/Service-Entreprise",
+      "Service/Tourisme"
+    ]
+  },
+  {
+    "id": "BTS-006",
+    "nom": "Credit Professionnel BTS Bank",
+    "organisme": "BTS (Banque Tunisienne de Solidarite)",
+    "type": "financement_bancaire",
+    "stades_eligibles": [
+      "Structuration",
+      "Fundraising",
+      "Launch Planning"
+    ],
+    "montant_min": 5000,
+    "montant_max": 200000,
+    "taux": "Taux d'interet annuel fixe",
+    "criteres_eligibilite": [
+      "Nationalite tunisienne",
+      "Age entre 20 et 60 ans",
+      "Titulaire d'un diplOme universitaire, d'une qualification professionnelle ou d'un Certificat d'Aptitude Professionnelle (CAP)",
+      "Engagement a se consacrer personnellement et a plein temps a la gestion du projet",
+      "Cout total du projet (y compris BFR) <= 200 000 DT pour les diplomes du superieur et <= 150 000 DT pour les autres niveaux",
+      "Forme juridique exclusive : Entreprise Individuelle ou SUARL",
+      "Secteurs eligibles : Petite industrie, artisanat, architecture, professions liberales, cabinets medicaux, activites de services",
+      "Pas de garantie reelle exigee (Contribution FNG de 2%)",
+      "Autofinancement exige <= 10% du cout de l'investissement"
+    ],
+    "documents_requis": [
+      "Copie du diplome universitaire ou du certificat de qualification/CAP",
+      "Dossier de projet complet / Business plan",
+      "Factures pro-forma des equipements et devis des amenagements",
+      "Copie de la Carte d'Identite Nationale (CIN)",
+      "Formulaire de demande de credit BTS rempli"
+    ],
+    "url_source": "https://www.bts.com.tn/credit-professionnel-bts-bank/",
+    "date_scraping": "2026-06-16",
+    "gaps_adresses": [
+      "besoin_financement_creation",
+      "diplome_superieur",
+      "manque_garanties",
+      "forme_juridique_simple",
+      "professions_liberales"
+    ],
+    "rag_description": "Crédit professionnel BTS Bank pour diplômés et qualifiés. Sans garantie réelle, contribution FNG 2%. Secteurs: industrie artisanat professions libérales services. Forme juridique: individuel ou SUARL uniquement.",
+    "texte_complet": "SECTEUR: Industrie/Construction Service/Tourisme Technologie/Service-Entreprise Commerce/Transport/Logistique. industrie industriel usine manufacture production construction batiment btp travaux equipements industriels machines outils transformation produits finis secteur industriel service services prestation conseil tourisme touristique hotel hebergement restaurant restauration gite maison hotes agence voyage guide touristique technologie tech digital numerique informatique startup innovation saas logiciel application intelligence artificielle ia deeptech fintech service entreprise b2b conseil expertise commerce commercial vente distribution retail transport logistique livraison chaine approvisionnement import export commerce international douane marketplace e-commerce boutique. Credit Professionnel BTS Bank BTS (Banque Tunisienne de Solidarite). Crédit professionnel BTS Bank pour diplômés et qualifiés. Sans garantie réelle, contribution FNG 2%. Secteurs: industrie artisanat professions libérales services. Forme juridique: individuel ou SUARL uniquement.. Stades eligibles: Structuration Fundraising Launch Planning. Gaps adresses: besoin_financement_creation diplome_superieur manque_garanties forme_juridique_simple professions_liberales. Nationalite tunisienne Age entre 20 et 60 ans Titulaire d'un diplOme universitaire, d'une qualification professionnelle ou d'un Certificat d'Aptitude Professionnelle (CAP) Engagement a se consacrer personnellement et a plein temps a la gestion du projet Cout total du projet (y compris BFR) <= 200 000 DT pour les diplomes du superieur et <= 150 000 DT pour les autres niveaux Forme juridique exclusive : Entreprise Individuelle ou SUARL Secteurs eligibles : Petite industrie, artisanat, architecture, professions liberales, cabinets medicaux, activites de services Pas de garantie reelle exigee (Contribution FNG de 2%) Autofinancement exige <= 10% du cout de l'investissement. Type: financement_bancaire. Ressource pour: Industrie/Construction Service/Tourisme Technologie/Service-Entreprise Commerce/Transport/Logistique.",
+    "devise": "TND",
+    "derniere_mise_a_jour": "2026-06-16",
+    "source_verified": true,
+    "url_accessible": "403_anti_robot_normal",
+    "secteur_cible": [
+      "Industrie/Construction",
+      "Service/Tourisme",
+      "Technologie/Service-Entreprise",
+      "Commerce/Transport/Logistique"
+    ]
+  },
+  {
+    "id": "CBA-001",
+    "nom": "Carthage Business Angels",
+    "organisme": "Reseau Carthage Business Angels",
+    "type": "business_angels",
+    "stades_eligibles": [
+      "Market Validation",
+      "Structuration",
+      "Fundraising"
+    ],
+    "montant_min": 30000,
+    "montant_max": 300000,
+    "taux": "Prise de participation minoritaire en capital",
+    "criteres_eligibilite": [
+      "Projets innovants a fort besoin en fonds propres (Equity Gap)",
+      "Projet necessitant un accompagnement strategique par des mentors industriels (Smart Money)",
+      "Potentiel de creation de valeur rapide"
+    ],
+    "documents_requis": [
+      "Executive Summary d'une a deux pages",
+      "Pitch deck financier et technique",
+      "Table de capitalisation previsionnelle"
+    ],
+    "url_source": "https://www.carthageangels.tn/",
+    "date_scraping": "2026-06-16",
+    "url_note": "URL corrigée (domaine original cba.tn inexistant)",
+    "gaps_adresses": [
+      "besoin_levee_fonds_prive",
+      "equity_gap",
+      "smart_money",
+      "manque_reseau_investisseurs",
+      "fundraising"
+    ],
+    "rag_description": "Carthage Business Angels: réseau investisseurs providentiels Tunisie. Financement 30 000 à 300 000 TND en equity minoritaire. Smart money: capital plus mentorat stratégique industriel.",
+    "texte_complet": "SECTEUR: Technologie/Service-Entreprise Industrie/Construction Service/Tourisme. technologie tech digital numerique informatique startup innovation saas logiciel application intelligence artificielle ia deeptech fintech service entreprise b2b conseil expertise industrie industriel usine manufacture production construction batiment btp travaux equipements industriels machines outils transformation produits finis secteur industriel service services prestation conseil tourisme touristique hotel hebergement restaurant restauration gite maison hotes agence voyage guide touristique. Carthage Business Angels Reseau Carthage Business Angels. Carthage Business Angels: réseau investisseurs providentiels Tunisie. Financement 30 000 à 300 000 TND en equity minoritaire. Smart money: capital plus mentorat stratégique industriel.. Stades eligibles: Market Validation Structuration Fundraising. Gaps adresses: besoin_levee_fonds_prive equity_gap smart_money manque_reseau_investisseurs fundraising. Projets innovants a fort besoin en fonds propres (Equity Gap) Projet necessitant un accompagnement strategique par des mentors industriels (Smart Money) Potentiel de creation de valeur rapide. Type: business_angels. Ressource pour: Technologie/Service-Entreprise Industrie/Construction Service/Tourisme.",
+    "devise": "TND",
+    "derniere_mise_a_jour": "2026-06-16",
+    "source_verified": false,
+    "url_accessible": "corrigee",
+    "secteur_cible": [
+      "Technologie/Service-Entreprise",
+      "Industrie/Construction",
+      "Service/Tourisme"
+    ]
+  },
+  {
+    "id": "STARTUP-ACT-004",
+    "nom": "Startup Label (Le Label de Startup)",
+    "organisme": "Smart Capital / College des Startups",
+    "type": "label_accreditation",
+    "stades_eligibles": [
+      "Market Validation",
+      "Structuration",
+      "Launch Planning",
+      "Growth"
+    ],
+    "montant_min": 0,
+    "montant_max": 0,
+    "taux": "Acces au compte special en devises, decharge douaniere",
+    "criteres_eligibilite": [
+      "Validation stricte par le College des Startups suite a une session de Pitch",
+      "Differenciation claire d'une PME traditionnelle (innovation technologique ou de business model)",
+      "Potentiel d'internationalisation"
+    ],
+    "documents_requis": [
+      "Dossier complet soumis sur la plateforme web de Smart Capital",
+      "Presentation synthetique (Pitch Deck) axee sur l'innovation et la scalabilite",
+      "Business plan financier previsionnel"
+    ],
+    "url_source": "https://support.startup.gov.tn/support/solutions",
+    "date_scraping": "2026-06-16",
+    "gaps_adresses": [
+      "besoin_label",
+      "levee_fonds_internationale",
+      "compte_devises",
+      "differenciation",
+      "startup_innovante"
+    ],
+    "rag_description": "Label Startup Act par Collège des Startups. Validation innovation scalabilité internationalisation. Ouvre accès compte spécial devises et avantages douaniers.",
+    "texte_complet": "SECTEUR: Technologie/Service-Entreprise Industrie/Construction Service/Tourisme. technologie tech digital numerique informatique startup innovation saas logiciel application intelligence artificielle ia deeptech fintech service entreprise b2b conseil expertise industrie industriel usine manufacture production construction batiment btp travaux equipements industriels machines outils transformation produits finis secteur industriel service services prestation conseil tourisme touristique hotel hebergement restaurant restauration gite maison hotes agence voyage guide touristique. Startup Label (Le Label de Startup) Smart Capital / College des Startups. Label Startup Act par Collège des Startups. Validation innovation scalabilité internationalisation. Ouvre accès compte spécial devises et avantages douaniers.. Stades eligibles: Market Validation Structuration Launch Planning Growth. Gaps adresses: besoin_label levee_fonds_internationale compte_devises differenciation startup_innovante. Validation stricte par le College des Startups suite a une session de Pitch Differenciation claire d'une PME traditionnelle (innovation technologique ou de business model) Potentiel d'internationalisation. Type: label_accreditation. Ressource pour: Technologie/Service-Entreprise Industrie/Construction Service/Tourisme.",
+    "devise": "TND",
+    "derniere_mise_a_jour": "2026-06-16",
+    "source_verified": true,
+    "url_accessible": "403_anti_robot_normal",
+    "secteur_cible": [
+      "Technologie/Service-Entreprise",
+      "Industrie/Construction",
+      "Service/Tourisme"
+    ]
+  },
+  {
+    "id": "FNG-001",
+    "nom": "Fonds National de Garantie (FNG)",
+    "organisme": "SOTUGAR / Ministere des Finances",
+    "type": "garantie_credit",
+    "stades_eligibles": [
+      "Market Validation",
+      "Structuration",
+      "Fundraising",
+      "Launch Planning"
+    ],
+    "montant_min": 10000,
+    "montant_max": 500000,
+    "taux": "Prelevement unique ou annuel minime",
+    "criteres_eligibilite": [
+      "Credits d'investissement destines aux petits metiers, petits agriculteurs et PME de l'artisanat/secteurs prioritaires",
+      "Financements accordes principalement par la BTS ou les banques publiques",
+      "Absence de cautions hypothecaires ou de suretes personnelles majeures"
+    ],
+    "documents_requis": [
+      "Dossier de credit instruit par l'institution financiere",
+      "Attestation d'eligibilite aux mecanismes de micro-credit ou d'appui public",
+      "Formulaire d'enregistrement FNG"
+    ],
+    "url_source": "http://www.finances.gov.tn/",
+    "date_scraping": "2026-06-16",
+    "gaps_adresses": [
+      "manque_garanties",
+      "acces_credit_difficile",
+      "petits_metiers",
+      "artisanat",
+      "tpe_exclue_banque"
+    ],
+    "rag_description": "Fonds National de Garantie SOTUGAR pour petits métiers PME artisanat. Garantit crédits sans hypothèque, facilite accès financement BTS et banques publiques.",
+    "texte_complet": "SECTEUR: Agriculture/Sylviculture/Peche Industrie/Construction Commerce/Transport/Logistique Service/Tourisme Technologie/Service-Entreprise. agriculture agricole agriculteur exploitation agricole peche pecheur aquaculture maritime sylviculture foret rural zone rurale culture elevage irrigation mecanisation agroalimentaire agri-food semences intrants industrie industriel usine manufacture production construction batiment btp travaux equipements industriels machines outils transformation produits finis secteur industriel commerce commercial vente distribution retail transport logistique livraison chaine approvisionnement import export commerce international douane marketplace e-commerce boutique service services prestation conseil tourisme touristique hotel hebergement restaurant restauration gite maison hotes agence voyage guide touristique technologie tech digital numerique informatique startup innovation saas logiciel application intelligence artificielle ia deeptech fintech service entreprise b2b conseil expertise. Fonds National de Garantie (FNG) SOTUGAR / Ministere des Finances. Fonds National de Garantie SOTUGAR pour petits métiers PME artisanat. Garantit crédits sans hypothèque, facilite accès financement BTS et banques publiques.. Stades eligibles: Market Validation Structuration Fundraising Launch Planning. Gaps adresses: manque_garanties acces_credit_difficile petits_metiers artisanat tpe_exclue_banque. Credits d'investissement destines aux petits metiers, petits agriculteurs et PME de l'artisanat/secteurs prioritaires Financements accordes principalement par la BTS ou les banques publiques Absence de cautions hypothecaires ou de suretes personnelles majeures. Type: garantie_credit. Ressource pour: Agriculture/Sylviculture/Peche Industrie/Construction Commerce/Transport/Logistique Service/Tourisme Technologie/Service-Entreprise.",
+    "devise": "TND",
+    "derniere_mise_a_jour": "2026-06-16",
+    "source_verified": true,
+    "url_accessible": "403_anti_robot_normal",
+    "secteur_cible": [
+      "Agriculture/Sylviculture/Peche",
+      "Industrie/Construction",
+      "Commerce/Transport/Logistique",
+      "Service/Tourisme",
+      "Technologie/Service-Entreprise"
+    ]
+  },
+  {
+    "id": "BFPME-003",
+    "nom": "BFPME _ Financement du Besoin en Fonds de Roulement (BFR)",
+    "organisme": "BFPME",
+    "type": "tresorerie",
+    "stades_eligibles": [
+      "Launch Planning",
+      "Growth"
+    ],
+    "montant_min": 50000,
+    "montant_max": 500000,
+    "taux": "TMM + 2 a 4 points",
+    "criteres_eligibilite": [
+      "PME tunisienne operationnelle",
+      "Presence d'un probleme de cash lie au cycle d'exploitation",
+      "Difficultes conjoncturelles ou allongement des delais de paiement clients",
+      "Entreprise structurellement viable hors tension de tresorerie"
+    ],
+    "documents_requis": [
+      "Etats financiers des 2 derniers exercices",
+      "Plan de tresorerie mensuel detaille pour l'exercice en cours",
+      "Justificatifs du cycle d'exploitation (factures clients/fournisseurs, bons de commande)",
+      "Situation de la tresorerie bancaire actuelle"
+    ],
+    "url_source": "https://www.bfpme.com.tn/fr/produits",
+    "date_scraping": "2026-06-16",
+    "gaps_adresses": [
+      "probleme_tresorerie",
+      "cash_flow_negatif",
+      "difficultes_paiement_clients",
+      "fonds_de_roulement_insuffisant"
+    ],
+    "rag_description": "Financement Besoin en Fonds de Roulement BFPME pour PME en tension de trésorerie. Couvre cycle d'exploitation et délais paiement clients allongés.",
+    "texte_complet": "SECTEUR: Agriculture/Sylviculture/Peche Industrie/Construction Commerce/Transport/Logistique Service/Tourisme Technologie/Service-Entreprise. agriculture agricole agriculteur exploitation agricole peche pecheur aquaculture maritime sylviculture foret rural zone rurale culture elevage irrigation mecanisation agroalimentaire agri-food semences intrants industrie industriel usine manufacture production construction batiment btp travaux equipements industriels machines outils transformation produits finis secteur industriel commerce commercial vente distribution retail transport logistique livraison chaine approvisionnement import export commerce international douane marketplace e-commerce boutique service services prestation conseil tourisme touristique hotel hebergement restaurant restauration gite maison hotes agence voyage guide touristique technologie tech digital numerique informatique startup innovation saas logiciel application intelligence artificielle ia deeptech fintech service entreprise b2b conseil expertise. BFPME _ Financement du Besoin en Fonds de Roulement (BFR) BFPME. Financement Besoin en Fonds de Roulement BFPME pour PME en tension de trésorerie. Couvre cycle d'exploitation et délais paiement clients allongés.. Stades eligibles: Launch Planning Growth. Gaps adresses: probleme_tresorerie cash_flow_negatif difficultes_paiement_clients fonds_de_roulement_insuffisant. PME tunisienne operationnelle Presence d'un probleme de cash lie au cycle d'exploitation Difficultes conjoncturelles ou allongement des delais de paiement clients Entreprise structurellement viable hors tension de tresorerie. Type: tresorerie. Ressource pour: Agriculture/Sylviculture/Peche Industrie/Construction Commerce/Transport/Logistique Service/Tourisme Technologie/Service-Entreprise.",
+    "devise": "TND",
+    "derniere_mise_a_jour": "2026-06-16",
+    "source_verified": true,
+    "url_accessible": "403_anti_robot_normal",
+    "secteur_cible": [
+      "Agriculture/Sylviculture/Peche",
+      "Industrie/Construction",
+      "Commerce/Transport/Logistique",
+      "Service/Tourisme",
+      "Technologie/Service-Entreprise"
+    ]
+  },
+  {
+    "id": "BFPME-004",
+    "nom": "BFPME _ Credit Materiel Roulant",
+    "organisme": "BFPME",
+    "type": "investissement_materiel",
+    "stades_eligibles": [
+      "Launch Planning",
+      "Growth"
+    ],
+    "montant_min": 50000,
+    "montant_max": 1000000,
+    "taux": "TMM + 2 a 4 points",
+    "criteres_eligibilite": [
+      "PME tunisienne operant dans les secteurs du Transport, de la Distribution ou de la Logistique",
+      "Materiel roulant utilitaire ou industriel exclusivement lie a l'activite de l'entreprise",
+      "Rentabilite du projet de transport ou d'extension de flotte demontree"
+    ],
+    "documents_requis": [
+      "Factures pro-forma du materiel roulant a acquerir",
+      "Agrement ou autorisation d'exercice pour les activites reglementees (transport, logistique)",
+      "Business plan simplifie ou etude d'impact sur le chiffre d'affaires",
+      "Statuts et etats financiers de la societe"
+    ],
+    "url_source": "https://www.bfpme.com.tn/fr/produits",
+    "date_scraping": "2026-06-16",
+    "gaps_adresses": [
+      "besoin_materiel_transport",
+      "extension_flotte",
+      "secteur_logistique",
+      "secteur_distribution"
+    ],
+    "rag_description": "Crédit matériel roulant BFPME pour transport logistique distribution. Achat véhicules utilitaires industriels liés à l'activité.",
+    "texte_complet": "SECTEUR: Commerce/Transport/Logistique Industrie/Construction. commerce commercial vente distribution retail transport logistique livraison chaine approvisionnement import export commerce international douane marketplace e-commerce boutique industrie industriel usine manufacture production construction batiment btp travaux equipements industriels machines outils transformation produits finis secteur industriel. BFPME _ Credit Materiel Roulant BFPME. Crédit matériel roulant BFPME pour transport logistique distribution. Achat véhicules utilitaires industriels liés à l'activité.. Stades eligibles: Launch Planning Growth. Gaps adresses: besoin_materiel_transport extension_flotte secteur_logistique secteur_distribution. PME tunisienne operant dans les secteurs du Transport, de la Distribution ou de la Logistique Materiel roulant utilitaire ou industriel exclusivement lie a l'activite de l'entreprise Rentabilite du projet de transport ou d'extension de flotte demontree. Type: investissement_materiel. Ressource pour: Commerce/Transport/Logistique Industrie/Construction.",
+    "devise": "TND",
+    "derniere_mise_a_jour": "2026-06-16",
+    "source_verified": true,
+    "url_accessible": "403_anti_robot_normal",
+    "secteur_cible": [
+      "Commerce/Transport/Logistique",
+      "Industrie/Construction"
+    ]
+  },
+  {
+    "id": "CREDAGRI-001",
+    "nom": "Credit Agricole / Financement Campagne Agricole",
+    "organisme": "BNA (Banque Nationale Agricole) / Banques de la place",
+    "type": "tresorerie_agricole",
+    "stades_eligibles": [
+      "Launch Planning",
+      "Growth"
+    ],
+    "montant_min": 10000,
+    "montant_max": 1000000,
+    "taux": "TMM + 1.75 a 3 points",
+    "criteres_eligibilite": [
+      "Agriculteurs ou entreprises agroalimentaires faisant face a la forte saisonnalite des cultures",
+      "Besoin de tresorerie ponctuel pour l'achat d'intrants (semences, engrais) ou collecte de recoltes",
+      "Historique de production viable ou contrats d'achat garantis avec des usines de transformation"
+    ],
+    "documents_requis": [
+      "Carte d'agriculteur en cours de validite",
+      "Plan de campagne agricole detaille valide par les autorites locales (CRDA)",
+      "Justificatifs des charges d'exploitation previsibles",
+      "Garanties proposees (nantissement de recoltes, caution mutuelle)"
+    ],
+    "url_source": "http://www.bna.com.tn/",
+    "date_scraping": "2026-06-16",
+    "gaps_adresses": [
+      "secteur_agricole",
+      "tresorerie_agricole",
+      "saisonnalite",
+      "achat_intrants",
+      "campagne_agricole"
+    ],
+    "rag_description": "Crédit agricole campagne BNA: trésorerie agricole saisonnière. Achat intrants semences engrais, collecte récoltes. Taux TMM+1.75 à 3 points.",
+    "texte_complet": "SECTEUR: Agriculture/Sylviculture/Peche. agriculture agricole agriculteur exploitation agricole peche pecheur aquaculture maritime sylviculture foret rural zone rurale culture elevage irrigation mecanisation agroalimentaire agri-food semences intrants. Credit Agricole / Financement Campagne Agricole BNA (Banque Nationale Agricole) / Banques de la place. Crédit agricole campagne BNA: trésorerie agricole saisonnière. Achat intrants semences engrais, collecte récoltes. Taux TMM+1.75 à 3 points.. Stades eligibles: Launch Planning Growth. Gaps adresses: secteur_agricole tresorerie_agricole saisonnalite achat_intrants campagne_agricole. Agriculteurs ou entreprises agroalimentaires faisant face a la forte saisonnalite des cultures Besoin de tresorerie ponctuel pour l'achat d'intrants (semences, engrais) ou collecte de recoltes Historique de production viable ou contrats d'achat garantis avec des usines de transformation. Type: tresorerie_agricole. Ressource pour: Agriculture/Sylviculture/Peche.",
+    "devise": "TND",
+    "derniere_mise_a_jour": "2026-06-16",
+    "source_verified": true,
+    "url_accessible": "403_anti_robot_normal",
+    "secteur_cible": [
+      "Agriculture/Sylviculture/Peche"
+    ]
+  },
+  {
+    "id": "DIGITAL-001",
+    "nom": "Digital Tunisia _ Programme de Transformation Digitale",
+    "organisme": "Ministere des Technologies de la Communication",
+    "type": "subvention_technologique",
+    "stades_eligibles": [
+      "Launch Planning",
+      "Growth"
+    ],
+    "montant_min": 5000,
+    "montant_max": 50000,
+    "taux": "Financement partiel / Bons d'achat technologiques (Vouchers)",
+    "criteres_eligibilite": [
+      "PME tunisiennes traditionnelles souhaitant entamer leur transformation digitale (ERP, CRM, Cloud, Cybersecurite)",
+      "Projet d'automatisation des flux industriels ou commerciaux",
+      "Recours a des prestataires de services informatiques agrees"
+    ],
+    "documents_requis": [
+      "Cahier des charges de la transformation digitale de la PME",
+      "Devis correspondants des editeurs ou integrateurs IT",
+      "Etats financiers de la PME demanderesse"
+    ],
+    "url_source": "https://www.mtc.gov.tn/index.php?id=14",
+    "date_scraping": "2026-06-16",
+    "gaps_adresses": [
+      "transformation_digitale",
+      "modernisation_si",
+      "erp_crm_cloud",
+      "pme_traditionnelle",
+      "digitalisation"
+    ],
+    "rag_description": "Programme Digital Tunisia transformation digitale PME. Vouchers bons achat 5000-50 000 TND pour ERP CRM cloud cybersécurité automatisation.",
+    "texte_complet": "SECTEUR: Technologie/Service-Entreprise Commerce/Transport/Logistique Service/Tourisme Industrie/Construction. technologie tech digital numerique informatique startup innovation saas logiciel application intelligence artificielle ia deeptech fintech service entreprise b2b conseil expertise commerce commercial vente distribution retail transport logistique livraison chaine approvisionnement import export commerce international douane marketplace e-commerce boutique service services prestation conseil tourisme touristique hotel hebergement restaurant restauration gite maison hotes agence voyage guide touristique industrie industriel usine manufacture production construction batiment btp travaux equipements industriels machines outils transformation produits finis secteur industriel. Digital Tunisia _ Programme de Transformation Digitale Ministere des Technologies de la Communication. Programme Digital Tunisia transformation digitale PME. Vouchers bons achat 5000-50 000 TND pour ERP CRM cloud cybersécurité automatisation.. Stades eligibles: Launch Planning Growth. Gaps adresses: transformation_digitale modernisation_si erp_crm_cloud pme_traditionnelle digitalisation. PME tunisiennes traditionnelles souhaitant entamer leur transformation digitale (ERP, CRM, Cloud, Cybersecurite) Projet d'automatisation des flux industriels ou commerciaux Recours a des prestataires de services informatiques agrees. Type: subvention_technologique. Ressource pour: Technologie/Service-Entreprise Commerce/Transport/Logistique Service/Tourisme Industrie/Construction.",
+    "devise": "TND",
+    "derniere_mise_a_jour": "2026-06-16",
+    "source_verified": true,
+    "url_accessible": "403_anti_robot_normal",
+    "secteur_cible": [
+      "Technologie/Service-Entreprise",
+      "Commerce/Transport/Logistique",
+      "Service/Tourisme",
+      "Industrie/Construction"
+    ]
+  },
+  {
+    "id": "FSDA-001",
+    "nom": "Fonds Special de Developpement Agricole (FSDA)",
+    "organisme": "Ministere de l'Agriculture, des Ressources Hydrauliques et de la Peche",
+    "type": "subvention_specifique",
+    "stades_eligibles": [
+      "Launch Planning",
+      "Growth"
+    ],
+    "montant_min": 2000,
+    "montant_max": 200000,
+    "taux": "Aide financiere directe",
+    "criteres_eligibilite": [
+      "Acquisition d'equipements d'economie d'eau d'irrigation, de mecanisation agricole ou de serres",
+      "Petites et moyennes exploitations agricoles necessitant une mise a niveau technique",
+      "Amelioration de la productivite et techniques de conservation du sol"
+    ],
+    "documents_requis": [
+      "Demande d'octroi d'aide aupres du Commissariat Regional au Developpement Agricole (CRDA)",
+      "Deis techniques d'installations (ex: goutte-a-goutte)",
+      "Rapport d'inspection technique des services de l'agriculture"
+    ],
+    "url_source": "http://www.agriculture.tn/",
+    "date_scraping": "2026-06-16",
+    "gaps_adresses": [
+      "secteur_agricole",
+      "irrigation",
+      "mecanisation",
+      "petite_exploitation",
+      "subvention_equipement"
+    ],
+    "rag_description": "Fonds Spécial Développement Agricole: aide financière directe 2000-200 000 TND pour irrigation économie eau, mécanisation, serres. Petites et moyennes exploitations.",
+    "texte_complet": "SECTEUR: Agriculture/Sylviculture/Peche. agriculture agricole agriculteur exploitation agricole peche pecheur aquaculture maritime sylviculture foret rural zone rurale culture elevage irrigation mecanisation agroalimentaire agri-food semences intrants. Fonds Special de Developpement Agricole (FSDA) Ministere de l'Agriculture, des Ressources Hydrauliques et de la Peche. Fonds Spécial Développement Agricole: aide financière directe 2000-200 000 TND pour irrigation économie eau, mécanisation, serres. Petites et moyennes exploitations.. Stades eligibles: Launch Planning Growth. Gaps adresses: secteur_agricole irrigation mecanisation petite_exploitation subvention_equipement. Acquisition d'equipements d'economie d'eau d'irrigation, de mecanisation agricole ou de serres Petites et moyennes exploitations agricoles necessitant une mise a niveau technique Amelioration de la productivite et techniques de conservation du sol. Type: subvention_specifique. Ressource pour: Agriculture/Sylviculture/Peche.",
+    "devise": "TND",
+    "derniere_mise_a_jour": "2026-06-16",
+    "source_verified": true,
+    "url_accessible": "403_anti_robot_normal",
+    "secteur_cible": [
+      "Agriculture/Sylviculture/Peche"
+    ]
+  },
+  {
+    "id": "SOUSSE-001",
+    "nom": "Novation City Sousse _ Pole de Competitivite",
+    "organisme": "Novation City",
+    "type": "infrastructure_technologique",
+    "stades_eligibles": [
+      "Launch Planning",
+      "Growth"
+    ],
+    "montant_min": 0,
+    "montant_max": 0,
+    "taux": "Non applicable (Location d'espaces industriels/bureaux et acces clusters)",
+    "criteres_eligibilite": [
+      "Entreprises, startups ou laboratoires orientes vers la mecatronique, l'electronique embarquee et l'industrie 4.0",
+      "Implantation physique prevue au pole technologique de Sousse",
+      "Potentiel de collaboration avec le milieu de la recherche universitaire"
+    ],
+    "documents_requis": [
+      "Candidature motivee detaillant le projet d'implantation",
+      "Fiche technique des besoins logistiques et energetiques",
+      "Dossier financier d'investissement"
+    ],
+    "url_source": "https://www.novationcity.com/",
+    "date_scraping": "2026-06-16",
+    "gaps_adresses": [
+      "implantation_technopole",
+      "industrie_4_0",
+      "mecatronique",
+      "cluster_technologique",
+      "collaboration_recherche"
+    ],
+    "rag_description": "Novation City Sousse: pôle compétitivité mécatronique électronique industrie 4.0. Location espaces industriels bureaux, clusters collaboration recherche universitaire.",
+    "texte_complet": "SECTEUR: Industrie/Construction Technologie/Service-Entreprise. industrie industriel usine manufacture production construction batiment btp travaux equipements industriels machines outils transformation produits finis secteur industriel technologie tech digital numerique informatique startup innovation saas logiciel application intelligence artificielle ia deeptech fintech service entreprise b2b conseil expertise. Novation City Sousse _ Pole de Competitivite Novation City. Novation City Sousse: pôle compétitivité mécatronique électronique industrie 4.0. Location espaces industriels bureaux, clusters collaboration recherche universitaire.. Stades eligibles: Launch Planning Growth. Gaps adresses: implantation_technopole industrie_4_0 mecatronique cluster_technologique collaboration_recherche. Entreprises, startups ou laboratoires orientes vers la mecatronique, l'electronique embarquee et l'industrie 4.0 Implantation physique prevue au pole technologique de Sousse Potentiel de collaboration avec le milieu de la recherche universitaire. Type: infrastructure_technologique. Ressource pour: Industrie/Construction Technologie/Service-Entreprise.",
+    "devise": "TND",
+    "derniere_mise_a_jour": "2026-06-16",
+    "source_verified": true,
+    "url_accessible": "403_anti_robot_normal",
+    "secteur_cible": [
+      "Industrie/Construction",
+      "Technologie/Service-Entreprise"
+    ]
+  },
+  {
+    "id": "STARTUP-ACT-002",
+    "nom": "Statut d'Operateur economique Agree pour Startups",
+    "organisme": "Direction Generale de la Douane Tunisienne / Smart Capital",
+    "type": "cadre_legal_avantages",
+    "stades_eligibles": [
+      "Launch Planning",
+      "Growth"
+    ],
+    "montant_min": 0,
+    "montant_max": 0,
+    "taux": "Simplifications douanieres et dedouanement accelere",
+    "criteres_eligibilite": [
+      "Startup detenant un Label Startup Act valide",
+      "Realisation d'operations de commerce exterieur (import/export) en rapport direct avec l'activite labellisee",
+      "Situation fiscale et douaniere parfaitement regularisee (notamment sur les 3 dernieres annees)",
+      "Situation financiere solvable de l'entreprise et de ses dirigeants",
+      "Tenue d'une comptabilite commerciale reglementaire et d'une comptabilite matiere informatisee"
+    ],
+    "documents_requis": [
+      "Copie du Label Startup",
+      "Attestation de regularite fiscale et attestation de situation douaniere",
+      "Etats financiers audites des exercices precedents (ou documents disponibles si < 3 ans)",
+      "Descriptif des procedures de securite et d'archivage informatique des registres"
+    ],
+    "url_source": "https://support.startup.gov.tn/support/solutions/articles/73000565065-quels-sont-les-crit%C3%A8res-d-%C3%A9ligibilit%C3%A9-%C3%A0-l-avantage-de-l-op%C3%A9rateur-%C3%A9conomique-agr%C3%A9%C3%A9-",
+    "date_scraping": "2026-06-16",
+    "gaps_adresses": [
+      "export",
+      "commerce_exterieur",
+      "label_startup",
+      "douane",
+      "expansion_internationale"
+    ],
+    "rag_description": "Statut OEA (Opérateur Économique Agréé) pour startups labellisées faisant du commerce extérieur. Dédouanement accéléré, simplifications douanières.",
+    "texte_complet": "SECTEUR: Commerce/Transport/Logistique Technologie/Service-Entreprise. commerce commercial vente distribution retail transport logistique livraison chaine approvisionnement import export commerce international douane marketplace e-commerce boutique technologie tech digital numerique informatique startup innovation saas logiciel application intelligence artificielle ia deeptech fintech service entreprise b2b conseil expertise. Statut d'Operateur economique Agree pour Startups Direction Generale de la Douane Tunisienne / Smart Capital. Statut OEA (Opérateur Économique Agréé) pour startups labellisées faisant du commerce extérieur. Dédouanement accéléré, simplifications douanières.. Stades eligibles: Launch Planning Growth. Gaps adresses: export commerce_exterieur label_startup douane expansion_internationale. Startup detenant un Label Startup Act valide Realisation d'operations de commerce exterieur (import/export) en rapport direct avec l'activite labellisee Situation fiscale et douaniere parfaitement regularisee (notamment sur les 3 dernieres annees) Situation financiere solvable de l'entreprise et de ses dirigeants Tenue d'une comptabilite commerciale reglementaire et d'une comptabilite matiere informatisee. Type: cadre_legal_avantages. Ressource pour: Commerce/Transport/Logistique Technologie/Service-Entreprise.",
+    "devise": "TND",
+    "derniere_mise_a_jour": "2026-06-16",
+    "source_verified": true,
+    "url_accessible": "403_anti_robot_normal",
+    "secteur_cible": [
+      "Commerce/Transport/Logistique",
+      "Technologie/Service-Entreprise"
+    ]
+  },
+  {
+    "id": "TRADE-001",
+    "nom": "Trade Finance Bancaire",
+    "organisme": "Banques Commerciales Tunisiennes (BIAT, Amen Bank, Attijari, STB, etc.)",
+    "type": "financement_international",
+    "stades_eligibles": [
+      "Launch Planning",
+      "Growth"
+    ],
+    "montant_min": 20000,
+    "montant_max": 5000000,
+    "taux": "Commissions bancaires de change + Taux d'interet de credit de campagne",
+    "criteres_eligibilite": [
+      "Entreprises realisant des operations regulieres d'importation de matieres premieres ou d'exportation",
+      "Garanties solides ou lignes de credit de commerce international approuvees par la banque",
+      "Conformite avec la reglementation des changes de la Banque Centrale de Tunisie (BCT)"
+    ],
+    "documents_requis": [
+      "Credit Documentaire (Credoc) ou Lettre de Credit Standby (LCSB)",
+      "Factures commerciales internationales et Titres de commerce exterieur (TCE)",
+      "Documents de transport (Connaissement maritime, LTA)",
+      "Contrat commercial sous-jacent"
+    ],
+    "url_source": "https://www.bct.gov.tn/",
+    "date_scraping": "2026-06-16",
+    "gaps_adresses": [
+      "import_export",
+      "commerce_international",
+      "lettres_de_credit",
+      "finance_commerce_exterieur"
+    ],
+    "rag_description": "Trade Finance bancaire: lettres de crédit crédoc LCSB, financement import export, conformité réglementation changes BCT. Pour entreprises commerce international régulier.",
+    "texte_complet": "SECTEUR: Commerce/Transport/Logistique Industrie/Construction. commerce commercial vente distribution retail transport logistique livraison chaine approvisionnement import export commerce international douane marketplace e-commerce boutique industrie industriel usine manufacture production construction batiment btp travaux equipements industriels machines outils transformation produits finis secteur industriel. Trade Finance Bancaire Banques Commerciales Tunisiennes (BIAT, Amen Bank, Attijari, STB, etc.). Trade Finance bancaire: lettres de crédit crédoc LCSB, financement import export, conformité réglementation changes BCT. Pour entreprises commerce international régulier.. Stades eligibles: Launch Planning Growth. Gaps adresses: import_export commerce_international lettres_de_credit finance_commerce_exterieur. Entreprises realisant des operations regulieres d'importation de matieres premieres ou d'exportation Garanties solides ou lignes de credit de commerce international approuvees par la banque Conformite avec la reglementation des changes de la Banque Centrale de Tunisie (BCT). Type: financement_international. Ressource pour: Commerce/Transport/Logistique Industrie/Construction.",
+    "devise": "TND",
+    "derniere_mise_a_jour": "2026-06-16",
+    "source_verified": true,
+    "url_accessible": "403_anti_robot_normal",
+    "secteur_cible": [
+      "Commerce/Transport/Logistique",
+      "Industrie/Construction"
+    ]
+  },
+  {
+    "id": "APII-002",
+    "nom": "APII _ Programme de Mise a Niveau Industrielle (PMN)",
+    "organisme": "APII (Bureau de Mise a Niveau)",
+    "type": "subvention_croissance",
+    "stades_eligibles": [
+      "Growth"
+    ],
+    "montant_min": 20000,
+    "montant_max": 2000000,
+    "taux": "Sans objet (Primes d'investissement sur immateriel et materiel)",
+    "criteres_eligibilite": [
+      "Entreprise industrielle ou de services lies existante avec au moins 3 ans d'activite",
+      "Entreprise confrontee a des defis de competitivite internationale ou locale",
+      "Situation financiere globalement saine mais necessitant une restructuration technique ou manageriale"
+    ],
+    "documents_requis": [
+      "Etude de diagnostic global approfondi (realisee par un expert agree)",
+      "Plan de mise a niveau (PMN) valide par le comite national (COP)",
+      "Etats financiers des 3 derniers exercices",
+      "Attestations de regularite fiscale et sociale (CNSS)"
+    ],
+    "url_source": "http://www.tunisieindustrie.nat.tn/",
+    "date_scraping": "2026-06-16",
+    "gaps_adresses": [
+      "competitivite_faible",
+      "modernisation",
+      "entreprise_existante",
+      "mise_a_niveau",
+      "growth"
+    ],
+    "rag_description": "Programme Mise à Niveau PMN APII pour entreprises industrielles existantes. Primes sur investissements matériels et immatériels pour améliorer compétitivité.",
+    "texte_complet": "SECTEUR: Industrie/Construction Technologie/Service-Entreprise. industrie industriel usine manufacture production construction batiment btp travaux equipements industriels machines outils transformation produits finis secteur industriel technologie tech digital numerique informatique startup innovation saas logiciel application intelligence artificielle ia deeptech fintech service entreprise b2b conseil expertise. APII _ Programme de Mise a Niveau Industrielle (PMN) APII (Bureau de Mise a Niveau). Programme Mise à Niveau PMN APII pour entreprises industrielles existantes. Primes sur investissements matériels et immatériels pour améliorer compétitivité.. Stades eligibles: Growth. Gaps adresses: competitivite_faible modernisation entreprise_existante mise_a_niveau growth. Entreprise industrielle ou de services lies existante avec au moins 3 ans d'activite Entreprise confrontee a des defis de competitivite internationale ou locale Situation financiere globalement saine mais necessitant une restructuration technique ou manageriale. Type: subvention_croissance. Ressource pour: Industrie/Construction Technologie/Service-Entreprise.",
+    "devise": "TND",
+    "derniere_mise_a_jour": "2026-06-16",
+    "source_verified": true,
+    "url_accessible": "403_anti_robot_normal",
+    "secteur_cible": [
+      "Industrie/Construction",
+      "Technologie/Service-Entreprise"
+    ]
+  },
+  {
+    "id": "BFPME-002",
+    "nom": "BFPME _ Pret Extension",
+    "organisme": "BFPME",
+    "type": "financement_croissance",
+    "stades_eligibles": [
+      "Growth"
+    ],
+    "montant_min": 100000,
+    "montant_max": 2500000,
+    "taux": "TMM + 2 a 4 points",
+    "criteres_eligibilite": [
+      "PME existante depuis au moins 3 ans",
+      "Historique financier positif et etats financiers audites",
+      "Capacite de remboursement validee par l'etude de faisabilite",
+      "Niveau d'endettement actuel compatible avec une nouvelle levee de dette"
+    ],
+    "documents_requis": [
+      "3 derniers bilans comptables et rapports des commissaires aux comptes",
+      "Business plan complet de l'extension",
+      "Etats financiers previsionnels sur 5 ans",
+      "Situation d'endettement globale (Centrale des Risques)"
+    ],
+    "url_source": "https://www.bfpme.com.tn/fr/produits",
+    "date_scraping": "2026-06-16",
+    "gaps_adresses": [
+      "besoin_capital_croissance",
+      "extension_activite",
+      "besoin_financement_long_terme",
+      "scale_up"
+    ],
+    "rag_description": "Prêt BFPME pour extension de PME existante. Réservé aux entreprises avec 3 ans d'historique et bilans audités. Financement croissance et expansion capacité de production.",
+    "texte_complet": "SECTEUR: Industrie/Construction Commerce/Transport/Logistique Service/Tourisme Technologie/Service-Entreprise. industrie industriel usine manufacture production construction batiment btp travaux equipements industriels machines outils transformation produits finis secteur industriel commerce commercial vente distribution retail transport logistique livraison chaine approvisionnement import export commerce international douane marketplace e-commerce boutique service services prestation conseil tourisme touristique hotel hebergement restaurant restauration gite maison hotes agence voyage guide touristique technologie tech digital numerique informatique startup innovation saas logiciel application intelligence artificielle ia deeptech fintech service entreprise b2b conseil expertise. BFPME _ Pret Extension BFPME. Prêt BFPME pour extension de PME existante. Réservé aux entreprises avec 3 ans d'historique et bilans audités. Financement croissance et expansion capacité de production.. Stades eligibles: Growth. Gaps adresses: besoin_capital_croissance extension_activite besoin_financement_long_terme scale_up. PME existante depuis au moins 3 ans Historique financier positif et etats financiers audites Capacite de remboursement validee par l'etude de faisabilite Niveau d'endettement actuel compatible avec une nouvelle levee de dette. Type: financement_croissance. Ressource pour: Industrie/Construction Commerce/Transport/Logistique Service/Tourisme Technologie/Service-Entreprise.",
+    "devise": "TND",
+    "derniere_mise_a_jour": "2026-06-16",
+    "source_verified": true,
+    "url_accessible": "403_anti_robot_normal",
+    "secteur_cible": [
+      "Industrie/Construction",
+      "Commerce/Transport/Logistique",
+      "Service/Tourisme",
+      "Technologie/Service-Entreprise"
+    ]
+  },
+  {
+    "id": "CEPEX-001",
+    "nom": "CEPEX _ Accompagnement a l'exportation",
+    "organisme": "CEPEX (Centre de Promotion des Exportations)",
+    "type": "accompagnement_export",
+    "stades_eligibles": [
+      "Growth"
+    ],
+    "montant_min": 0,
+    "montant_max": 0,
+    "taux": "Prise en charge de frais de participation aux salons",
+    "criteres_eligibilite": [
+      "PME de droit tunisien, productrice de biens ou services eligibles a l'exportation",
+      "Situation reglementaire en regle avec le fisc et la douane",
+      "Entreprise cherchant a developper ses parts de marche a l'international"
+    ],
+    "documents_requis": [
+      "Fiche d'identification de l'entreprise sur le portail CEPEX",
+      "Registre National des Entreprises (RNE)",
+      "Demande d'assistance ou d'inscription aux pavillons tunisiens a l'etranger"
+    ],
+    "url_source": "http://www.tunisiaexport.tn/",
+    "date_scraping": "2026-06-16",
+    "gaps_adresses": [
+      "export",
+      "developpement_international",
+      "marche_etranger",
+      "prospection_internationale"
+    ],
+    "rag_description": "CEPEX accompagnement export PME tunisiennes. Pavillons tunisiens foires internationales, prospection marchés étrangers, prise en charge frais participation salons.",
+    "texte_complet": "SECTEUR: Commerce/Transport/Logistique Industrie/Construction Agriculture/Sylviculture/Peche Technologie/Service-Entreprise. commerce commercial vente distribution retail transport logistique livraison chaine approvisionnement import export commerce international douane marketplace e-commerce boutique industrie industriel usine manufacture production construction batiment btp travaux equipements industriels machines outils transformation produits finis secteur industriel agriculture agricole agriculteur exploitation agricole peche pecheur aquaculture maritime sylviculture foret rural zone rurale culture elevage irrigation mecanisation agroalimentaire agri-food semences intrants technologie tech digital numerique informatique startup innovation saas logiciel application intelligence artificielle ia deeptech fintech service entreprise b2b conseil expertise. CEPEX _ Accompagnement a l'exportation CEPEX (Centre de Promotion des Exportations). CEPEX accompagnement export PME tunisiennes. Pavillons tunisiens foires internationales, prospection marchés étrangers, prise en charge frais participation salons.. Stades eligibles: Growth. Gaps adresses: export developpement_international marche_etranger prospection_internationale. PME de droit tunisien, productrice de biens ou services eligibles a l'exportation Situation reglementaire en regle avec le fisc et la douane Entreprise cherchant a developper ses parts de marche a l'international. Type: accompagnement_export. Ressource pour: Commerce/Transport/Logistique Industrie/Construction Agriculture/Sylviculture/Peche Technologie/Service-Entreprise.",
+    "devise": "TND",
+    "derniere_mise_a_jour": "2026-06-16",
+    "source_verified": true,
+    "url_accessible": "403_anti_robot_normal",
+    "secteur_cible": [
+      "Commerce/Transport/Logistique",
+      "Industrie/Construction",
+      "Agriculture/Sylviculture/Peche",
+      "Technologie/Service-Entreprise"
+    ]
+  },
+  {
+    "id": "FOPRODEX-001",
+    "nom": "FOPRODEX _ Fonds de Promotion des Exportations",
+    "organisme": "CEPEX",
+    "type": "subvention_export",
+    "stades_eligibles": [
+      "Growth"
+    ],
+    "montant_min": 5000,
+    "montant_max": 100000,
+    "taux": "Subvention non remboursable (Prise en charge de 50% a 70% de certains frais)",
+    "criteres_eligibilite": [
+      "Actions de prospection internationale (voyages d'affaires, etudes de marches)",
+      "Edition de supports promotionnels ou participation individuelle a des foires a l'etranger",
+      "Entreprises exportatrices residentes en Tunisie"
+    ],
+    "documents_requis": [
+      "Dossier de demande d'accord prealable FOPRODEX avant realisation de l'action",
+      "Factures certifiees et justificatifs de paiement des depenses engagees",
+      "Rapport de mission a l'etranger ou livrable de l'action realisee"
+    ],
+    "url_source": "http://www.tunisiaexport.tn/",
+    "date_scraping": "2026-06-16",
+    "gaps_adresses": [
+      "export",
+      "frais_prospection",
+      "salon_international",
+      "subvention_export",
+      "marketing_international"
+    ],
+    "rag_description": "Fonds Promotion Exportations CEPEX: subvention non remboursable 50-70% frais prospection internationale, supports promo, voyages affaires, études marchés.",
+    "texte_complet": "SECTEUR: Commerce/Transport/Logistique Industrie/Construction Agriculture/Sylviculture/Peche. commerce commercial vente distribution retail transport logistique livraison chaine approvisionnement import export commerce international douane marketplace e-commerce boutique industrie industriel usine manufacture production construction batiment btp travaux equipements industriels machines outils transformation produits finis secteur industriel agriculture agricole agriculteur exploitation agricole peche pecheur aquaculture maritime sylviculture foret rural zone rurale culture elevage irrigation mecanisation agroalimentaire agri-food semences intrants. FOPRODEX _ Fonds de Promotion des Exportations CEPEX. Fonds Promotion Exportations CEPEX: subvention non remboursable 50-70% frais prospection internationale, supports promo, voyages affaires, études marchés.. Stades eligibles: Growth. Gaps adresses: export frais_prospection salon_international subvention_export marketing_international. Actions de prospection internationale (voyages d'affaires, etudes de marches) Edition de supports promotionnels ou participation individuelle a des foires a l'etranger Entreprises exportatrices residentes en Tunisie. Type: subvention_export. Ressource pour: Commerce/Transport/Logistique Industrie/Construction Agriculture/Sylviculture/Peche.",
+    "devise": "TND",
+    "derniere_mise_a_jour": "2026-06-16",
+    "source_verified": true,
+    "url_accessible": "403_anti_robot_normal",
+    "secteur_cible": [
+      "Commerce/Transport/Logistique",
+      "Industrie/Construction",
+      "Agriculture/Sylviculture/Peche"
+    ]
+  },
+  {
+    "id": "ODESYPANO-001",
+    "nom": "ODESYPANO – Soutien développement sylvo-pastoral Nord-Ouest",
+    "organisme": "Office de Développement Sylvo-Pastoral du Nord-Ouest (ODESYPANO)",
+    "type": "subvention",
+    "categorie": "aide_agricole_regionale",
+    "stades_eligibles": [
+      "Ideation",
+      "Market Validation",
+      "Structuration"
+    ],
+    "montant_min": null,
+    "montant_max": null,
+    "devise": "TND",
+    "taux": "Subvention directe (taux à vérifier sur site officiel)",
+    "secteur_cible": [
+      "Agriculture/Sylviculture/Peche"
+    ],
+    "criteres_eligibilite": [
+      "Promoteurs régions Nord-Ouest Tunisie",
+      "Projets sylviculture élevage forêts",
+      "Développement rural zones montagneuses"
+    ],
+    "avantages_specifiques": [
+      "Financement projets sylvo-pastoraux",
+      "Accompagnement technique forestier",
+      "Focus régions défavorisées Nord-Ouest"
+    ],
+    "url_source": "https://www.odesypano.nat.tn/",
+    "gaps_adresses": [
+      "secteur_agricole",
+      "regions_interieures",
+      "sylviculture",
+      "elevage"
+    ],
+    "rag_description": "ODESYPANO: soutien développement sylvo-pastoral nord-ouest Tunisie. Subventions projets forêts élevage zones rurales montagneuses.",
+    "date_scraping": "2026-06-17",
+    "source_verified": true,
+    "texte_complet": "SECTEUR: Agriculture/Sylviculture/Peche. agriculture agricole agriculteur exploitation agricole peche pecheur aquaculture maritime sylviculture foret rural zone rurale culture elevage irrigation mecanisation agroalimentaire agri-food semences intrants. ODESYPANO – Soutien développement sylvo-pastoral Nord-Ouest Office de Développement Sylvo-Pastoral du Nord-Ouest (ODESYPANO). ODESYPANO: soutien développement sylvo-pastoral nord-ouest Tunisie. Subventions projets forêts élevage zones rurales montagneuses.. Stades eligibles: Ideation Market Validation Structuration. Gaps adresses: secteur_agricole regions_interieures sylviculture elevage. Promoteurs régions Nord-Ouest Tunisie Projets sylviculture élevage forêts Développement rural zones montagneuses. Type: subvention. Ressource pour: Agriculture/Sylviculture/Peche.",
+    "derniere_mise_a_jour": "2026-06-17",
+    "url_accessible": "403_anti_robot_normal"
+  },
+  {
+    "id": "APIA-002",
+    "nom": "APIA – Guichet unique investissement agricole et pêche",
+    "organisme": "Agence de Promotion des Investissements Agricoles (APIA)",
+    "type": "programme_accompagnement",
+    "categorie": "accompagnement_agricole",
+    "stades_eligibles": [
+      "Ideation",
+      "Market Validation",
+      "Structuration",
+      "Fundraising"
+    ],
+    "montant_min": null,
+    "montant_max": null,
+    "devise": "TND",
+    "taux": "N/A (orientation + primes investissement)",
+    "secteur_cible": [
+      "Agriculture/Sylviculture/Peche"
+    ],
+    "criteres_eligibilite": [
+      "Investisseur secteur agricole pêche aquaculture",
+      "Projet création ou extension exploitation"
+    ],
+    "avantages_specifiques": [
+      "Guichet unique: formalités création en un seul endroit",
+      "Primes investissement non remboursables",
+      "Accompagnement business plan agricole",
+      "Carte des opportunités d'investissement agricole"
+    ],
+    "url_source": "http://www.apia.com.tn/",
+    "gaps_adresses": [
+      "secteur_agricole",
+      "secteur_peche",
+      "creation_exploitation",
+      "besoin_accompagnement"
+    ],
+    "rag_description": "APIA guichet unique investissement agricole pêche aquaculture Tunisie. Orientation primes création extension exploitations.",
+    "date_scraping": "2026-06-17",
+    "source_verified": true,
+    "texte_complet": "SECTEUR: Agriculture/Sylviculture/Peche. agriculture agricole agriculteur exploitation agricole peche pecheur aquaculture maritime sylviculture foret rural zone rurale culture elevage irrigation mecanisation agroalimentaire agri-food semences intrants. APIA – Guichet unique investissement agricole et pêche Agence de Promotion des Investissements Agricoles (APIA). APIA guichet unique investissement agricole pêche aquaculture Tunisie. Orientation primes création extension exploitations.. Stades eligibles: Ideation Market Validation Structuration Fundraising. Gaps adresses: secteur_agricole secteur_peche creation_exploitation besoin_accompagnement. Investisseur secteur agricole pêche aquaculture Projet création ou extension exploitation. Type: programme_accompagnement. Ressource pour: Agriculture/Sylviculture/Peche.",
+    "derniere_mise_a_jour": "2026-06-17",
+    "url_accessible": "403_anti_robot_normal"
+  },
+  {
+    "id": "BNA-001",
+    "nom": "BNA – Crédits agricoles court et moyen terme",
+    "organisme": "Banque Nationale Agricole (BNA)",
+    "type": "financement_bancaire",
+    "categorie": "credit_agricole",
+    "stades_eligibles": [
+      "Structuration",
+      "Fundraising",
+      "Launch Planning",
+      "Growth"
+    ],
+    "montant_min": 5000,
+    "montant_max": 5000000,
+    "devise": "TND",
+    "taux": "TMM + 1,75 à 3 points",
+    "secteur_cible": [
+      "Agriculture/Sylviculture/Peche"
+    ],
+    "criteres_eligibilite": [
+      "Agriculteur ou promoteur secteur agricole",
+      "Exploitation agricole déclarée",
+      "Business plan ou plan de culture"
+    ],
+    "avantages_specifiques": [
+      "Banque de référence agriculture Tunisie",
+      "Crédits campagne + investissement long terme",
+      "Réseau agences rurales nationales",
+      "Financement équipements irrigation mécanisation"
+    ],
+    "url_source": "https://www.bna.tn/",
+    "gaps_adresses": [
+      "secteur_agricole",
+      "financement_campagne",
+      "mecanisation",
+      "irrigation"
+    ],
+    "rag_description": "BNA Banque Nationale Agricole: crédits agricoles court moyen long terme. Financement campagnes cultures élevage équipements agricoles Tunisie.",
+    "date_scraping": "2026-06-17",
+    "source_verified": true,
+    "texte_complet": "SECTEUR: Agriculture/Sylviculture/Peche. agriculture agricole agriculteur exploitation agricole peche pecheur aquaculture maritime sylviculture foret rural zone rurale culture elevage irrigation mecanisation agroalimentaire agri-food semences intrants. BNA – Crédits agricoles court et moyen terme Banque Nationale Agricole (BNA). BNA Banque Nationale Agricole: crédits agricoles court moyen long terme. Financement campagnes cultures élevage équipements agricoles Tunisie.. Stades eligibles: Structuration Fundraising Launch Planning Growth. Gaps adresses: secteur_agricole financement_campagne mecanisation irrigation. Agriculteur ou promoteur secteur agricole Exploitation agricole déclarée Business plan ou plan de culture. Type: financement_bancaire. Ressource pour: Agriculture/Sylviculture/Peche.",
+    "derniere_mise_a_jour": "2026-06-17",
+    "url_accessible": "403_anti_robot_normal"
+  },
+  {
+    "id": "CEPEX-002",
+    "nom": "CEPEX – Labellisation Made in Tunisia (export industrie)",
+    "organisme": "Centre de Promotion des Exportations (CEPEX)",
+    "type": "programme_export",
+    "categorie": "aide_export",
+    "stades_eligibles": [
+      "Launch Planning",
+      "Growth"
+    ],
+    "montant_min": null,
+    "montant_max": null,
+    "devise": "TND",
+    "taux": "N/A (label + accompagnement)",
+    "secteur_cible": [
+      "Industrie/Construction",
+      "Commerce/Transport/Logistique",
+      "Agriculture/Sylviculture/Peche"
+    ],
+    "criteres_eligibilite": [
+      "PME tunisienne exportatrice",
+      "Produit fabriqué ou transformé en Tunisie",
+      "Critères qualité CEPEX"
+    ],
+    "avantages_specifiques": [
+      "Label Made in Tunisia",
+      "Participation pavillons Tunisie à l'étranger",
+      "Base de données acheteurs internationaux",
+      "Missions de prospection organisées"
+    ],
+    "url_source": "https://www.cepex.nat.tn/",
+    "gaps_adresses": [
+      "export",
+      "developpement_international",
+      "label_qualite",
+      "marche_etranger"
+    ],
+    "rag_description": "CEPEX labellisation Made in Tunisia accompagnement export PME industrielles. Pavillons foires internationales prospection marchés.",
+    "date_scraping": "2026-06-17",
+    "source_verified": true,
+    "texte_complet": "SECTEUR: Industrie/Construction Commerce/Transport/Logistique Agriculture/Sylviculture/Peche. industrie industriel usine manufacture production construction batiment btp travaux equipements industriels machines outils transformation produits finis secteur industriel commerce commercial vente distribution retail transport logistique livraison chaine approvisionnement import export commerce international douane marketplace e-commerce boutique agriculture agricole agriculteur exploitation agricole peche pecheur aquaculture maritime sylviculture foret rural zone rurale culture elevage irrigation mecanisation agroalimentaire agri-food semences intrants. CEPEX – Labellisation Made in Tunisia (export industrie) Centre de Promotion des Exportations (CEPEX). CEPEX labellisation Made in Tunisia accompagnement export PME industrielles. Pavillons foires internationales prospection marchés.. Stades eligibles: Launch Planning Growth. Gaps adresses: export developpement_international label_qualite marche_etranger. PME tunisienne exportatrice Produit fabriqué ou transformé en Tunisie Critères qualité CEPEX. Type: programme_export. Ressource pour: Industrie/Construction Commerce/Transport/Logistique Agriculture/Sylviculture/Peche.",
+    "derniere_mise_a_jour": "2026-06-17",
+    "url_accessible": "403_anti_robot_normal"
+  },
+  {
+    "id": "SOTUGAR-001",
+    "nom": "SOTUGAR – Garantie crédits PME (fonds national garantie)",
+    "organisme": "Société Tunisienne de Garantie (SOTUGAR)",
+    "type": "garantie",
+    "categorie": "garantie_credit",
+    "stades_eligibles": [
+      "Structuration",
+      "Fundraising",
+      "Launch Planning"
+    ],
+    "montant_min": null,
+    "montant_max": 3000000,
+    "devise": "TND",
+    "taux": "Commission garantie 1-2% (selon programme)",
+    "secteur_cible": [
+      "Industrie/Construction",
+      "Commerce/Transport/Logistique",
+      "Service/Tourisme",
+      "Technologie/Service-Entreprise",
+      "Agriculture/Sylviculture/Peche"
+    ],
+    "criteres_eligibilite": [
+      "PME tunisienne avec projet bancable",
+      "Crédit demandé auprès banque partenaire",
+      "Pas de garanties réelles suffisantes"
+    ],
+    "avantages_specifiques": [
+      "Garantit jusqu'à 70% du crédit bancaire",
+      "Permet accès crédit sans hypothèque",
+      "Partenaire obligatoire BFPME pour crédits > 200k TND",
+      "Couvre création extension et BFR"
+    ],
+    "url_source": "https://www.sotugar.com.tn/",
+    "gaps_adresses": [
+      "manque_garanties",
+      "acces_credit_difficile",
+      "absence_hypotheque",
+      "tpe_exclue_banque"
+    ],
+    "rag_description": "SOTUGAR garantie crédits PME Tunisie. Couvre 70% crédit bancaire sans hypothèque. Partenaire BFPME obligatoire crédits > 200k TND.",
+    "date_scraping": "2026-06-17",
+    "source_verified": true,
+    "texte_complet": "SECTEUR: Industrie/Construction Commerce/Transport/Logistique Service/Tourisme Technologie/Service-Entreprise Agriculture/Sylviculture/Peche. industrie industriel usine manufacture production construction batiment btp travaux equipements industriels machines outils transformation produits finis secteur industriel commerce commercial vente distribution retail transport logistique livraison chaine approvisionnement import export commerce international douane marketplace e-commerce boutique service services prestation conseil tourisme touristique hotel hebergement restaurant restauration gite maison hotes agence voyage guide touristique technologie tech digital numerique informatique startup innovation saas logiciel application intelligence artificielle ia deeptech fintech service entreprise b2b conseil expertise agriculture agricole agriculteur exploitation agricole peche pecheur aquaculture maritime sylviculture foret rural zone rurale culture elevage irrigation mecanisation agroalimentaire agri-food semences intrants. SOTUGAR – Garantie crédits PME (fonds national garantie) Société Tunisienne de Garantie (SOTUGAR). SOTUGAR garantie crédits PME Tunisie. Couvre 70% crédit bancaire sans hypothèque. Partenaire BFPME obligatoire crédits > 200k TND.. Stades eligibles: Structuration Fundraising Launch Planning. Gaps adresses: manque_garanties acces_credit_difficile absence_hypotheque tpe_exclue_banque. PME tunisienne avec projet bancable Crédit demandé auprès banque partenaire Pas de garanties réelles suffisantes. Type: garantie. Ressource pour: Industrie/Construction Commerce/Transport/Logistique Service/Tourisme Technologie/Service-Entreprise Agriculture/Sylviculture/Peche.",
+    "derniere_mise_a_jour": "2026-06-17",
+    "url_accessible": "403_anti_robot_normal"
+  },
+  {
+    "id": "FOPRODI-002",
+    "nom": "FOPRODI – Prime investissement matériel industriel (10%)",
+    "organisme": "APII / Fonds de Promotion et Décentralisation Industrielle",
+    "type": "subvention",
+    "categorie": "prime_investissement",
+    "stades_eligibles": [
+      "Structuration",
+      "Fundraising",
+      "Launch Planning"
+    ],
+    "montant_min": null,
+    "montant_max": 500000,
+    "devise": "TND",
+    "taux": "10% valeur équipements HT (prime non remboursable)",
+    "secteur_cible": [
+      "Industrie/Construction",
+      "Technologie/Service-Entreprise"
+    ],
+    "criteres_eligibilite": [
+      "Nouveau promoteur premier projet industriel",
+      "Apport personnel insuffisant (< seuil requis)",
+      "Secteur industrie services liés artisanat",
+      "Dossier déposé avant démarrage investissement"
+    ],
+    "avantages_specifiques": [
+      "Prime 10% valeur équipements (non remboursable)",
+      "Prime étude et assistance technique 70% (max 20k TND)",
+      "Participation capital ou dotation remboursable",
+      "Encouragement développement régional"
+    ],
+    "url_source": "https://www.tunisieindustrie.nat.tn/fr/doc.asp?mcat=25&mrub=189",
+    "gaps_adresses": [
+      "manque_apport_personnel",
+      "creation_industrielle",
+      "prime_equipement",
+      "premier_projet"
+    ],
+    "rag_description": "FOPRODI prime 10% équipements industriels non remboursable. Aide nouveaux promoteurs industrie artisanat sans apport suffisant.",
+    "date_scraping": "2026-06-17",
+    "source_verified": true,
+    "texte_complet": "SECTEUR: Industrie/Construction Technologie/Service-Entreprise. industrie industriel usine manufacture production construction batiment btp travaux equipements industriels machines outils transformation produits finis secteur industriel technologie tech digital numerique informatique startup innovation saas logiciel application intelligence artificielle ia deeptech fintech service entreprise b2b conseil expertise. FOPRODI – Prime investissement matériel industriel (10%) APII / Fonds de Promotion et Décentralisation Industrielle. FOPRODI prime 10% équipements industriels non remboursable. Aide nouveaux promoteurs industrie artisanat sans apport suffisant.. Stades eligibles: Structuration Fundraising Launch Planning. Gaps adresses: manque_apport_personnel creation_industrielle prime_equipement premier_projet. Nouveau promoteur premier projet industriel Apport personnel insuffisant (< seuil requis) Secteur industrie services liés artisanat Dossier déposé avant démarrage investissement. Type: subvention. Ressource pour: Industrie/Construction Technologie/Service-Entreprise.",
+    "derniere_mise_a_jour": "2026-06-17",
+    "url_accessible": "403_anti_robot_normal"
+  },
+  {
+    "id": "STEG-001",
+    "nom": "Programme Efficacité Énergétique ANME – Subvention équipements",
+    "organisme": "Agence Nationale Maîtrise Énergie (ANME)",
+    "type": "subvention",
+    "categorie": "aide_energie",
+    "stades_eligibles": [
+      "Structuration",
+      "Launch Planning",
+      "Growth"
+    ],
+    "montant_min": null,
+    "montant_max": 200000,
+    "devise": "TND",
+    "taux": "Subvention 20-30% équipements efficacité énergétique",
+    "secteur_cible": [
+      "Industrie/Construction",
+      "Commerce/Transport/Logistique",
+      "Agriculture/Sylviculture/Peche",
+      "Service/Tourisme"
+    ],
+    "criteres_eligibilite": [
+      "Entreprise tunisienne",
+      "Investissement équipements efficacité énergétique ou renouvelables",
+      "Audit énergétique préalable"
+    ],
+    "avantages_specifiques": [
+      "Subvention 20-30% non remboursable",
+      "Améliore score vert projet",
+      "Réduit coûts exploitation long terme",
+      "Audit énergétique subventionné"
+    ],
+    "url_source": "https://www.anme.nat.tn/",
+    "gaps_adresses": [
+      "score_vert_faible",
+      "couts_energie_eleves",
+      "transition_energetique",
+      "efficacite_energetique"
+    ],
+    "rag_description": "ANME subventions équipements efficacité énergétique et renouvelables entreprises tunisiennes. Améliore score vert et réduit coûts.",
+    "date_scraping": "2026-06-17",
+    "source_verified": true,
+    "texte_complet": "SECTEUR: Industrie/Construction Commerce/Transport/Logistique Agriculture/Sylviculture/Peche Service/Tourisme. industrie industriel usine manufacture production construction batiment btp travaux equipements industriels machines outils transformation produits finis secteur industriel commerce commercial vente distribution retail transport logistique livraison chaine approvisionnement import export commerce international douane marketplace e-commerce boutique agriculture agricole agriculteur exploitation agricole peche pecheur aquaculture maritime sylviculture foret rural zone rurale culture elevage irrigation mecanisation agroalimentaire agri-food semences intrants service services prestation conseil tourisme touristique hotel hebergement restaurant restauration gite maison hotes agence voyage guide touristique. Programme Efficacité Énergétique ANME – Subvention équipements Agence Nationale Maîtrise Énergie (ANME). ANME subventions équipements efficacité énergétique et renouvelables entreprises tunisiennes. Améliore score vert et réduit coûts.. Stades eligibles: Structuration Launch Planning Growth. Gaps adresses: score_vert_faible couts_energie_eleves transition_energetique efficacite_energetique. Entreprise tunisienne Investissement équipements efficacité énergétique ou renouvelables Audit énergétique préalable. Type: subvention. Ressource pour: Industrie/Construction Commerce/Transport/Logistique Agriculture/Sylviculture/Peche Service/Tourisme.",
+    "derniere_mise_a_jour": "2026-06-17",
+    "url_accessible": "403_anti_robot_normal"
+  },
+  {
+    "id": "CTFP-001",
+    "nom": "CTFP – Financement formation professionnelle continue PME",
+    "organisme": "Centre de Formation et de Promotion (CTFP / ATFP)",
+    "type": "subvention_formation",
+    "categorie": "aide_formation",
+    "stades_eligibles": [
+      "Structuration",
+      "Launch Planning",
+      "Growth"
+    ],
+    "montant_min": null,
+    "montant_max": 50000,
+    "devise": "TND",
+    "taux": "Prise en charge 50-70% coûts formation",
+    "secteur_cible": [
+      "Industrie/Construction",
+      "Commerce/Transport/Logistique",
+      "Service/Tourisme",
+      "Technologie/Service-Entreprise"
+    ],
+    "criteres_eligibilite": [
+      "PME tunisienne",
+      "Plan de formation annuel",
+      "Cotisation CNSS régulière"
+    ],
+    "avantages_specifiques": [
+      "Prise en charge partielle coûts formation",
+      "Améliore compétences équipe",
+      "Obligatoire pour certains labels qualité"
+    ],
+    "url_source": "https://www.atfp.tn/",
+    "gaps_adresses": [
+      "competences_equipe_faibles",
+      "besoin_formation",
+      "mise_a_niveau_rh"
+    ],
+    "rag_description": "CTFP ATFP financement formation professionnelle continue PME tunisiennes. Prise en charge 50-70% coûts formation équipes.",
+    "date_scraping": "2026-06-17",
+    "source_verified": true,
+    "texte_complet": "SECTEUR: Industrie/Construction Commerce/Transport/Logistique Service/Tourisme Technologie/Service-Entreprise. industrie industriel usine manufacture production construction batiment btp travaux equipements industriels machines outils transformation produits finis secteur industriel commerce commercial vente distribution retail transport logistique livraison chaine approvisionnement import export commerce international douane marketplace e-commerce boutique service services prestation conseil tourisme touristique hotel hebergement restaurant restauration gite maison hotes agence voyage guide touristique technologie tech digital numerique informatique startup innovation saas logiciel application intelligence artificielle ia deeptech fintech service entreprise b2b conseil expertise. CTFP – Financement formation professionnelle continue PME Centre de Formation et de Promotion (CTFP / ATFP). CTFP ATFP financement formation professionnelle continue PME tunisiennes. Prise en charge 50-70% coûts formation équipes.. Stades eligibles: Structuration Launch Planning Growth. Gaps adresses: competences_equipe_faibles besoin_formation mise_a_niveau_rh. PME tunisienne Plan de formation annuel Cotisation CNSS régulière. Type: subvention_formation. Ressource pour: Industrie/Construction Commerce/Transport/Logistique Service/Tourisme Technologie/Service-Entreprise.",
+    "derniere_mise_a_jour": "2026-06-17",
+    "url_accessible": "403_anti_robot_normal"
+  },
+  {
+    "id": "ONTT-001",
+    "nom": "ONTT – Programme soutien investissement touristique",
+    "organisme": "Office National du Tourisme Tunisien (ONTT)",
+    "type": "programme_accompagnement",
+    "categorie": "aide_tourisme",
+    "stades_eligibles": [
+      "Ideation",
+      "Market Validation",
+      "Structuration",
+      "Fundraising"
+    ],
+    "montant_min": null,
+    "montant_max": null,
+    "devise": "TND",
+    "taux": "N/A (accompagnement + orientation financement)",
+    "secteur_cible": [
+      "Service/Tourisme"
+    ],
+    "criteres_eligibilite": [
+      "Projet dans secteur tourisme hébergement restauration",
+      "Gîtes ruraux maisons d'hôtes éligibles BFPME",
+      "Agences voyages guides touristiques"
+    ],
+    "avantages_specifiques": [
+      "Orientation financement spécifique tourisme",
+      "Accès avantages fiscaux secteur touristique",
+      "Label qualité tourisme tunisien",
+      "Promotion internationale"
+    ],
+    "url_source": "https://www.tourisme.gov.tn/",
+    "gaps_adresses": [
+      "secteur_tourisme",
+      "projet_hebergement",
+      "gite_rural",
+      "restauration"
+    ],
+    "rag_description": "ONTT soutien investissement touristique Tunisie. Gîtes ruraux maisons d'hôtes agences voyages. Avantages fiscaux secteur touristique.",
+    "date_scraping": "2026-06-17",
+    "source_verified": true,
+    "texte_complet": "SECTEUR: Service/Tourisme. service services prestation conseil tourisme touristique hotel hebergement restaurant restauration gite maison hotes agence voyage guide touristique. ONTT – Programme soutien investissement touristique Office National du Tourisme Tunisien (ONTT). ONTT soutien investissement touristique Tunisie. Gîtes ruraux maisons d'hôtes agences voyages. Avantages fiscaux secteur touristique.. Stades eligibles: Ideation Market Validation Structuration Fundraising. Gaps adresses: secteur_tourisme projet_hebergement gite_rural restauration. Projet dans secteur tourisme hébergement restauration Gîtes ruraux maisons d'hôtes éligibles BFPME Agences voyages guides touristiques. Type: programme_accompagnement. Ressource pour: Service/Tourisme.",
+    "derniere_mise_a_jour": "2026-06-17",
+    "url_accessible": "403_anti_robot_normal"
+  },
+  {
+    "id": "BFPME-TOURISME",
+    "nom": "BFPME – Crédit gîtes ruraux et maisons d'hôtes (exception tourisme)",
+    "organisme": "Banque de Financement des PME (BFPME)",
+    "type": "financement_bancaire",
+    "categorie": "credit_investissement",
+    "stades_eligibles": [
+      "Structuration",
+      "Fundraising",
+      "Launch Planning"
+    ],
+    "montant_min": 150000,
+    "montant_max": 5000000,
+    "devise": "TND",
+    "taux": "TMM + 2% à 4,5%",
+    "secteur_cible": [
+      "Service/Tourisme",
+      "Agriculture/Sylviculture/Peche"
+    ],
+    "criteres_eligibilite": [
+      "Gîte rural ou maison d'hôtes (exception à l'exclusion hôtellerie)",
+      "Investissement min 150k TND",
+      "Apport personnel 10-12%",
+      "NB: Hôtellerie hébergement principal EXCLUE — gîtes rural ELIGIBLES"
+    ],
+    "avantages_specifiques": [
+      "Exception explicite: gîtes ruraux éligibles même si hébergement = activité principale",
+      "Financement jusqu'à 65% du coût",
+      "Franchise pendant durée réalisation"
+    ],
+    "url_source": "https://www.bfpme.com.tn/",
+    "gaps_adresses": [
+      "secteur_tourisme",
+      "gite_rural",
+      "maison_hotes",
+      "exception_hebergement"
+    ],
+    "rag_description": "BFPME exception tourisme: gîtes ruraux et maisons d'hôtes éligibles au crédit CMLT contrairement à l'hôtellerie classique exclue.",
+    "date_scraping": "2026-06-17",
+    "source_verified": true,
+    "texte_complet": "SECTEUR: Service/Tourisme Agriculture/Sylviculture/Peche. service services prestation conseil tourisme touristique hotel hebergement restaurant restauration gite maison hotes agence voyage guide touristique agriculture agricole agriculteur exploitation agricole peche pecheur aquaculture maritime sylviculture foret rural zone rurale culture elevage irrigation mecanisation agroalimentaire agri-food semences intrants. BFPME – Crédit gîtes ruraux et maisons d'hôtes (exception tourisme) Banque de Financement des PME (BFPME). BFPME exception tourisme: gîtes ruraux et maisons d'hôtes éligibles au crédit CMLT contrairement à l'hôtellerie classique exclue.. Stades eligibles: Structuration Fundraising Launch Planning. Gaps adresses: secteur_tourisme gite_rural maison_hotes exception_hebergement. Gîte rural ou maison d'hôtes (exception à l'exclusion hôtellerie) Investissement min 150k TND Apport personnel 10-12% NB: Hôtellerie hébergement principal EXCLUE — gîtes rural ELIGIBLES. Type: financement_bancaire. Ressource pour: Service/Tourisme Agriculture/Sylviculture/Peche.",
+    "derniere_mise_a_jour": "2026-06-17",
+    "url_accessible": "403_anti_robot_normal"
+  },
+  {
+    "id": "ANDA-001",
+    "nom": "ANDA – Agence Nationale Développement Aquaculture",
+    "organisme": "Agence Nationale de Développement de l'Aquaculture (ANDA)",
+    "type": "programme_accompagnement",
+    "categorie": "aide_aquaculture",
+    "stades_eligibles": [
+      "Ideation",
+      "Market Validation",
+      "Structuration"
+    ],
+    "montant_min": null,
+    "montant_max": null,
+    "devise": "TND",
+    "taux": "N/A (accompagnement technique + primes)",
+    "secteur_cible": [
+      "Agriculture/Sylviculture/Peche"
+    ],
+    "criteres_eligibilite": [
+      "Projet aquaculture pisciculture",
+      "Zones côtières ou intérieures",
+      "Promoteur avec expérience ou formation"
+    ],
+    "avantages_specifiques": [
+      "Accompagnement technique aquaculture",
+      "Attribution concessions maritimes",
+      "Primes investissement aquaculture",
+      "Études de faisabilité subventionnées"
+    ],
+    "url_source": "https://www.anda.tn/",
+    "gaps_adresses": [
+      "secteur_peche",
+      "aquaculture",
+      "pisciculture",
+      "zones_cotieres"
+    ],
+    "rag_description": "ANDA développement aquaculture pisciculture Tunisie. Attribution concessions maritimes primes investissement accompagnement technique.",
+    "date_scraping": "2026-06-17",
+    "source_verified": true,
+    "texte_complet": "SECTEUR: Agriculture/Sylviculture/Peche. agriculture agricole agriculteur exploitation agricole peche pecheur aquaculture maritime sylviculture foret rural zone rurale culture elevage irrigation mecanisation agroalimentaire agri-food semences intrants. ANDA – Agence Nationale Développement Aquaculture Agence Nationale de Développement de l'Aquaculture (ANDA). ANDA développement aquaculture pisciculture Tunisie. Attribution concessions maritimes primes investissement accompagnement technique.. Stades eligibles: Ideation Market Validation Structuration. Gaps adresses: secteur_peche aquaculture pisciculture zones_cotieres. Projet aquaculture pisciculture Zones côtières ou intérieures Promoteur avec expérience ou formation. Type: programme_accompagnement. Ressource pour: Agriculture/Sylviculture/Peche.",
+    "derniere_mise_a_jour": "2026-06-17",
+    "url_accessible": "403_anti_robot_normal"
+  },
+  {
+    "id": "SMART-CAPITAL-002",
+    "nom": "Smart Capital – Fonds direct PME innovantes (hors ANAVA)",
+    "organisme": "Smart Capital Tunisie",
+    "type": "capital_investissement",
+    "categorie": "fonds_pme_innovantes",
+    "stades_eligibles": [
+      "Market Validation",
+      "Structuration",
+      "Fundraising"
+    ],
+    "montant_min": 200000,
+    "montant_max": 3000000,
+    "devise": "TND",
+    "taux": "N/A (prise de participation minoritaire)",
+    "secteur_cible": [
+      "Technologie/Service-Entreprise",
+      "Industrie/Construction",
+      "Service/Tourisme"
+    ],
+    "criteres_eligibilite": [
+      "PME innovante tunisienne",
+      "Activité principale en Tunisie",
+      "Potentiel scalabilité et croissance",
+      "Équipe fondatrice solide"
+    ],
+    "avantages_specifiques": [
+      "Investissement direct (pas via child fund)",
+      "Tickets 200k à 3M TND",
+      "Accompagnement post-investissement",
+      "Réseau Smart Capital + CDC"
+    ],
+    "url_source": "https://smartcapital.tn/",
+    "gaps_adresses": [
+      "besoin_capital_investissement",
+      "innovation_score",
+      "pme_innovante",
+      "scalabilite"
+    ],
+    "rag_description": "Smart Capital investissement direct PME innovantes tunisiennes. Tickets 200k-3M TND participation minoritaire accompagnement.",
+    "date_scraping": "2026-06-17",
+    "source_verified": true,
+    "texte_complet": "SECTEUR: Technologie/Service-Entreprise Industrie/Construction Service/Tourisme. technologie tech digital numerique informatique startup innovation saas logiciel application intelligence artificielle ia deeptech fintech service entreprise b2b conseil expertise industrie industriel usine manufacture production construction batiment btp travaux equipements industriels machines outils transformation produits finis secteur industriel service services prestation conseil tourisme touristique hotel hebergement restaurant restauration gite maison hotes agence voyage guide touristique. Smart Capital – Fonds direct PME innovantes (hors ANAVA) Smart Capital Tunisie. Smart Capital investissement direct PME innovantes tunisiennes. Tickets 200k-3M TND participation minoritaire accompagnement.. Stades eligibles: Market Validation Structuration Fundraising. Gaps adresses: besoin_capital_investissement innovation_score pme_innovante scalabilite. PME innovante tunisienne Activité principale en Tunisie Potentiel scalabilité et croissance Équipe fondatrice solide. Type: capital_investissement. Ressource pour: Technologie/Service-Entreprise Industrie/Construction Service/Tourisme.",
+    "derniere_mise_a_jour": "2026-06-17",
+    "url_accessible": "403_anti_robot_normal"
+  },
+  {
+    "id": "HACKATHON-AINS",
+    "nom": "AINS Hackathon – Concours et financement projets IA entrepreneurship",
+    "organisme": "AINS 4.0 / PNUD / GEWEET / ODC / IEEE / APII",
+    "type": "concours_financement",
+    "categorie": "programme_startup",
+    "stades_eligibles": [
+      "Ideation",
+      "Market Validation",
+      "Structuration"
+    ],
+    "montant_min": null,
+    "montant_max": null,
+    "devise": "TND",
+    "taux": "N/A (prix + visibilité + réseau)",
+    "secteur_cible": [
+      "Technologie/Service-Entreprise"
+    ],
+    "criteres_eligibilite": [
+      "Projet IA pour entrepreneurship",
+      "Équipe multidisciplinaire",
+      "Solution innovative secteur tunisien"
+    ],
+    "avantages_specifiques": [
+      "Prix hackathon",
+      "Accès réseau PNUD APII IEEE",
+      "Visibilité écosystème tunisien",
+      "Accélération vers programmes officiels"
+    ],
+    "url_source": "https://www.apii.nat.tn/",
+    "gaps_adresses": [
+      "startup_ia",
+      "innovation_score",
+      "visibilite_ecosysteme"
+    ],
+    "rag_description": "AINS Hackathon AI for Entrepreneurship Tunisie. Concours projets IA accès réseau PNUD APII IEEE GEWEET.",
+    "date_scraping": "2026-06-17",
+    "source_verified": true,
+    "texte_complet": "SECTEUR: Technologie/Service-Entreprise. technologie tech digital numerique informatique startup innovation saas logiciel application intelligence artificielle ia deeptech fintech service entreprise b2b conseil expertise. AINS Hackathon – Concours et financement projets IA entrepreneurship AINS 4.0 / PNUD / GEWEET / ODC / IEEE / APII. AINS Hackathon AI for Entrepreneurship Tunisie. Concours projets IA accès réseau PNUD APII IEEE GEWEET.. Stades eligibles: Ideation Market Validation Structuration. Gaps adresses: startup_ia innovation_score visibilite_ecosysteme. Projet IA pour entrepreneurship Équipe multidisciplinaire Solution innovative secteur tunisien. Type: concours_financement. Ressource pour: Technologie/Service-Entreprise.",
+    "derniere_mise_a_jour": "2026-06-17",
+    "url_accessible": "403_anti_robot_normal"
+  }
+]

@@ -1,0 +1,144 @@
+{
+    "id": "PROF-DBD323",
+    "entrepreneur_id": "ENT-DBD323",
+    "timestamp": "2026-06-18T10:10:30.933553",
+    "secteur": "agriculture_sylviculture_peche",
+    "secteur_label": "Agriculture / Sylviculture / Pêche",
+    "localisation": "Siliana",
+    "stade_reel": "Growth",
+    "stade_percu": "Growth",
+    "gap_detecte": true,
+    "gap_explication": "L'entrepreneur a surestimé son stade de 3 niveau(x). Il se perçoit en 'Growth' mais le diagnostic objectif indique 'Structuration'. Causes principales : Fondateur seul — équipe à constituer, Certifications sanitaires/phytosanitaires manquantes, Chaîne de froid / logistique non sécurisée.",
+    "gaps": [
+        "Fondateur seul — équipe à constituer",
+        "Certifications sanitaires/phytosanitaires manquantes",
+        "Chaîne de froid / logistique non sécurisée",
+        "Pas de RNE enregistré",
+        "Pas de business plan documenté",
+        "Produit / service existant sur le marché tunisien depuis plus de 2 ans"
+    ],
+    "signaux_divergence": [
+        "Vous vous croyez en 'Growth' mais n'avez pas de RNE — impossible de constituer un dossier bancable sans entité juridique.",
+        "Votre solution existe déjà sur le marché tunisien depuis plusieurs années. L'innovation perçue ne se traduit pas en différenciation réelle."
+    ],
+    "financement_recommande": null,
+    "profil_complet": {
+        "description_libre": "agro siliana growth",
+        "entrepreneur_id": "ENT-DBD323",
+        "nom_entreprise": "fle7a",
+        "secteur": "agriculture_sylviculture_peche",
+        "secteur_label": "Agriculture / Sylviculture / Pêche",
+        "localisation": "Siliana",
+        "stade_percu": "Growth",
+        "equipe": "solo",
+        "certifications_sanitaires": false,
+        "chaine_froid": false,
+        "saisonnalite": "Partiellement",
+        "acces_foncier": "Oui, location court terme",
+        "rne": true,
+        "forme_juridique": null,
+        "chiffre_affaires": 58852266.0,
+        "anciennete_revenus": "Plus de 3 ans",
+        "business_plan": "absent",
+        "innovation_niveau": "tres_faible",
+        "accompagnement": "jamais",
+        "financement": "aucun"
+    },
+    "financing_readiness_index": 40,
+    "fri_interpretation": "Le score global est plafonné à 40/100 en raison de la faiblesse critique du score Marché (<30). (Score réel calculé : 40/100)",
+    "is_financeable": false,
+    "secteur_applique": "Agriculture",
+    "scores": {
+        "market_score": {
+            "valeur": 16.3,
+            "sous_scores": {
+                "taille_marche": 10.0,
+                "concurrence": 10.0,
+                "validation_client": 10.0,
+                "modele_revenus": 40.0
+            },
+            "justification_template": "Le Market Score est insuffisant (16.3/100). Le critere 'Taille marche' (10/100) constitue un bloqueur majeur pour toute demarche de financement.",
+            "action_template": "ACTION URGENTE : 'Taille marche' doit passer au-dessus de 30/100. Sans cela, aucun financement n'est envisageable.",
+            "kb_link": ""
+        },
+        "commercial_offer_score": {
+            "valeur": 40.0,
+            "sous_scores": {
+                "proposition_valeur": 40.0,
+                "maturite_produit": 40.0,
+                "strategie_prix": 40.0,
+                "alignement_besoins": 40.0
+            },
+            "justification_template": "L'offre commerciale est trop fragile (40.0/100). La 'Proposition valeur' (40/100) doit etre refondee avant toute approche d'investisseur.",
+            "action_template": "ACTION URGENTE : redefinir 'Proposition valeur' (score 40/100). Engager un atelier job-to-be-done avec de vrais utilisateurs.",
+            "kb_link": ""
+        },
+        "innovation_score": {
+            "valeur": 85.0,
+            "sous_scores": {
+                "nouveaute_locale": 90.0,
+                "intensite_tech": 90.0,
+                "barrieres_entree": 90.0,
+                "degre_rupture": 90.0
+            },
+            "justification_template": "Le profil innovant est reconnu : 'Nouveaute locale' (90/100) positionne favorablement le projet sur son marche.",
+            "action_template": "Initier une procedure de depot de brevet (Art. 12 Startup Act) pour securiser les barrieres a l'entree.",
+            "kb_link": ""
+        },
+        "scalability_score": {
+            "valeur": 90.0,
+            "sous_scores": {
+                "replicabilite": 90.0,
+                "independance_manuelle": 90.0,
+                "couts_deploiement": 90.0,
+                "potentiel_geo": 90.0
+            },
+            "justification_template": "Le modele est fortement scalable. La 'Replicabilite' (90/100) confirme la capacite de croissance sans augmentation lineaire des couts.",
+            "action_template": "Modeliser les economies d'echelle a 3 ans pour le dossier de levee de fonds.",
+            "kb_link": ""
+        },
+        "green_score": {
+            "valeur": 90.0,
+            "sous_scores": {
+                "climat_air": 90.0,
+                "eau": 90.0,
+                "sols_biodiversite": 90.0,
+                "ressources_dechets": 90.0
+            },
+            "justification_template": "L'impact environnemental est bien maitrise. Le pilier 'Climat air' (90/100) est un atout dans le contexte PNUD/ODD.",
+            "action_template": "Formaliser le bilan carbone et l'aligner sur les ODD pour les dossiers de financement PNUD/AFD.",
+            "kb_link": ""
+        }
+    },
+    "blockers_actifs": [],
+    "anomalies_detectees": [
+        {
+            "id": "ANOM_TEAM_SOLO_FATIGUE",
+            "justification": "Risque de Burnout : Gérer seul une startup en phase de 'Growth' est un goulot d'étranglement majeur (Key-Man Risk) rédhibitoire pour les investisseurs.",
+            "penalite": 10,
+            "dimension_impactee": "team_score",
+            "justification_template": "Risque de Burnout : Gérer seul une startup en phase de 'Growth' est un goulot d'étranglement majeur (Key-Man Risk) rédhibitoire pour les investisseurs.",
+            "action_template": "Recrutez un bras droit opérationnel (COO) ou ouvrez votre capital pour intégrer un co-fondateur.",
+            "kb_link": "KB-TEAM-SCALING-007"
+        },
+        {
+            "id": "ANOM_ECO_REGIONAL_FUNDS_MISSED",
+            "justification": "Leviers régionaux inexploités : Vous êtes légalement constitué (RNE valide) à Siliana mais ne bénéficiez d'aucun financement. Vous passez à côté de primes de développement régional spécifiques (PDRI).",
+            "penalite": 10,
+            "dimension_impactee": "commercial_offer_score",
+            "justification_template": "Leviers régionaux inexploités : Vous êtes légalement constitué (RNE valide) à Siliana mais ne bénéficiez d'aucun financement. Vous passez à côté de primes de développement régional spécifiques (PDRI).",
+            "action_template": "Sollicitez le bureau régional de l'APII de Siliana pour déposer un dossier de prime d'investissement régional.",
+            "kb_link": "KB-FIN-REGIONAL-006"
+        },
+        {
+            "id": "ANOM_IN_4",
+            "justification": "",
+            "penalite": 5,
+            "dimension_impactee": "innovation",
+            "justification_template": "",
+            "action_template": "",
+            "kb_link": ""
+        }
+    ],
+    "resume_executif": "⚠ INFORMATION : Le score global est plafonné à 40/100 en raison de la faiblesse critique du score Marché (<30). Analyse pour le secteur 'Agriculture' : le projet n'est PAS encore bancable avec un Financing Readiness Index de 40/100. Le point fort du projet est le Scalability Score avec un score de 90.0/100, tandis que le Market Score constitue le principal axe de progression avec seulement 16.3/100. Aucun bloqueur structurel détecté. Le principal levier reste le Market Score (16.3/100). Concentrez l'effort sur l'axe Market Score pour progresser."
+}

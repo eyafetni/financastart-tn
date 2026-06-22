@@ -1,0 +1,866 @@
+AINS HACKATHON 2026
+AI for Entrepreneurship – Feature 2
+Méthodologie de Scoring Multi-Dimensionnel
+Comparaisons par paires AHP · Pondérations · Adaptabilité Sectorielle · Détection d'Anomalies
+Document technique — Version 1.0 — Juin 2026
+Organisé par PNUD · GEWEET · ODC · IEEE · APII · AINS 4.0
+0. Fondements théoriques et ancrage documentaire
+Ce document constitue la spécification complète du module de scoring multi-dimensionnel (Feature 2) du moteur d'orientation entrepreneuriale développé dans le cadre du hackathon AINS 2026. Chaque poids et chaque critère est ancré dans les documents de référence fournis.
+0.1 Sources documentaires utilisées
+Quatre documents de référence ont guidé la définition des critères, des poids et des logiques de pénalité :
+Document
+Apport principal au scoring
+Enquête World Bank Enterprise Survey 2024 – Tunisie
+Calibration des poids Marché et Scalabilité : accès au financement, obstacles à la croissance, part des entreprises innovantes en Tunisie
+Loi n°2018-20 – Startup Act tunisien
+Critères d'éligibilité Startup (Art. 3) → fondement du sous-score Modèle économique ; exonérations IS et cotisations → impact sur Viabilité financière ; label 8 ans → contrainte de maturité
+Stiglitz & Weiss (1981) – Credit Rationing in Markets with Imperfect Information
+Justification théorique des pénalités d'asymétrie d'information : adverse selection → pénalité sur traction non validée ; incentive effect → pénalité scalabilité sans modèle prouvé
+AINS Hackathon 2026 – Technical Specification (AI for Entrepreneurship)
+Définition des 5 scores composites et de leurs sous-dimensions ; Green Score avec ses 4 piliers (image PNUD) ; critères d'acceptation des features 1–3
+0.2 Rappel de la méthode AHP
+L'Analytic Hierarchy Process (Saaty, 1980) décompose une décision complexe en comparaisons binaires sur une échelle de 1 à 9 :
+Valeur
+Signification
+1
+Égale importance
+3
+Légèrement plus important
+5
+Nettement plus important
+7
+Très nettement plus important
+9
+Absolument plus important
+2,4,6,8
+Valeurs intermédiaires
+1/n
+Importance inverse
+Le Ratio de Cohérence (CR) doit être ≤ 0.10 pour valider la matrice. Si CR > 0.10, les comparaisons doivent être révisées.
+1. Market Score
+Le Market Score évalue la viabilité et la traction commerciale du projet sur son marché cible. Il s'appuie sur les données de l'Enquête World Bank 2024 Tunisie, qui identifie l'accès aux marchés et l'intensité concurrentielle comme obstacles majeurs pour 68% des PME tunisiennes.
+1.1 Définition des quatre sous-scores
+Sous-score
+Description & ancrage documentaire
+Plage de mesure
+MS1 – Taille du marché adressable (TAM)
+TAM/SAM/SOM documenté. Ancrage : WB Survey 2024 – 43% des entreprises tunisiennes opèrent dans des marchés locaux saturés → TAM < 1M TND pénalisé.
+0 – 100 pts
+MS2 – Paysage concurrentiel
+Nombre de concurrents directs, barrières à l'entrée, différenciation perçue. Ancrage : WB Survey – 'Practices of competitors in the informal sector' cité comme contrainte principale par 31% des entreprises.
+0 – 100 pts
+MS3 – Validation client
+Preuves concrètes : LOI, pilotes payants, MRR, NPS. Ancrage : Stiglitz & Weiss (1981) – absence de validation = signal adverse selection pour les financeurs → poids élevé.
+0 – 100 pts
+MS4 – Clarté du modèle de revenus
+Flux de revenus identifiés, récurrence, LTV/CAC ratio estimé. Ancrage : Startup Act Art. 3 §4 – 'modèle économique à forte dimension innovante' comme condition de labellisation.
+0 – 100 pts
+1.2 Matrice AHP – Comparaisons par paires (Market Score)
+Justification des comparaisons : La validation client (MS3) est légèrement prioritaire sur la taille du marché car, en contexte tunisien (WB Survey), un marché limité mais avec traction réelle est plus finançable qu'un grand marché non validé (Stiglitz & Weiss : adverse selection). Le modèle de revenus (MS4) est jugé équivalent à MS3 car le Startup Act exige explicitement cette dimension.
+Matrice de comparaison – Market Score (n=4)
+Critère
+MS1 – TAM
+MS2 – Concurr…
+MS3 – Validat…
+MS4 – Modèle …
+Poids (w)
+MS1 – TAM
+1
+0.333
+0.500
+0.500
+12.1%
+MS2 – Concurrence
+3
+1
+3
+2
+45.4%
+MS3 – Validation client
+2
+0.333
+1
+0.667
+18.3%
+MS4 – Modèle revenus
+2
+0.500
+1.500
+1
+24.3%
+CR = 0.017 ✓ Consistant
+λmax = 4.0458   CI = 0.0153   RI = 0.9   CR = 0.017
+1.3 Barème de notation par sous-score
+Score
+MS1 – TAM
+MS3 – Validation
+MS4 – Modèle
+80–100
+TAM > 50M TND, international
+MRR > 5K TND ou 10+ LOI (score 80–100)
+Récurrent, LTV/CAC > 3
+50–79
+TAM 5–50M TND, régional
+Pilotes payants ou 3–9 LOI (50–79)
+Récurrent partiel, LTV/CAC 1–3
+20–49
+TAM 1–5M TND, local
+Usage gratuit prouvé, <3 LOI (20–49)
+Transactionnel simple
+0–19
+TAM < 1M TND, non chiffré
+Aucune preuve externe (0–19)
+Non défini (0–19)
+1.4 Adaptabilité sectorielle – Market Score
+Certains secteurs tunisiens présentent des dynamiques de marché distinctes. Les ajustements ci-dessous modifient les poids relatifs des sous-scores (non le score brut) pour refléter ces réalités.
+Secteur
+MS1
+MS2
+MS3
+MS4
+Agroalimentaire
++5%
+—
++10%
+—
+Tech / Digital
++5%
++5%
++15%
++5%
+Industrie
+—
++5%
+—
+—
+Services
+—
++5%
++5%
+—
+Commerce
++5%
+-10%
++5%
++5%
+📌 Agroalimentaire : fragmentation du marché local tunisien → bonus MS3 (validation terrain obligatoire, WB Survey 2024 : 43% des entreprises opèrent dans des marchés locaux saturés). Tech : bonus MS3+MS4 — la réglementation BCT/DHMPE exige une validation de viabilité légale préalable. Industrie : bonus MS2 modéré — structure oligopolistique des marchés industriels formels. Services : bonus MS3+MS2 — différenciation par la traction et la réputation. Commerce : malus MS2 — secteur informel dominant en Tunisie (31% des entreprises citent la concurrence informelle, WB Survey 2024).
+2. Commercial Offer Score
+Le Commercial Offer Score mesure la solidité et la pertinence de l'offre produit/service. Il évalue si le projet articule clairement sa proposition de valeur, si l'offre est alignée sur les besoins clients, et si la stratégie de prix est cohérente avec le marché tunisien.
+2.1 Définition des quatre sous-scores
+Sous-score
+Description & ancrage documentaire
+Plage
+CO1 – Clarté de la proposition de valeur
+Capacité à formuler le problème résolu, pour qui, et en quoi l'offre est supérieure. Ancrage : Hackathon spec §2.4.2 – 'Clarity and differentiation of the value proposition'.
+0 – 100 pts
+CO2 – Maturité produit/service
+Niveau TRL adapté : idée → prototype → MVP → produit commercialisé. Ancrage : Startup Act Art. 7 §1 – obligation de réaliser des 'objectifs de croissance' mesurables → la maturité produit est un signal de suivi.
+0 – 100 pts
+CO3 – Cohérence de la stratégie prix
+Prix justifié par la valeur, comparé aux alternatives, et adapté au pouvoir d'achat tunisien. Ancrage : WB Survey 2024 – 'Cost of financing' et sensibilité prix comme contraintes récurrentes.
+0 – 100 pts
+CO4 – Alignement offre-besoins clients
+Niveau de personnalisation, feedback loops, job-to-be-done documenté. Ancrage : Hackathon spec §2.4.2 – 'alignment between offer and identified customer needs'.
+0 – 100 pts
+2.2 Matrice AHP – Comparaisons par paires (Commercial Offer Score)
+Justification : La clarté de la proposition de valeur (CO1) est le fondement de toute levée de fonds et de toute vente. La maturité produit (CO2) est légèrement moins critique car des projets early-stage peuvent avoir une proposition claire sans produit finalisé. L'alignement offre-besoins (CO4) est presque aussi important que CO1 en contexte B2C tunisien.
+Matrice de comparaison – Commercial Offer Score (n=4)
+Critère
+CO1 – Prop. v…
+CO2 – Maturit…
+CO3 – Stratég…
+CO4 – Alignem…
+Poids (w)
+CO1 – Prop. valeur
+1
+2
+3
+0.500
+27.7%
+CO2 – Maturité produit
+0.500
+1
+2
+0.333
+16.1%
+CO3 – Stratégie prix
+0.333
+0.500
+1
+0.250
+9.6%
+CO4 – Alignement besoins
+2
+3
+4
+1
+46.6%
+CR = 0.0114 ✓ Consistant
+λmax = 4.0308   CI = 0.0103   RI = 0.9   CR = 0.0114
+2.3 Adaptabilité sectorielle – Commercial Offer Score
+Secteur
+CO1
+CO2
+CO3
+CO4
+Agroalimentaire
+—
+—
++10%
++5%
+Tech / Digital
++10%
++5%
++5%
+—
+Industrie
+—
++10%
++5%
+—
+Services
++5%
+—
+—
++10%
+Commerce
++5%
++5%
++10%
+-5%
+📌 Agroalimentaire : sensibilité prix critique (coût de financement = contrainte #1 selon WB Survey) → bonus CO3 +10% ; bonus CO4 car l'alignement aux circuits de distribution locaux est décisif. Tech : compliance BCT/DHMPE → bonus CO1+CO2 — les projets qui anticipent les normes réglementaires sont mieux valorisés. Industrie : bonus CO2 fort — maturité produit (niveau TRL) conditionne l'accès aux lignes BFPME/AFD. Services : bonus CO4 fort — sans barrière technologique, l'alignement sur les besoins client est le seul différenciateur défendable. Commerce : bonus CO3+CO2 — compétitivité prix et disponibilité produit sont les leviers principaux face au secteur informel.
+3. Innovation Score
+L'Innovation Score évalue le degré de nouveauté, la défendabilité technologique et la capacité du projet à créer une rupture sur son marché. En Tunisie, l'innovation est un critère clé du label Startup (Art. 3 §4 : 'modèle économique à forte dimension innovante').
+3.1 Définition des quatre sous-scores
+Sous-score
+Description & ancrage documentaire
+Plage
+IN1 – Nouveauté locale & différenciation
+Unicité de l'offre sur le marché tunisien/MENA. Ancrage : Startup Act Art. 3 §4 – condition explicite de labellisation ; WB Survey : seulement 12% des entreprises tunisiennes déclarent une innovation produit en 2024.
+0 – 100 pts
+IN2 – Intensité technologique
+Utilisation de technologies avancées (IA, IoT, blockchain, biotech). Ancrage : Hackathon spec §2.4.2 – 'technology intensity' comme sous-dimension explicite.
+0 – 100 pts
+IN3 – Barrières à l'entrée
+Brevets, secrets industriels, effets réseau, accords exclusifs. Ancrage : Startup Act Art. 12 – l'État prend en charge les frais de dépôt de brevets pour les startups labellisées → signal que les barrières IP sont valorisées.
+0 – 100 pts
+IN4 – Degré de rupture marché
+Innovation incrémentale vs. disruptive vs. de plateforme. Ancrage : Hackathon spec §2.4.2 – 'degree of departure from existing market offerings'.
+0 – 100 pts
+3.2 Matrice AHP – Comparaisons par paires (Innovation Score)
+Justification : La nouveauté locale (IN1) est le critère le plus pondéré car c'est la condition légale du Startup Act. Les barrières à l'entrée (IN3) sont critiques pour la pérennité mais difficiles à construire tôt → poids modéré. L'intensité technologique (IN2) et le degré de rupture (IN4) sont proches car une technologie avancée sans rupture marché n'apporte pas de valeur compétitive durable.
+Matrice de comparaison – Innovation Score (n=4)
+Critère
+IN1 – Nouveau…
+IN2 – Intensi…
+IN3 – Barrièr…
+IN4 – Degré r…
+Poids (w)
+IN1 – Nouveauté locale
+1
+2
+3
+2
+42.3%
+IN2 – Intensité tech.
+0.500
+1
+2
+1
+22.7%
+IN3 – Barrières entrée
+0.333
+0.500
+1
+0.500
+12.2%
+IN4 – Degré rupture
+0.500
+1
+2
+1
+22.7%
+CR = 0.0037 ✓ Consistant
+λmax = 4.0101   CI = 0.0034   RI = 0.9   CR = 0.0037
+3.3 Adaptabilité sectorielle – Innovation Score
+Secteur
+IN1
+IN2
+IN3
+IN4
+Agroalimentaire
++10%
+—
+—
++5%
+Tech / Digital
+—
++10%
++10%
+—
+Industrie
++5%
++5%
++10%
+—
+Services
++10%
+—
+—
++5%
+Commerce
+—
++5%
+-10%
+-5%
+📌 Agroalimentaire : déficit de solutions locales adaptées → bonus IN1 (WB Survey : seulement 12% des entreprises tunisiennes déclarent une innovation produit en 2024) ; bonus IN4 car les ruptures de chaîne de valeur (froid, traçabilité) sont peu exploitées. Tech : bonus IN2+IN3 maximal — la technologie ET les barrières d'entrée (IP, réseau, effets d'échelle) sont les seuls avantages défendables ; Startup Act Art. 12 couvre les frais de dépôt de brevets. Industrie : bonus IN3 fort — brevets industriels = principale barrière défendable (Startup Act Art. 12) ; bonus IN1+IN2 modéré. Services : bonus IN1+IN4 — la nouveauté de l'approche et la rupture de modèle comptent plus que la technologie. Commerce : malus IN3 — les barrières d'entrée sont quasi inexistantes ; malus IN4 — les modèles disruptifs sont rares face au secteur informel.
+4. Scalability Score
+Le Scalability Score évalue la capacité du projet à croître sans augmentation linéaire des coûts. En Tunisie, selon le WB Survey 2024, l'accès limité au financement bancaire (Stiglitz & Weiss : rationnement du crédit) rend la scalabilité organique critique pour les startups qui ne peuvent pas lever rapidement.
+4.1 Définition des quatre sous-scores
+Sous-score
+Description & ancrage documentaire
+Plage
+SC1 – Réplicabilité sans coût linéaire
+Capacité à doubler les clients sans doubler les coûts opérationnels. Modèle SaaS, marketplace, ou API → haute réplicabilité. Ancrage : Hackathon spec §2.4.2 – 'replicability without linear cost increase'.
+0 – 100 pts
+SC2 – Indépendance à l'accompagnement manuel
+Niveau d'automatisation, ratio client/employé, dépendance au fondateur. Ancrage : Hackathon spec §2.4.2 – 'manual accompaniment dependency' identifié comme frein majeur. WB Survey : 54% des PME tunisiennes sont bloquées par manque de personnel qualifié.
+0 – 100 pts
+SC3 – Structure des coûts de déploiement
+Part des coûts fixes vs. variables, économies d'échelle, coût marginal d'acquisition client. Ancrage : Stiglitz & Weiss (1981) – les projets à coûts fixes élevés et coûts marginaux faibles bénéficient d'un meilleur profil de risque → moins de rationnement.
+0 – 100 pts
+SC4 – Potentiel géographique adressable
+Capacité d'expansion régionale (MENA) ou internationale. Ancrage : Startup Act Art. 17 – compte spécial en devises pour faciliter l'expansion internationale ; Art. 3 §5 – 'fort potentiel de croissance économique'.
+0 – 100 pts
+4.2 Matrice AHP – Comparaisons par paires (Scalability Score)
+Justification : SC1 (réplicabilité) est le cœur de la scalabilité — sans elle, les autres dimensions ne peuvent pas s'exprimer. SC2 (indépendance manuelle) est fortement lié car une startup dépendante de ses fondateurs ne peut pas scaler même avec un bon produit. SC3 et SC4 ont des poids équilibrés : la structure de coûts détermine la vitesse d'expansion géographique (SC4).
+Matrice de comparaison – Scalability Score (n=4)
+Critère
+SC1 – Réplica…
+SC2 – Indép. …
+SC3 – Coûts d…
+SC4 – Potenti…
+Poids (w)
+SC1 – Réplicabilité
+1
+2
+3
+4
+46.9%
+SC2 – Indép. manuelle
+0.500
+1
+2
+3
+28.0%
+SC3 – Coûts déploiement
+0.333
+0.500
+1
+1
+13.6%
+SC4 – Potentiel géo.
+0.250
+0.333
+1
+1
+11.5%
+CR = 0.0113 ✓ Consistant
+λmax = 4.0306   CI = 0.0102   RI = 0.9   CR = 0.0113
+4.3 Adaptabilité sectorielle – Scalability Score
+Secteur
+SC1
+SC2
+SC3
+SC4
+Agroalimentaire
+—
+-5%
++5%
++10%
+Tech / Digital
++10%
++10%
++5%
++5%
+Industrie
+-10%
+-10%
+—
+-5%
+Services
++5%
+—
+—
+-7%
+Commerce
++5%
+—
++10%
++5%
+📌 Agroalimentaire : réplicabilité limitée par la saisonnalité et la logistique froide → pas de bonus SC1 ; malus SC2 car dépendance à la main-d'œuvre saisonnière (WB Survey : 54% des PME bloquées par manque de personnel qualifié) ; fort bonus SC4 — potentiel export ZALE/ALECA vers l'UE et le Maghreb. Tech : modèles numériques natifs (SaaS, API, plateforme) → bonus maximal SC1+SC2+SC4, potentiel MENA direct ; Startup Act Art. 17 (compte devises) facilite l'expansion internationale. Industrie : scalabilité contrainte par les actifs physiques → malus SC1/SC2/SC4 (Startup Act Art. 3 §5 : 'fort potentiel de croissance' difficile sans digitalisation des process). Services : bonus SC1 modéré (standardisation de la prestation possible) ; malus SC4 car la prestation est fortement localisée (Stiglitz & Weiss : accompagnement manuel = coût marginal croissant). Commerce : bonus SC3+SC4 — économies d'échelle logistiques et expansion géographique possible via le digital.
+5. Green Score
+Le Green Score évalue l'impact environnemental et la durabilité du projet. Les quatre piliers sont directement issus de la présentation PNUD (image fournie) : Climat/Air, Eau, Sols et biodiversité, Ressources et déchets. Chaque pilier correspond à un ensemble de données à collecter précisément définies dans cette présentation.
+5.1 Définition des quatre sous-scores (source : présentation PNUD)
+Sous-score (Pilier PNUD)
+Données collectées & ancrage
+Plage
+GS1 – Climat / Air
+Consommation d'énergie (électricité, carburant), types d'énergie utilisés, distances de transport, estimation des émissions GES. Ancrage PNUD direct. SDG 13 – Action climatique.
+0 – 100 pts
+GS2 – Eau
+Volume d'eau utilisé, sources d'approvisionnement, quantité d'eaux rejetées, existence d'un traitement des rejets. Ancrage PNUD direct. Critique en Tunisie : stress hydrique parmi les plus élevés de la région MENA (WB 2024).
+0 – 100 pts
+GS3 – Sols et biodiversité
+Type de zone utilisée, surface occupée, impact sur les écosystèmes, sensibilité écologique du site. Ancrage PNUD direct. SDG 15 – Vie terrestre.
+0 – 100 pts
+GS4 – Ressources et déchets
+Quantité de matières premières, volume de déchets produits, taux de recyclage, mode de gestion des déchets. Ancrage PNUD direct. SDG 12 – Consommation et production responsables.
+0 – 100 pts
+5.2 Matrice AHP – Comparaisons par paires (Green Score)
+Justification adaptée au contexte tunisien : L'eau (GS2) est le pilier environnemental le plus critique en Tunisie — le pays est le 3ème plus exposé au stress hydrique dans la région MENA. Le Climat/Air (GS1) est fortement prioritaire en raison des engagements COP de la Tunisie. La gestion des déchets (GS4) est importante mais plus facile à corriger que les impacts eau/air. Les sols (GS3) ont un poids modéré car moins mesurable pour des projets numériques.
+Matrice de comparaison – Green Score (n=4)
+Critère
+GS1 – Climat/…
+GS2 – Eau
+GS3 – Sols & …
+GS4 – Ressour…
+Poids (w)
+GS1 – Climat/Air
+1
+0.500
+3
+2
+27.7%
+GS2 – Eau
+2
+1
+4
+3
+46.6%
+GS3 – Sols & biodiv.
+0.333
+0.250
+1
+0.500
+9.6%
+GS4 – Ressources & déchets
+0.500
+0.333
+2
+1
+16.1%
+CR = 0.0113 ✓ Consistant
+λmax = 4.0306   CI = 0.0102   RI = 0.9   CR = 0.0113
+5.3 Barème par pilier – Green Score
+Pts
+GS1 – Climat
+GS2 – Eau
+GS3 – Sols
+GS4 – Déchets
+80–100
+100% EnR, bilan carbone positif
+Usage < moyenne secteur, zéro rejet non traité
+Zone non sensible, impact neutre
+Taux recyclage >75%, économie circulaire
+50–79
+Mix EnR >50%, GES mesurés
+Usage maîtrisé, traitement partiel rejets
+Impact minimal documenté
+Recyclage 40–75%, tri à la source
+20–49
+Efficacité énergétique en cours
+Consommation non optimisée
+Impact modéré, pas de plan mitigation
+Gestion standard, <40% recyclage
+0–19
+Dépendance fossile, GES non mesurés
+Surconsommation, rejets non traités
+Impact fort sur zone sensible
+Déchets non triés, aucun plan
+5.4 Adaptabilité sectorielle – Green Score
+Secteur
+GS1
+GS2
+GS3
+GS4
+Agroalimentaire
++5%
++15%
++10%
++5%
+Tech / Digital
++10%
+—
+—
+—
+Industrie
++15%
++10%
++10%
++10%
+Services
++5%
+—
++5%
++5%
+Commerce
++10%
+—
+—
++10%
+📌 Agroalimentaire : premier secteur consommateur d'eau en Tunisie (83% des prélèvements hydriques, WB 2024) → bonus GS2 +15% critique et obligatoire — tout projet sans données hydriques documentées est pénalisé automatiquement ; bonus GS3 (occupation sols agricoles). Tech : bonus GS1 fort — data centers et serveurs = empreinte carbone cachée, politique énergie verte requise (SDG 13). Industrie : impact environnemental le plus élevé tous piliers confondus → bonus sur les 4 sous-scores pour encourager la transparence ESG (EIE obligatoire selon législation tunisienne). Services : impact environnemental principalement lié aux déplacements et locaux → bonus GS1 modéré + bonus GS3 (occupation urbaine). Commerce : bonus GS1+GS4 — empreinte carbone logistique last-mile et déchets emballages = enjeux majeurs du secteur.
+6. Pondération inter-scores : Score Composite Global
+Au-delà des 5 scores individuels, le système produit un Score Composite Global (SCG) pondéré selon les priorités de l'écosystème entrepreneurial tunisien, calibré sur les critères d'évaluation du hackathon (Real-world Impact 25%, Technical Depth 25%, etc.).
+6.1 Matrice AHP inter-scores
+Justification : Le Market Score est légèrement dominant car sans marché viable, aucun autre score ne peut compenser. L'Innovation Score bénéficie d'un poids élevé car c'est la condition légale du Startup Act (Art. 3 §4). Le Green Score a un poids croissant en contexte PNUD/ODD. La Scalabilité conditionne l'impact à long terme.
+Matrice AHP inter-scores – Score Composite Global (n=5)
+Critère
+Market
+Commercial Of…
+Innovation
+Scalability
+Green
+Poids (w)
+Market
+1
+2
+1
+2
+3
+29.8%
+Commercial Offer
+0.500
+1
+0.500
+1
+2
+15.8%
+Innovation
+1
+2
+1
+2
+3
+29.8%
+Scalability
+0.500
+1
+0.500
+1
+2
+15.8%
+Green
+0.333
+0.500
+0.333
+0.500
+1
+8.9%
+CR = 0.0029 ✓ Consistant
+λmax = 5.0128   CI = 0.0032   RI = 1.12   CR = 0.0029
+7. Détection d'anomalies et système de pénalités
+La détection d'anomalies est un mécanisme central justifié par Stiglitz & Weiss (1981) : l'asymétrie d'information entre l'entrepreneur (agent) et le système d'évaluation (principal) produit des signaux contradictoires qui, si non détectés, biaiseraient le scoring. Deux effets sont à contrer :
+Mécanisme (Stiglitz & Weiss)
+Traduction dans le scoring
+Adverse Selection Effect
+Les projets qui revendiquent une traction élevée sans preuve externe ont plus de chances d'être des projets risqués → pénalité sur MS3 si CO1/IN1 faibles mais MS3 élevé.
+Incentive Effect
+Des projets qui déclarent une forte scalabilité sans modèle de revenus clair vont chercher des financements risqués → pénalité SC1 si MS4 < 30.
+7.1 Règles d'anomalie – Market Score
+Signal A détecté
+Signal B contradictoire
+Pénalité
+Dimension touchée
+MS3 (Validation) ≥ 70
+MS4 (Modèle revenus) ≤ 20
+-8 pts sur MS
+Market
+MS1 (TAM) ≥ 80
+MS2 (Concurrence) ≤ 12
+-6 pts sur MS
+Market
+MS4 (Revenus) ≥ 70
+CO3 (Prix) ≤ 20
+-5 pts sur MS + CO
+Market + Commercial
+Validation client 'LOI signées'
+CO2 (Maturité) ≤ 20 (idée)
+-10 pts sur MS
+Market
+Secteur Commerce : MS3 ≥ 70
+Aucune présence en ligne documentée
+-8 pts sur MS
+Market (Commerce)
+Secteur Industrie : MS1 ≥ 70
+Aucun client B2B contractualisé
+-6 pts sur MS
+Market (Industrie)
+7.2 Règles d'anomalie – Commercial Offer Score
+Signal A détecté
+Signal B contradictoire
+Pénalité
+Dimension touchée
+CO1 (Prop. valeur) ≥ 80
+MS3 (Validation) ≤ 20
+-8 pts sur CO
+Commercial Offer
+CO2 (Maturité) ≥ 80 (produit fini)
+IN2 (Tech) ≤ 12
+-5 pts sur CO
+Commercial + Innovation
+CO3 (Prix premium)
+MS3 (Validation) ≤ 30 + marché low-income
+-7 pts sur CO
+Commercial
+CO4 (Alignement besoins) ≥ 70
+Aucune interview client documentée
+-6 pts sur CO
+Commercial
+Secteur Services : CO4 ≥ 70
+Aucun test utilisateur réel conduit
+-8 pts sur CO
+Commercial (Services)
+Secteur Agroalimentaire : CO3 ≥ 70
+Prix non benchmarké vs. grande distribution TN
+-6 pts sur CO
+Commercial (Agroalim.)
+7.3 Règles d'anomalie – Innovation Score
+Signal A détecté
+Signal B contradictoire
+Pénalité
+Dimension touchée
+IN1 (Nouveauté) ≥ 70
+IN3 (Barrières) ≤ 12 + IN2 ≤ 20
+-8 pts sur IN
+Innovation
+IN2 (Tech avancée) ≥ 80
+CO2 (Maturité) ≤ 20
+-6 pts sur IN
+Innovation
+IN3 (Brevet revendiqué)
+Aucun dépôt Art. 12 Startup Act
+-10 pts sur IN
+Innovation
+IN4 (Rupture disruptive) ≥ 80
+MS1 (TAM) ≤ 25
+-5 pts sur IN
+Innovation
+Secteur Tech : IN2 ≥ 80
+Aucune stack technique documentée
+-10 pts sur IN
+Innovation (Tech)
+Secteur Commerce : IN4 ≥ 70
+Modèle identique aux concurrents existants
+-8 pts sur IN
+Innovation (Commerce)
+7.4 Règles d'anomalie – Scalability Score
+Signal A détecté
+Signal B contradictoire
+Pénalité
+Dimension touchée
+SC1 (Réplicabilité) ≥ 70
+MS4 (Modèle revenus) ≤ 20
+-10 pts sur SC (Stiglitz & Weiss : incentive effect)
+Scalability
+SC1 ≥ 70
+SC2 (Indép. manuelle) ≤ 20
+-8 pts sur SC
+Scalability
+SC4 (Potentiel international) ≥ 70
+CO3 (Prix) non adapté international
+-6 pts sur SC
+Scalability
+SC3 (Coûts faibles) ≥ 70
+IN2 (Tech) ≤ 12 (service manuel)
+-5 pts sur SC
+Scalability
+Secteur Industrie : SC1 ≥ 60
+Capacité de production physique non précisée
+-8 pts sur SC
+Scalability (Industrie)
+Secteur Services : SC4 ≥ 70
+Offre non adaptable à distance / en ligne
+-7 pts sur SC
+Scalability (Services)
+7.5 Règles d'anomalie – Green Score
+Signal A détecté
+Signal B contradictoire
+Pénalité
+Dimension touchée
+GS4 (Déchets) ≥ 70 (économie circulaire)
+GS1 (Énergie fossile) ≤ 20
+-7 pts sur GS
+Green
+GS2 (Eau) ≥ 70
+Secteur Agroalimentaire + aucune donnée hydrique fournie
+-10 pts sur GS
+Green (Agroalim.)
+GS1 (Bilan carbone positif) ≥ 80
+Type de modèle physique/numérique non précisé
+-5 pts sur GS
+Green
+GS3 (Sols neutres) ≥ 70
+Secteur Industrie sans EIE documentée
+-8 pts sur GS
+Green (Industrie)
+Secteur Commerce : GS4 ≥ 70
+Emballages / logistique non documentés
+-7 pts sur GS
+Green (Commerce)
+Secteur Tech : GS1 ≥ 70
+Serveurs/data centers sans politique énergie verte
+-5 pts sur GS
+Green (Tech)
+7.6 Anomalies inter-scores (cohérence globale)
+Signal A détecté
+Signal B contradictoire
+Pénalité
+Dimension touchée
+IN4 (Rupture) ≥ 80 + IN2 ≥ 70
+Market Score ≤ 35
+-8 pts sur score global (marché inexistant pour innovation disruptive)
+Global
+SC Score ≥ 75
+Green Score ≤ 25
+-5 pts sur score global (croissance non durable)
+Global
+MS Score ≥ 75 + CO Score ≥ 70
+Green Score ≤ 20
+-10 pts sur score global (fort impact ≠ zéro considération ESG)
+Global
+Tous scores ≥ 70
+Stade diagnostic : Idéation (Feature 1)
+-15 pts sur score global (sur-évaluation systémique)
+Global
+Secteur Industrie : SC ≥ 70 + IN ≥ 65
+Green Score ≤ 30
+-12 pts sur score global (industrie non responsable)
+Global (Industrie)
+Secteur Agroalimentaire : MS ≥ 70
+GS2 (Eau) ≤ 25
+-10 pts sur score global (impact hydrique critique non traité)
+Global (Agroalim.)
+📌 Référence Startup Act Art. 7 §1 : le retrait du label est prononcé en cas de 'manquement aux objectifs de croissance'. Les pénalités sectorielles spécifiques (Agroalimentaire, Tech, Industrie, Services, Commerce) renforcent la détection d'incohérences propres à chaque réalité de marché tunisien.
+8. Synthèse des poids et guide d'implémentation
+8.1 Tableau récapitulatif des poids AHP par score
+Score → Sous-score
+Poids AHP
+Source ancrage
+Bonus sectoriel max
+Pénalité max
+MS1 – TAM
+~15%
+WB Survey 2024
++10% (Tech)
+-6 pts (sur 100)
+MS2 – Concurrence
+~20%
+WB Survey 2024
++5% (Services)
+-6 pts (sur 100)
+MS3 – Validation client
+~37%
+Stiglitz & Weiss 1981
++10% (Tech / Agroalim.)
+-10 pts (sur 100)
+MS4 – Modèle revenus
+~28%
+Startup Act Art. 3 §4
++5% (Tech / Commerce)
+-8 pts (sur 100)
+CO1 – Prop. valeur
+~36%
+Hackathon Spec §2.4.2
++10% (Tech / Services)
+-8 pts (sur 100)
+CO2 – Maturité produit
+~20%
+Startup Act Art. 7 §1
++10% (Industrie)
+-6 pts (sur 100)
+CO3 – Stratégie prix
+~10%
+WB Survey 2024
++10% (Agroalim. / Commerce)
+-7 pts (sur 100)
+CO4 – Alignement besoins
+~34%
+Hackathon Spec §2.4.2
++10% (Services)
+-8 pts (sur 100)
+IN1 – Nouveauté locale
+~38%
+Startup Act Art. 3 §4
++10% (Agroalim. / Services)
+-8 pts (sur 100)
+IN2 – Intensité tech.
+~22%
+Hackathon Spec §2.4.2
++15% (Tech)
+-10 pts (sur 100)
+IN3 – Barrières entrée
+~26%
+Startup Act Art. 12
++10% (Tech / Industrie)
+-10 pts (sur 100)
+IN4 – Degré rupture
+~14%
+Hackathon Spec §2.4.2
++5% (Agroalim. / Services)
+-5 pts (sur 100)
+SC1 – Réplicabilité
+~40%
+Hackathon Spec §2.4.2
++10% (Tech / Commerce)
+-10 pts (sur 100)
+SC2 – Indép. manuelle
+~25%
+WB Survey + Hack. Spec
++10% (Tech)
+-8 pts (sur 100)
+SC3 – Coûts déploiement
+~19%
+Stiglitz & Weiss 1981
++10% (Commerce)
+-5 pts (sur 100)
+SC4 – Potentiel géo.
+~16%
+Startup Act Art. 17
++10% (Tech / Agroalim.)
+-6 pts (sur 100)
+GS1 – Climat/Air
+~27%
+Présentation PNUD / SDG 13
++15% (Industrie)
+-7 pts (sur 100)
+GS2 – Eau
+~40%
+Présentation PNUD / WB 2024
++15% (Agroalim.)
+-10 pts (sur 100)
+GS3 – Sols & biodiv.
+~20%
+Présentation PNUD / SDG 15
++10% (Industrie / Services)
+-8 pts (sur 100)
+GS4 – Ressources/déchets
+~13%
+Présentation PNUD / SDG 12
++10% (Industrie / Commerce)
+-7 pts (sur 100)
+8.2 Pseudo-code de calcul du Score Composite
+Chaque sous-score est noté sur 100. Le score composite d'une dimension est la moyenne pondérée (poids AHP) de ses 4 sous-scores → résultat sur 100. Le Score Composite Global est la moyenne pondérée AHP des 5 scores composites → résultat sur 100.
+function computeScore(profile, sector):  # chaque sous-score : 0–100
+  sub_scores[i] = note(profile, criterion_i)          # 0–100 chacun
+  raw_composite  = Σ( AHP_weight[i] * sub_scores[i] )  # résultat 0–100
+  sector_adj     = sector_adjustments[sector]           # bonus/malus en pts
+  adjusted       = clamp(raw_composite + sector_adj, 0, 100)
+  anomalies      = detect_anomalies(profile, sub_scores)
+  penalties      = compute_penalties(anomalies)         # en pts /100
+  final          = clamp(adjusted - penalties, 0, 100)  # score final 0–100
+  return {score: final, sub_scores, anomalies, justification}
+global_score = Σ( AHP_inter[s] * final_score[s] )       # moyenne pondérée 0–100
+8.3 Score final plancher
+Quelle que soit la somme des pénalités, le score de chaque sous-score est sur 100, le score composite par dimension est la moyenne pondérée AHP de ses 4 sous-scores (résultat sur 100). La pénalité globale inter-scores est bornée à -20 points sur le Score Composite Global pour préserver l'interprétabilité et éviter les effets de bord sur des projets early-stage de bonne foi.
+📌 Critère d'acceptation Feature 2 (Hackathon Spec §2.4.4) : 'Anomaly detection works – at least 2 demonstrated cases of contradictory or unsubstantiated signals flagged'. Ce document fournit 20+ règles d'anomalie documentées et ancrées théoriquement, couvrant tous les 5 scores.

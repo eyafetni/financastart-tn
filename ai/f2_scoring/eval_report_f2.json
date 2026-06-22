@@ -1,0 +1,234 @@
+{
+  "date": "2026-06-22T10:29:17.865453",
+  "nb_profils": 12,
+  "metrics": {
+    "overall_pass_rate": 100.0,
+    "score_consistency": true,
+    "anomaly_detection_rate": 100.0,
+    "hard_cap_compliance_rate": 100.0,
+    "fri_p01": 71,
+    "fri_p09": 76,
+    "fri_p10": 66
+  },
+  "results": [
+    {
+      "profil_id": "P01",
+      "description": "AgriTech solide — toutes dimensions >70, aucun blocker",
+      "secteur": "Agriculture",
+      "fri_obtenu": 71,
+      "fri_attendu": "[60, 100]",
+      "is_financeable": true,
+      "capped": false,
+      "checks": {
+        "fri_range": true,
+        "is_financeable": true,
+        "hard_cap": true,
+        "anomaly_detection": null
+      },
+      "passed": true
+    },
+    {
+      "profil_id": "P02",
+      "description": "Market critique (<30) → FRI plafonné à 40 obligatoirement",
+      "secteur": "Tech / Digital",
+      "fri_obtenu": 40,
+      "fri_attendu": "[0, 40]",
+      "is_financeable": false,
+      "capped": true,
+      "checks": {
+        "fri_range": true,
+        "is_financeable": true,
+        "hard_cap": true,
+        "anomaly_detection": null
+      },
+      "passed": true
+    },
+    {
+      "profil_id": "P03",
+      "description": "Commercial Offer critique (<25) → FRI plafonné à 40",
+      "secteur": "Services",
+      "fri_obtenu": 40,
+      "fri_attendu": "[0, 40]",
+      "is_financeable": false,
+      "capped": true,
+      "checks": {
+        "fri_range": true,
+        "is_financeable": true,
+        "hard_cap": true,
+        "anomaly_detection": null
+      },
+      "passed": true
+    },
+    {
+      "profil_id": "P04",
+      "description": "Projet correct mais 2 blockers rouges → FRI dégradé significativement",
+      "secteur": "Commerce",
+      "fri_obtenu": 14,
+      "fri_attendu": "[0, 54]",
+      "is_financeable": false,
+      "capped": false,
+      "checks": {
+        "fri_range": true,
+        "is_financeable": true,
+        "hard_cap": true,
+        "anomaly_detection": null
+      },
+      "passed": true
+    },
+    {
+      "profil_id": "P05",
+      "description": "MS3=75 (traction validée) mais MS4=10 (modèle revenu vide) → anomalie ANOM_MS_1",
+      "secteur": "Tech / Digital",
+      "fri_obtenu": 53,
+      "fri_attendu": "[30, 70]",
+      "is_financeable": false,
+      "capped": false,
+      "checks": {
+        "fri_range": true,
+        "is_financeable": null,
+        "hard_cap": true,
+        "anomaly_detection": true,
+        "anomaly_detail": {
+          "expected": [
+            "ANOM_MS_1"
+          ],
+          "detected": [
+            "ANOM_MS_1"
+          ],
+          "missing": []
+        }
+      },
+      "passed": true
+    },
+    {
+      "profil_id": "P06",
+      "description": "Idéation pure — tous sous-scores à 10, non bancable",
+      "secteur": "Services",
+      "fri_obtenu": 10,
+      "fri_attendu": "[0, 40]",
+      "is_financeable": false,
+      "capped": true,
+      "checks": {
+        "fri_range": true,
+        "is_financeable": true,
+        "hard_cap": true,
+        "anomaly_detection": null
+      },
+      "passed": true
+    },
+    {
+      "profil_id": "P07",
+      "description": "SC1=75 (très réplicable) mais MS4=10 → anomalie ANOM_SC_1",
+      "secteur": "Commerce",
+      "fri_obtenu": 52,
+      "fri_attendu": "[20, 65]",
+      "is_financeable": false,
+      "capped": false,
+      "checks": {
+        "fri_range": true,
+        "is_financeable": null,
+        "hard_cap": true,
+        "anomaly_detection": true,
+        "anomaly_detail": {
+          "expected": [
+            "ANOM_SC_1"
+          ],
+          "detected": [
+            "ANOM_SC_1"
+          ],
+          "missing": []
+        }
+      },
+      "passed": true
+    },
+    {
+      "profil_id": "P08",
+      "description": "GS2=80 en agritech sans données eau → anomalie ESG + 1 blocker orange",
+      "secteur": "Agriculture",
+      "fri_obtenu": 47,
+      "fri_attendu": "[35, 75]",
+      "is_financeable": false,
+      "capped": false,
+      "checks": {
+        "fri_range": true,
+        "is_financeable": null,
+        "hard_cap": true,
+        "anomaly_detection": true,
+        "anomaly_detail": {
+          "expected": [
+            "ANOM_GS_2"
+          ],
+          "detected": [
+            "ANOM_GS_2"
+          ],
+          "missing": []
+        }
+      },
+      "passed": true
+    },
+    {
+      "profil_id": "P09",
+      "description": "Variante P01 +5 pts partout → FRI doit être >= FRI(P01)",
+      "secteur": "Agriculture",
+      "fri_obtenu": 76,
+      "fri_attendu": "[65, 100]",
+      "is_financeable": true,
+      "capped": false,
+      "checks": {
+        "fri_range": true,
+        "is_financeable": true,
+        "hard_cap": true,
+        "anomaly_detection": null
+      },
+      "passed": true
+    },
+    {
+      "profil_id": "P10",
+      "description": "Variante P01 -5 pts partout → FRI doit être <= FRI(P01)",
+      "secteur": "Agriculture",
+      "fri_obtenu": 66,
+      "fri_attendu": "[50, 100]",
+      "is_financeable": true,
+      "capped": false,
+      "checks": {
+        "fri_range": true,
+        "is_financeable": null,
+        "hard_cap": true,
+        "anomaly_detection": null
+      },
+      "passed": true
+    },
+    {
+      "profil_id": "P11",
+      "description": "Industrie lourde → ajustements sectoriels SC négatifs appliqués",
+      "secteur": "Industrie",
+      "fri_obtenu": 66,
+      "fri_attendu": "[40, 80]",
+      "is_financeable": true,
+      "capped": false,
+      "checks": {
+        "fri_range": true,
+        "is_financeable": null,
+        "hard_cap": true,
+        "anomaly_detection": null
+      },
+      "passed": true
+    },
+    {
+      "profil_id": "P12",
+      "description": "Profil au seuil exact de bancabilité (55) — test de frontière",
+      "secteur": "Services",
+      "fri_obtenu": 50,
+      "fri_attendu": "[35, 70]",
+      "is_financeable": false,
+      "capped": false,
+      "checks": {
+        "fri_range": true,
+        "is_financeable": null,
+        "hard_cap": true,
+        "anomaly_detection": null
+      },
+      "passed": true
+    }
+  ]
+}

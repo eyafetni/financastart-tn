@@ -35,7 +35,7 @@
         "chaine_froid": false,
         "saisonnalite": "Partiellement",
         "acces_foncier": "Oui, location court terme",
-        "rne": false,
+        "rne": true,
         "forme_juridique": null,
         "chiffre_affaires": 58852266.0,
         "anciennete_revenus": "Plus de 3 ans",
@@ -120,6 +120,15 @@
             "justification_template": "Risque de Burnout : Gérer seul une startup en phase de 'Growth' est un goulot d'étranglement majeur (Key-Man Risk) rédhibitoire pour les investisseurs.",
             "action_template": "Recrutez un bras droit opérationnel (COO) ou ouvrez votre capital pour intégrer un co-fondateur.",
             "kb_link": "KB-TEAM-SCALING-007"
+        },
+        {
+            "id": "ANOM_ECO_REGIONAL_FUNDS_MISSED",
+            "justification": "Leviers régionaux inexploités : Vous êtes légalement constitué (RNE valide) à Siliana mais ne bénéficiez d'aucun financement. Vous passez à côté de primes de développement régional spécifiques (PDRI).",
+            "penalite": 10,
+            "dimension_impactee": "commercial_offer_score",
+            "justification_template": "Leviers régionaux inexploités : Vous êtes légalement constitué (RNE valide) à Siliana mais ne bénéficiez d'aucun financement. Vous passez à côté de primes de développement régional spécifiques (PDRI).",
+            "action_template": "Sollicitez le bureau régional de l'APII de Siliana pour déposer un dossier de prime d'investissement régional.",
+            "kb_link": "KB-FIN-REGIONAL-006"
         },
         {
             "id": "ANOM_IN_4",

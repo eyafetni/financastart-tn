@@ -31,7 +31,7 @@
         "chaine_froid": false,
         "saisonnalite": "Partiellement",
         "acces_foncier": "Oui, location court terme",
-        "rne": false,
+        "rne": true,
         "forme_juridique": null,
         "chiffre_affaires": 58852266.0,
         "anciennete_revenus": "Plus de 3 ans",

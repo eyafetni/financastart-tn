@@ -49,6 +49,149 @@ export function translateValue(value, lang) {
   return valueTranslations[lang]?.[value] || value;
 }
 
+// ─── Scores du Membre 2 (simulés) ──────────────────────────────────────────
+const member2Scores = {
+  market_score:           { valeur: 42.0, sous_scores: { taille_marche: 30.0, concurrence: 40.0, validation_client: 50.0, modele_revenus: 48.0 } },
+  commercial_offer_score: { valeur: 58.0, sous_scores: { proposition_valeur: 60.0, maturite_produit: 50.0, strategie_prix: 60.0, alignement_besoins: 62.0 } },
+  innovation_score:       { valeur: 78.0, sous_scores: { nouveaute_locale: 80.0, intensite_tech: 75.0, barrieres_entree: 80.0, degre_rupture: 77.0 } },
+  scalability_score:      { valeur: 82.0, sous_scores: { replicabilite: 85.0, independance_manuelle: 80.0, couts_deploiement: 82.0, potentiel_geo: 81.0 } },
+  green_score:            { valeur: 75.0, sous_scores: { climat_air: 80.0, eau: 70.0, sols_biodiversite: 75.0, ressources_dechets: 75.0 } }
+};
+
+// ─── Métadonnées bilingues des dimensions ───────────────────────────────────
+const DIMENSION_CONFIG = [
+  {
+    id: 'market',
+    jsonKey: 'market_score',
+    color: 'cyan',
+    title:       { fr: 'Marché',              ar: 'السوق' },
+    description: { fr: 'Analyse de la demande et adéquation marché.', ar: 'تحليل الطلب وملاءمة المنتج للسوق.' },
+    subLabels: {
+      taille_marche:     { fr: 'Taille du marché',   ar: 'حجم السوق' },
+      concurrence:       { fr: 'Concurrence',         ar: 'المنافسة' },
+      validation_client: { fr: 'Validation client',   ar: 'التحقق من العملاء' },
+      modele_revenus:    { fr: 'Modèle de revenus',   ar: 'نموذج الإيرادات' }
+    }
+  },
+  {
+    id: 'commercial',
+    jsonKey: 'commercial_offer_score',
+    color: 'indigo',
+    title:       { fr: 'Commercial',          ar: 'العرض التجاري' },
+    description: { fr: 'Traction client et tunnel de conversion.', ar: 'جذب العملاء ومسار تحويل المبيعات.' },
+    subLabels: {
+      proposition_valeur:  { fr: 'Proposition de valeur',        ar: 'مقترح القيمة' },
+      maturite_produit:    { fr: 'Maturité du produit',          ar: 'نضج المنتج' },
+      strategie_prix:      { fr: 'Stratégie de prix',            ar: 'استراتيجية التسعير' },
+      alignement_besoins:  { fr: 'Alignement avec les besoins',  ar: 'الملاءمة مع الاحتياجات' }
+    }
+  },
+  {
+    id: 'innovation',
+    jsonKey: 'innovation_score',
+    color: 'violet',
+    title:       { fr: 'Innovation',          ar: 'الابتكار' },
+    description: { fr: 'Avantage produit et barrières concurrentielles.', ar: 'ميزة المنتج والحواجز التنافسية.' },
+    subLabels: {
+      nouveaute_locale:  { fr: 'Nouveauté locale',          ar: 'الابتكار المحلي' },
+      intensite_tech:    { fr: 'Intensité technologique',   ar: 'الكثافة التكنولوجية' },
+      barrieres_entree:  { fr: "Barrières à l'entrée",      ar: 'حواجز الدخول' },
+      degre_rupture:     { fr: 'Degré de rupture',          ar: 'درجة القطيعة' }
+    }
+  },
+  {
+    id: 'scalability',
+    jsonKey: 'scalability_score',
+    color: 'amber',
+    title:       { fr: 'Scalabilité',         ar: 'القابلية للتوسع' },
+    description: { fr: "Potentiel d'automatisation et modèle récurrent.", ar: 'إمكانية الأتمتة والنموذج المتكرر.' },
+    subLabels: {
+      replicabilite:          { fr: 'Réplicabilité',               ar: 'قابلية التكرار' },
+      independance_manuelle:  { fr: 'Indépendance manuelle',       ar: 'الاستقلالية عن العمل اليدوي' },
+      couts_deploiement:      { fr: 'Coûts de déploiement',        ar: 'تكاليف النشر' },
+      potentiel_geo:          { fr: 'Potentiel géographique',      ar: 'الإمكانية الجغرافية' }
+    }
+  },
+  {
+    id: 'green',
+    jsonKey: 'green_score',
+    color: 'emerald',
+    title:       { fr: 'Green',               ar: 'الاستدامة البيئية' },
+    description: { fr: 'Bilan carbone et circularité des ressources.', ar: 'بصمة الكربون ودائرية الموارد.' },
+    subLabels: {
+      climat_air:         { fr: 'Climat & Air',        ar: 'المناخ والهواء' },
+      eau:                { fr: "Gestion de l'eau",    ar: 'إدارة المياه' },
+      sols_biodiversite:  { fr: 'Sols & Biodiversité', ar: 'التربة والتنوع البيولوجي' },
+      ressources_dechets: { fr: 'Ressources & Déchets', ar: 'الموارد والنفايات' }
+    }
+  }
+];
+
+// ─── Fusion Membre1 + Membre2 (moyenne simple) ──────────────────────────────
+function buildMergedScores(rawScores) {
+  return DIMENSION_CONFIG.map((dim) => {
+    const m1 = rawScores?.[dim.jsonKey] || { valeur: 0, sous_scores: {}, justification_template: '' };
+    const m2 = member2Scores[dim.jsonKey] || { valeur: 0, sous_scores: {} };
+
+    const mergedValeur = Math.round(((m1.valeur + m2.valeur) / 2) * 10) / 10;
+
+    const subDimensions = Object.keys(dim.subLabels).map((subKey) => {
+      const v1 = m1.sous_scores?.[subKey] ?? 0;
+      const v2 = m2.sous_scores?.[subKey] ?? 0;
+      const mergedSub = Math.round(((v1 + v2) / 2) * 10) / 10;
+      return {
+        key: subKey,
+        name: dim.subLabels[subKey],
+        score: mergedSub,
+        m1Score: v1,
+        m2Score: v2
+      };
+    });
+
+    // Justification dynamique bilingue basée sur les scores fusionnés
+    const justification = buildJustification(dim.id, mergedValeur, subDimensions, m1.justification_template);
+
+    return {
+      id: dim.id,
+      title: dim.title,
+      score: mergedValeur,
+      color: dim.color,
+      description: dim.description,
+      justification,
+      subDimensions
+    };
+  });
+}
+
+function buildJustification(dimId, mergedValeur, subDimensions, originalTemplate) {
+  const worstSub = subDimensions.reduce((a, b) => (a.score < b.score ? a : b), subDimensions[0]);
+
+  const templates = {
+    market: {
+      fr: `Score Marché fusionné : ${mergedValeur}/100. Le sous-score '${worstSub?.name?.fr}' (${worstSub?.score}/100) est le point le plus faible — bloqueur potentiel pour le financement.`,
+      ar: `درجة السوق المدمجة: ${mergedValeur}/100. المعيار الأضعف هو '${worstSub?.name?.ar}' (${worstSub?.score}/100) — قد يكون عائقاً أمام التمويل.`
+    },
+    commercial: {
+      fr: `Score Commercial fusionné : ${mergedValeur}/100. Le sous-score '${worstSub?.name?.fr}' (${worstSub?.score}/100) nécessite une attention prioritaire avant toute approche investisseur.`,
+      ar: `درجة العرض التجاري المدمجة: ${mergedValeur}/100. المعيار '${worstSub?.name?.ar}' (${worstSub?.score}/100) يستوجب الأولوية قبل التواصل مع أي مستثمر.`
+    },
+    innovation: {
+      fr: `Score Innovation fusionné : ${mergedValeur}/100. Le profil innovant est reconnu. '${worstSub?.name?.fr}' (${worstSub?.score}/100) peut encore être consolidé.`,
+      ar: `درجة الابتكار المدمجة: ${mergedValeur}/100. الملف الابتكاري معترف به. '${worstSub?.name?.ar}' (${worstSub?.score}/100) يمكن تعزيزه أكثر.`
+    },
+    scalability: {
+      fr: `Score Scalabilité fusionné : ${mergedValeur}/100. Le modèle est scalable. '${worstSub?.name?.fr}' (${worstSub?.score}/100) est le levier à optimiser en priorité.`,
+      ar: `درجة القابلية للتوسع المدمجة: ${mergedValeur}/100. النموذج قابل للتوسع. '${worstSub?.name?.ar}' (${worstSub?.score}/100) هو الرافعة الأولى للتحسين.`
+    },
+    green: {
+      fr: `Score Green fusionné : ${mergedValeur}/100. L'impact environnemental est maîtrisé. '${worstSub?.name?.fr}' (${worstSub?.score}/100) est le pilier à renforcer.`,
+      ar: `درجة الاستدامة المدمجة: ${mergedValeur}/100. الأثر البيئي تحت السيطرة. '${worstSub?.name?.ar}' (${worstSub?.score}/100) هو الركيزة التي تحتاج تعزيزاً.`
+    }
+  };
+
+  return templates[dimId] || { fr: originalTemplate || '', ar: originalTemplate || '' };
+}
+
 export function getAdaptedData() {
   const {
     entrepreneur_id,
@@ -59,7 +202,8 @@ export function getAdaptedData() {
     gaps,
     blockers,
     secteur,
-    localisation
+    localisation,
+    scores: rawScores
   } = rawData;
 
   // Detect conditions from raw data
@@ -69,15 +213,12 @@ export function getAdaptedData() {
   const hasNoBP = gaps.includes("Pas de business plan documenté");
   const hasNoClients = gaps.includes("Zéro client payant");
 
-  // Calculate scores based on actual data from JSON
-  const marketScore = hasMarketBlocker ? 45 : 80;
-  const commercialScore = hasNoClients ? 20 : 75;
-  const innovationScore = 80;
-  const scalabilityScore = hasNoBP ? 35 : 70;
-  const greenScore = 60;
+  // Build merged scores from dashboard.json + member 2
+  const mergedScores = buildMergedScores(rawScores);
 
-  const baseAvg = Math.round((marketScore + commercialScore + innovationScore + scalabilityScore + greenScore) / 5);
-  const financingScore = gap_detecte ? Math.min(baseAvg, 42) : Math.max(baseAvg, 78);
+  // Financing score based on merged scores average
+  const avgMerged = Math.round(mergedScores.reduce((sum, s) => sum + s.score, 0) / mergedScores.length);
+  const financingScore = gap_detecte ? Math.min(avgMerged, 42) : Math.max(avgMerged, 78);
 
   // Build adapted data from raw JSON
   const adapted = {
@@ -126,101 +267,7 @@ export function getAdaptedData() {
       },
       gapsList: gaps
     },
-    scores: [
-      {
-        id: "market",
-        title: { fr: "Market (Marché)", ar: "السوق" },
-        score: marketScore,
-        color: "cyan",
-        description: { fr: "Analyse de la demande et adéquation marché.", ar: "تحليل الطلب وملاءمة المنتج للسوق." },
-        subDimensions: [
-          {
-            name: { fr: "Validation Client", ar: "التحقق من العميل" },
-            score: marketScore,
-            justification: {
-              fr: hasMarketBlocker ? "Validation client insuffisante - besoin d'études de terrain supplémentaires." : "Validation client satisfaisante.",
-              ar: hasMarketBlocker ? "التحقق من صحة العملاء غير كافٍ - بحاجة لدراسات ميدانية إضافية." : "التحقق من صحة العملاء كافٍ ومكتمل."
-            }
-          },
-          {
-            name: { fr: "Opportunité Locale", ar: "الفرصة المحلية" },
-            score: 85,
-            justification: {
-              fr: `Opportunité forte détectée dans la zone de ${localisation} pour le secteur ${secteur}.`,
-              ar: `تم رصد فرصة قوية في منطقة ${translateValue(localisation, 'ar')} لقطاع ${translateValue(secteur, 'ar')}.`
-            }
-          }
-        ]
-      },
-      {
-        id: "commercial",
-        title: { fr: "Commercial", ar: "التجاري" },
-        score: commercialScore,
-        color: "indigo",
-        description: { fr: "Traction client et tunnel de conversion.", ar: "جذب العملاء ومسار تحويل المبيعات." },
-        subDimensions: [
-          {
-            name: { fr: "Ventes et Traction", ar: "المبيعات والجاذبية" },
-            score: commercialScore,
-            justification: {
-              fr: hasNoClients ? "Aucune vente enregistrée à ce jour (Zéro client payant)." : "Premières ventes encourageantes.",
-              ar: hasNoClients ? "لم يتم تسجيل أي مبيعات حتى اليوم (عملاء دافعون: 0)." : "مبيعات أولية مشجعة."
-            }
-          }
-        ]
-      },
-      {
-        id: "innovation",
-        title: { fr: "Innovation", ar: "الابتكار" },
-        score: innovationScore,
-        color: "violet",
-        description: { fr: "Avantage produit et barrières concurrentielles.", ar: "ميزة المنتج والحواجز التنافسية." },
-        subDimensions: [
-          {
-            name: { fr: "Différenciation Produit", ar: "تميز المنتج" },
-            score: innovationScore,
-            justification: {
-              fr: "Concept innovant offrant une bonne valeur ajoutée.",
-              ar: "مفهوم مبتكر يقدم قيمة مضافة جيدة."
-            }
-          }
-        ]
-      },
-      {
-        id: "scalability",
-        title: { fr: "Scalabilité", ar: "القدرة على التوسع" },
-        score: scalabilityScore,
-        color: "amber",
-        description: { fr: "Potentiel d'automatisation et modèle récurrent.", ar: "إمكانية الأتمتة والنموذج المتكرر للربح." },
-        subDimensions: [
-          {
-            name: { fr: "Planification Opérationnelle", ar: "التخطيط التشغيلي" },
-            score: scalabilityScore,
-            justification: {
-              fr: hasNoBP ? "Manque de business plan documenté pour structurer la mise à l'échelle." : "Plan d'affaires documenté et cohérent.",
-              ar: hasNoBP ? "غياب مخطط عمل موثق يمنع هيكلة وتوسيع نطاق المشروع." : "خطة عمل موثقة ومتسقة."
-            }
-          }
-        ]
-      },
-      {
-        id: "green",
-        title: { fr: "Impact Vert (Green)", ar: "الأثر البيئي" },
-        score: greenScore,
-        color: "emerald",
-        description: { fr: "Bilan carbone et circularité des ressources.", ar: "بصمة الكربون ودائرية الموارد." },
-        subDimensions: [
-          {
-            name: { fr: "Empreinte Écologique", ar: "الأثر البيئي" },
-            score: greenScore,
-            justification: {
-              fr: `Valorisation des produits locaux de ${localisation} en circuit court.`,
-              ar: `تثمين المنتجات المحلية ل${translateValue(localisation, 'ar')} في إطار توزيع قصير المدى.`
-            }
-          }
-        ]
-      }
-    ],
+    scores: mergedScores,
     financingReadiness: {
       score: financingScore,
       status: financingScore >= 75 ? 'bankable' : 'non_bankable',

@@ -57,18 +57,15 @@ export default function Dashboard({ data, lang }) {
         </div>
       </div>
 
-      {/* ── Row 3: Scores (left) + Blockers & Roadmap (right) ── */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        {/* Score Bars */}
-        <div>
-          <ScoreBars scores={data.scores} lang={lang} />
-        </div>
+      {/* ── Row 3: Scores — pleine largeur ── */}
+      <div>
+        <ScoreBars scores={data.scores} lang={lang} />
+      </div>
 
-        {/* Blockers + Roadmap stacked */}
-        <div className="flex flex-col gap-6">
-          <PriorityBlockers blockers={data.blockers} lang={lang} />
-          <RoadmapTimeline roadmapData={data.roadmap} lang={lang} />
-        </div>
+      {/* ── Row 4: Blockers (left) + Roadmap (right) ── */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <PriorityBlockers blockers={data.blockers} lang={lang} />
+        <RoadmapTimeline roadmapData={data.roadmap} lang={lang} />
       </div>
     </main>
   );

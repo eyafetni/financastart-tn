@@ -37,5 +37,67 @@
       "text": "",
       "timestamp": null
     }
-  }
+  },
+   "scores": {
+        "market_score": {
+            "valeur": 16.3,
+            "sous_scores": {
+                "taille_marche": 10.0,
+                "concurrence": 10.0,
+                "validation_client": 10.0,
+                "modele_revenus": 40.0
+            },
+            "justification_template": "Le Market Score est insuffisant (16.3/100). Le critere 'Taille marche' (10/100) constitue un bloqueur majeur pour toute demarche de financement.",
+            "action_template": "ACTION URGENTE : 'Taille marche' doit passer au-dessus de 30/100. Sans cela, aucun financement n'est envisageable.",
+            "kb_link": ""
+        },
+        "commercial_offer_score": {
+            "valeur": 40.0,
+            "sous_scores": {
+                "proposition_valeur": 40.0,
+                "maturite_produit": 40.0,
+                "strategie_prix": 40.0,
+                "alignement_besoins": 40.0
+            },
+            "justification_template": "L'offre commerciale est trop fragile (40.0/100). La 'Proposition valeur' (40/100) doit etre refondee avant toute approche d'investisseur.",
+            "action_template": "ACTION URGENTE : redefinir 'Proposition valeur' (score 40/100). Engager un atelier job-to-be-done avec de vrais utilisateurs.",
+            "kb_link": ""
+        },
+        "innovation_score": {
+            "valeur": 85.0,
+            "sous_scores": {
+                "nouveaute_locale": 90.0,
+                "intensite_tech": 90.0,
+                "barrieres_entree": 90.0,
+                "degre_rupture": 90.0
+            },
+            "justification_template": "Le profil innovant est reconnu : 'Nouveaute locale' (90/100) positionne favorablement le projet sur son marche.",
+            "action_template": "Initier une procedure de depot de brevet (Art. 12 Startup Act) pour securiser les barrieres a l'entree.",
+            "kb_link": ""
+        },
+        "scalability_score": {
+            "valeur": 90.0,
+            "sous_scores": {
+                "replicabilite": 90.0,
+                "independance_manuelle": 90.0,
+                "couts_deploiement": 90.0,
+                "potentiel_geo": 90.0
+            },
+            "justification_template": "Le modele est fortement scalable. La 'Replicabilite' (90/100) confirme la capacite de croissance sans augmentation lineaire des couts.",
+            "action_template": "Modeliser les economies d'echelle a 3 ans pour le dossier de levee de fonds.",
+            "kb_link": ""
+        },
+        "green_score": {
+            "valeur": 90.0,
+            "sous_scores": {
+                "climat_air": 90.0,
+                "eau": 90.0,
+                "sols_biodiversite": 90.0,
+                "ressources_dechets": 90.0
+            },
+            "justification_template": "L'impact environnemental est bien maitrise. Le pilier 'Climat air' (90/100) est un atout dans le contexte PNUD/ODD.",
+            "action_template": "Formaliser le bilan carbone et l'aligner sur les ODD pour les dossiers de financement PNUD/AFD.",
+            "kb_link": ""
+        }
+    }
 }

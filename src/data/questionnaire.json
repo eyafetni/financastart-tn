@@ -1,5 +1,5 @@
 {
-  "description": "agriculture tunis growth\n",
+  "description": "",
   "stade_reel": "",
   "stade_percu": "",
   "divergence_explication": "",
@@ -1549,7 +1549,7 @@
     },
     {
       "id": "mkt_cible",
-      "etape": "Étape 8 — Suivi et perspectives",
+      "etape": "Suivi et perspectives",
       "dimension": "MKT",
       "texte": {
         "fr": "Quel est le modèle d'interaction et la cible prioritaire de votre solution ?",
@@ -1596,7 +1596,7 @@
     },
     {
       "id": "mkt_som",
-      "etape": "Étape 8 — Suivi et perspectives",
+      "etape": "Suivi et perspectives",
       "dimension": "MKT",
       "texte": {
         "fr": "Quelle est la valeur financière annuelle estimée de votre marché immédiatement accessible (SOM) ?",
@@ -1643,7 +1643,7 @@
     },
     {
       "id": "mkt_concurrence",
-      "etape": "Étape 8 — Suivi et perspectives",
+      "etape": "Suivi et perspectives",
       "dimension": "MKT",
       "texte": {
         "fr": "Comment se structure l'intensité concurrentielle sur votre segment cible ?",
@@ -1690,7 +1690,7 @@
     },
     {
       "id": "mkt_traction",
-      "etape": "Étape 8 — Suivi et perspectives",
+      "etape": "Suivi et perspectives",
       "dimension": "MKT",
       "texte": {
         "fr": "Quel est l'état réel et mesurable de votre validation commerciale sur le terrain ?",
@@ -1737,7 +1737,7 @@
     },
     {
       "id": "mkt_monetisation",
-      "etape": "Étape 8 — Suivi et perspectives",
+      "etape": "Suivi et perspectives",
       "dimension": "MKT",
       "texte": {
         "fr": "Où en est la validation empirique de votre mécanisme de capture de valeur ?",
@@ -1784,7 +1784,7 @@
     },
     {
       "id": "com_modelisation",
-      "etape": "Étape 8 — Suivi et perspectives",
+      "etape": "Suivi et perspectives",
       "dimension": "COM",
       "texte": {
         "fr": "Quel est le niveau de maturité de votre modélisation financière et stratégique ?",
@@ -1831,7 +1831,7 @@
     },
     {
       "id": "com_maturite_tech",
-      "etape": "Étape 8 — Suivi et perspectives",
+      "etape": "Suivi et perspectives",
       "dimension": "COM",
       "texte": {
         "fr": "Où se situe votre solution sur l'échelle de développement technique ?",
@@ -1878,7 +1878,7 @@
     },
     {
       "id": "com_pricing",
-      "etape": "Étape 8 — Suivi et perspectives",
+      "etape": "Suivi et perspectives",
       "dimension": "COM",
       "texte": {
         "fr": "Comment votre structure tarifaire (pricing) est-elle perçue par le marché ?",
@@ -1925,7 +1925,7 @@
     },
     {
       "id": "com_pain_point",
-      "etape": "Étape 8 — Suivi et perspectives",
+      "etape": "Suivi et perspectives",
       "dimension": "COM",
       "texte": {
         "fr": "À quel point votre produit résout-il un problème critique (Pain Point) pour votre cible ?",
@@ -1972,7 +1972,7 @@
     },
     {
       "id": "ino_originalite",
-      "etape": "Étape 8 — Suivi et perspectives",
+      "etape": "Suivi et perspectives",
       "dimension": "INO",
       "texte": {
         "fr": "Quelle est l'originalité de votre positionnement sur votre zone géographique cible ?",
@@ -2019,7 +2019,7 @@
     },
     {
       "id": "ino_technologie",
-      "etape": "Étape 8 — Suivi et perspectives",
+      "etape": "Suivi et perspectives",
       "dimension": "INO",
       "texte": {
         "fr": "Quelle est l'épaisseur technologique sous-jacente à votre solution ?",
@@ -2066,7 +2066,7 @@
     },
     {
       "id": "ino_barriere",
-      "etape": "Étape 8 — Suivi et perspectives",
+      "etape": "Suivi et perspectives",
       "dimension": "INO",
       "texte": {
         "fr": "De quel avantage défensif disposez-vous pour empêcher une copie rapide par un concurrent ?",
@@ -2113,7 +2113,7 @@
     },
     {
       "id": "ino_disruption",
-      "etape": "Étape 8 — Suivi et perspectives",
+      "etape": "Suivi et perspectives",
       "dimension": "INO",
       "texte": {
         "fr": "Comment votre innovation modifie-t-elle les habitudes des acteurs du secteur ?",
@@ -2160,7 +2160,7 @@
     },
     {
       "id": "sca_deploiement",
-      "etape": "Étape 8 — Suivi et perspectives",
+      "etape": "Suivi et perspectives",
       "dimension": "SCA",
       "texte": {
         "fr": "Quel est le niveau de complexité pour déployer votre solution sur un nouveau territoire ?",
@@ -2207,7 +2207,7 @@
     },
     {
       "id": "sca_masse_salariale",
-      "etape": "Étape 8 — Suivi et perspectives",
+      "etape": "Suivi et perspectives",
       "dimension": "SCA",
       "texte": {
         "fr": "Comment évolue votre masse salariale par rapport à l'augmentation de vos clients ?",
@@ -2254,7 +2254,7 @@
     },
     {
       "id": "sca_capex",
-      "etape": "Étape 8 — Suivi et perspectives",
+      "etape": "Suivi et perspectives",
       "dimension": "SCA",
       "texte": {
         "fr": "Quel est le niveau d'investissement financier (CAPEX) requis pour onboarder un grand volume de clients ?",
@@ -2301,7 +2301,7 @@
     },
     {
       "id": "sca_geographie",
-      "etape": "Étape 8 — Suivi et perspectives",
+      "etape": "Suivi et perspectives",
       "dimension": "SCA",
       "texte": {
         "fr": "Quelle est l'échelle géographique inscrite dans l'architecture même de votre projet ?",
@@ -2348,7 +2348,7 @@
     },
     {
       "id": "esg_carbone",
-      "etape": "Étape 8 — Suivi et perspectives",
+      "etape": "Suivi et perspectives",
       "dimension": "ESG",
       "texte": {
         "fr": "Quelle est la contribution directe ou indirecte de votre entreprise sur l'empreinte carbone ?",
@@ -2395,7 +2395,7 @@
     },
     {
       "id": "esg_eau",
-      "etape": "Étape 8 — Suivi et perspectives",
+      "etape": "Suivi et perspectives",
       "dimension": "ESG",
       "texte": {
         "fr": "Quel niveau d'intelligence et de précision intégrez-vous dans la gestion ou la préservation de l'eau ?",
@@ -2442,7 +2442,7 @@
     },
     {
       "id": "esg_sols",
-      "etape": "Étape 8 — Suivi et perspectives",
+      "etape": "Suivi et perspectives",
       "dimension": "ESG",
       "texte": {
         "fr": "Comment votre activité interagit-elle avec la santé des sols et les écosystèmes vivants ?",
@@ -2489,7 +2489,7 @@
     },
     {
       "id": "esg_dechets",
-      "etape": "Étape 8 — Suivi et perspectives",
+      "etape": "Suivi et perspectives",
       "dimension": "ESG",
       "texte": {
         "fr": "Quel est le cycle de vie des matières premières et des déchets générés par votre chaîne de valeur ?",
@@ -2536,27 +2536,6 @@
     }
   ],
   "answers": {
-    "nom_entreprise": "l",
-    "confirmation_secteur": "non",
-    "choix_secteur": "industrie",
-    "confirmation_region": "non",
-    "choix_region": "ariana",
-    "confirmation_stade": "oui",
-    "equipe": "complete",
-    "indus_equipements": "operationnels",
-    "indus_iso": "certifie",
-    "indus_foprodi": "oui",
-    "indus_donneurs_ordre": "contrats_formels",
-    "rne": "non",
-    "revenus": "oui",
-    "chiffre_affaires": "12",
-    "duree_revenus": "6_a_12_mois",
-    "business_plan": "complet",
-    "innovation": "differencie",
-    "accompagnement": "programme_termine",
-    "financement_externe": "capital_risque",
-    "description_libre": "agriculture tunis growth\n"
-
-
+    "confirmation_secteur": "non"
   }
 }

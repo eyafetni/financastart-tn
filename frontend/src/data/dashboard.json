@@ -1,0 +1,447 @@
+{
+  "entrepreneur_id": "ENT-DBD323",
+  "header": {
+    "nom_entreprise": "fle7a",
+    "localisation": "Siliana",
+    "secteur_label": "Agriculture / Sylviculture / Pêche"
+  },
+  "stade_reel": "Structuration",
+  "stade_percu": "Growth",
+  "gap_detecte": true,
+  "divergence_detectee": true,
+  "message_perception_gap": "⚠️ DIVERGENCE DÉTECTÉE — Vous pensez être en 'Growth' → stade réel: 'Structuration'.\n  L'entrepreneur a surestimé son stade de 3 niveau(x). Il se perçoit en 'Growth' mais le diagnostic objectif indique 'Structuration'. Causes principales : Fondateur seul — équipe à constituer, Certifications sanitaires/phytosanitaires manquantes, Chaîne de froid / logistique non sécurisée.",
+  "signaux_divergence": [
+    "Vous vous croyez en 'Growth' mais n'avez pas de RNE — impossible de constituer un dossier bancable sans entité juridique.",
+    "Votre solution existe déjà sur le marché tunisien depuis plusieurs années. L'innovation perçue ne se traduit pas en différenciation réelle."
+  ],
+  "gap_explication": "L'entrepreneur a surestimé son stade de 3 niveau(x). Il se perçoit en 'Growth' mais le diagnostic objectif indique 'Structuration'. Causes principales : Fondateur seul — équipe à constituer, Certifications sanitaires/phytosanitaires manquantes, Chaîne de froid / logistique non sécurisée.",
+  "fri": 40,
+  "is_financeable": false,
+  "fri_interpretation": "Le score global est plafonné à 40/100 en raison de la faiblesse critique du score Marché (<30). (Score réel calculé : 40/100)",
+  "resume_executif": "⚠ INFORMATION : Le score global est plafonné à 40/100 en raison de la faiblesse critique du score Marché (<30). Analyse pour le secteur 'Agriculture' : le projet n'est PAS encore bancable avec un Financing Readiness Index de 40/100. Le point fort du projet est le Scalability Score avec un score de 90.0/100, tandis que le Market Score constitue le principal axe de progression avec seulement 16.3/100. Aucun bloqueur structurel détecté. Le principal levier reste le Market Score (16.3/100). Concentrez l'effort sur l'axe Market Score pour progresser.",
+  "scores": {
+    "scores_f2": {
+      "market": 16.3,
+      "commercial_offer": 40,
+      "innovation": 85,
+      "scalability": 90,
+      "green": 90
+    },
+    "scores_faibles": [
+      "market",
+      "commercial_offer"
+    ],
+    "detail": {
+      "market_score": {
+        "valeur": 16.3,
+        "sous_scores": {
+          "taille_marche": 10,
+          "concurrence": 10,
+          "validation_client": 10,
+          "modele_revenus": 40
+        },
+        "justification": "Le Market Score est insuffisant (16.3/100). Le critere 'Taille marche' (10/100) constitue un bloqueur majeur pour toute demarche de financement.",
+        "action": "ACTION URGENTE : 'Taille marche' doit passer au-dessus de 30/100. Sans cela, aucun financement n'est envisageable."
+      },
+      "commercial_offer_score": {
+        "valeur": 40,
+        "sous_scores": {
+          "proposition_valeur": 40,
+          "maturite_produit": 40,
+          "strategie_prix": 40,
+          "alignement_besoins": 40
+        },
+        "justification": "L'offre commerciale est trop fragile (40.0/100). La 'Proposition valeur' (40/100) doit etre refondee avant toute approche d'investisseur.",
+        "action": "ACTION URGENTE : redefinir 'Proposition valeur' (score 40/100). Engager un atelier job-to-be-done avec de vrais utilisateurs."
+      },
+      "innovation_score": {
+        "valeur": 85,
+        "sous_scores": {
+          "nouveaute_locale": 90,
+          "intensite_tech": 90,
+          "barrieres_entree": 90,
+          "degre_rupture": 90
+        },
+        "justification": "Le profil innovant est reconnu : 'Nouveaute locale' (90/100) positionne favorablement le projet sur son marche.",
+        "action": "Initier une procedure de depot de brevet (Art. 12 Startup Act) pour securiser les barrieres a l'entree."
+      },
+      "scalability_score": {
+        "valeur": 90,
+        "sous_scores": {
+          "replicabilite": 90,
+          "independance_manuelle": 90,
+          "couts_deploiement": 90,
+          "potentiel_geo": 90
+        },
+        "justification": "Le modele est fortement scalable. La 'Replicabilite' (90/100) confirme la capacite de croissance sans augmentation lineaire des couts.",
+        "action": "Modeliser les economies d'echelle a 3 ans pour le dossier de levee de fonds."
+      },
+      "green_score": {
+        "valeur": 90,
+        "sous_scores": {
+          "climat_air": 90,
+          "eau": 90,
+          "sols_biodiversite": 90,
+          "ressources_dechets": 90
+        },
+        "justification": "L'impact environnemental est bien maitrise. Le pilier 'Climat air' (90/100) est un atout dans le contexte PNUD/ODD.",
+        "action": "Formaliser le bilan carbone et l'aligner sur les ODD pour les dossiers de financement PNUD/AFD."
+      }
+    }
+  },
+  "anomalies": [
+    {
+      "id": "ANOM_TEAM_SOLO_FATIGUE",
+      "dimension_impactee": "team_score",
+      "penalite": 10,
+      "justification": "Risque de Burnout : Gérer seul une startup en phase de 'Growth' est un goulot d'étranglement majeur (Key-Man Risk) rédhibitoire pour les investisseurs.",
+      "action": "Recrutez un bras droit opérationnel (COO) ou ouvrez votre capital pour intégrer un co-fondateur.",
+      "kb_link": "KB-TEAM-SCALING-007"
+    },
+    {
+      "id": "ANOM_ECO_REGIONAL_FUNDS_MISSED",
+      "dimension_impactee": "commercial_offer_score",
+      "penalite": 10,
+      "justification": "Leviers régionaux inexploités : Vous êtes légalement constitué (RNE valide) à Siliana mais ne bénéficiez d'aucun financement. Vous passez à côté de primes de développement régional spécifiques (PDRI).",
+      "action": "Sollicitez le bureau régional de l'APII de Siliana pour déposer un dossier de prime d'investissement régional.",
+      "kb_link": "KB-FIN-REGIONAL-006"
+    }
+  ],
+  "ressources": {
+    "nombre_total": 26,
+    "recommandees": [
+      {
+        "id": "BNA-001",
+        "nom": "BNA – Crédits agricoles court et moyen terme",
+        "organisme": "Banque Nationale Agricole (BNA)",
+        "type": "financement_bancaire",
+        "taux": "TMM + 1,75 à 3 points",
+        "url_source": "https://www.bna.tn/",
+        "pertinence": 65.9,
+        "justification": "Recommandé pour stade 'Structuration', secteur 'Agriculture/Sylviculture/Peche'. Pertinence: 65.9%."
+      },
+      {
+        "id": "HACKATHON-AINS",
+        "nom": "AINS Hackathon – Concours et financement projets IA entrepreneurship",
+        "organisme": "AINS 4.0 / PNUD / GEWEET / ODC / IEEE / APII",
+        "type": "concours_financement",
+        "taux": "N/A (prix + visibilité + réseau)",
+        "url_source": "https://www.apii.nat.tn/",
+        "pertinence": 63.1,
+        "justification": "Recommandé pour stade 'Structuration', secteur 'Agriculture/Sylviculture/Peche'. Pertinence: 63.1%."
+      },
+      {
+        "id": "ODESYPANO-001",
+        "nom": "ODESYPANO – Soutien développement sylvo-pastoral Nord-Ouest",
+        "organisme": "Office de Développement Sylvo-Pastoral du Nord-Ouest (ODESYPANO)",
+        "type": "subvention",
+        "taux": "Subvention directe (taux à vérifier sur site officiel)",
+        "url_source": "https://www.odesypano.nat.tn/",
+        "pertinence": 61.7,
+        "gaps_matches": [
+          "regions_interieures"
+        ],
+        "justification": "Recommandé pour stade 'Structuration', secteur 'Agriculture/Sylviculture/Peche'. Adresse: regions_interieures. Pertinence: 61.7%."
+      },
+      {
+        "id": "ANDA-001",
+        "nom": "ANDA – Agence Nationale Développement Aquaculture",
+        "organisme": "Agence Nationale de Développement de l'Aquaculture (ANDA)",
+        "type": "programme_accompagnement",
+        "taux": "N/A (accompagnement technique + primes)",
+        "url_source": "https://www.anda.tn/",
+        "pertinence": 61.1,
+        "justification": "Recommandé pour stade 'Structuration', secteur 'Agriculture/Sylviculture/Peche'. Pertinence: 61.1%."
+      },
+      {
+        "id": "APIA-002",
+        "nom": "APIA – Guichet unique investissement agricole et pêche",
+        "organisme": "Agence de Promotion des Investissements Agricoles (APIA)",
+        "type": "programme_accompagnement",
+        "taux": "N/A (orientation + primes investissement)",
+        "url_source": "http://www.apia.com.tn/",
+        "pertinence": 60.9,
+        "gaps_matches": [
+          "besoin_accompagnement"
+        ],
+        "justification": "Recommandé pour stade 'Structuration', secteur 'Agriculture/Sylviculture/Peche'. Adresse: besoin_accompagnement. Pertinence: 60.9%."
+      },
+      {
+        "id": "STARTUP-ACT-003",
+        "nom": "Startup Act Tunisie – Cadre Avantages & Labellisation",
+        "organisme": "Smart Capital / Ministere des Technologies de la Communication",
+        "type": "cadre_legal_avantages",
+        "taux": "Exonerations fiscales et bourses d'incubation",
+        "url_source": "https://support.startup.gov.tn/support/solutions",
+        "pertinence": 59.6,
+        "justification": "Recommandé pour stade 'Structuration', secteur 'Agriculture/Sylviculture/Peche'. Pertinence: 59.6%."
+      },
+      {
+        "id": "STEG-001",
+        "nom": "Programme Efficacité Énergétique ANME – Subvention équipements",
+        "organisme": "Agence Nationale Maîtrise Énergie (ANME)",
+        "type": "subvention",
+        "taux": "Subvention 20-30% équipements efficacité énergétique",
+        "url_source": "https://www.anme.nat.tn/",
+        "pertinence": 55.2,
+        "justification": "Recommandé pour stade 'Structuration', secteur 'Agriculture/Sylviculture/Peche'. Pertinence: 55.2%."
+      },
+      {
+        "id": "PEPAGRI-001",
+        "nom": "Pépinières d'Entreprises Agricoles",
+        "organisme": "APIA / Etablissements de recherche et d'enseignement superieur agricoles",
+        "type": "accompagnement_incubation",
+        "taux": "Gratuit (Hébergement et coaching technique)",
+        "url_source": "http://www.apia.com.tn/",
+        "pertinence": 54.9,
+        "justification": "Recommandé pour stade 'Structuration', secteur 'Agriculture/Sylviculture/Peche'. Pertinence: 54.9%."
+      },
+      {
+        "id": "APII-003",
+        "nom": "APII – Centres d'Affaires (Espaces Entreprendre)",
+        "organisme": "APII / Reseau des Centres d'Affaires Nationaux",
+        "type": "accompagnement_conseil",
+        "taux": "Services publics gratuits d'orientation",
+        "url_source": "http://www.tunisieindustrie.nat.tn/",
+        "pertinence": 54.3,
+        "gaps_matches": [
+          "absence_business_plan"
+        ],
+        "justification": "Recommandé pour stade 'Structuration', secteur 'Agriculture/Sylviculture/Peche'. Adresse: absence_business_plan. Pertinence: 54.3%."
+      },
+      {
+        "id": "FNG-001",
+        "nom": "Fonds National de Garantie (FNG)",
+        "organisme": "SOTUGAR / Ministere des Finances",
+        "type": "garantie_credit",
+        "taux": "Prelevement unique ou annuel minime",
+        "url_source": "http://www.finances.gov.tn/",
+        "pertinence": 54.3,
+        "justification": "Recommandé pour stade 'Structuration', secteur 'Agriculture/Sylviculture/Peche'. Pertinence: 54.3%."
+      },
+      {
+        "id": "APIA-001",
+        "nom": "APIA – Avantages et Incitations Agricoles",
+        "organisme": "APIA (Agence de Promotion des Investissements Agricoles)",
+        "type": "subvention_investissement",
+        "taux": "Primes financieres non remboursables reglementees par la Loi sur l'Investissement",
+        "url_source": "http://www.apia.com.tn/",
+        "pertinence": 53.5,
+        "justification": "Recommandé pour stade 'Structuration', secteur 'Agriculture/Sylviculture/Peche'. Pertinence: 53.5%."
+      },
+      {
+        "id": "FOPRODI-002",
+        "nom": "FOPRODI – Prime investissement matériel industriel (10%)",
+        "organisme": "APII / Fonds de Promotion et Décentralisation Industrielle",
+        "type": "subvention",
+        "taux": "10% valeur équipements HT (prime non remboursable)",
+        "url_source": "https://www.tunisieindustrie.nat.tn/fr/doc.asp?mcat=25&mrub=189",
+        "pertinence": 53.3,
+        "justification": "Recommandé pour stade 'Structuration', secteur 'Agriculture/Sylviculture/Peche'. Pertinence: 53.3%."
+      },
+      {
+        "id": "SMART-CAPITAL-002",
+        "nom": "Smart Capital – Fonds direct PME innovantes (hors ANAVA)",
+        "organisme": "Smart Capital Tunisie",
+        "type": "capital_investissement",
+        "taux": "N/A (prise de participation minoritaire)",
+        "url_source": "https://smartcapital.tn/",
+        "pertinence": 52,
+        "justification": "Recommandé pour stade 'Structuration', secteur 'Agriculture/Sylviculture/Peche'. Pertinence: 52.0%."
+      },
+      {
+        "id": "BFPME-TOURISME",
+        "nom": "BFPME – Crédit gîtes ruraux et maisons d'hôtes (exception tourisme)",
+        "organisme": "Banque de Financement des PME (BFPME)",
+        "type": "financement_bancaire",
+        "taux": "TMM + 2% à 4,5%",
+        "url_source": "https://www.bfpme.com.tn/",
+        "pertinence": 51.7,
+        "justification": "Recommandé pour stade 'Structuration', secteur 'Agriculture/Sylviculture/Peche'. Pertinence: 51.7%."
+      },
+      {
+        "id": "BFPME-001",
+        "nom": "Credit à Moyen et Long Terme (CMLT)",
+        "organisme": "BFPME",
+        "type": "financement_bancaire",
+        "taux": "TMM + 2% a TMM + 4%",
+        "url_source": "https://www.bfpme.com.tn/fr/produits",
+        "pertinence": 51.6,
+        "gaps_matches": [
+          "business_model_flou",
+          "absence_financement"
+        ],
+        "justification": "Recommandé pour stade 'Structuration', secteur 'Agriculture/Sylviculture/Peche'. Adresse: business_model_flou, absence_financement. Pertinence: 51.6%."
+      },
+      {
+        "id": "CBA-001",
+        "nom": "Carthage Business Angels",
+        "organisme": "Reseau Carthage Business Angels",
+        "type": "business_angels",
+        "taux": "Prise de participation minoritaire en capital",
+        "url_source": "https://www.carthageangels.tn/",
+        "pertinence": 50.8,
+        "justification": "Recommandé pour stade 'Structuration', secteur 'Agriculture/Sylviculture/Peche'. Pertinence: 50.8%."
+      },
+      {
+        "id": "SOTUGAR-001",
+        "nom": "SOTUGAR – Garantie crédits PME (fonds national garantie)",
+        "organisme": "Société Tunisienne de Garantie (SOTUGAR)",
+        "type": "garantie",
+        "taux": "Commission garantie 1-2% (selon programme)",
+        "url_source": "https://www.sotugar.com.tn/",
+        "pertinence": 49.7,
+        "justification": "Recommandé pour stade 'Structuration', secteur 'Agriculture/Sylviculture/Peche'. Pertinence: 49.7%."
+      },
+      {
+        "id": "FLAT6-001",
+        "nom": "Flat6Labs Tunisia – Programme d'Acceleration et d'Investissement",
+        "organisme": "Flat6Labs Tunisia",
+        "type": "acceleration_investissement",
+        "taux": "Participation au capital (generalement 6% a 10% d'equity)",
+        "url_source": "https://flat6labs.com/programs-type/programs-for-entrepreneurs/",
+        "pertinence": 49.2,
+        "gaps_matches": [
+          "besoin_accompagnement"
+        ],
+        "justification": "Recommandé pour stade 'Structuration', secteur 'Agriculture/Sylviculture/Peche'. Adresse: besoin_accompagnement. Pertinence: 49.2%."
+      },
+      {
+        "id": "ONTT-001",
+        "nom": "ONTT – Programme soutien investissement touristique",
+        "organisme": "Office National du Tourisme Tunisien (ONTT)",
+        "type": "programme_accompagnement",
+        "taux": "N/A (accompagnement + orientation financement)",
+        "url_source": "https://www.tourisme.gov.tn/",
+        "pertinence": 47.4,
+        "justification": "Recommandé pour stade 'Structuration', secteur 'Agriculture/Sylviculture/Peche'. Pertinence: 47.4%."
+      },
+      {
+        "id": "INNOVIT-001",
+        "nom": "Programme Innovation IT / R&D Numerique",
+        "organisme": "ANPR (Agence Nationale de la Promotion de la Recherche Scientifique) / Partenaires Internationaux",
+        "type": "subvention_recherche",
+        "taux": "Fonds perdus dedies a l'innovation",
+        "url_source": "https://www.anpr.tn/les-programmes-et-les-mecanismes-de-financement-de-la-r-d/",
+        "pertinence": 45.5,
+        "gaps_matches": [
+          "innovation_score_faible"
+        ],
+        "justification": "Recommandé pour stade 'Structuration', secteur 'Agriculture/Sylviculture/Peche'. Adresse: innovation_score_faible. Pertinence: 45.5%."
+      },
+      {
+        "id": "BTS-006",
+        "nom": "Credit Professionnel BTS Bank",
+        "organisme": "BTS (Banque Tunisienne de Solidarite)",
+        "type": "financement_bancaire",
+        "taux": "Taux d'interet annuel fixe",
+        "url_source": "https://www.bts.com.tn/credit-professionnel-bts-bank/",
+        "pertinence": 45.2,
+        "justification": "Recommandé pour stade 'Structuration', secteur 'Agriculture/Sylviculture/Peche'. Pertinence: 45.2%."
+      },
+      {
+        "id": "APII-001",
+        "nom": "APII – Fonds de Promotion Industrielle (FOPRODI)",
+        "organisme": "APII (Agence de Promotion de l'Industrie et de l'Innovation)",
+        "type": "subvention_incitation",
+        "taux": "Sans objet (Subventions et dotations en capital)",
+        "url_source": "http://www.tunisieindustrie.nat.tn/",
+        "pertinence": 44.9,
+        "justification": "Recommandé pour stade 'Structuration', secteur 'Agriculture/Sylviculture/Peche'. Pertinence: 44.9%."
+      },
+      {
+        "id": "CTFP-001",
+        "nom": "CTFP – Financement formation professionnelle continue PME",
+        "organisme": "Centre de Formation et de Promotion (CTFP / ATFP)",
+        "type": "subvention_formation",
+        "taux": "Prise en charge 50-70% coûts formation",
+        "url_source": "https://www.atfp.tn/",
+        "pertinence": 43.6,
+        "justification": "Recommandé pour stade 'Structuration', secteur 'Agriculture/Sylviculture/Peche'. Pertinence: 43.6%."
+      },
+      {
+        "id": "BFPME-005",
+        "nom": "BFPME – Intilak 2",
+        "organisme": "BFPME",
+        "type": "pret_participatif",
+        "taux": "Taux preferentiel (generalement sans interet ou taux fixe reduit)",
+        "url_source": "https://www.bfpme.com.tn/fr/produits",
+        "pertinence": 43.6,
+        "justification": "Recommandé pour stade 'Structuration', secteur 'Agriculture/Sylviculture/Peche'. Pertinence: 43.6%."
+      },
+      {
+        "id": "STARTUP-ACT-004",
+        "nom": "Startup Label (Le Label de Startup)",
+        "organisme": "Smart Capital / College des Startups",
+        "type": "label_accreditation",
+        "taux": "Acces au compte special en devises, decharge douaniere",
+        "url_source": "https://support.startup.gov.tn/support/solutions",
+        "pertinence": 42.3,
+        "justification": "Recommandé pour stade 'Structuration', secteur 'Agriculture/Sylviculture/Peche'. Pertinence: 42.3%."
+      },
+      {
+        "id": "STARTUP-ACT-001",
+        "nom": "Bourse de la Startup (Startup Grant)",
+        "organisme": "Smart Capital / Ministere des Technologies de la Communication",
+        "type": "subvention_incitation",
+        "taux": "Sans objet (Allocation mensuelle non remboursable)",
+        "url_source": "https://support.startup.gov.tn/support/solutions/articles/73000565012-qu-est-ce-que-le-startup-act-",
+        "pertinence": 38.7,
+        "justification": "Recommandé pour stade 'Structuration', secteur 'Agriculture/Sylviculture/Peche'. Pertinence: 38.7%."
+      }
+    ]
+  },
+  "roadmap": {
+    "stade": "Structuration",
+    "secteur": "Agriculture / Sylviculture / Pêche",
+    "fri": 40,
+    "immediat_0_30j": [
+      "[Agriculture / Sylviculture / Pêche] Contacter APIA (primes agricoles) + BNA (crédit campagne) + ODESYPANO si Nord-Ouest",
+      "🚨 Sollicitez le bureau régional de l'APII de Siliana pour déposer un dossier de prime d'investissement régional.",
+      "🚨 Recrutez un bras droit opérationnel (COO) ou ouvrez votre capital pour intégrer un co-fondateur.",
+      "Créer société au RNE si pas encore fait",
+      "Constituer dossier BFPME (business plan modèle GIZ)",
+      "Évaluer apport personnel + éligibilité SOTUGAR",
+      "⚠️ FRI=40/100 — Projet non encore bancable. Structuration prioritaire avant dépôt dossier financement."
+    ],
+    "court_terme_1_3m": [
+      "🎯 [Market Score critique] Obtenir 3 lettres d'intention clients payants avant tout dépôt de dossier",
+      "🎯 [Offre commerciale] Rédiger fiche proposition de valeur (1 page) et tester avec 5 clients réels",
+      "Déposer dossier FOPRODI APII (prime 10% équipements)",
+      "Vérifier garantie SOTUGAR",
+      "Finaliser cofinancement avec banque partenaire"
+    ],
+    "moyen_terme_3_12m": [
+      "Obtenir accord BFPME",
+      "Recruter équipe clé (COO / associé)",
+      "Mettre en place comptabilité formelle"
+    ]
+  },
+  "blockers": [
+    {
+      "domaine": "légal",
+      "description": "Entreprise non enregistrée",
+      "priorite": 1
+    },
+    {
+      "domaine": "marché",
+      "description": "Validation client insuffisante",
+      "priorite": 2
+    }
+  ],
+  "answers": {
+    "last_updated": "2026-06-23",
+    "responses": [
+      {
+        "question_id": "free_text_response",
+        "type": "texte",
+        "answer": "",
+        "timestamp": "2026-06-23T16:20:30.600Z"
+      }
+    ],
+    "free_text": {
+      "text": "",
+      "timestamp": "2026-06-23T16:20:30.600Z"
+    }
+  }
+}

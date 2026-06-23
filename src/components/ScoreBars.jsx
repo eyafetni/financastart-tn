@@ -124,8 +124,8 @@ function DimensionCard({ scoreObj, lang }) {
           {/* Justification */}
           {hasJustif && (
             <div className="rounded-xl bg-slate-950/50 border border-slate-800/50 p-3">
-              <p className="text-[9px] uppercase tracking-widest text-slate-600 font-bold mb-1">Analyse</p>
-              <p className="text-[10px] text-slate-400 leading-relaxed italic">
+              <p className="text-[9px] uppercase tracking-widest text-slate-650 font-bold mb-1">Analyse</p>
+              <p className="text-[10px] text-slate-450 leading-relaxed italic">
                 {justification[lang] || justification.fr}
               </p>
             </div>
@@ -142,7 +142,6 @@ function DimensionCard({ scoreObj, lang }) {
           {subDimensions && subDimensions.length > 0 ? (
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               {subDimensions.map((sub, idx) => {
-                const subName = sub.name ? sub.name[lang] : sub.key;
                 const subNameFr = sub.name?.fr ?? sub.key;
                 const subNameAr = sub.name?.ar ?? sub.key;
                 const val = sub.score ?? 0;
@@ -179,7 +178,7 @@ function DimensionCard({ scoreObj, lang }) {
               })}
             </div>
           ) : (
-            <p className="text-[11px] text-slate-600 italic">Aucun sous-score disponible.</p>
+            <p className="text-[11px] text-slate-650 italic">Aucun sous-score disponible.</p>
           )}
         </div>
       </div>

@@ -46,7 +46,7 @@ export default function App() {
           {/* Protected Routes: Accessible only if logged in */}
           <Route 
             path="/" 
-            element={isLoggedIn ? <Dashboard data={adaptedData} lang={lang} /> : <Navigate to="/login" replace />} 
+            element={isLoggedIn ? <Dashboard lang={lang} /> : <Navigate to="/login" replace />} 
           />
           <Route 
             path="/parcours" 

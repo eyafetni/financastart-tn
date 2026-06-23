@@ -8,9 +8,9 @@ import { fileURLToPath } from 'url'
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Custom plugin to serve /api/questionnaire GET and POST requests
-const questionnairePlugin = () => ({
-  name: 'questionnaire-api',
+// Custom plugin to serve /api/questionnaire and /api/dashboard GET and POST requests
+const apiPlugin = () => ({
+  name: 'api-plugin',
   configureServer(server) {
     server.middlewares.use((req, res, next) => {
       if (req.url === '/api/questionnaire') {
@@ -67,6 +67,66 @@ const questionnairePlugin = () => ({
           return;
         }
       }
+
+      if (req.url === '/api/dashboard') {
+        const filePath = path.resolve(__dirname, 'src/data/dashboard.json');
+        
+        if (req.method === 'GET') {
+          res.setHeader('Content-Type', 'application/json');
+          if (fs.existsSync(filePath)) {
+            const content = fs.readFileSync(filePath, 'utf-8');
+            res.end(content);
+          } else {
+            res.statusCode = 404;
+            res.end(JSON.stringify({ error: 'File not found' }));
+          }
+          return;
+        }
+        
+        if (req.method === 'POST') {
+          let body = '';
+          req.on('data', chunk => {
+            body += chunk.toString();
+          });
+          req.on('end', () => {
+            try {
+              const data = JSON.parse(body);
+              let existingData = {};
+              if (fs.existsSync(filePath)) {
+                try {
+                  const content = fs.readFileSync(filePath, 'utf-8');
+                  if (content.trim()) {
+                    existingData = JSON.parse(content);
+                  }
+                } catch (e) {
+                  console.error('Error reading existing dashboard:', e);
+                }
+              }
+              
+              const mergedData = {
+                ...existingData,
+                ...data,
+                answers: {
+                  ...existingData.answers,
+                  ...data.answers,
+                  last_updated: new Date().toISOString().split('T')[0]
+                }
+              };
+
+              fs.writeFileSync(filePath, JSON.stringify(mergedData, null, 2), 'utf-8');
+              res.setHeader('Content-Type', 'application/json');
+              res.end(JSON.stringify({ success: true, data: mergedData }));
+            } catch (error) {
+              console.error('API Error parsing JSON payload:', error);
+              res.statusCode = 400;
+              res.setHeader('Content-Type', 'application/json');
+              res.end(JSON.stringify({ error: 'Invalid JSON payload' }));
+            }
+          });
+          return;
+        }
+      }
+
       next();
     });
   }
@@ -77,11 +137,11 @@ export default defineConfig({
   plugins: [
     react(),
     tailwindcss(),
-    questionnairePlugin()
+    apiPlugin()
   ],
   server: {
     watch: {
-      ignored: ['**/src/data/questionnaire.json']
+      ignored: ['**/src/data/questionnaire.json', '**/src/data/dashboard.json']
     }
   }
 })

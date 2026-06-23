@@ -34,7 +34,7 @@ export default function Navbar({ lang, setLang, startupName, secteur, localisati
                 <span>{t.dashboardSubtitle}</span>
                 {secteur && localisation && (
                   <>
-                    <span className="text-slate-650">•</span>
+                    <span className="text-slate-655">•</span>
                     <span className="text-cyan-400 font-bold bg-cyan-950/60 border border-cyan-500/20 px-2 py-0.5 rounded text-[10px] uppercase tracking-wide">
                       {translateValue(secteur, lang)} ({translateValue(localisation, lang)})
                     </span>

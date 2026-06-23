@@ -89,14 +89,14 @@ export default function FinancingReadiness({ readinessData, lang }) {
           ) : (
             <ShieldAlert className="h-4 w-4 animate-bounce" />
           )}
-          <span className="tracking-wide">
+          <span className="tracking-wide text-xs">
             {isBankable ? t.bankable : t.notBankable}
           </span>
         </div>
 
         {/* Description justification box */}
         <div className="bg-slate-950/40 border border-slate-800 p-3 rounded-xl">
-          <p className="text-xs leading-relaxed text-slate-400 text-center">
+          <p className="text-xs leading-relaxed text-slate-400 text-center font-medium">
             {description[lang]}
           </p>
         </div>

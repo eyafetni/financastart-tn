@@ -77,13 +77,12 @@ export default function MaturityIndicator({ maturityData, lang }) {
             const isReal = stage.id === realStage;
             const isPerceived = stage.id === perceivedStage;
             const isCompleted = idx < realIndex;
-            const isUnreached = idx > realIndex && !isPerceived;
 
             let nodeClass = "bg-slate-900 border-slate-700 text-slate-400";
             let iconElement = <span className="text-xs font-bold">{idx + 1}</span>;
 
             if (isCompleted) {
-              nodeClass = "bg-cyan-500 border-cyan-400 text-slate-950 scale-110 shadow-lg shadow-cyan-500/20";
+              nodeClass = "bg-cyan-500 border-cyan-400 text-slate-955 scale-110 shadow-lg shadow-cyan-500/20";
               iconElement = <CheckCircle2 className="h-4 w-4 stroke-[3]" />;
             } else if (isReal) {
               nodeClass = "bg-slate-900 border-cyan-400 text-cyan-400 scale-125 pulse-active border-2";
@@ -115,7 +114,7 @@ export default function MaturityIndicator({ maturityData, lang }) {
                     </span>
                   )}
                   {isPerceived && hasMismatch && (
-                    <span className="text-[8px] uppercase tracking-wider bg-amber-950 text-amber-500 px-1 rounded-sm mt-0.5 font-bold border border-amber-500/20">
+                    <span className="text-[8px] uppercase tracking-wider bg-amber-955 text-amber-500 px-1 rounded-sm mt-0.5 font-bold border border-amber-500/20">
                       {t.maturityPerceived}
                     </span>
                   )}

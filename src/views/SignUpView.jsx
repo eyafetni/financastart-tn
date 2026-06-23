@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Eye, EyeOff } from 'lucide-react';
+import { register, createProject } from '../api';
 
 export default function SignUpView({ lang = 'fr' }) {
   const navigate = useNavigate();
@@ -108,21 +109,32 @@ export default function SignUpView({ lang = 'fr' }) {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (!validate()) return;
+  const handleSubmit = async (e) => {
+  e.preventDefault();
+  if (!validate()) return;
 
-    setIsSubmitting(true);
-    // Simulate API request
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setSuccessMessage(t.successMsg);
-      console.log('SignUp data submitted:', formData);
-      setTimeout(() => {
-        navigate('/login');
-      }, 1500);
-    }, 1500);
-  };
+  setIsSubmitting(true);
+
+  try {
+    // Appel API pour inscription
+    const data = await register(formData.email, formData.password, formData.name);
+
+    // Créer le projet juste après inscription
+    await createProject("Mon Projet", formData.secteur);
+
+    // Message de succès
+    setSuccessMessage(t.successMsg);
+
+    // Redirection vers le questionnaire
+    navigate('/questionnaire');
+  } catch (error) {
+    console.error("Erreur lors de l'inscription :", error);
+    setSuccessMessage("Une erreur est survenue.");
+  } finally {
+    setIsSubmitting(false);
+  }
+};
+
 
   const isRtl = lang === 'ar';
 

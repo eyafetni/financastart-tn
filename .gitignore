@@ -1,0 +1,19 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Base de données locale
+db.sqlite
+*.sqlite
+*.db
+
+# Environnements
+.env
+venv/
+.venv/
+
+# IDE
+.idea/
+.vscode/

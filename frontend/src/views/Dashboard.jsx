@@ -16,11 +16,21 @@ export default function Dashboard({ lang }) {
   const [loading, setLoading] = useState(true);
 
   const fetchDashboardData = async () => {
+    const projectId = localStorage.getItem("project_id");
+    const token = localStorage.getItem("token");
+    if (!projectId || !token) {
+      setLoading(false);
+      return;
+    }
     try {
-      const response = await fetch('/api/dashboard');
+      const response = await fetch(`http://localhost:8000/projects/${projectId}/dashboard`, {
+        headers: {
+          "Authorization": `Bearer ${token}`
+        }
+      });
       if (response.ok) {
         const rawJson = await response.json();
-        const adapted = getAdaptedData(rawJson);
+        const adapted = getAdaptedData(rawJson.full_data || rawJson);
         setDashboardData(adapted);
 
         // Sauvegarder F1 (après chargement des données)
@@ -61,23 +71,14 @@ export default function Dashboard({ lang }) {
   }, []);
 
   const handleSaveAnswers = async (updatedAnswers) => {
+    const projectId = localStorage.getItem("project_id");
+    const token = localStorage.getItem("token");
+    if (!projectId || !token) return false;
     try {
-      const response = await fetch('/api/dashboard', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ answers: updatedAnswers })
-      });
-      if (response.ok) {
-        const resData = await response.json();
-        if (resData.success && resData.data) {
-          const adapted = getAdaptedData(resData.data);
-          setDashboardData(adapted);
-          return true;
-        }
-      }
-      return false;
+      // On met à jour F1 avec les nouvelles réponses (AnswersInput)
+      const currentF1Data = await saveF1(updatedAnswers);
+      fetchDashboardData();
+      return true;
     } catch (e) {
       console.error('Error saving answers:', e);
       return false;

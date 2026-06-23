@@ -7,7 +7,13 @@ export async function register(email, password, name) {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ email, password, name })
   });
-  return res.json();
+  const data = await res.json();
+  if (!res.ok) {
+    throw new Error(data.detail || "Erreur lors de l'inscription");
+  }
+  localStorage.setItem("token", data.access_token);
+  localStorage.setItem("user_id", data.user_id);
+  return data;
 }
 
 export async function login(email, password) {
@@ -17,6 +23,9 @@ export async function login(email, password) {
     body: JSON.stringify({ email, password })
   });
   const data = await res.json();
+  if (!res.ok) {
+    throw new Error(data.detail || "Email ou mot de passe incorrect");
+  }
   localStorage.setItem("token", data.access_token);
   localStorage.setItem("user_id", data.user_id);
   localStorage.setItem("project_id", data.project_id || "");
@@ -33,9 +42,23 @@ export async function createProject(project_name, sector) {
     body: JSON.stringify({ project_name, sector })
   });
   const data = await res.json();
+  if (!res.ok) {
+    throw new Error(data.detail || "Erreur lors de la création du projet");
+  }
   localStorage.setItem("project_id", data.id);
   return data;
 }
+
+export function logout() {
+  localStorage.removeItem("token");
+  localStorage.removeItem("user_id");
+  localStorage.removeItem("project_id");
+}
+
+export function isAuthenticated() {
+  return !!getToken();
+}
+
 
 export async function saveF1(f1_diagnostic) {
   const projectId = localStorage.getItem("project_id");

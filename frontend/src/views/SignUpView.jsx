@@ -16,6 +16,7 @@ export default function SignUpView({ lang = 'fr' }) {
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [successMessage, setSuccessMessage] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
 
   const translations = {
     fr: {
@@ -39,7 +40,8 @@ export default function SignUpView({ lang = 'fr' }) {
       errPasswordRequired: "Le mot de passe est requis.",
       errConfirmPasswordRequired: "La confirmation du mot de passe est requise.",
       errPasswordsMatch: "Les mots de passe ne correspondent pas.",
-      successMsg: "Votre compte a été créé avec succès ! Redirection vers la connexion...",
+      successMsg: "Votre compte a été créé avec succès ! Redirection vers le questionnaire...",
+      genericError: "Une erreur est survenue. Veuillez réessayer.",
     },
     ar: {
       title: "إنشاء حساب",
@@ -62,11 +64,13 @@ export default function SignUpView({ lang = 'fr' }) {
       errPasswordRequired: "كلمة المرور مطلوبة.",
       errConfirmPasswordRequired: "تأكيد كلمة المرور مطلوب.",
       errPasswordsMatch: "كلمات المرور غير متطابقة.",
-      successMsg: "تم إنشاء حسابك بنجاح! جاري التوجيه نحو تسجيل الدخول...",
+      successMsg: "تم إنشاء حسابك بنجاح! جاري التوجيه نحو الاستبيان...",
+      genericError: "حدث خطأ ما. يرجى المحاولة مرة أخرى.",
     }
   };
 
   const t = translations[lang] || translations.fr;
+  const isRtl = lang === 'ar';
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -74,7 +78,6 @@ export default function SignUpView({ lang = 'fr' }) {
       ...prev,
       [name]: value,
     }));
-    // Clear validation error when typing
     if (errors[name]) {
       setErrors((prev) => ({
         ...prev,
@@ -94,7 +97,7 @@ export default function SignUpView({ lang = 'fr' }) {
     } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
       newErrors.email = t.errEmailInvalid;
     }
-    
+
     if (!formData.password) {
       newErrors.password = t.errPasswordRequired;
     }
@@ -110,37 +113,34 @@ export default function SignUpView({ lang = 'fr' }) {
   };
 
   const handleSubmit = async (e) => {
-  e.preventDefault();
-  if (!validate()) return;
+    e.preventDefault();
+    setErrorMessage('');
+    if (!validate()) return;
 
-  setIsSubmitting(true);
+    setIsSubmitting(true);
+    try {
+      // register() pose déjà "token" et "user_id" dans localStorage
+      await register(formData.email, formData.password, formData.fullName);
 
-  try {
-    // Appel API pour inscription
-    const data = await register(formData.email, formData.password, formData.name);
+      // Le secteur n'est pas encore connu à cette étape : on crée un projet
+      // "vide" que l'utilisateur précisera/complétera dans le questionnaire (F1).
+      await createProject("Mon Projet", null);
 
-    // Créer le projet juste après inscription
-    await createProject("Mon Projet", formData.secteur);
-
-    // Message de succès
-    setSuccessMessage(t.successMsg);
-
-    // Redirection vers le questionnaire
-    navigate('/questionnaire');
-  } catch (error) {
-    console.error("Erreur lors de l'inscription :", error);
-    setSuccessMessage("Une erreur est survenue.");
-  } finally {
-    setIsSubmitting(false);
-  }
-};
-
-
-  const isRtl = lang === 'ar';
+      setSuccessMessage(t.successMsg);
+      setTimeout(() => {
+        navigate('/questionnaire');
+      }, 1000);
+    } catch (error) {
+      console.error("Erreur lors de l'inscription :", error);
+      setErrorMessage(error.message || t.genericError);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <div className="flex-1 flex items-center justify-center px-4 py-12 sm:px-6 lg:px-8">
-      <div className="w-full max-w-md animate-fade-in">
+      <div className="w-full max-w-md animate-fade-in" dir={isRtl ? 'rtl' : 'ltr'}>
         <div className="text-center mb-8">
 
           <h2 className="text-3xl font-extrabold text-white tracking-tight">
@@ -158,6 +158,12 @@ export default function SignUpView({ lang = 'fr' }) {
             </div>
           ) : (
             <form className="space-y-5" onSubmit={handleSubmit}>
+              {errorMessage && (
+                <div className="bg-rose-950/60 border border-rose-500/30 text-rose-300 rounded-xl p-3 text-center text-xs font-medium">
+                  {errorMessage}
+                </div>
+              )}
+
               {/* Full Name Input */}
               <div className="space-y-2">
                 <label htmlFor="fullName" className="block text-sm font-medium text-slate-300">

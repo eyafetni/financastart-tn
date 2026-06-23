@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Eye, EyeOff } from 'lucide-react';
+import { login } from '../api';
 
 export default function LoginView({ lang = 'fr', onLoginSuccess }) {
   const navigate = useNavigate();
@@ -28,6 +29,7 @@ export default function LoginView({ lang = 'fr', onLoginSuccess }) {
       errEmailRequired: "L'adresse e-mail est requise.",
       errEmailInvalid: "L'adresse e-mail n'est pas valide.",
       errPasswordRequired: "Le mot de passe est requis.",
+      errInvalidCredentials: "Email ou mot de passe incorrect.",
       successMsg: "Connexion réussie ! Redirection...",
     },
     ar: {
@@ -44,11 +46,13 @@ export default function LoginView({ lang = 'fr', onLoginSuccess }) {
       errEmailRequired: "البريد الإلكتروني مطلوب.",
       errEmailInvalid: "البريد الإلكتروني غير صالح.",
       errPasswordRequired: "كلمة المرور مطلوبة.",
+      errInvalidCredentials: "البريد الإلكتروني أو كلمة المرور غير صحيحة.",
       successMsg: "تم تسجيل الدخول بنجاح! جاري التوجيه...",
     }
   };
 
   const t = translations[lang] || translations.fr;
+  const isRtl = lang === 'ar';
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -56,7 +60,6 @@ export default function LoginView({ lang = 'fr', onLoginSuccess }) {
       ...prev,
       [name]: value,
     }));
-    // Clear validation error when typing
     if (errors[name]) {
       setErrors((prev) => ({
         ...prev,
@@ -72,7 +75,7 @@ export default function LoginView({ lang = 'fr', onLoginSuccess }) {
     } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
       newErrors.email = t.errEmailInvalid;
     }
-    
+
     if (!formData.password) {
       newErrors.password = t.errPasswordRequired;
     }
@@ -81,31 +84,32 @@ export default function LoginView({ lang = 'fr', onLoginSuccess }) {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!validate()) return;
 
     setIsSubmitting(true);
-    // Simulate API request
-    setTimeout(() => {
-      setIsSubmitting(false);
-      localStorage.setItem('auth_token', 'dummy_token_123456');
+    try {
+      // login() pose déjà "token", "user_id" et "project_id" dans localStorage
+      await login(formData.email, formData.password);
       setSuccessMessage(t.successMsg);
-      console.log('Login credentials submitted:', formData);
       if (onLoginSuccess) {
         onLoginSuccess();
       }
       setTimeout(() => {
         navigate('/');
       }, 1000);
-    }, 1500);
+    } catch (error) {
+      console.error('Erreur lors de la connexion :', error);
+      setErrors({ password: t.errInvalidCredentials });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
-
-  const isRtl = lang === 'ar';
 
   return (
     <div className="flex-1 flex items-center justify-center px-4 py-12 sm:px-6 lg:px-8">
-      <div className="w-full max-w-md animate-fade-in">
+      <div className="w-full max-w-md animate-fade-in" dir={isRtl ? 'rtl' : 'ltr'}>
         <div className="text-center mb-8">
 
           <h2 className="text-3xl font-extrabold text-white tracking-tight">

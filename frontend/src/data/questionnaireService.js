@@ -1,4 +1,8 @@
-// Service pour le questionnaire avec persistance dans questionnaire.json via l'API du serveur Vite
+import defaultQuestionnaire from './questionnaire.json';
+
+const BASE_URL = "http://localhost:8000";
+const getToken = () => localStorage.getItem("token");
+const getProjectId = () => localStorage.getItem("project_id");
 
 // Définir toutes les questions possibles comme fallback et pour la traduction dans les vues existantes
 export const allQuestions = {
@@ -30,7 +34,7 @@ export const allQuestions = {
     id: 'agri_specifics',
     category: 'sector',
     type: 'radio',
-    label: { fr: 'Produits agricoles: Type de chaîne de valeur', ar: 'المنتجات الزراعية: نوع سلسلة القيمة' },
+    label: { fr: 'Produits agricoles: Type de chaîne de valeur', ar: 'المنتجات agricoles: نوع سلسلة القيمة' },
     options: [
       { value: 'production', label: { fr: 'Production/Transformation', ar: 'الإنتاج/التحويل' } },
       { value: 'distribution', label: { fr: 'Distribution/Logistique', ar: 'التوزيع/الخدمات اللوجستية' } },
@@ -82,40 +86,59 @@ export const allQuestions = {
 };
 
 /**
- * Charge les données complètes du questionnaire depuis questionnaire.json
+ * Charge les données complètes du questionnaire depuis la base de données
  */
 export async function loadQuestionnaire() {
+  const projectId = getProjectId();
+  const token = getToken();
+
+  if (!projectId || !token) {
+    return defaultQuestionnaire;
+  }
+
   try {
-    const response = await fetch('/api/questionnaire');
+    const response = await fetch(`${BASE_URL}/projects/${projectId}`, {
+      headers: {
+        "Authorization": `Bearer ${token}`
+      }
+    });
+
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
-    return await response.json();
+
+    const projectData = await response.json();
+    if (projectData && projectData.f1_diagnostic) {
+      return projectData.f1_diagnostic;
+    }
+    
+    return defaultQuestionnaire;
   } catch (error) {
-    console.error('Erreur lors du chargement du questionnaire:', error);
-    // Retourner un objet par défaut si le fetch échoue
-    return {
-      description: "",
-      stade_reel: "Structuration",
-      stade_percu: "Fundraising",
-      divergence_explication: "L'entrepreneur se croit prêt pour le financement mais n'a pas de structure juridique enregistrée.",
-      questions: [],
-      answers: []
-    };
+    console.error('Erreur lors du chargement du questionnaire backend, utilisation du fallback:', error);
+    return defaultQuestionnaire;
   }
 }
 
 /**
- * Sauvegarde les données complètes du questionnaire dans questionnaire.json
+ * Sauvegarde les données complètes du questionnaire dans la base de données
  */
 export async function saveQuestionnaire(data) {
+  const projectId = getProjectId();
+  const token = getToken();
+
+  if (!projectId || !token) {
+    console.warn("Pas de projectId ou token trouvé.");
+    return { success: false, error: "Non authentifié ou projet introuvable" };
+  }
+
   try {
-    const response = await fetch('/api/questionnaire', {
-      method: 'POST',
+    const response = await fetch(`${BASE_URL}/projects/${projectId}/f1`, {
+      method: 'PUT',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        "Authorization": `Bearer ${token}`
       },
-      body: JSON.stringify(data)
+      body: JSON.stringify({ f1_diagnostic: data })
     });
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);

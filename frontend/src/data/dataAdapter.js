@@ -184,13 +184,13 @@ const DIMENSION_CONFIG = [
     jsonKey: 'market_score',
     f2Key: 'market',
     color: 'cyan',
-    title:       { fr: 'Marché',              ar: 'السوق' },
+    title: { fr: 'Marché', ar: 'السوق' },
     description: { fr: 'Analyse de la demande et adéquation marché.', ar: 'تحليل الطلب وملاءمة المنتج للسوق.' },
     subLabels: {
-      taille_marche:     { fr: 'Taille du marché',   ar: 'حجم السوق' },
-      concurrence:       { fr: 'Concurrence',         ar: 'المنافسة' },
-      validation_client: { fr: 'Validation client',   ar: 'التحقق من العملاء' },
-      modele_revenus:    { fr: 'Modèle de revenus',   ar: 'نموذج الإيرادات' }
+      taille_marche: { fr: 'Taille du marché', ar: 'حجم السوق' },
+      concurrence: { fr: 'Concurrence', ar: 'المنافسة' },
+      validation_client: { fr: 'Validation client', ar: 'التحقق من العملاء' },
+      modele_revenus: { fr: 'Modèle de revenus', ar: 'نموذج الإيرادات' }
     }
   },
   {
@@ -198,13 +198,13 @@ const DIMENSION_CONFIG = [
     jsonKey: 'commercial_offer_score',
     f2Key: 'commercial_offer',
     color: 'indigo',
-    title:       { fr: 'Commercial',          ar: 'العرض التجاري' },
+    title: { fr: 'Commercial', ar: 'العرض التجاري' },
     description: { fr: 'Traction client et tunnel de conversion.', ar: 'جذب العملاء ومسار تحويل المبيعات.' },
     subLabels: {
-      proposition_valeur:  { fr: 'Proposition de valeur',        ar: 'مقترح القيمة' },
-      maturite_produit:    { fr: 'Maturité du produit',          ar: 'نضج المنتج' },
-      strategie_prix:      { fr: 'Stratégie de prix',            ar: 'استراتيجية التسعير' },
-      alignement_besoins:  { fr: 'Alignement avec les besoins',  ar: 'الملاءمة مع الاحتياجات' }
+      proposition_valeur: { fr: 'Proposition de valeur', ar: 'مقترح القيمة' },
+      maturite_produit: { fr: 'Maturité du produit', ar: 'نضج المنتج' },
+      strategie_prix: { fr: 'Stratégie de prix', ar: 'استراتيجية التسعير' },
+      alignement_besoins: { fr: 'Alignement avec les besoins', ar: 'الملاءمة مع الاحتياجات' }
     }
   },
   {
@@ -212,13 +212,13 @@ const DIMENSION_CONFIG = [
     jsonKey: 'innovation_score',
     f2Key: 'innovation',
     color: 'violet',
-    title:       { fr: 'Innovation',          ar: 'الابتكار' },
+    title: { fr: 'Innovation', ar: 'الابتكار' },
     description: { fr: 'Avantage produit et barrières concurrentielles.', ar: 'ميزة المنتج والحواجز التنافسية.' },
     subLabels: {
-      nouveaute_locale:  { fr: 'Nouveauté locale',          ar: 'الابتكار المحلي' },
-      intensite_tech:    { fr: 'Intensité technologique',   ar: 'الكثافة التكنولوجية' },
-      barrieres_entree:  { fr: "Barrières à l'entrée",      ar: 'حواجز الدخول' },
-      degre_rupture:     { fr: 'Degré de rupture',          ar: 'درجة القطيعة' }
+      nouveaute_locale: { fr: 'Nouveauté locale', ar: 'الابتكار المحلي' },
+      intensite_tech: { fr: 'Intensité technologique', ar: 'الكثافة التكنولوجية' },
+      barrieres_entree: { fr: "Barrières à l'entrée", ar: 'حواجز الدخول' },
+      degre_rupture: { fr: 'Degré de rupture', ar: 'درجة القطيعة' }
     }
   },
   {
@@ -226,13 +226,13 @@ const DIMENSION_CONFIG = [
     jsonKey: 'scalability_score',
     f2Key: 'scalability',
     color: 'amber',
-    title:       { fr: 'Scalabilité',         ar: 'القابلية للتوسع' },
+    title: { fr: 'Scalabilité', ar: 'القابلية للتوسع' },
     description: { fr: "Potentiel d'automatisation et modèle récurrent.", ar: 'إمكانية الأتمتة والنموذج المتكرر.' },
     subLabels: {
-      replicabilite:          { fr: 'Réplicabilité',               ar: 'قابلية التكرار' },
-      independance_manuelle:  { fr: 'Indépendance manuelle',       ar: 'الاستقلالية عن العمل اليدوي' },
-      couts_deploiement:      { fr: 'Coûts de déploiement',        ar: 'تكاليف النشر' },
-      potentiel_geo:          { fr: 'Potentiel géographique',      ar: 'الإمكانية الجغرافية' }
+      replicabilite: { fr: 'Réplicabilité', ar: 'قابلية التكرار' },
+      independance_manuelle: { fr: 'Indépendance manuelle', ar: 'الاستقلالية عن العمل اليدوي' },
+      couts_deploiement: { fr: 'Coûts de déploiement', ar: 'تكاليف النشر' },
+      potentiel_geo: { fr: 'Potentiel géographique', ar: 'الإمكانية الجغرافية' }
     }
   },
   {
@@ -240,12 +240,12 @@ const DIMENSION_CONFIG = [
     jsonKey: 'green_score',
     f2Key: 'green',
     color: 'emerald',
-    title:       { fr: 'Green',               ar: 'الاستدامة البيئية' },
+    title: { fr: 'Green', ar: 'الاستدامة البيئية' },
     description: { fr: 'Bilan carbone et circularité des ressources.', ar: 'بصمة الكربون ودائرية الموارد.' },
     subLabels: {
-      climat_air:         { fr: 'Climat & Air',        ar: 'المناخ والهواء' },
-      eau:                { fr: "Gestion de l'eau",    ar: 'إدارة المياه' },
-      sols_biodiversite:  { fr: 'Sols & Biodiversité', ar: 'التربة والتنوع البيولوجي' },
+      climat_air: { fr: 'Climat & Air', ar: 'المناخ والهواء' },
+      eau: { fr: "Gestion de l'eau", ar: 'إدارة المياه' },
+      sols_biodiversite: { fr: 'Sols & Biodiversité', ar: 'التربة والتنوع البيولوجي' },
       ressources_dechets: { fr: 'Ressources & Déchets', ar: 'الموارد والنفايات' }
     }
   }

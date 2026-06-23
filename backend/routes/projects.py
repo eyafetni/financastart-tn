@@ -15,7 +15,6 @@ if f2_scoring_path not in sys.path:
     sys.path.insert(0, f2_scoring_path)
 
 from ai.f2_scoring.fonction_principale import process_entrepreneur_profile
-
 router = APIRouter(prefix="/projects", tags=["Projects"])
 
 

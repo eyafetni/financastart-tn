@@ -1,46 +1,43 @@
-import hashlib
-import secrets
-import jwt
-from datetime import datetime, timedelta
-from database import get_db
+import sqlite3
+import os
 
-SECRET_KEY = "financastart-tn-secret-2026"  # change en prod
-ALGORITHM = "HS256"
-TOKEN_EXPIRE_HOURS = 24
+DB_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "financastart.db")
 
-# ── MOT DE PASSE ──────────────────────────────────
-def hash_password(password: str) -> str:
-    return hashlib.sha256(password.encode()).hexdigest()
+def get_db():
+    conn = sqlite3.connect(DB_PATH)
+    conn.row_factory = sqlite3.Row
+    return conn
 
-def verify_password(password: str, hashed: str) -> bool:
-    return hash_password(password) == hashed
-
-# ── JWT ───────────────────────────────────────────
-def create_token(user_id: int, email: str) -> str:
-    payload = {
-        "user_id": user_id,
-        "email": email,
-        "exp": datetime.utcnow() + timedelta(hours=TOKEN_EXPIRE_HOURS)
-    }
-    return jwt.encode(payload, SECRET_KEY, algorithm=ALGORITHM)
-
-def decode_token(token: str) -> dict:
-    try:
-        return jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
-    except jwt.ExpiredSignatureError:
-        raise ValueError("Token expiré")
-    except jwt.InvalidTokenError:
-        raise ValueError("Token invalide")
-
-# ── MIDDLEWARE : récupérer user courant ───────────
-from fastapi import Header, HTTPException
-
-def get_current_user(authorization: str = Header(...)):
-    if not authorization.startswith("Bearer "):
-        raise HTTPException(status_code=401, detail="Format token invalide")
-    token = authorization.split(" ")[1]
-    try:
-        payload = decode_token(token)
-        return payload  # {"user_id": ..., "email": ...}
-    except ValueError as e:
-        raise HTTPException(status_code=401, detail=str(e))
+def init_db():
+    conn = get_db()
+    cursor = conn.cursor()
+    
+    # Table users
+    cursor.execute("""
+    CREATE TABLE IF NOT EXISTS users (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        email TEXT UNIQUE NOT NULL,
+        password_hash TEXT NOT NULL,
+        name TEXT,
+        created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+    )
+    """)
+    
+    # Table projects
+    cursor.execute("""
+    CREATE TABLE IF NOT EXISTS projects (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        user_id INTEGER NOT NULL,
+        project_name TEXT NOT NULL,
+        sector TEXT,
+        f1_diagnostic TEXT,
+        f2_scoring TEXT,
+        f3_roadmap TEXT,
+        status TEXT DEFAULT 'draft',
+        created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+        updated_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+        FOREIGN KEY (user_id) REFERENCES users (id)
+    )
+    """)
+    conn.commit()
+    conn.close()

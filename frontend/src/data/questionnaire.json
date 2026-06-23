@@ -1,0 +1,116 @@
+{
+  "description": "",
+  "stade_reel": "Structuration",
+  "stade_percu": "Fundraising",
+  "divergence_explication": "L'entrepreneur se croit prêt pour le financement mais n'a pas de structure juridique enregistrée.",
+  "questions": [
+    {
+      "id": "legal_status",
+      "texte": {
+        "fr": "Statut légal de l'entreprise",
+        "ar": "الحالة القانونية للشركة"
+      },
+      "type": "radio",
+      "options": [
+        { "value": "auto-entrepreneur", "label": { "fr": "Auto-entrepreneur", "ar": "عامل حر" } },
+        { "value": "sarl", "label": { "fr": "SARL", "ar": "شركة ذات مسؤولية محدودة" } },
+        { "value": "sas", "label": { "fr": "SAS", "ar": "شركة مساهمة مبسطة" } },
+        { "value": "none", "label": { "fr": "Aucune structure enregistrée", "ar": "لا توجد هيكلة قانونية" } }
+      ]
+    },
+    {
+      "id": "market_validation",
+      "texte": {
+        "fr": "Quelles validations client avez-vous effectuées?",
+        "ar": "ما هي التحققات من العملاء التي أجريتها؟"
+      },
+      "type": "checkbox",
+      "options": [
+        { "value": "interviews", "label": { "fr": "Entretiens utilisateurs", "ar": "مقابلات المستخدمين" } },
+        { "value": "prototype_test", "label": { "fr": "Test de prototype", "ar": "اختبار النموذج" } },
+        { "value": "beta_users", "label": { "fr": "Utilisateurs bêta", "ar": "المستخدمون التجريبيون" } },
+        { "value": "none", "label": { "fr": "Aucune validation", "ar": "بدون تحقق" } }
+      ]
+    },
+    {
+      "id": "agri_specifics",
+      "texte": {
+        "fr": "Produits agricoles: Type de chaîne de valeur",
+        "ar": "المنتجات الزراعية: نوع سلسلة القيمة"
+      },
+      "type": "radio",
+      "options": [
+        { "value": "production", "label": { "fr": "Production/Transformation", "ar": "الإنتاج/التحويل" } },
+        { "value": "distribution", "label": { "fr": "Distribution/Logistique", "ar": "التوزيع/الخدمات اللوجستية" } },
+        { "value": "retail", "label": { "fr": "Vente au détail", "ar": "البيع بالتجزئة" } },
+        { "value": "tech", "label": { "fr": "Solution technologique agri", "ar": "حل تكنولوجي زراعي" } }
+      ]
+    },
+    {
+      "id": "funding_readiness",
+      "texte": {
+        "fr": "Êtes-vous réellement prêt pour le financement?",
+        "ar": "هل أنت حقاً مستعداً للتمويل؟"
+      },
+      "type": "radio",
+      "options": [
+        { "value": "very_ready", "label": { "fr": "Très prêt - tout est en place", "ar": "مستعد جداً - كل شيء جاهز" } },
+        { "value": "partially_ready", "label": { "fr": "Partiellement - besoin de clarifications", "ar": "جزئياً - بحاجة لتوضيحات" } },
+        { "value": "not_ready", "label": { "fr": "Pas prêt - besoin de travail", "ar": "غير مستعد - بحاجة للعمل" } }
+      ]
+    },
+    {
+      "id": "legal_structure_details",
+      "texte": {
+        "fr": "Prochaines étapes pour structurer légalement (détails)",
+        "ar": "الخطوات التالية للهيكلة القانونية (التفاصيل)"
+      },
+      "type": "textarea",
+      "placeholder": {
+        "fr": "Décrivez vos plans...",
+        "ar": "صف خطتك..."
+      }
+    },
+    {
+      "id": "revenue_model",
+      "texte": {
+        "fr": "Modèle de revenu principal",
+        "ar": "نموذج الإيرادات الرئيسي"
+      },
+      "type": "radio",
+      "options": [
+        { "value": "b2b", "label": { "fr": "B2B (Entreprise à Entreprise)", "ar": "B2B" } },
+        { "value": "b2c", "label": { "fr": "B2C (Entreprise à Consommateur)", "ar": "B2C" } },
+        { "value": "hybrid", "label": { "fr": "Hybride", "ar": "مختلط" } },
+        { "value": "subscription", "label": { "fr": "Abonnement", "ar": "الاشتراك" } }
+      ]
+    },
+    {
+      "id": "time_to_market",
+      "texte": {
+        "fr": "Délai estimé avant lancement commercial",
+        "ar": "الوقت المتوقع قبل الإطلاق التجاري"
+      },
+      "type": "radio",
+      "options": [
+        { "value": "0-3months", "label": { "fr": "0-3 mois", "ar": "0-3 أشهر" } },
+        { "value": "3-6months", "label": { "fr": "3-6 mois", "ar": "3-6 أشهر" } },
+        { "value": "6-12months", "label": { "fr": "6-12 mois", "ar": "6-12 شهراً" } },
+        { "value": "after_1year", "label": { "fr": "Plus d'1 an", "ar": "أكثر من سنة" } }
+      ]
+    },
+    {
+      "id": "employee_count",
+      "texte": {
+        "fr": "Nombre d'employés prévus à plein temps",
+        "ar": "عدد الموظفين المتوقع بدوام كامل"
+      },
+      "type": "number",
+      "placeholder": {
+        "fr": "Exemple: 5",
+        "ar": "مثال: 5"
+      }
+    }
+  ],
+  "answers": []
+}

@@ -6,12 +6,15 @@ from database import get_db
 from models import ProjectCreate, F1Update, F2Update, F3Update
 from auth import get_current_user
 
-# Ajout du dossier f2_scoring au sys.path pour les imports de l'IA
-f2_scoring_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "ai", "f2_scoring"))
+# Ajout du dossier racine et f2_scoring au sys.path pour les imports de l'IA
+parent_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
+if parent_dir not in sys.path:
+    sys.path.insert(0, parent_dir)
+f2_scoring_path = os.path.join(parent_dir, "ai", "f2_scoring")
 if f2_scoring_path not in sys.path:
     sys.path.insert(0, f2_scoring_path)
 
-from fonction_principale import process_entrepreneur_profile
+from ai.f2_scoring.fonction_principale import process_entrepreneur_profile
 
 router = APIRouter(prefix="/projects", tags=["Projects"])
 

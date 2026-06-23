@@ -2535,13 +2535,5 @@
       ]
     }
   ],
-  "answers": {
-    "nom_entreprise": "fle7a",
-    "description_libre": "Projet agricole basé à Siliana",
-    "confirmation_secteur": "oui",
-    "choix_region": "siliana",
-    "equipe": "seul",
-    "agri_certifications": "non",
-    "agri_chaine_froid": "non"
-  }
+  "answers": {}
 }

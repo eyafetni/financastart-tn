@@ -19,8 +19,28 @@ const apiPlugin = () => ({
         if (req.method === 'GET') {
           res.setHeader('Content-Type', 'application/json');
           if (fs.existsSync(filePath)) {
-            const content = fs.readFileSync(filePath, 'utf-8');
-            res.end(content);
+            try {
+              const content = fs.readFileSync(filePath, 'utf-8');
+              const parsedData = JSON.parse(content);
+              
+              // Load answers from answers.json if it exists and merge it
+              const answersPath = path.resolve(__dirname, 'src/data/answers.json');
+              if (fs.existsSync(answersPath)) {
+                try {
+                  const answersContent = fs.readFileSync(answersPath, 'utf-8');
+                  if (answersContent.trim()) {
+                    parsedData.answers = JSON.parse(answersContent);
+                  }
+                } catch (e) {
+                  console.error('Error reading answers.json:', e);
+                }
+              }
+              
+              res.end(JSON.stringify(parsedData, null, 2));
+            } catch (err) {
+              res.statusCode = 500;
+              res.end(JSON.stringify({ error: 'Failed to read questionnaire data' }));
+            }
           } else {
             res.statusCode = 404;
             res.end(JSON.stringify({ error: 'File not found' }));
@@ -46,6 +66,16 @@ const apiPlugin = () => ({
                 } catch (e) {
                   console.error('Error reading existing questionnaire:', e);
                 }
+              }
+              
+              // Extract and save answers separately to answers.json
+              if (data.answers) {
+                const answersPath = path.resolve(__dirname, 'src/data/answers.json');
+                fs.writeFileSync(answersPath, JSON.stringify(data.answers, null, 2), 'utf-8');
+                delete data.answers;
+              }
+              if (existingData.answers) {
+                delete existingData.answers;
               }
               
               const mergedData = {
@@ -141,7 +171,7 @@ export default defineConfig({
   ],
   server: {
     watch: {
-      ignored: ['**/src/data/questionnaire.json', '**/src/data/dashboard.json']
+      ignored: ['**/src/data/questionnaire.json', '**/src/data/dashboard.json', '**/src/data/answers.json']
     }
   }
 })

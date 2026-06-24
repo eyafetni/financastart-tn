@@ -15,7 +15,7 @@ const apiPlugin = () => ({
     server.middlewares.use((req, res, next) => {
       if (req.url === '/api/questionnaire') {
         const filePath = path.resolve(__dirname, 'src/data/questionnaire.json');
-        
+
         if (req.method === 'GET') {
           res.setHeader('Content-Type', 'application/json');
           if (fs.existsSync(filePath)) {
@@ -27,7 +27,7 @@ const apiPlugin = () => ({
           }
           return;
         }
-        
+
         if (req.method === 'POST') {
           let body = '';
           req.on('data', chunk => {
@@ -47,7 +47,7 @@ const apiPlugin = () => ({
                   console.error('Error reading existing questionnaire:', e);
                 }
               }
-              
+
               const mergedData = {
                 ...existingData,
                 ...data,
@@ -70,7 +70,7 @@ const apiPlugin = () => ({
 
       if (req.url === '/api/dashboard') {
         const filePath = path.resolve(__dirname, 'src/data/dashboard.json');
-        
+
         if (req.method === 'GET') {
           res.setHeader('Content-Type', 'application/json');
           if (fs.existsSync(filePath)) {
@@ -82,7 +82,7 @@ const apiPlugin = () => ({
           }
           return;
         }
-        
+
         if (req.method === 'POST') {
           let body = '';
           req.on('data', chunk => {
@@ -102,7 +102,7 @@ const apiPlugin = () => ({
                   console.error('Error reading existing dashboard:', e);
                 }
               }
-              
+
               const mergedData = {
                 ...existingData,
                 ...data,

@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
-import { 
-  CheckCircle2, 
-  RotateCcw, 
+import {
+  CheckCircle2,
+  RotateCcw,
   AlertTriangle,
   Loader2,
   FileText,
@@ -73,16 +73,16 @@ const getActiveQuestions = (questions, answers, detectedSector) => {
   const active = [];
   let i = 0;
   const sector = getSelectedSector(answers, detectedSector);
-  
+
   while (i < questions.length) {
     const q = questions[i];
-    
+
     // 1. Filtrer par branch (secteur)
     if (q.branch && !q.branch.includes(sector)) {
       i++;
       continue;
     }
-    
+
     // 2. Filtrer par condition
     if (q.condition) {
       const [field, val] = q.condition.split('=');
@@ -91,9 +91,9 @@ const getActiveQuestions = (questions, answers, detectedSector) => {
         continue;
       }
     }
-    
+
     active.push(q);
-    
+
     // 3. Routage next dynamique (saut de questions)
     if (q.next) {
       const answerVal = answers[q.id];
@@ -106,7 +106,7 @@ const getActiveQuestions = (questions, answers, detectedSector) => {
         }
       }
     }
-    
+
     i++;
   }
   return active;
@@ -121,7 +121,7 @@ export default function Questionnaire({ lang }) {
   const [stadeReel, setStadeReel] = useState('');
   const [stadePercu, setStadePercu] = useState('');
   const [divergenceExplication, setDivergenceExplication] = useState('');
-  
+
   const [currentStepIndex, setCurrentStepIndex] = useState(0);
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
@@ -142,7 +142,7 @@ export default function Questionnaire({ lang }) {
         const data = await loadQuestionnaire();
         setDescription(data.description || '');
         setQuestions(data.questions || []);
-        
+
         // Formater les réponses en objet plat {id: valeur}
         let loadedAnswers = {};
         if (Array.isArray(data.answers)) {
@@ -159,12 +159,12 @@ export default function Questionnaire({ lang }) {
         if (!loadedAnswers.description_libre && data.description) {
           loadedAnswers.description_libre = data.description;
         }
-        
+
         setAnswers(loadedAnswers);
         setStadeReel(data.stade_reel || '');
         setStadePercu(data.stade_percu || '');
         setDivergenceExplication(data.divergence_explication || '');
-        
+
         // Initialiser la ref de sauvegarde
         lastSavedAnswersRef.current = JSON.stringify(loadedAnswers) + (data.description || '');
       } catch (err) {
@@ -220,7 +220,7 @@ export default function Questionnaire({ lang }) {
       updatedDesc = value;
       setDescription(value);
     }
-    
+
     // Sauvegarder immédiatement uniquement pour les clics radios pour fluidité, debouncer le reste
     const questionDef = questions.find(q => q.id === questionId);
     const isClickType = questionDef?.type === 'radio';
@@ -232,17 +232,17 @@ export default function Questionnaire({ lang }) {
   // Gérer le basculement d'une case à cocher (checkbox)
   const handleCheckboxToggle = (questionId, optionValue) => {
     const currentAnswer = answers[questionId];
-    const currentValues = Array.isArray(currentAnswer) 
-      ? currentAnswer 
+    const currentValues = Array.isArray(currentAnswer)
+      ? currentAnswer
       : (currentAnswer ? [currentAnswer] : []);
-    
+
     let newValues;
     if (currentValues.includes(optionValue)) {
       newValues = currentValues.filter(v => v !== optionValue);
     } else {
       newValues = [...currentValues, optionValue];
     }
-    
+
     handleAnswerChange(questionId, newValues);
     // Sauvegarder immédiatement les checkboxes
     saveAllData(description, {
@@ -259,6 +259,325 @@ export default function Questionnaire({ lang }) {
       setCurrentStepIndex(0);
       await saveAllData('', {});
     }
+  };
+
+  // Exporter les réponses sous forme de fichier answers.json
+  const handleExportJSON = () => {
+    // 1. Résoudre le Secteur
+    let rawSecteur = answers.choix_secteur;
+    if (!rawSecteur && answers.confirmation_secteur === 'oui') {
+      rawSecteur = detectedSector;
+    }
+    if (!rawSecteur) rawSecteur = detectedSector || 'agriculture';
+    if (rawSecteur === 'agri-food') rawSecteur = 'agriculture';
+
+    const sectorMapping = {
+      'agriculture': 'agriculture_sylviculture_peche',
+      'industrie': 'industrie_construction',
+      'commerce': 'commerce_transport_logistique',
+      'service': 'service_tourisme',
+      'technologie': 'technologie_services_entreprise'
+    };
+    const resolvedSector = sectorMapping[rawSecteur] || rawSecteur;
+
+    // 2. Résoudre la Localisation
+    let resolvedLocalisation = detectedRegion;
+    if (answers.confirmation_region === 'non') {
+      resolvedLocalisation = answers.choix_region;
+    }
+    if (!resolvedLocalisation) resolvedLocalisation = detectedRegion || '';
+
+    // 3. Résoudre le Stade perçu
+    let resolvedStadePercu = detectedStage;
+    if (answers.confirmation_stade === 'non') {
+      resolvedStadePercu = answers.choix_stade;
+    }
+    if (!resolvedStadePercu) resolvedStadePercu = detectedStage || '';
+
+    // 4. Données de base
+    const payload = {
+      nom_entreprise: answers.nom_entreprise || adaptedData.nom_entreprise || '',
+      description_libre: description || answers.description_libre || '',
+      secteur: resolvedSector,
+      localisation: resolvedLocalisation,
+      stade_percu: resolvedStadePercu,
+      equipe: answers.equipe || null
+    };
+
+    // 5. Ajout des champs spécifiques aux secteurs
+    if (rawSecteur === 'industrie') {
+      payload.indus_equipements = answers.indus_equipements || null;
+      payload.indus_iso = answers.indus_iso || null;
+      payload.indus_foprodi = answers.indus_foprodi ? (answers.indus_foprodi === 'oui') : null;
+      payload.indus_sous_traitance = answers.indus_donneurs_ordre === 'contrats_formels' ? 'formels' :
+        answers.indus_donneurs_ordre === 'informellement' ? 'informels' :
+          answers.indus_donneurs_ordre === 'non' ? 'aucun' : null;
+    } else if (rawSecteur === 'agriculture') {
+      payload.agri_certifications = answers.agri_certifications ? (answers.agri_certifications === 'oui') : null;
+      payload.agri_chaine_froid = answers.agri_chaine_froid ? (answers.agri_chaine_froid === 'oui') : null;
+      payload.agri_saisonnalite = answers.agri_saisonnalite || null;
+      payload.agri_foncier = answers.agri_foncier || null;
+    } else if (rawSecteur === 'commerce') {
+      payload.com_distribution = answers.com_distribution || null;
+      payload.com_transport = answers.com_transport || null;
+      payload.com_digital = answers.com_digital || null;
+      payload.com_stock = answers.com_stock || null;
+    } else if (rawSecteur === 'service') {
+      payload.serv_classement = answers.serv_classement || null;
+      payload.serv_fidelisation = answers.serv_fidelisation || null;
+      payload.serv_numerique = answers.serv_numerique || null;
+      payload.serv_saisonnalite = answers.serv_saisonnalite || null;
+    } else if (rawSecteur === 'technologie') {
+      payload.tech_mvp = answers.tech_mvp || null;
+      payload.tech_mrr = answers.tech_mrr || null;
+      payload.tech_propriete_intellectuelle = answers.tech_propriete_intellectuelle || null;
+      payload.tech_scalabilite = answers.tech_scalabilite || null;
+    }
+
+    // 6. Ajout des champs généraux
+    payload.rne = answers.rne ? (answers.rne === 'oui') : null;
+    payload.forme_juridique = payload.rne ? (answers.forme_juridique || null) : null;
+    payload.a_revenus = answers.revenus ? (answers.revenus === 'oui') : null;
+    payload.chiffre_affaires = payload.a_revenus ? (Number(answers.chiffre_affaires) || null) : null;
+    payload.anciennete_revenus = payload.a_revenus ? (answers.duree_revenus || null) : null;
+    payload.a_clients_payants = !payload.a_revenus && answers.clients_payants ? (answers.clients_payants === 'oui') : null;
+    payload.lettres_intention = !payload.a_revenus && payload.a_clients_payants && answers.lettres_intention ? (answers.lettres_intention === 'oui') : null;
+    payload.validation_type = !payload.a_revenus && !payload.a_clients_payants && answers.validation_idee ? answers.validation_idee : null;
+    payload.business_plan = answers.business_plan || null;
+    payload.innovation = answers.innovation || null;
+    payload.accompagnement = answers.accompagnement || null;
+    payload.financement = answers.financement_externe || null;
+
+    // 7. Mapping des réponses F2
+    const f2QuestionsMapping = {
+      mkt_cible: {
+        key: 'type_cible',
+        options: {
+          b2c: { index: 0, valeur: 'B2C' },
+          b2b_pme: { index: 1, valeur: 'B2B_SME' },
+          b2b_grands_comptes: { index: 2, valeur: 'B2B_Enterprise' },
+          b2b2c: { index: 3, valeur: 'B2B2C' },
+          b2g: { index: 4, valeur: 'B2G' }
+        }
+      },
+      mkt_som: {
+        key: 'potentiel_financier_marche',
+        options: {
+          moins_1m: { index: 0, valeur: 'niche_locale' },
+          '1m_5m': { index: 1, valeur: 'marche_regional_limite' },
+          '5m_20m': { index: 2, valeur: 'marche_national_intermediaire' },
+          '20m_50m': { index: 3, valeur: 'marche_national_majeur' },
+          plus_50m: { index: 4, valeur: 'marche_international' }
+        }
+      },
+      mkt_concurrence: {
+        key: 'intensite_concurrence',
+        options: {
+          sature: { index: 0, valeur: 'monopole_oligopole' },
+          acteurs_finances: { index: 1, valeur: 'concurrence_severe' },
+          moderee: { index: 2, valeur: 'marche_partage' },
+          emergent: { index: 3, valeur: 'concurrence_faible' },
+          pionnier: { index: 4, valeur: 'absence_concurrence' }
+        }
+      },
+      mkt_traction: {
+        key: 'niveau_traction',
+        options: {
+          zero_utilisateur: { index: 0, valeur: 'ideation_zero_traction' },
+          beta_testeurs: { index: 1, valeur: 'interet_sans_revenu' },
+          premieres_transactions: { index: 2, valeur: 'traction_initiale' },
+          portefeuille_croissance: { index: 3, valeur: 'traction_forte' },
+          mrr_stable: { index: 4, valeur: 'croissance_exponentielle' }
+        }
+      },
+      mkt_monetisation: {
+        key: 'modele_revenu',
+        options: {
+          flou: { index: 0, valeur: 'non_defini' },
+          one_shot: { index: 1, valeur: 'one_shot_vente_directe' },
+          transaction: { index: 2, valeur: 'commission_marketplace' },
+          recurrent: { index: 3, valeur: 'abonnement_saas' },
+          hybride: { index: 4, valeur: 'usage_freemium' }
+        }
+      },
+      com_modelisation: {
+        key: 'business_plan_f2',
+        options: {
+          aucun: { index: 0, valeur: 'non_existant' },
+          basique: { index: 1, valeur: 'brouillon_incomplet' },
+          bmc_complet: { index: 2, valeur: 'en_cours_de_validation' },
+          valide_mentors: { index: 3, valeur: 'valide_equipe' },
+          audite_investisseurs: { index: 4, valeur: 'valide_externe' }
+        }
+      },
+      com_maturite_tech: {
+        key: 'maturite_produit',
+        options: {
+          maquettes: { index: 0, valeur: 'maquette_papier_wireframe' },
+          prototype: { index: 1, valeur: 'prototype_dysfonctionnel' },
+          mvp: { index: 2, valeur: 'mvp_valide' },
+          produit_fini: { index: 3, valeur: 'produit_commercialisable' },
+          disponible_international: { index: 4, valeur: 'produit_internationalise' }
+        }
+      },
+      com_pricing: {
+        key: 'strategie_prix',
+        options: {
+          intuitif: { index: 0, valeur: 'prix_intuitif_arbitraire' },
+          cout_marge: { index: 1, valeur: 'cout_plus_marge' },
+          calque_concurrents: { index: 2, valeur: 'alignement_concurrence' },
+          roi_client: { index: 3, valeur: 'valeur_percue' },
+          optimise: { index: 4, valeur: 'tarification_dynamique' }
+        }
+      },
+      com_pain_point: {
+        key: 'alignement_besoins',
+        options: {
+          inexistant: { index: 0, valeur: 'nice_to_have_faible' },
+          confort: { index: 1, valeur: 'important_non_urgent' },
+          reel_differe: { index: 2, valeur: 'critique_non_bloquant' },
+          critique: { index: 3, valeur: 'must_have_urgent' },
+          pmf: { index: 4, valeur: 'douleur_extreme' }
+        }
+      },
+      ino_originalite: {
+        key: 'nouveaute_locale',
+        options: {
+          replication: { index: 0, valeur: 'copie_conforme' },
+          option_plus: { index: 1, valeur: 'amelioration_incrementale' },
+          importation: { index: 2, valeur: 'adaptation_locale' },
+          inedit_pays: { index: 3, valeur: 'nouveaute_nationale' },
+          rupture_internationale: { index: 4, valeur: 'nouveaute_internationale' }
+        }
+      },
+      ino_technologie: {
+        key: 'intensite_tech',
+        options: {
+          assemblage: { index: 0, valeur: 'technologie_standard' },
+          app_standard: { index: 1, valeur: 'developpement_specifique' },
+          cloud_api: { index: 2, valeur: 'integration_avancee' },
+          ia_data: { index: 3, valeur: 'ia_proprietaire' },
+          deeptech: { index: 4, valeur: 'deeptech_recherche' }
+        }
+      },
+      ino_barriere: {
+        key: 'barrieres_entree',
+        options: {
+          copiable: { index: 0, valeur: 'sans_barriere' },
+          execution: { index: 1, valeur: 'vitesse_execution' },
+          exclusivites: { index: 2, valeur: 'moat_commercial' },
+          reseau: { index: 3, valeur: 'effet_de_reseau' },
+          brevet: { index: 4, valeur: 'barriere_technologique' }
+        }
+      },
+      ino_disruption: {
+        key: 'degre_rupture',
+        options: {
+          aucun_changement: { index: 0, valeur: 'digitalisation_basique' },
+          gain_marginal: { index: 1, valeur: 'optimisation_standard' },
+          modification_visible: { index: 2, valeur: 'transformation_process' },
+          obsolescence: { index: 3, valeur: 'disruption_marche' },
+          nouvel_usage: { index: 4, valeur: 'creation_de_marche' }
+        }
+      },
+      sca_deploiement: {
+        key: 'replicabilite',
+        options: {
+          infrastructure_lourde: { index: 0, valeur: 'physique_non_replicable' },
+          autorisations: { index: 1, valeur: 'physique_difficile' },
+          bureau_reduit: { index: 2, valeur: 'deploiement_operationnel_modere' },
+          standardise: { index: 3, valeur: 'facilement_replicable' },
+          full_digital: { index: 4, valeur: 'deploiement_100_percent_digital' }
+        }
+      },
+      sca_masse_salariale: {
+        key: 'independance_manuelle',
+        options: {
+          lineaire: { index: 0, valeur: 'dependance_totale' },
+          humain_central: { index: 1, valeur: 'rendements_degressifs' },
+          vagues: { index: 2, valeur: 'paliers_de_croissance' },
+          infrastructure: { index: 3, valeur: 'haute_automatisation' },
+          automatise: { index: 4, valeur: 'croissance_pure_tech' }
+        }
+      },
+      sca_capex: {
+        key: 'couts_deploiement',
+        options: {
+          millions: { index: 0, valeur: 'intensif_capex' },
+          lever_fonds: { index: 1, valeur: 'investissements_lourds' },
+          absorbable: { index: 2, valeur: 'besoin_modere' },
+          faible: { index: 3, valeur: 'besoin_faible' },
+          marginal_nul: { index: 4, valeur: 'cout_marginal_quasi_nul' }
+        }
+      },
+      sca_geographie: {
+        key: 'potentiel_geo',
+        options: {
+          ville: { index: 0, valeur: 'local_uniquement' },
+          gouvernorats: { index: 1, valeur: 'regional' },
+          national: { index: 2, valeur: 'national' },
+          mena: { index: 3, valeur: 'continental_mena' },
+          born_global: { index: 4, valeur: 'mondial_born_global' }
+        }
+      },
+      esg_carbone: {
+        key: 'climat_air',
+        options: {
+          fortement_carbone: { index: 0, valeur: 'fort_impact_carbone' },
+          efforts_optimisation: { index: 1, valeur: 'effort_d_attenuation' },
+          neutre: { index: 2, valeur: 'neutralite_passive' },
+          reduction_active: { index: 3, valeur: 'impact_positif_mesurable' },
+          captation: { index: 4, valeur: 'impact_negatif_carbone' }
+        }
+      },
+      esg_eau: {
+        key: 'donnees_eau_fournies',
+        options: {
+          non_mesure: { index: 0, valeur: 'consommation_non_suivie' },
+          moyennes_floues: { index: 1, valeur: 'estimation_annuelle' },
+          releves_manuels: { index: 2, valeur: 'suivi_manuel_partiel' },
+          iot_monitoring: { index: 3, valeur: 'suivi_digital_temps_reel' },
+          ia_eau: { index: 4, valeur: 'ia_prediction_besoins' }
+        }
+      },
+      esg_sols: {
+        key: 'sols_biodiversite',
+        options: {
+          intrants_chimiques: { index: 0, valeur: 'impact_negatif' },
+          aucun_impact: { index: 1, valeur: 'neutralite_sols' },
+          pratiques_limitant: { index: 2, valeur: 'preservation_passive' },
+          amelioration_mesurable: { index: 3, valeur: 'preservation_active' },
+          restauration: { index: 4, valeur: 'impact_regeneratif' }
+        }
+      },
+      esg_dechets: {
+        key: 'ressources_dechets',
+        options: {
+          extraire_jeter: { index: 0, valeur: 'decharges_non_triees' },
+          tri_basique: { index: 1, valeur: 'reduction_a_la_source' },
+          reduction_amont: { index: 2, valeur: 'tri_et_recyclage' },
+          valorisation: { index: 3, valeur: 'revalorisation_upcycling' },
+          zero_dechet: { index: 4, valeur: 'economie_circulaire' }
+        }
+      }
+    };
+
+    payload.reponses_f2 = {};
+    Object.keys(f2QuestionsMapping).forEach(qId => {
+      const mapping = f2QuestionsMapping[qId];
+      const answerVal = answers[qId];
+      if (answerVal && mapping.options[answerVal]) {
+        payload.reponses_f2[mapping.key] = mapping.options[answerVal];
+      }
+    });
+
+    const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(payload, null, 2));
+    const downloadAnchor = document.createElement('a');
+    downloadAnchor.setAttribute("href", dataStr);
+    downloadAnchor.setAttribute("download", "answers.json");
+    document.body.appendChild(downloadAnchor);
+    downloadAnchor.click();
+    downloadAnchor.remove();
   };
 
 
@@ -295,7 +614,7 @@ export default function Questionnaire({ lang }) {
   const totalInStep = currentStepQuestions.length;
 
   return (
-    <main 
+    <main
       className="max-w-4xl mx-auto px-4 sm:px-6 py-8 flex flex-col gap-6"
       dir={lang === 'ar' ? 'rtl' : 'ltr'}
     >
@@ -338,21 +657,19 @@ export default function Questionnaire({ lang }) {
                 <button
                   key={step}
                   onClick={() => setCurrentStepIndex(idx)}
-                  className={`flex items-center gap-2 px-3 py-2 rounded-xl text-[10px] font-extrabold tracking-wide uppercase transition-all whitespace-nowrap cursor-pointer ${
-                    isCurrent 
-                      ? 'bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 shadow-sm shadow-cyan-950/20' 
-                      : isPast
-                        ? 'text-emerald-400 hover:text-emerald-300'
-                        : 'text-slate-500 hover:text-slate-400'
-                  }`}
+                  className={`flex items-center gap-2 px-3 py-2 rounded-xl text-[10px] font-extrabold tracking-wide uppercase transition-all whitespace-nowrap cursor-pointer ${isCurrent
+                    ? 'bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 shadow-sm shadow-cyan-950/20'
+                    : isPast
+                      ? 'text-emerald-400 hover:text-emerald-300'
+                      : 'text-slate-500 hover:text-slate-400'
+                    }`}
                 >
-                  <div className={`w-5 h-5 rounded-full flex items-center justify-center text-[10px] ${
-                    isCurrent 
-                      ? 'bg-cyan-400 text-slate-950 font-extrabold' 
-                      : isPast
-                        ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30'
-                        : 'bg-slate-800 text-slate-500 border border-slate-700/50'
-                  }`}>
+                  <div className={`w-5 h-5 rounded-full flex items-center justify-center text-[10px] ${isCurrent
+                    ? 'bg-cyan-400 text-slate-950 font-extrabold'
+                    : isPast
+                      ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30'
+                      : 'bg-slate-800 text-slate-500 border border-slate-700/50'
+                    }`}>
                     {isPast ? '✓' : idx + 1}
                   </div>
                   {step}
@@ -368,13 +685,13 @@ export default function Questionnaire({ lang }) {
             </div>
             <div className="text-sm font-bold text-white truncate">{currentStep}</div>
             <div className="h-1 bg-slate-800 rounded-full overflow-hidden">
-              <div 
+              <div
                 className="h-full bg-cyan-500 rounded-full transition-all duration-300"
                 style={{ width: `${((currentStepIndex + 1) / steps.length) * 100}%` }}
               />
             </div>
           </div>
-          
+
           {/* Progress Pill */}
           <div className="flex justify-between items-center text-xs text-slate-500 px-1">
             <span>{pt.answeredPill.replace('{answered}', answeredInStep).replace('{total}', totalInStep)}</span>
@@ -412,13 +729,12 @@ export default function Questionnaire({ lang }) {
               .replace('{stade}', translateValue(detectedStage, lang));
 
             return (
-              <div 
-                key={question.id} 
-                className={`glass-card p-6 flex flex-col gap-4 border transition-all ${
-                  isCompleted 
-                    ? 'border-cyan-500/30 shadow-md shadow-cyan-950/5' 
-                    : 'border-slate-800 hover:border-slate-700/60'
-                }`}
+              <div
+                key={question.id}
+                className={`glass-card p-6 flex flex-col gap-4 border transition-all ${isCompleted
+                  ? 'border-cyan-500/30 shadow-md shadow-cyan-950/5'
+                  : 'border-slate-800 hover:border-slate-700/60'
+                  }`}
               >
                 {/* En-tête de la question */}
                 <div className="flex justify-between items-start gap-3">
@@ -445,15 +761,13 @@ export default function Questionnaire({ lang }) {
                             key={opt.value}
                             type="button"
                             onClick={() => handleAnswerChange(question.id, opt.value)}
-                            className={`p-3.5 text-xs font-semibold rounded-xl text-left rtl:text-right border-2 transition-all flex items-center gap-3 cursor-pointer ${
-                              isSelected 
-                                ? 'border-cyan-500 bg-cyan-950/20 text-cyan-300' 
-                                : 'border-slate-800 hover:border-slate-700 bg-slate-900/40 text-slate-400 hover:text-slate-200'
-                            }`}
+                            className={`p-3.5 text-xs font-semibold rounded-xl text-left rtl:text-right border-2 transition-all flex items-center gap-3 cursor-pointer ${isSelected
+                              ? 'border-cyan-500 bg-cyan-950/20 text-cyan-300'
+                              : 'border-slate-800 hover:border-slate-700 bg-slate-900/40 text-slate-400 hover:text-slate-200'
+                              }`}
                           >
-                            <div className={`w-4 h-4 rounded-full border flex items-center justify-center flex-shrink-0 ${
-                              isSelected ? 'border-cyan-400 bg-cyan-950' : 'border-slate-700'
-                            }`}>
+                            <div className={`w-4 h-4 rounded-full border flex items-center justify-center flex-shrink-0 ${isSelected ? 'border-cyan-400 bg-cyan-950' : 'border-slate-700'
+                              }`}>
                               {isSelected && <div className="w-1.5 h-1.5 rounded-full bg-cyan-400" />}
                             </div>
                             <span className="truncate">{opt.label[lang] || opt.label.fr}</span>
@@ -473,15 +787,13 @@ export default function Questionnaire({ lang }) {
                             key={opt.value}
                             type="button"
                             onClick={() => handleCheckboxToggle(question.id, opt.value)}
-                            className={`p-3.5 text-xs font-semibold rounded-xl text-left rtl:text-right border-2 transition-all flex items-center gap-3 cursor-pointer ${
-                              isSelected 
-                                ? 'border-cyan-500 bg-cyan-950/20 text-cyan-300' 
-                                : 'border-slate-800 hover:border-slate-700 bg-slate-900/40 text-slate-400 hover:text-slate-200'
-                            }`}
+                            className={`p-3.5 text-xs font-semibold rounded-xl text-left rtl:text-right border-2 transition-all flex items-center gap-3 cursor-pointer ${isSelected
+                              ? 'border-cyan-500 bg-cyan-950/20 text-cyan-300'
+                              : 'border-slate-800 hover:border-slate-700 bg-slate-900/40 text-slate-400 hover:text-slate-200'
+                              }`}
                           >
-                            <div className={`w-4 h-4 rounded border flex items-center justify-center flex-shrink-0 ${
-                              isSelected ? 'border-cyan-400 bg-cyan-400' : 'border-slate-700'
-                            }`}>
+                            <div className={`w-4 h-4 rounded border flex items-center justify-center flex-shrink-0 ${isSelected ? 'border-cyan-400 bg-cyan-400' : 'border-slate-700'
+                              }`}>
                               {isSelected && <CheckCircle2 className="w-3 h-3 text-slate-950 font-bold" />}
                             </div>
                             <span className="truncate">{opt.label[lang] || opt.label.fr}</span>
@@ -545,16 +857,15 @@ export default function Questionnaire({ lang }) {
           type="button"
           onClick={() => setCurrentStepIndex(prev => Math.max(0, prev - 1))}
           disabled={currentStepIndex === 0}
-          className={`px-5 py-3 rounded-xl text-xs font-bold flex items-center justify-center gap-2 border transition-all cursor-pointer ${
-            currentStepIndex === 0 
-              ? 'opacity-30 border-slate-800 text-slate-600 cursor-not-allowed' 
-              : 'border-slate-800 bg-slate-900/40 text-slate-300 hover:border-slate-700 hover:text-white hover:bg-slate-900/80'
-          }`}
+          className={`px-5 py-3 rounded-xl text-xs font-bold flex items-center justify-center gap-2 border transition-all cursor-pointer ${currentStepIndex === 0
+            ? 'opacity-30 border-slate-800 text-slate-600 cursor-not-allowed'
+            : 'border-slate-800 bg-slate-900/40 text-slate-300 hover:border-slate-700 hover:text-white hover:bg-slate-900/80'
+            }`}
         >
           <ChevronLeft className="h-4 w-4 rtl:rotate-180" />
           {pt.prevStep}
         </button>
-        
+
         {/* Utilitaires (Reset) */}
         <div className="flex items-center justify-center gap-2">
           <button
@@ -577,9 +888,19 @@ export default function Questionnaire({ lang }) {
             <ChevronRight className="h-4 w-4 rtl:rotate-180" />
           </button>
         ) : (
-          <div className="px-5 py-3 rounded-xl text-xs font-bold flex items-center justify-center gap-2 bg-emerald-500/10 border border-emerald-500/30 text-emerald-400">
-            <CheckCircle2 className="h-4 w-4 animate-pulse" />
-            {pt.finish}
+          <div className="flex flex-col sm:flex-row items-center gap-3">
+            <button
+              type="button"
+              onClick={handleExportJSON}
+              className="w-full sm:w-auto px-5 py-3 rounded-xl text-xs font-bold flex items-center justify-center gap-2 bg-cyan-500 hover:bg-cyan-400 text-slate-950 hover:scale-[1.02] active:scale-[0.98] transition-all shadow-lg shadow-cyan-500/10 cursor-pointer"
+            >
+              <FileText className="h-4 w-4" />
+              {pt.exportBtn}
+            </button>
+            <div className="w-full sm:w-auto px-5 py-3 rounded-xl text-xs font-bold flex items-center justify-center gap-2 bg-emerald-500/10 border border-emerald-500/30 text-emerald-400">
+              <CheckCircle2 className="h-4 w-4 animate-pulse" />
+              {pt.finish}
+            </div>
           </div>
         )}
       </div>

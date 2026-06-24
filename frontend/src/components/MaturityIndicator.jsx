@@ -59,9 +59,9 @@ export default function MaturityIndicator({ maturityData, lang }) {
       <div className="relative py-8 px-2">
         {/* Connection Background Line */}
         <div className="absolute top-1/2 left-4 right-4 h-1 bg-slate-800 -translate-y-1/2 rounded-full z-0" />
-        
+
         {/* Progress Fill Line */}
-        <div 
+        <div
           className="absolute top-1/2 left-4 h-1 bg-gradient-to-r from-cyan-500 to-cyan-400 -translate-y-1/2 rounded-full transition-all duration-500 z-0"
           style={{
             width: `${(realIndex / (stages.length - 1)) * 94}%`,
@@ -101,12 +101,11 @@ export default function MaturityIndicator({ maturityData, lang }) {
 
                 {/* Node text label below */}
                 <div className="absolute top-10 flex flex-col items-center w-28 text-center pointer-events-none">
-                  <span className={`text-[11px] font-semibold tracking-tight transition-colors duration-200 ${
-                    isReal ? 'text-cyan-400 font-bold' : isPerceived && hasMismatch ? 'text-amber-500 font-bold' : 'text-slate-400'
-                  }`}>
+                  <span className={`text-[11px] font-semibold tracking-tight transition-colors duration-200 ${isReal ? 'text-cyan-400 font-bold' : isPerceived && hasMismatch ? 'text-amber-500 font-bold' : 'text-slate-400'
+                    }`}>
                     {stage.label[lang]}
                   </span>
-                  
+
                   {/* Small tag markers */}
                   {isReal && (
                     <span className="text-[8px] uppercase tracking-wider bg-cyan-950 text-cyan-400 px-1 rounded-sm mt-0.5 font-bold border border-cyan-500/20">

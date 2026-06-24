@@ -143,17 +143,17 @@ export default function Questionnaire({ lang }) {
         const projectId = localStorage.getItem('project_id') || 1;
         const token = localStorage.getItem('token');
         if (token) {
-           const res = await fetch(`http://localhost:8000/projects/${projectId}/dashboard`, {
-             headers: { 'Authorization': `Bearer ${token}` }
-           });
-           if (res.ok) {
-              const rawData = await res.json();
-              const adapted = getAdaptedData(rawData);
-              setDetectedSector(adapted.secteur);
-              setDetectedRegion(adapted.localisation);
-              setDetectedStage(adapted.maturity.perceivedStage);
-              setDetectedNom(adapted.startupName || '');
-           }
+          const res = await fetch(`http://localhost:8000/projects/${projectId}/dashboard`, {
+            headers: { 'Authorization': `Bearer ${token}` }
+          });
+          if (res.ok) {
+            const rawData = await res.json();
+            const adapted = getAdaptedData(rawData);
+            setDetectedSector(adapted.secteur);
+            setDetectedRegion(adapted.localisation);
+            setDetectedStage(adapted.maturity.perceivedStage);
+            setDetectedNom(adapted.startupName || '');
+          }
         }
         const data = await loadQuestionnaire();
         setDescription(data.description || '');
@@ -600,7 +600,7 @@ export default function Questionnaire({ lang }) {
     setSaving(true);
     try {
       const token = localStorage.getItem('token');
-      const projectId = localStorage.getItem('project_id') || 1; // Fallback to 1 if not set
+      const projectId = localStorage.getItem('project_id') || 1;
 
       const response = await fetch(`http://localhost:8000/projects/${projectId}/analyse`, {
         method: 'POST',
@@ -613,6 +613,12 @@ export default function Questionnaire({ lang }) {
 
       if (response.ok) {
         const data = await response.json();
+
+        // 🟢 C'EST ICI QU'IL FAUT AJOUTER LA LIGNE SUIVANTE :
+        if (data.project_id) {
+          localStorage.setItem('project_id', data.project_id);
+        }
+
         const resObj = data.f1_diagnostic;
         if (resObj) {
           setStadeReel(resObj.stade_reel || '');

@@ -58,7 +58,44 @@ def list_projects(user=Depends(get_current_user)):
     conn.close()
     return [row_to_project(r) for r in rows]
 
+@router.get("/evolution")
+def get_evolution(user=Depends(get_current_user)):
+    """
+    Retourne tous les projets du user triés par date,
+    avec uniquement les scores F2 et le timestamp — 
+    pour tracer le graphique d'évolution.
+    """
+    conn = get_db()
+    rows = conn.execute(
+        """SELECT id, project_name, sector, f2_scoring, created_at 
+           FROM projects 
+           WHERE user_id = ? 
+           ORDER BY created_at ASC""",
+        (user["user_id"],)
+    ).fetchall()
+    conn.close()
 
+    result = []
+    for r in rows:
+        f2 = json.loads(r["f2_scoring"]) if r["f2_scoring"] else {}
+        scores_raw = f2.get("scores", {})
+        result.append({
+            "project_id": r["id"],
+            "project_name": r["project_name"],
+            "sector": r["sector"],
+            "created_at": r["created_at"],
+            "scores": {
+                "market":            scores_raw.get("market_score", {}).get("valeur", 0),
+                "commercial_offer":  scores_raw.get("commercial_offer_score", {}).get("valeur", 0),
+                "innovation":        scores_raw.get("innovation_score", {}).get("valeur", 0),
+                "scalability":       scores_raw.get("scalability_score", {}).get("valeur", 0),
+                "green":             scores_raw.get("green_score", {}).get("valeur", 0),
+            },
+            "financing_readiness_index": f2.get("financing_readiness_index", 0),
+            "is_financeable": f2.get("is_financeable", False),
+        })
+
+    return result
 # ── RÉCUPÉRER UN PROJET ───────────────────────────
 @router.get("/{project_id}")
 def get_project(project_id: int, user=Depends(get_current_user)):
@@ -228,10 +265,17 @@ def generate_f3(project_id: int, user=Depends(get_current_user)):
 @router.post("/{project_id}/analyse")
 def analyse_project(project_id: int, payload: dict, user=Depends(get_current_user)):
     conn = get_db()
-    row = conn.execute("SELECT id FROM projects WHERE id = ? AND user_id = ?", (project_id, user["user_id"])).fetchone()
-    if not row:
+
+    # 1. 🛑 CORRECTION : On valide que le projet d'origine existe ET appartient à l'user
+    # On en profite pour récupérer le nom et le secteur par défaut si le payload est incomplet
+    orig_project = conn.execute(
+        "SELECT project_name, sector FROM projects WHERE id = ? AND user_id = ?", 
+        (project_id, user["user_id"])
+    ).fetchone()
+    
+    if not orig_project:
         conn.close()
-        raise HTTPException(status_code=404, detail="Projet non trouvé")
+        raise HTTPException(status_code=404, detail="Projet d'origine non trouvé ou accès non autorisé.")
 
     f1_input = map_raw_answers_to_f1_input(payload)
 
@@ -240,47 +284,38 @@ def analyse_project(project_id: int, payload: dict, user=Depends(get_current_use
         tmp_filepath = tmp_file.name
 
     try:
-        # F1
+        # 2. Exécution des moteurs IA
         f1_result = run_diagnostic_from_json(tmp_filepath)
         if not f1_result:
-            raise HTTPException(status_code=500, detail="Erreur F1")
+            raise HTTPException(status_code=500, detail="Erreur lors du diagnostic F1")
 
-        # F2
         f2_result = process_entrepreneur_profile(f1_result)
 
-        # F3
         combined_data = {**f1_result, **f2_result}
         f3_result = run_rag(combined_data)
 
-        conn.execute(
-            """UPDATE projects 
-               SET f1_diagnostic = ?, f2_scoring = ?, f3_roadmap = ?, 
-                   project_name = ?, sector = ?, updated_at = CURRENT_TIMESTAMP 
-               WHERE id = ? AND user_id = ?""",
+        # On prend le nom/secteur du payload, sinon on garde ceux du projet d'origine
+        project_name = payload.get("nom_entreprise") or orig_project["project_name"]
+        sector = payload.get("secteur") or orig_project["sector"]
+
+        # 3. ✅ INSERTION : On crée une nouvelle version (historique préservé)
+        cursor = conn.cursor()
+        cursor.execute(
+            """INSERT INTO projects 
+               (user_id, project_name, sector, f1_diagnostic, f2_scoring, f3_roadmap)
+               VALUES (?, ?, ?, ?, ?, ?)""",
             (
+                user["user_id"],
+                project_name,
+                sector,
                 json.dumps(f1_result, ensure_ascii=False),
                 json.dumps(f2_result, ensure_ascii=False),
                 json.dumps(f3_result, ensure_ascii=False),
-                payload.get("nom_entreprise", "Projet sans nom"),
-                payload.get("secteur", ""),
-                project_id,
-                user["user_id"]
             )
         )
-        # Insertion dans l'historique
-        conn.execute(
-            """INSERT INTO project_history (project_id, project_name, sector, f1_diagnostic, f2_scoring, f3_roadmap)
-               VALUES (?, ?, ?, ?, ?, ?)""",
-            (
-                project_id,
-                payload.get("nom_entreprise", "Projet sans nom"),
-                payload.get("secteur", ""),
-                json.dumps(f1_result, ensure_ascii=False),
-                json.dumps(f2_result, ensure_ascii=False),
-                json.dumps(f3_result, ensure_ascii=False)
-            )
-        )
+        new_id = cursor.lastrowid
         conn.commit()
+
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Erreur d'analyse: {str(e)}")
     finally:
@@ -288,14 +323,15 @@ def analyse_project(project_id: int, payload: dict, user=Depends(get_current_use
         if os.path.exists(tmp_filepath):
             os.remove(tmp_filepath)
 
+    # 4. 🚀 Le frontend DOIT intercepter ce 'project_id' pour charger le dashboard
     return {
         "status": "success",
-        "message": "Diagnostic complet (F1 + F2 + F3) terminé ✅",
+        "project_id": new_id,   # <-- C'est cet ID tout neuf qu'il faut donner au dashboard côté front !
+        "message": "Nouvelle analyse complète (F1 + F2 + F3) générée et historisée ✅",
         "f1_diagnostic": f1_result,
         "f2_scoring": f2_result,
         "f3_roadmap": f3_result
     }
-
 # ── SAUVEGARDER F3 (Roadmap RAG) ──────────────────
 @router.put("/{project_id}/f3")
 def save_f3(project_id: int, data: F3Update, user=Depends(get_current_user)):

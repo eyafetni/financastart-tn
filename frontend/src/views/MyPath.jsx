@@ -167,6 +167,7 @@ export default function MyPath({ lang }) {
 
   useEffect(() => {
     async function fetchData() {
+      // ── Questionnaire ────────────────────────────────────────────────────
       try {
         const qData = await loadQuestionnaire();
         setQuestionnaireData(qData);
@@ -174,72 +175,48 @@ export default function MyPath({ lang }) {
         console.error("Error loading questionnaire in MyPath:", e);
       }
 
+      // ── Historique via /evolution ────────────────────────────────────────
       try {
-        const projectId = localStorage.getItem('project_id') || 1;
         const token = localStorage.getItem('token');
-        const res = await fetch(`http://localhost:8000/projects/${projectId}/history`, {
+
+        const res = await fetch(`http://localhost:8000/projects/evolution`, {
           headers: { 'Authorization': `Bearer ${token}` }
         });
+
         if (res.ok) {
           const historyData = await res.json();
+
           if (historyData.length > 0) {
-            const mappedHistory = historyData.map((h, idx) => {
-              const rawF1 = h.f1_diagnostic || {};
-              const rawF2 = h.f2_scoring || {};
-              const f2Scores = rawF2.scores || {};
-              return {
-                id: `sess-${h.id}`,
-                date: h.created_at ? h.created_at.split('T')[0] : new Date().toISOString().split('T')[0],
-                stade_reel: rawF1.stade_reel || "Ideation",
-                stade_percu: rawF1.stade_percu || "",
-                gap_detecte: rawF1.gap_detecte || false,
-                financingScore: rawF2.financing_readiness_index || 0,
-                status: rawF2.is_financeable ? "bankable" : "non_bankable",
-                scores: {
-                  market: f2Scores.market_score?.valeur || 0,
-                  commercial: f2Scores.commercial_offer_score?.valeur || 0,
-                  innovation: f2Scores.innovation_score?.valeur || 0,
-                  scalability: f2Scores.scalability_score?.valeur || 0,
-                  green: f2Scores.green_score?.valeur || 0,
-                },
-                isCurrent: idx === historyData.length - 1,
-              };
-            });
+            const mappedHistory = historyData.map((h, idx) => ({
+              id: `sess-${h.project_id}`,
+              date: h.created_at
+                ? h.created_at.split('T')[0]
+                : new Date().toISOString().split('T')[0],
+              stade_reel: h.stade_reel || "Ideation",
+              stade_percu: h.stade_percu || "",
+              gap_detecte: h.gap_detecte || false,
+              financingScore: h.financing_readiness_index || 0,
+              status: h.is_financeable ? "bankable" : "non_bankable",
+              scores: {
+                market: h.scores?.market || 0,
+                commercial: h.scores?.commercial_offer || 0,
+                innovation: h.scores?.innovation || 0,
+                scalability: h.scores?.scalability || 0,
+                green: h.scores?.green || 0,
+              },
+              isCurrent: idx === historyData.length - 1,
+            }));
+
             setSessionHistory(mappedHistory);
-          } else {
-            // Fallback to dashboard
-            const dashRes = await fetch(`http://localhost:8000/projects/${projectId}/dashboard`, {
-              headers: { 'Authorization': `Bearer ${token}` }
-            });
-            if (dashRes.ok) {
-              const rawData = await dashRes.json();
-              const fromAPI = {
-                id: `sess-${new Date().getTime()}`,
-                date: new Date().toISOString().split('T')[0],
-                stade_reel: rawData.real_stage || "Structuration",
-                stade_percu: rawData.perceived_stage || "",
-                gap_detecte: rawData.gap_detected || false,
-                financingScore: rawData.financing_readiness_index || 0,
-                status: rawData.is_financeable ? "bankable" : "non_bankable",
-                scores: {
-                  market: rawData.scores_data?.scores_f2?.market || 0,
-                  commercial: rawData.scores_data?.scores_f2?.commercial_offer || 0,
-                  innovation: rawData.scores_data?.scores_f2?.innovation || 0,
-                  scalability: rawData.scores_data?.scores_f2?.scalability || 0,
-                  green: rawData.scores_data?.scores_f2?.green || 0,
-                },
-                isCurrent: true,
-              };
-              setSessionHistory([fromAPI]);
-            }
           }
         }
       } catch (e) {
-        console.error("Error loading history in MyPath:", e);
+        console.error("Error loading evolution in MyPath:", e);
       } finally {
         setLoadingQuestionnaire(false);
       }
     }
+
     fetchData();
   }, []);
 
@@ -256,7 +233,6 @@ export default function MyPath({ lang }) {
   const current = sessionHistory[sessionHistory.length - 1];
   const prev = sessionHistory[sessionHistory.length - 2];
 
-  // Overall score = avg of all 5 dimensions
   const avgScore = (sess) =>
     Math.round(scoreKeys.reduce((s, k) => s + sess.scores[k], 0) / scoreKeys.length);
 
@@ -299,7 +275,6 @@ export default function MyPath({ lang }) {
 
         return (
           <div className="glass-card p-6 flex flex-col gap-4 border-l-4 border-l-cyan-400">
-            {/* Header */}
             <div className="flex items-center gap-2 pb-4 border-b border-slate-800">
               <MessageCircle className="h-5 w-5 text-cyan-400" />
               <div>
@@ -315,7 +290,6 @@ export default function MyPath({ lang }) {
             </div>
 
             <div className="space-y-3">
-              {/* Questions structurées */}
               {hasAnswers && (
                 <div className="space-y-2">
                   <p className="text-[10px] uppercase tracking-wider text-slate-500 font-bold">
@@ -341,9 +315,7 @@ export default function MyPath({ lang }) {
                           <p className="text-[10px] text-cyan-400/80 font-semibold uppercase tracking-wide mb-1">
                             {qLabel}
                           </p>
-                          <p className="text-slate-200 text-sm">
-                            {displayAnswer}
-                          </p>
+                          <p className="text-slate-200 text-sm">{displayAnswer}</p>
                         </div>
                       );
                     })}
@@ -358,7 +330,6 @@ export default function MyPath({ lang }) {
                 </div>
               )}
 
-              {/* Réponse libre (description) */}
               {description && (
                 <div>
                   <p className="text-[10px] uppercase tracking-wider text-slate-500 font-bold mb-2">
@@ -378,7 +349,6 @@ export default function MyPath({ lang }) {
 
       {/* KPI Summary Row */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-        {/* Sessions count */}
         <div className="glass-card p-4 flex flex-col gap-1">
           <p className="text-[10px] text-slate-400 uppercase tracking-wider">
             {lang === 'fr' ? 'Sessions totales' : 'إجمالي الجلسات'}
@@ -387,21 +357,18 @@ export default function MyPath({ lang }) {
           <p className="text-[10px] text-slate-500">{lang === 'fr' ? 'évaluations réalisées' : 'تقييمات منجزة'}</p>
         </div>
 
-        {/* Score financement actuel */}
         <div className="glass-card p-4 flex flex-col gap-1">
           <p className="text-[10px] text-slate-400 uppercase tracking-wider">{t.financingScore}</p>
           <p className="text-3xl font-extrabold text-cyan-400 font-mono">{current.financingScore}</p>
           <ScoreTrend current={current.financingScore} previous={prev?.financingScore} />
         </div>
 
-        {/* Overall average score */}
         <div className="glass-card p-4 flex flex-col gap-1">
           <p className="text-[10px] text-slate-400 uppercase tracking-wider">{t.overallProgress}</p>
           <p className="text-3xl font-extrabold text-indigo-400 font-mono">{currentAvg}%</p>
           <ScoreTrend current={currentAvg} previous={prevAvg} />
         </div>
 
-        {/* Progression */}
         <div className="glass-card p-4 flex flex-col gap-1">
           <p className="text-[10px] text-slate-400 uppercase tracking-wider">
             {lang === 'fr' ? 'Progression totale' : 'التقدم الإجمالي'}
@@ -456,8 +423,14 @@ export default function MyPath({ lang }) {
             </p>
           </div>
           <div className="flex items-center gap-3 text-[10px] text-slate-400">
-            <span className="flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-cyan-500 inline-block" />{lang === 'fr' ? 'Actuel' : 'حالي'}</span>
-            <span className="flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-slate-600 inline-block" />{lang === 'fr' ? 'Précédent' : 'سابق'}</span>
+            <span className="flex items-center gap-1">
+              <span className="w-2 h-2 rounded-full bg-cyan-500 inline-block" />
+              {lang === 'fr' ? 'Actuel' : 'حالي'}
+            </span>
+            <span className="flex items-center gap-1">
+              <span className="w-2 h-2 rounded-full bg-slate-600 inline-block" />
+              {lang === 'fr' ? 'Précédent' : 'سابق'}
+            </span>
           </div>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-4">
@@ -494,11 +467,11 @@ export default function MyPath({ lang }) {
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-800/60">
-              {[...sessionHistory].reverse().map((sess, i) => {
+              {[...sessionHistory].reverse().map((sess) => {
                 const sessIdx = sessionHistory.indexOf(sess);
                 const prevSess = sessIdx > 0 ? sessionHistory[sessIdx - 1] : null;
                 const isBankable = sess.status === 'bankable';
-                const isFirst = i === 0;
+                const isFirst = sess.isCurrent;
 
                 return (
                   <tr
@@ -581,3 +554,4 @@ export default function MyPath({ lang }) {
     </main>
   );
 }
+

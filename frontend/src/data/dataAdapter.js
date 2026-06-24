@@ -1,22 +1,22 @@
-import rawData from './dashboard.json';
 
+ 
 // Translation dictionaries for raw JSON string values
 export const valueTranslations = {
   fr: {
     // Sectors & Locations
-    "Agriculture / Sylviculture / Pêche": "Agriculture / Sylviculture / Pêche",
-    "Siliana": "Siliana",
-    "agri-food": "Agroalimentaire",
+    "Industrie/Construction": "Industrie/Construction",
+    "Industrie / Construction": "Industrie / Construction",
     "Sfax": "Sfax",
-
+    "Sfax, Tunisie": "Sfax, Tunisie",
+ 
     // Stages
     "Ideation": "Idéation",
-    "Validation": "Validation",
+    "Market Validation": "Validation",
     "Structuration": "Structuration",
     "Fundraising": "Levée de fonds",
-    "Launch": "Lancement",
+    "Launch Planning": "Lancement",
     "Growth": "Croissance",
-
+ 
     // Resource Types
     "financement_bancaire": "Financement bancaire",
     "concours_financement": "Concours & Financement",
@@ -39,35 +39,34 @@ export const valueTranslations = {
   },
   ar: {
     // Sectors & Locations
-    "Agriculture / Sylviculture / Pêche": "الفلاحة / الغابات / الصيد البحري",
-    "Siliana": "سليانة",
-    "agri-food": "الصناعات الغذائية",
+    "Industrie/Construction": "الصناعة / البناء",
+    "Industrie / Construction": "الصناعة / البناء",
     "Sfax": "صفاقس",
-    "fle7a": "فلاحة",
-
+    "Sfax, Tunisie": "صفاقس، تونس",
+ 
     // Stages
     "Ideation": "فكرة",
-    "Validation": "تحقق",
+    "Market Validation": "تحقق",
     "Structuration": "هيكلة",
     "Fundraising": "جمع تمويل",
-    "Launch": "إطلاق",
+    "Launch Planning": "إطلاق",
     "Growth": "نمو",
-
+ 
     // Mismatch Gap Message
-    "⚠️ DIVERGENCE DÉTECTÉE — Vous pensez être en 'Growth' → stade réel: 'Structuration'.\n  L'entrepreneur a surestimé son stade de 3 niveau(x). Il se perçoit en 'Growth' mais le diagnostic objectif indique 'Structuration'. Causes principales : Fondateur seul — équipe à constituer, Certifications sanitaires/phytosanitaires manquantes, Chaîne de froid / logistique non sécurisée.": "⚠️ تم الكشف عن تباين — تعتقد أنك في مرحلة 'النمو' ← المرحلة الفعلية: 'الهيكلة'.\n  لقد بالغ رائد الأعمال في تقدير مرحلته بمقدار 3 مستويات. يرى نفسه في مرحلة 'النمو' ولكن التشخيص الموضوعي يشير إلى 'الهيكلة'. الأسباب الرئيسية: مؤسس بمفرده — يجب تكوين فريق، غياب الشهادات الصحية والبيئية، عدم تأمين سلسلة التبريد / الخدمات اللوجستية.",
-
+    "⚠️ DIVERGENCE DÉTECTÉE — Vous pensez être en 'Growth' → stade réel: 'Structuration'.\n  L'entrepreneur a surestimé son stade de 3 niveau(x). Il se perçoit en 'Growth' mais le diagnostic objectif indique 'Structuration'. Causes principales : Fondateur seul — équipe à constituer, Absence de certification ISO sur les chantiers, Absence de RNE (entité juridique non créée).": "⚠️ تم الكشف عن تباين — تعتقد أنك في مرحلة 'النمو' ← المرحلة الفعلية: 'الهيكلة'.\n  لقد بالغ رائد الأعمال في تقدير مرحلته بمقدار 3 مستويات. يرى نفسه في مرحلة 'النمو' ولكن التشخيص الموضوعي يشير إلى 'الهيكلة'. الأسباب الرئيسية: مؤسس بمفرده — يجب تكوين فريق، غياب شهادة ISO في الورشات، غياب السجل الوطني للمؤسسات (الكيان القانوني غير مُنشأ).",
+ 
     // Divergence signals
     "Vous vous croyez en 'Growth' mais n'avez pas de RNE — impossible de constituer un dossier bancable sans entité juridique.": "تعتقد أنك في مرحلة 'النمو' ولكن ليس لديك سجل وطني للمؤسسات (RNE) — من المستحيل تكوين ملف تمويل بنكي بدون كيان قانوني.",
     "Votre solution existe déjà sur le marché tunisien depuis plusieurs années. L'innovation perçue ne se traduit pas en différenciation réelle.": "حلك موجود بالفعل في السوق التونسية منذ عدة سنوات. الابتكار المتصور لا يترجم إلى تميز حقيقي.",
-
+ 
     // Roadmap items
-    "[Agriculture / Sylviculture / Pêche] Contacter APIA (primes agricoles) + BNA (crédit campagne) + ODESYPANO si Nord-Ouest": "[الفلاحة / الغابات / الصيد البحري] الاتصال بـ APIA (منح فلاحية) + BNA (قرض حملة) + ODESYPANO إذا كان في الشمال الغربي",
-    "🚨 Sollicitez le bureau régional de l'APII de Siliana pour déposer un dossier de prime d'investissement régional.": "🚨 اتصل بالمكتب الإقليمي لوكالة النهوض بالصناعة والتجديد (APII) بسليانة لتقديم ملف منحة الاستثمار الإقليمي.",
-    "🚨 Recrutez un bras droit opérationnel (COO) ou ouvrez votre capital pour intégrer un co-fondateur.": "🚨 وظف مساعد عمليات (COO) أو افتح رأس المال لإدماج شريك مؤسس.",
+    "[Industrie / Construction] Contacter APII Sfax (FOPRODI) + BFPME (CMLT) pour le dossier de structuration": "[الصناعة / البناء] الاتصال بوكالة النهوض بالصناعة والتجديد بصفاقس (FOPRODI) + البنك التونسي لتمويل المؤسسات الصغرى والمتوسطة (CMLT) لملف الهيكلة",
+    "🚨 Sollicitez le bureau régional de l'APII de Sfax pour déposer un dossier de prime d'investissement industriel.": "🚨 اتصل بالمكتب الإقليمي لوكالة النهوض بالصناعة والتجديد (APII) بصفاقس لتقديم ملف منحة الاستثمار الصناعي.",
+    "🚨 Recrutez un bras droit opérationnel (chef de chantier/COO) ou ouvrez votre capital pour intégrer un co-fondateur.": "🚨 وظف مساعد عمليات (رئيس ورشة/COO) أو افتح رأس المال لإدماج شريك مؤسس.",
     "Créer société au RNE si pas encore fait": "تأسيس الشركة في السجل الوطني للمؤسسات (RNE) إن لم يتم ذلك بعد",
     "Constituer dossier BFPME (business plan modèle GIZ)": "إعداد ملف البنك التونسي لتمويل المؤسسات الصغرى والمتوسطة BFPME (نموذج مخطط العمل GIZ)",
     "Évaluer apport personnel + éligibilité SOTUGAR": "تقييم المساهمة الشخصية + الأهلية لضمان SOTUGAR",
-    "⚠️ FRI=40/100 — Projet non encore bancable. Structuration prioritaire avant dépôt dossier financement.": "⚠️ مؤشر الجاهزية للتمويل FRI = 40/100 — المشروع غير جاهز للتمويل بعد. الهيكلة لها الأولوية قبل إيداع ملف التمويل.",
+    "⚠️ FRI=32/100 — Projet non encore bancable. Structuration prioritaire avant dépôt dossier financement.": "⚠️ مؤشر الجاهزية للتمويل FRI = 32/100 — المشروع غير جاهز للتمويل بعد. الهيكلة لها الأولوية قبل إيداع ملف التمويل.",
     "🎯 [Market Score critique] Obtenir 3 lettres d'intention clients payants avant tout dépôt de dossier": "🎯 [درجة سوق حرجة] الحصول على 3 رسائل نية من عملاء دافعين قبل إيداع أي ملف",
     "🎯 [Offre commerciale] Rédiger fiche proposition de valeur (1 page) et tester avec 5 clients réels": "🎯 [العرض التجاري] كتابة ورقة مقترح القيمة (صفحة واحدة) واختبارها مع 5 عملاء حقيقيين",
     "Déposer dossier FOPRODI APII (prime 10% équipements)": "تقديم ملف FOPRODI APII (منحة 10% على المعدات)",
@@ -76,13 +75,13 @@ export const valueTranslations = {
     "Obtenir accord BFPME": "الحصول على موافقة BFPME",
     "Recruter équipe clé (COO / associé)": "توظيف الفريق الرئيسي (COO / شريك)",
     "Mettre en place comptabilité formelle": "إرساء محاسبة قانونية منتظمة",
-
+ 
     // Anomalies
-    "Risque de Burnout : Gérer seul une startup en phase de 'Growth' est un goulot d'étranglement majeur (Key-Man Risk) rédhibitoire pour les investisseurs.": "خطر الاحتراق النفسي: إدارة شركة ناشئة بمفردك في مرحلة 'النمو' هي عقبة رئيسية (خطر الشخص المفتاح) وغير مقبولة للمستثمرين.",
-    "Recrutez un bras droit opérationnel (COO) ou ouvrez votre capital pour intégrer un co-fondateur.": "قم بتوظيف مساعد عمليات (COO) أو افتح رأس المال لإدماج شريك مؤسس.",
-    "Leviers régionaux inexploités : Vous êtes légalement constitué (RNE valide) à Siliana mais ne bénéficiez d'aucun financement. Vous passez à côté de primes de développement régional spécifiques (PDRI).": "الرافعات الإقليمية غير المستغلة: أنت مؤسس قانونياً (السجل الوطني للمؤسسات صالح) في سليانة ولكنك لا تستفيد من أي تمويل. تفوتك منح التنمية الإقليمية المخصصة (PDRI).",
-    "Sollicitez le bureau régional de l'APII de Siliana pour déposer un dossier de prime d'investissement régional.": "اتصل بالمكتب الإقليمي لوكالة النهوض بالصناعة والتجديد (APII) بسليانة لتقديم ملف منحة الاستثمار الإقليمي.",
-
+    "Risque de Burnout : Gérer seul une entreprise de construction en pleine structuration est un goulot d'étranglement majeur (Key-Man Risk) rédhibitoire pour les investisseurs.": "خطر الاحتراق النفسي: إدارة شركة بناء بمفردك في مرحلة الهيكلة هي عقبة رئيسية (خطر الشخص المفتاح) وغير مقبولة للمستثمرين.",
+    "Recrutez un bras droit opérationnel (chef de chantier/COO) ou ouvrez votre capital pour intégrer un co-fondateur.": "وظف مساعد عمليات (رئيس ورشة/COO) أو افتح رأس المال لإدماج شريك مؤسس.",
+    "Leviers régionaux inexploités : Vous êtes basé à Sfax mais ne bénéficiez d'aucun financement régional. Vous passez à côté de primes de développement spécifiques au gouvernorat (FOPRODI / APII Sfax).": "الرافعات الإقليمية غير المستغلة: أنت متمركز في صفاقس ولكنك لا تستفيد من أي تمويل إقليمي. تفوتك منح التنمية المخصصة للولاية (FOPRODI / APII صفاقس).",
+    "Sollicitez le bureau régional de l'APII de Sfax pour déposer un dossier de prime d'investissement industriel.": "اتصل بالمكتب الإقليمي لوكالة النهوض بالصناعة والتجديد (APII) بصفاقس لتقديم ملف منحة الاستثمار الصناعي.",
+ 
     // Score justifications & actions
     "Le Market Score est insuffisant (16.3/100). Le critere 'Taille marche' (10/100) constitue un bloqueur majeur pour toute demarche de financement.": "درجة السوق غير كافية (16.3/100). يشكل معيار 'حجم السوق' (10/100) عقبة رئيسية أمام أي عملية تمويل.",
     "ACTION URGENTE : 'Taille marche' doit passer au-dessus de 30/100. Sans cela, aucun financement n'est envisageable.": "إجراء عاجل: يجب أن يتجاوز معيار 'حجم السوق' 30/100. بدون ذلك، لا يمكن النظر في أي تمويل.",
@@ -94,34 +93,24 @@ export const valueTranslations = {
     "Modeliser les economies d'echelle a 3 ans pour le dossier de levee de fonds.": "نمذجة وفورات الحجم على مدى 3 سنوات لملف جمع التمويل.",
     "L'impact environnemental est bien maitrise. Le pilier 'Climat air' (90/100) est un atout dans le contexte PNUD/ODD.": "الأثر البيئي تحت السيطرة الجيدة. ركيزة 'المناخ والهواء' (90/100) تعد ميزة في سياق برنامج الأمم المتحدة الإنمائي وأهداف التنمية المستدامة.",
     "Formaliser le bilan carbone et l'aligner sur les ODD pour les dossiers de financement PNUD/AFD.": "إعداد تقرير البصمة الكربونية ومواءمته مع أهداف التنمية المستدامة لملفات تمويل برنامج الأمم المتحدة الإنمائي والوكالة الفرنسية للتنمية.",
-
+ 
     // Organisms
-    "Banque Nationale Agricole (BNA)": "البنك الوطني الفلاحي (BNA)",
+    "BFPME": "البنك التونسي لتمويل المؤسسات الصغرى والمتوسطة (BFPME)",
     "AINS 4.0 / PNUD / GEWEET / ODC / IEEE / APII": "AINS 4.0 / برنامج الأمم المتحدة الإنمائي / GEWEET / ODC / IEEE / APII",
-    "Office de Développement Sylvo-Pastoral du Nord-Ouest (ODESYPANO)": "مكتب التنمية الغابية والرعوية بالشمال الغربي (ODESYPANO)",
-    "Agence Nationale de Développement de l'Aquaculture (ANDA)": "الوكالة الوطنية لتنمية تربية الأحياء المائية (ANDA)",
-    "Agence de Promotion des Investissements Agricoles (APIA)": "وكالة النهوض بالاستثمارات الفلاحية (APIA)",
-    "Smart Capital / Ministere des Technologies de la Communication": "سمارت كابيتال / وزارة تكنولوجيات الاتصال",
-    "Agence Nationale Maîtrise Énergie (ANME)": "الوكالة الوطنية للتحكم في الطاقة (ANME)",
-    "APIA / Etablissements de recherche et d'enseignement superieur agricoles": "وكالة النهوض بالاستثمارات الفلاحية / مؤسسات البحث والتعليم العالي الفلاحي",
+    "APII / Fonds de Promotion et Décentralisation Industrielle": "وكالة النهوض بالصناعة والتجديد / صندوق النهوض بالصناعة وتوسيع اللامركزية",
     "APII / Reseau des Centres d'Affaires Nationaux": "وكالة النهوض بالصناعة والتجديد / شبكة مراكز الأعمال الوطنية",
     "SOTUGAR / Ministere des Finances": "الشركة التونسية للضمان / وزارة المالية",
-    "APIA (Agence de Promotion des Investissements Agricoles)": "وكالة النهوض بالاستثمارات الفلاحية (APIA)",
-    "APII / Fonds de Promotion et Décentralisation Industrielle": "وكالة النهوض بالصناعة والتجديد / صندوق النهوض بالصناعة وتوسيع اللامركزية",
-    "Smart Capital Tunisie": "سمارت كابيتال تونس",
-    "Banque de Financement des PME (BFPME)": "البنك التونسي لتمويل المؤسسات الصغرى والمتوسطة (BFPME)",
-    "BFPME": "البنك التونسي لتمويل المؤسسات الصغرى والمتوسطة (BFPME)",
-    "Reseau Carthage Business Angels": "شبكة قرطاج للمستثمرين الملائكيين",
-    "Société Tunisienne de Garantie (SOTUGAR)": "الشركة التونسية للضمان (SOTUGAR)",
-    "Flat6Labs Tunisia": "فلات 6 لابس تونس",
-    "Office National du Tourisme Tunisien (ONTT)": "الديوان الوطني التونسي للسياحة (ONTT)",
-    "ANPR (Agence Nationale de la Promotion de la Recherche Scientifique) / Partenaires Internationaux": "الوكالة الوطنية للنهوض بالبحث العلمي (ANPR) / شركاء دوليون",
-    "BTS (Banque Tunisienne de Solidarite)": "البنك التونسي للتضامن (BTS)",
-    "APII (Agence de Promotion de l'Industry et de l'Innovation)": "وكالة النهوض بالصناعة والتجديد (APII)",
+    "Agence Nationale Maîtrise Énergie (ANME)": "الوكالة الوطنية للتحكم في الطاقة (ANME)",
     "APII (Agence de Promotion de l'Industrie et de l'Innovation)": "وكالة النهوض بالصناعة والتجديد (APII)",
+    "Société Tunisienne de Garantie (SOTUGAR)": "الشركة التونسية للضمان (SOTUGAR)",
+    "Smart Capital Tunisie": "سمارت كابيتال تونس",
+    "Reseau Carthage Business Angels": "شبكة قرطاج للمستثمرين الملائكيين",
+    "Flat6Labs Tunisia": "فلات 6 لابس تونس",
+    "BTS (Banque Tunisienne de Solidarite)": "البنك التونسي للتضامن (BTS)",
     "Centre de Formation et de Promotion (CTFP / ATFP)": "المركز الوطني للتكوين المستمر والترقية المهنية (CTFP / ATFP)",
     "Smart Capital / College des Startups": "سمارت كابيتال / لجنة الشركات الناشئة",
-
+    "Smart Capital / Ministere des Technologies de la Communication": "سمارت كابيتال / وزارة تكنولوجيات الاتصال",
+ 
     // Resource Types
     "financement_bancaire": "تمويل بنكي",
     "concours_financement": "مسابقة وتمويل",
@@ -141,42 +130,33 @@ export const valueTranslations = {
     "pret_participatif": "قرض تشاركي",
     "label_accreditation": "علامة واعتماد",
     "subvention_incitation": "منحة وتشجيع",
-
+ 
     // Resources Names
-    "BNA – Crédits agricoles court et moyen terme": "البنك الوطني الفلاحي – قروض فلاحية قصيرة ومتوسطة المدى",
+    "Credit à Moyen et Long Terme (CMLT)": "قرض متوسط وطويل المدى (CMLT)",
     "AINS Hackathon – Concours et financement projets IA entrepreneurship": "هاكاثون AINS – مسابقة وتمويل مشاريع الذكاء الاصطناعي وريادة الأعمال",
-    "ODESYPANO – Soutien développement sylvo-pastoral Nord-Ouest": "مكتب التنمية الغابية والرعوية بالشمال الغربي (ODESYPANO)",
-    "ANDA – Agence Nationale Développement Aquaculture": "الوكالة الوطنية لتنمية تربية الأحياء المائية (ANDA)",
-    "APIA – Guichet unique investissement agricole et pêche": "وكالة النهوض بالاستثمارات الفلاحية – الشباك الموحد للاستثمار الفلاحي والصيد البحري",
-    "Startup Act Tunisie – Cadre Avantages & Labellisation": "قانون الشركات الناشئة تونس – إطار الامتيازات وعلامة المؤسسة الناشئة",
-    "Programme Efficacité Énergétique ANME – Subvention équipements": "برنامج النجاعة الطاقية للوكالة الوطنية للتحكم في الطاقة – منحة التجهيزات",
-    "Pépinières d'Entreprises Agricoles": "محاضن المؤسسات الفلاحية",
+    "FOPRODI – Prime investissement matériel industriel (10%)": "صندوق النهوض بالصناعة وتوسيع اللامركزية – منحة استثمار المعدات الصناعية (10%)",
     "APII – Centres d'Affaires (Espaces Entreprendre)": "وكالة النهوض بالصناعة والتجديد – مراكز الأعمال (فضاءات المبادرة)",
     "Fonds National de Garantie (FNG)": "الصندوق الوطني للضمان",
-    "APIA – Avantages et Incitations Agricoles": "وكالة النهوض بالاستثمارات الفلاحية – الامتيازات والحوافز الفلاحية",
-    "FOPRODI – Prime investissement matériel industriel (10%)": "صندوق النهوض بالصناعة وتوسيع اللامركزية – منحة استثمار المعدات الصناعية (10%)",
-    "Smart Capital – Fonds direct PME innovantes (hors ANAVA)": "سمارت كابيتال – الصندوق المباشر للمؤسسات الصغرى والمتوسطة المبتكرة",
-    "BFPME – Crédit gîtes ruraux et maisons d'hôtes (exception tourisme)": "البنك التونسي لتمويل المؤسسات الصغرى والمتوسطة – قروض الإقامات الريفية ودور الضيافة",
-    "Credit à Moyen et Long Terme (CMLT)": "قرض متوسط وطويل المدى (CMLT)",
-    "Carthage Business Angels": "شبكة قرطاج للمستثمرين الملائكيين",
-    "SOTUGAR – Garantie crédits PME (fonds national garantie)": "الشركة التونسية للضمان – ضمان قروض المؤسسات الصغرى والمتوسطة",
-    "Flat6Labs Tunisia – Programme d'Acceleration et d'Investissement": "فلات 6 لابس تونس – برنامج تسريع واستثمار",
-    "ONTT – Programme soutien investissement touristique": "الديوان الوطني التونسي للسياحة – برنامج دعم الاستثمار السياحي",
-    "Programme Innovation IT / R&D Numerique": "برنامج ابتكار تكنولوجيا المعلومات / البحث والتطوير الرقمي",
-    "Credit Professionnel BTS Bank": "القرض المهني من البنك التونسي للتضامن",
+    "Startup Act Tunisie – Cadre Avantages & Labellisation": "قانون الشركات الناشئة تونس – إطار الامتيازات وعلامة المؤسسة الناشئة",
+    "Programme Efficacité Énergétique ANME – Subvention équipements": "برنامج النجاعة الطاقية للوكالة الوطنية للتحكم في الطاقة – منحة التجهيزات",
     "APII – Fonds de Promotion Industrielle (FOPRODI)": "وكالة النهوض بالصناعة والتجديد – صندوق النهوض بالصناعة (FOPRODI)",
+    "SOTUGAR – Garantie crédits PME (fonds national garantie)": "الشركة التونسية للضمان – ضمان قروض المؤسسات الصغرى والمتوسطة",
+    "Smart Capital – Fonds direct PME innovantes (hors ANAVA)": "سمارت كابيتال – الصندوق المباشر للمؤسسات الصغرى والمتوسطة المبتكرة",
+    "Carthage Business Angels": "شبكة قرطاج للمستثمرين الملائكيين",
+    "Flat6Labs Tunisia – Programme d'Acceleration et d'Investissement": "فلات 6 لابس تونس – برنامج تسريع واستثمار",
+    "Credit Professionnel BTS Bank": "القرض المهني من البنك التونسي للتضامن",
     "CTFP – Financement formation professionnelle continue PME": "المركز الوطني للتكوين المستمر والترقية المهنية – تمويل التكوين المهني المستمر",
     "BFPME – Intilak 2": "البنك التونسي لتمويل المؤسسات الصغرى والمتوسطة – انطلاق 2",
     "Startup Label (Le Label de Startup)": "علامة مؤسسة ناشئة",
     "Bourse de la Startup (Startup Grant)": "منحة مؤسسة ناشئة"
   }
 };
-
+ 
 export function translateValue(value, lang) {
   if (!value) return "";
   return valueTranslations[lang]?.[value] || value;
 }
-
+ 
 // Metadata configuration for dimensions
 const DIMENSION_CONFIG = [
   {
@@ -250,29 +230,34 @@ const DIMENSION_CONFIG = [
     }
   }
 ];
-
-export function getAdaptedData(customData) {
-  const data = customData || rawData;
+ 
+export function getAdaptedData(data) {
+  if (!data || Object.keys(data).length === 0) return null;
 
   const {
-    entrepreneur_id,
-    header,
-    stade_reel,
-    stade_percu,
-    divergence_detectee,
-    message_perception_gap,
-    signaux_divergence,
-    scores,
-    anomalies,
-    ressources,
-    roadmap,
-    answers
+    project_id,
+    startup_name,
+    sector: data_sector,
+    location: data_location,
+    real_stage,
+    perceived_stage,
+    gap_detected,
+    gap_explanation,
+    divergence_signals,
+    scores_data,
+    detected_anomalies,
+    recommended_resources,
+    roadmap_data,
+    financing_readiness_index,
+    is_financeable,
+    fri_interpretation,
+    raw_answers
   } = data;
 
-  const nom_entreprise = header?.nom_entreprise || entrepreneur_id;
-  const localisation = header?.localisation || "";
-  const secteur = header?.secteur_label || "";
-
+  const nom_entreprise = startup_name || `Projet #${project_id || ''}`;
+  const localisation = data_location || "";
+  const secteur = data_sector || "";
+ 
   // 6-Stage Timeline
   const stages = [
     {
@@ -281,7 +266,7 @@ export function getAdaptedData(customData) {
       desc: { fr: "Définition du concept et étude de marché initiale.", ar: "تحديد المفهوم ودراسة السوق الأولية." }
     },
     {
-      id: "Validation",
+      id: "Market Validation",
       label: { fr: "Validation", ar: "التحقق" },
       desc: { fr: "Création d'un MVP et premiers tests utilisateurs.", ar: "إنشاء نموذج أولي واختبار المستخدمين." }
     },
@@ -293,10 +278,10 @@ export function getAdaptedData(customData) {
     {
       id: "Fundraising",
       label: { fr: "Levée de fonds", ar: "جمع التمويل" },
-      desc: { fr: "Pitching, due diligence, recherche de capital.", ar: "تقديم العروض، فحص الجدوى والبحث عن رأس المال." }
+      desc: { fr: "Pitching, due diligence, recherche de capital.", ar: "تقديم العروض, فحص الجدوى والبحث عن رأس المال." }
     },
     {
-      id: "Launch",
+      id: "Launch Planning",
       label: { fr: "Lancement", ar: "الإطلاق" },
       desc: { fr: "Début de la commercialisation et acquisition active.", ar: "بدء التسويق التجاري والاستقطاب النشط." }
     },
@@ -306,12 +291,12 @@ export function getAdaptedData(customData) {
       desc: { fr: "Passage à l'échelle, expansion géographique.", ar: "التوسع والنمو والتمدد الجغرافي." }
     }
   ];
-
+ 
   // Map scores from scores_f2 and details
   const mappedScores = DIMENSION_CONFIG.map(dim => {
-    const rawScoreVal = scores?.scores_f2?.[dim.f2Key] ?? 0;
-    const detailObj = scores?.detail?.[dim.jsonKey] || {};
-
+    const rawScoreVal = scores_data?.scores_f2?.[dim.f2Key] ?? 0;
+    const detailObj = scores_data?.detail?.[dim.jsonKey] || {};
+ 
     const subDimensions = Object.keys(dim.subLabels).map(subKey => {
       const subVal = detailObj.sous_scores?.[subKey] ?? 0;
       return {
@@ -320,10 +305,10 @@ export function getAdaptedData(customData) {
         score: subVal
       };
     });
-
+ 
     const justificationFr = detailObj.justification || "";
     const justificationAr = translateValue(justificationFr, 'ar');
-
+ 
     return {
       id: dim.id,
       title: dim.title,
@@ -337,9 +322,9 @@ export function getAdaptedData(customData) {
       subDimensions
     };
   });
-
+ 
   // Map anomalies
-  const mappedAnomalies = (anomalies || []).map(an => ({
+  const mappedAnomalies = (detected_anomalies || []).map(an => ({
     id: an.id,
     dimension: an.dimension_impactee,
     penalty: an.penalite,
@@ -353,33 +338,35 @@ export function getAdaptedData(customData) {
     },
     kbLink: an.kb_link
   }));
-
+ 
   // Map recommended resources
-  const mappedResources = (ressources?.recommandees || []).map(r => {
+  const mappedResources = (recommended_resources || []).map(r => {
     const tauxAr = translateValue(r.taux, 'ar');
     const justificationFr = r.justification || "";
     let justificationAr = justificationFr;
-
+ 
     if (justificationFr.includes("Recommandé pour stade")) {
-      const stageName = stade_reel;
+      const stageName = real_stage;
       const sectorName = secteur;
       const relevanceMatch = justificationFr.match(/Pertinence:\s*([\d\.]+)%/);
       const pertinenceVal = relevanceMatch ? relevanceMatch[1] : (r.pertinence || 0);
-
+ 
       const isRegional = justificationFr.includes("regions_interieures");
       const isBP = justificationFr.includes("absence_business_plan");
       const isAcc = justificationFr.includes("besoin_accompagnement");
-
+      const isFin = justificationFr.includes("absence_financement") || justificationFr.includes("business_model_flou");
+ 
       let addressesAr = "";
       if (isRegional) addressesAr = "يعالج: المناطق الداخلية. ";
       if (isBP) addressesAr = "يعالج: غياب مخطط العمل. ";
       if (isAcc) addressesAr = "يعالج: الحاجة للمرافقة. ";
-
+      if (isFin) addressesAr = "يعالج: غياب التمويل / نموذج أعمال غير واضح. ";
+ 
       justificationAr = `موصى به لمرحلة "${translateValue(stageName, 'ar')}"، قطاع "${translateValue(sectorName, 'ar')}". ${addressesAr}الملاءمة: ${pertinenceVal}%.`;
     } else {
       justificationAr = translateValue(justificationFr, 'ar');
     }
-
+ 
     return {
       id: r.id,
       name: {
@@ -406,13 +393,13 @@ export function getAdaptedData(customData) {
       }
     };
   });
-
+ 
   // Map roadmap horizons
   const mappedRoadmap = [
     {
       horizon: "immediate",
       title: { fr: "Immédiat (0 - 30 jours)", ar: "فوري (0 - 30 يوماً)" },
-      actions: (roadmap?.immediat_0_30j || []).map(act => ({
+      actions: (roadmap_data?.immediat_0_30j || []).map(act => ({
         text: {
           fr: act,
           ar: translateValue(act, 'ar')
@@ -423,7 +410,7 @@ export function getAdaptedData(customData) {
     {
       horizon: "shortTerm",
       title: { fr: "Court terme (1 - 3 mois)", ar: "المدى القريب (1 - 3 أشهر)" },
-      actions: (roadmap?.court_terme_1_3m || []).map(act => ({
+      actions: (roadmap_data?.court_terme_1_3m || []).map(act => ({
         text: {
           fr: act,
           ar: translateValue(act, 'ar')
@@ -434,7 +421,7 @@ export function getAdaptedData(customData) {
     {
       horizon: "mediumTerm",
       title: { fr: "Moyen terme (3 - 12 mois)", ar: "المدى المتوسط (3 - 12 شهراً)" },
-      actions: (roadmap?.moyen_terme_3_12m || []).map(act => ({
+      actions: (roadmap_data?.moyen_terme_3_12m || []).map(act => ({
         text: {
           fr: act,
           ar: translateValue(act, 'ar')
@@ -443,19 +430,19 @@ export function getAdaptedData(customData) {
       }))
     }
   ];
-
+ 
   // Financing readiness scores
-  const financingScore = data.fri ?? 0;
-  const isBankable = data.is_financeable ?? false;
-  const interpretationFr = data.fri_interpretation || "";
-
+  const financingScore = financing_readiness_index ?? 0;
+  const isBankable = is_financeable ?? false;
+  const interpretationFr = fri_interpretation || "";
+ 
   let interpretationAr = interpretationFr;
-  if (interpretationFr.includes("Le score global est plafonné à 40/100")) {
-    interpretationAr = "تم سقف الدرجة الإجمالية عند 40/100 بسبب الضعف الحرج في درجة السوق (<30). (الدرجة الفعلية المحتسبة: 40/100)";
+  if (interpretationFr.includes(`Le score global est plafonné à ${financingScore}/100`)) {
+    interpretationAr = `تم سقف الدرجة الإجمالية عند ${financingScore}/100 بسبب الضعف الحرج في درجة السوق (<30). (الدرجة الفعلية المحتسبة: ${financingScore}/100)`;
   } else {
     interpretationAr = translateValue(interpretationFr, 'ar');
   }
-
+ 
   const financingReadiness = {
     score: financingScore,
     status: isBankable ? 'bankable' : 'non_bankable',
@@ -469,26 +456,52 @@ export function getAdaptedData(customData) {
     }
   };
 
+  // Map blockers
+  const mappedBlockers = (data.blockers || []).map((b, idx) => {
+    const domainMapping = {
+      "organisationnel": { fr: "Organisationnel", ar: "تنظيمي" },
+      "marché": { fr: "Marché", ar: "السوق" },
+      "légal": { fr: "Légal", ar: "قانوني" },
+      "financier": { fr: "Financier", ar: "مالي" }
+    };
+    const domain = domainMapping[b.domaine] || { fr: b.domaine || "Général", ar: b.domaine || "عام" };
+    const priority = b.priorite === 1 ? 'high' : (b.priorite === 2 ? 'medium' : 'low');
+    return {
+      id: `blocker_${idx}`,
+      domain,
+      priority,
+      title: {
+        fr: b.description,
+        ar: translateValue(b.description, 'ar')
+      },
+      desc: {
+        fr: `Obstacle critique impactant le déploiement du projet dans la dimension ${b.domaine || 'générale'}.`,
+        ar: `عقبة حرجة تؤثر على سير المشروع في مجال ${domain.ar}.`
+      }
+    };
+  });
+ 
   return {
     startupName: nom_entreprise,
-    entrepreneur_id,
+    entrepreneur_id: project_id,
     secteur,
     localisation,
     maturity: {
-      perceivedStage: stade_percu,
-      realStage: stade_reel,
+      perceivedStage: perceived_stage,
+      realStage: real_stage,
       stages,
       alertMessage: {
-        fr: message_perception_gap || "",
-        ar: translateValue(message_perception_gap, 'ar')
+        fr: gap_explanation || "",
+        ar: translateValue(gap_explanation, 'ar')
       },
-      gapsList: signaux_divergence || []
+      gapsList: divergence_signals || []
     },
     scores: mappedScores,
     anomalies: mappedAnomalies,
+    blockers: mappedBlockers,
     resources: mappedResources,
     roadmap: mappedRoadmap,
     financingReadiness,
-    answers: answers || { free_text: { text: "" } }
+    answers: raw_answers || { free_text: { text: "" } }
   };
 }

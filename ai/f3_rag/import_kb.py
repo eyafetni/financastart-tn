@@ -8,10 +8,14 @@ import json
 import chromadb
 from sentence_transformers import SentenceTransformer
 
+import os
+
 # ── CONFIG ──────────────────────────────────────────────────────
-KB_FILE         = "ressources_rag_final.json"
+SCRIPT_DIR      = os.path.dirname(os.path.abspath(__file__))
+KB_FILE         = os.path.join(SCRIPT_DIR, "ressources_rag_final.json")
 COLLECTION_NAME = "tunisian_resources"
 EMBED_MODEL     = "paraphrase-multilingual-MiniLM-L12-v2"  # multilingue FR+AR
+CHROMA_PATH     = os.path.join(SCRIPT_DIR, "chromadb")
 # ────────────────────────────────────────────────────────────────
 
 def build_index():
@@ -23,7 +27,7 @@ def build_index():
 
     # 2. ChromaDB local persistant (comme technovangelist mais PersistentClient)
     print("▶ Init ChromaDB...")
-    chroma = chromadb.PersistentClient(path="./chromadb")
+    chroma = chromadb.PersistentClient(path=CHROMA_PATH)
     
     # Supprimer si existe déjà (rebuild propre)
     try:

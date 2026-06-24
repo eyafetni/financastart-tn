@@ -3,7 +3,7 @@ import json
 def extract_sub_scores(payload):
     data = json.loads(payload) if isinstance(payload, str) else payload
     # Correction : "reponses" au lieu de "reponses_questionnaire"
-    reponses = data.get("reponses", {})
+    reponses = data.get("reponses_f2", {})
     
     scale = [10, 40, 60, 75,90 ]
     

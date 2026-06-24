@@ -21,13 +21,16 @@ import re
 import chromadb
 from sentence_transformers import SentenceTransformer
 
+import os
+
 # ════════════════════════════════════════════════════════════════
 # CONFIGURATION
 # ════════════════════════════════════════════════════════════════
 
+SCRIPT_DIR      = os.path.dirname(os.path.abspath(__file__))
 COLLECTION_NAME = "tunisian_resources"
 EMBED_MODEL     = "paraphrase-multilingual-MiniLM-L12-v2"
-CHROMA_PATH     = "./chromadb"
+CHROMA_PATH     = os.path.join(SCRIPT_DIR, "chromadb")
 
 STADES_ORDER = [
     "Ideation", "Market Validation", "Structuration",

@@ -637,8 +637,6 @@ def scoring_f2(engine, data):
             
             total_f2 += pts
     
-    engine.ajouter_points(total_f2 // 2, "Évaluation Multi-dimensionnelle F2")
-    
     return scores_par_dimension
 
 
@@ -700,7 +698,9 @@ def run_diagnostic_from_json(input_filepath):
         "signaux_divergence": engine.signaux_divergence,
         "financement_recommande": stade_info["financement"],
         "reponses_f2": data.get("reponses_f2", {}),
+        "reponses": data.get("reponses_f2", {}),
         "scores_f2": scores_f2,
+        "profil_complet": data,
     }
     
     filename = f"diagnostic_{entrepreneur_id}_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json"

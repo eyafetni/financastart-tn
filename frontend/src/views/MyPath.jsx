@@ -6,7 +6,7 @@ import {
 } from 'lucide-react';
 import { translations } from '../data/interfaceTranslations';
 import { loadQuestionnaire, allQuestions } from '../data/questionnaireService';
-import { sessionHistory, scoreKeys, scoreLabels, scoreColors } from '../data/sessionHistory';
+import { scoreKeys, scoreLabels, scoreColors } from '../data/sessionHistory';
 import ScoreHistoryChart from '../components/ScoreHistoryChart';
 
 // ── helpers ──────────────────────────────────────────────────────────────────
@@ -77,9 +77,8 @@ function SessionModal({ session, lang, onClose, prevSession }) {
         </div>
 
         {/* Financing score */}
-        <div className={`flex items-center justify-between p-3 rounded-xl border ${
-          isBankable ? 'bg-emerald-950/20 border-emerald-500/25 text-emerald-400' : 'bg-rose-950/20 border-rose-500/25 text-rose-400'
-        }`}>
+        <div className={`flex items-center justify-between p-3 rounded-xl border ${isBankable ? 'bg-emerald-950/20 border-emerald-500/25 text-emerald-400' : 'bg-rose-950/20 border-rose-500/25 text-rose-400'
+          }`}>
           <div className="flex items-center gap-2 text-sm font-bold">
             {isBankable ? <CheckCircle className="h-4 w-4" /> : <ShieldAlert className="h-4 w-4" />}
             <span>{isBankable ? t.bankable : t.notBankable}</span>
@@ -162,22 +161,64 @@ export default function MyPath({ lang }) {
   const [selectedSession, setSelectedSession] = useState(null);
   const [expandChart, setExpandChart] = useState(true);
 
+  const [sessionHistory, setSessionHistory] = useState([]);
   const [questionnaireData, setQuestionnaireData] = useState(null);
   const [loadingQuestionnaire, setLoadingQuestionnaire] = useState(true);
 
   useEffect(() => {
-    async function fetchQ() {
+    async function fetchData() {
       try {
-        const data = await loadQuestionnaire();
-        setQuestionnaireData(data);
+        const qData = await loadQuestionnaire();
+        setQuestionnaireData(qData);
       } catch (e) {
         console.error("Error loading questionnaire in MyPath:", e);
+      }
+
+      try {
+        const projectId = localStorage.getItem('project_id') || 1;
+        const token = localStorage.getItem('token');
+        const res = await fetch(`http://localhost:8000/projects/${projectId}/dashboard`, {
+          headers: { 'Authorization': `Bearer ${token}` }
+        });
+        if (res.ok) {
+          const rawData = await res.json();
+          const fromAPI = {
+            id: `sess-${new Date().getTime()}`,
+            date: new Date().toISOString().split('T')[0],
+            stade_reel: rawData.real_stage || "Structuration",
+            stade_percu: rawData.perceived_stage || "",
+            gap_detecte: rawData.gap_detected || false,
+            financingScore: rawData.financing_readiness_index || 0,
+            status: rawData.is_financeable ? "bankable" : "non_bankable",
+            scores: {
+              market: rawData.scores_data?.scores_f2?.market || 0,
+              commercial: rawData.scores_data?.scores_f2?.commercial_offer || 0,
+              innovation: rawData.scores_data?.scores_f2?.innovation || 0,
+              scalability: rawData.scores_data?.scores_f2?.scalability || 0,
+              green: rawData.scores_data?.scores_f2?.green || 0,
+            },
+            isCurrent: true,
+          };
+          setSessionHistory([fromAPI]);
+        }
+      } catch (e) {
+        console.error("Error loading dashboard in MyPath:", e);
       } finally {
         setLoadingQuestionnaire(false);
       }
     }
-    fetchQ();
+    fetchData();
   }, []);
+
+  if (sessionHistory.length === 0) return (
+    <main className="max-w-7xl mx-auto px-4 sm:px-6 py-12 flex items-center justify-center">
+      <div className="glass-card p-8 text-center flex flex-col items-center gap-4">
+        <p className="text-slate-400 text-sm font-semibold">
+          {lang === 'fr' ? 'Chargement de votre parcours...' : 'جاري تحميل مسارك...'}
+        </p>
+      </div>
+    </main>
+  );
 
   const current = sessionHistory[sessionHistory.length - 1];
   const prev = sessionHistory[sessionHistory.length - 2];
@@ -187,8 +228,8 @@ export default function MyPath({ lang }) {
     Math.round(scoreKeys.reduce((s, k) => s + sess.scores[k], 0) / scoreKeys.length);
 
   const currentAvg = avgScore(current);
-  const prevAvg = avgScore(prev);
-  const globalDiff = currentAvg - prevAvg;
+  const prevAvg = prev ? avgScore(prev) : undefined;
+  const globalDiff = prevAvg !== undefined ? currentAvg - prevAvg : 0;
 
   return (
     <main className="max-w-7xl mx-auto px-4 sm:px-6 py-8 flex flex-col gap-6">
@@ -211,7 +252,7 @@ export default function MyPath({ lang }) {
       {/* Questionnaire Responses Section */}
       {(() => {
         if (loadingQuestionnaire || !questionnaireData) return null;
-        
+
         const description = questionnaireData.description || '';
         let answersArray = [];
         if (Array.isArray(questionnaireData.answers)) {
@@ -220,7 +261,7 @@ export default function MyPath({ lang }) {
           answersArray = Object.entries(questionnaireData.answers).map(([id, valeur]) => ({ id, valeur }));
         }
         const hasAnswers = answersArray.length > 0;
-        
+
         if (!hasAnswers && !description) return null;
 
         return (
@@ -251,7 +292,7 @@ export default function MyPath({ lang }) {
                     {answersArray.slice(0, 4).map((ans) => {
                       const qDef = questionnaireData.questions?.find(q => q.id === ans.id) || allQuestions[ans.id];
                       const qLabel = qDef?.texte?.[lang] || qDef?.label?.[lang] || ans.id.replace(/_/g, ' ');
-                      
+
                       let displayAnswer;
                       if (Array.isArray(ans.valeur)) {
                         displayAnswer = ans.valeur
@@ -261,7 +302,7 @@ export default function MyPath({ lang }) {
                         const opt = qDef?.options?.find(o => o.value === ans.valeur);
                         displayAnswer = opt?.label?.[lang] || opt?.label || String(ans.valeur).substring(0, 120);
                       }
-                      
+
                       return (
                         <div key={ans.id} className="text-sm p-3 rounded-lg bg-slate-950/40 border border-slate-800/60">
                           <p className="text-[10px] text-cyan-400/80 font-semibold uppercase tracking-wide mb-1">
@@ -455,11 +496,10 @@ export default function MyPath({ lang }) {
 
                     {/* Status badge */}
                     <td className="py-3 px-3">
-                      <span className={`inline-flex items-center gap-1 text-[10px] font-bold px-2 py-0.5 rounded-full border ${
-                        isBankable
-                          ? 'bg-emerald-950/40 border-emerald-500/30 text-emerald-400'
-                          : 'bg-rose-950/40 border-rose-500/30 text-rose-400'
-                      }`}>
+                      <span className={`inline-flex items-center gap-1 text-[10px] font-bold px-2 py-0.5 rounded-full border ${isBankable
+                        ? 'bg-emerald-950/40 border-emerald-500/30 text-emerald-400'
+                        : 'bg-rose-950/40 border-rose-500/30 text-rose-400'
+                        }`}>
                         {isBankable ? <CheckCircle className="h-3 w-3" /> : <ShieldAlert className="h-3 w-3" />}
                         {isBankable ? t.bankable : t.notBankable}
                       </span>

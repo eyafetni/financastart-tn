@@ -1,8 +1,10 @@
 import defaultQuestionnaire from './questionnaire.json';
-
-const BASE_URL = "http://localhost:8000";
-const getToken = () => localStorage.getItem("token");
-const getProjectId = () => localStorage.getItem("project_id");
+import {
+  analyzeDemoProject,
+  getDemoQuestionnaireData,
+  isDemoSession,
+  saveDemoQuestionnaireData
+} from './demoStore';
 
 // Définir toutes les questions possibles comme fallback et pour la traduction dans les vues existantes
 export const allQuestions = {
@@ -89,65 +91,24 @@ export const allQuestions = {
  * Charge les données complètes du questionnaire depuis la base de données
  */
 export async function loadQuestionnaire() {
-  const projectId = getProjectId();
-  const token = getToken();
-
-  if (!projectId || !token) {
+  if (!isDemoSession()) {
     return defaultQuestionnaire;
   }
 
-  try {
-    const response = await fetch(`${BASE_URL}/projects/${projectId}`, {
-      headers: {
-        "Authorization": `Bearer ${token}`
-      }
-    });
-
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-
-    const projectData = await response.json();
-    if (projectData && projectData.f1_diagnostic) {
-      return projectData.f1_diagnostic;
-    }
-    
-    return defaultQuestionnaire;
-  } catch (error) {
-    console.error('Erreur lors du chargement du questionnaire backend, utilisation du fallback:', error);
-    return defaultQuestionnaire;
-  }
+  const savedQuestionnaire = getDemoQuestionnaireData();
+  return savedQuestionnaire || defaultQuestionnaire;
 }
 
 /**
  * Sauvegarde les données complètes du questionnaire dans la base de données
  */
 export async function saveQuestionnaire(data) {
-  const projectId = getProjectId();
-  const token = getToken();
-
-  if (!projectId || !token) {
-    console.warn("Pas de projectId ou token trouvé.");
-    return { success: false, error: "Non authentifié ou projet introuvable" };
+  if (!isDemoSession()) {
+    return { success: false, error: 'Non authentifié ou projet introuvable' };
   }
 
-  try {
-    const response = await fetch(`${BASE_URL}/projects/${projectId}/f1`, {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-        "Authorization": `Bearer ${token}`
-      },
-      body: JSON.stringify({ f1_diagnostic: data })
-    });
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    return await response.json();
-  } catch (error) {
-    console.error('Erreur lors de la sauvegarde du questionnaire:', error);
-    return { success: false, error };
-  }
+  saveDemoQuestionnaireData(data);
+  return { success: true, demo: true };
 }
 
 /**
@@ -167,3 +128,15 @@ export async function saveAnswers(answersArray) {
   data.answers = answersArray;
   return await saveQuestionnaire(data);
 }
+
+/**
+ * Lance l'analyse complète (F1 + F2) sur le backend
+ */
+export async function analyzeProject(payload) {
+  if (!isDemoSession()) {
+    return { success: false, error: 'Non authentifié ou projet introuvable' };
+  }
+
+  return analyzeDemoProject(payload);
+}
+

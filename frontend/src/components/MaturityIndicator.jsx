@@ -11,7 +11,8 @@ export default function MaturityIndicator({ maturityData, lang }) {
   // Find indexes
   const realIndex = stages.findIndex(s => s.id === realStage);
   const perceivedIndex = stages.findIndex(s => s.id === perceivedStage);
-  const hasMismatch = realStage !== perceivedStage;
+  const hasMismatch = realStage !== perceivedStage && perceivedStage !== null && perceivedStage !== undefined && perceivedStage !== "";
+
 
   return (
     <div className="glass-card p-6 flex flex-col gap-6">
@@ -21,7 +22,7 @@ export default function MaturityIndicator({ maturityData, lang }) {
           <h2 className="text-lg font-bold text-white tracking-wide">{t.maturityTitle}</h2>
           <p className="text-xs text-slate-400">
             {t.maturityReal}: <span className="text-cyan-400 font-semibold">{stages[realIndex]?.label[lang]}</span>
-            {hasMismatch && (
+            {hasMismatch && perceivedIndex >= 0 && (
               <span className="mx-2 text-amber-500">
                 ({t.maturityPerceived}: {stages[perceivedIndex]?.label[lang]})
               </span>

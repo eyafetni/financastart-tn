@@ -15,6 +15,11 @@ if f2_scoring_path not in sys.path:
     sys.path.insert(0, f2_scoring_path)
 
 from ai.f2_scoring.fonction_principale import process_entrepreneur_profile
+from ai.f1_diagnostic.part2 import run_diagnostic_from_json
+from ai.f3_rag.rag_engine import run_rag
+import tempfile
+
+from ai.f2_scoring.fonction_principale import process_entrepreneur_profile
 router = APIRouter(prefix="/projects", tags=["Projects"])
 
 
@@ -154,6 +159,129 @@ def generate_f2(project_id: int, user=Depends(get_current_user)):
         "f2_scoring": f2_result
     }
 
+# ── ANALYSER LE PROJET (F1 + F2) ──────────────────
+def map_raw_answers_to_f1_input(raw_payload: dict) -> dict:
+    """Helper pour mapper les réponses brutes du questionnaire vers l'entrée F1."""
+    # Le frontend envoie déjà un payload structuré, mais on peut ajuster ici si besoin
+    return raw_payload
+
+# ── GÉNÉRER F1 (Diagnostic) ──────────────────
+@router.post("/{project_id}/generate-f1")
+def generate_f1(project_id: int, payload: dict, user=Depends(get_current_user)):
+    conn = get_db()
+    row = conn.execute("SELECT id FROM projects WHERE id = ? AND user_id = ?", (project_id, user["user_id"])).fetchone()
+    if not row:
+        conn.close()
+        raise HTTPException(status_code=404, detail="Projet non trouvé")
+
+    f1_input = map_raw_answers_to_f1_input(payload)
+    
+    with tempfile.NamedTemporaryFile(mode='w', suffix='.json', delete=False, encoding='utf-8') as tmp_file:
+        json.dump(f1_input, tmp_file, ensure_ascii=False)
+        tmp_filepath = tmp_file.name
+
+    try:
+        f1_result = run_diagnostic_from_json(tmp_filepath)
+        if not f1_result:
+            raise HTTPException(status_code=500, detail="Erreur F1")
+            
+        conn.execute(
+            "UPDATE projects SET f1_diagnostic = ?, updated_at = CURRENT_TIMESTAMP WHERE id = ? AND user_id = ?",
+            (json.dumps(f1_result, ensure_ascii=False), project_id, user["user_id"])
+        )
+        conn.commit()
+    finally:
+        conn.close()
+        if os.path.exists(tmp_filepath):
+            os.remove(tmp_filepath)
+            
+    return {"message": "F1 généré ✅", "f1_diagnostic": f1_result}
+
+# ── GÉNÉRER F3 (Roadmap RAG) ──────────────────
+@router.post("/{project_id}/generate-f3")
+def generate_f3(project_id: int, user=Depends(get_current_user)):
+    conn = get_db()
+    row = conn.execute("SELECT f1_diagnostic, f2_scoring FROM projects WHERE id = ? AND user_id = ?", (project_id, user["user_id"])).fetchone()
+    if not row or not row["f1_diagnostic"] or not row["f2_scoring"]:
+        conn.close()
+        raise HTTPException(status_code=400, detail="Projet non trouvé ou F1/F2 manquants")
+        
+    f1_data = json.loads(row["f1_diagnostic"])
+    f2_data = json.loads(row["f2_scoring"])
+    
+    # Fusionner f1 et f2 pour RAG
+    combined_data = {**f1_data, **f2_data}
+    
+    try:
+        f3_result = run_rag(combined_data)
+        conn.execute(
+            "UPDATE projects SET f3_roadmap = ?, updated_at = CURRENT_TIMESTAMP WHERE id = ? AND user_id = ?",
+            (json.dumps(f3_result, ensure_ascii=False), project_id, user["user_id"])
+        )
+        conn.commit()
+    finally:
+        conn.close()
+        
+    return {"message": "F3 généré ✅", "f3_roadmap": f3_result}
+
+# ── ANALYSER LE PROJET (F1 + F2 + F3) ──────────────────
+@router.post("/{project_id}/analyse")
+def analyse_project(project_id: int, payload: dict, user=Depends(get_current_user)):
+    conn = get_db()
+    row = conn.execute("SELECT id FROM projects WHERE id = ? AND user_id = ?", (project_id, user["user_id"])).fetchone()
+    if not row:
+        conn.close()
+        raise HTTPException(status_code=404, detail="Projet non trouvé")
+
+    f1_input = map_raw_answers_to_f1_input(payload)
+
+    with tempfile.NamedTemporaryFile(mode='w', suffix='.json', delete=False, encoding='utf-8') as tmp_file:
+        json.dump(f1_input, tmp_file, ensure_ascii=False)
+        tmp_filepath = tmp_file.name
+
+    try:
+        # F1
+        f1_result = run_diagnostic_from_json(tmp_filepath)
+        if not f1_result:
+            raise HTTPException(status_code=500, detail="Erreur F1")
+
+        # F2
+        f2_result = process_entrepreneur_profile(f1_result)
+
+        # F3
+        combined_data = {**f1_result, **f2_result}
+        f3_result = run_rag(combined_data)
+
+        conn.execute(
+            """UPDATE projects 
+               SET f1_diagnostic = ?, f2_scoring = ?, f3_roadmap = ?, 
+                   project_name = ?, sector = ?, updated_at = CURRENT_TIMESTAMP 
+               WHERE id = ? AND user_id = ?""",
+            (
+                json.dumps(f1_result, ensure_ascii=False),
+                json.dumps(f2_result, ensure_ascii=False),
+                json.dumps(f3_result, ensure_ascii=False),
+                payload.get("nom_entreprise", "Projet sans nom"),
+                payload.get("secteur", ""),
+                project_id,
+                user["user_id"]
+            )
+        )
+        conn.commit()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Erreur d'analyse: {str(e)}")
+    finally:
+        conn.close()
+        if os.path.exists(tmp_filepath):
+            os.remove(tmp_filepath)
+
+    return {
+        "status": "success",
+        "message": "Diagnostic complet (F1 + F2 + F3) terminé ✅",
+        "f1_diagnostic": f1_result,
+        "f2_scoring": f2_result,
+        "f3_roadmap": f3_result
+    }
 
 # ── SAUVEGARDER F3 (Roadmap RAG) ──────────────────
 @router.put("/{project_id}/f3")
@@ -169,7 +297,6 @@ def save_f3(project_id: int, data: F3Update, user=Depends(get_current_user)):
     conn.close()
     return {"message": "F3 sauvegardé ✅"}
 
-
 # ── DASHBOARD COMPLET (F1+F2+F3) ──────────────────
 @router.get("/{project_id}/dashboard")
 def get_dashboard(project_id: int, user=Depends(get_current_user)):
@@ -184,16 +311,37 @@ def get_dashboard(project_id: int, user=Depends(get_current_user)):
 
     project = row_to_project(row)
 
-    # Résumé dashboard pour le frontend
+    # Map f2_scoring into the nested shape expected by dataAdapter.js
+    scores_obj = None
+    if project.get("f2_scoring") and "scores" in project["f2_scoring"]:
+        f2_scores = project["f2_scoring"]["scores"]
+        scores_obj = {
+            "scores_f2": {
+                "market": f2_scores.get("market_score", {}).get("valeur", 0),
+                "commercial_offer": f2_scores.get("commercial_offer_score", {}).get("valeur", 0),
+                "innovation": f2_scores.get("innovation_score", {}).get("valeur", 0),
+                "scalability": f2_scores.get("scalability_score", {}).get("valeur", 0),
+                "green": f2_scores.get("green_score", {}).get("valeur", 0),
+            },
+            "detail": f2_scores
+        }
+
     return {
         "project_id": project_id,
-        "project_name": project["project_name"],
+        "startup_name": project["project_name"],
         "sector": project["sector"],
-        "status": project["status"],
-        "maturity_stage": project["f1_diagnostic"].get("stage") if project["f1_diagnostic"] else None,
-        "perception_gap": project["f1_diagnostic"].get("perception_gap") if project["f1_diagnostic"] else None,
-        "scores": project["f2_scoring"].get("scores") if project["f2_scoring"] else None,
-        "blockers": project["f1_diagnostic"].get("blockers") if project["f1_diagnostic"] else None,
-        "roadmap_summary": project["f3_roadmap"].get("roadmap") if project["f3_roadmap"] else None,
-        "full_data": project
+        "location": project["f1_diagnostic"].get("localisation", "Tunisie") if project["f1_diagnostic"] else "Tunisie",
+        "real_stage": project["f1_diagnostic"].get("stade_reel") if project["f1_diagnostic"] else None,
+        "perceived_stage": project["f1_diagnostic"].get("stade_percu") if project["f1_diagnostic"] else None,
+        "gap_detected": project["f1_diagnostic"].get("gap_detecte") if project["f1_diagnostic"] else False,
+        "gap_explanation": project["f1_diagnostic"].get("gap_explication") if project["f1_diagnostic"] else "",
+        "divergence_signals": project["f1_diagnostic"].get("signaux_divergence", []) if project["f1_diagnostic"] else [],
+        "blockers": project["f1_diagnostic"].get("blockers", []) if project["f1_diagnostic"] else [],
+        "scores_data": scores_obj,
+        "detected_anomalies": project["f2_scoring"].get("anomalies_detectees", []) if project["f2_scoring"] else [],
+        "recommended_resources": project["f3_roadmap"].get("ressources_recommandees", []) if project["f3_roadmap"] else [],
+        "roadmap_data": project["f3_roadmap"].get("roadmap", {}) if project["f3_roadmap"] else {},
+        "financing_readiness_index": project["f2_scoring"].get("financing_readiness_index") if project["f2_scoring"] else 0,
+        "is_financeable": project["f2_scoring"].get("is_financeable") if project["f2_scoring"] else False,
+        "fri_interpretation": project["f2_scoring"].get("fri_interpretation") if project["f2_scoring"] else ""
     }

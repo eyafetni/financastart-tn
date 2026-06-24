@@ -3,81 +3,56 @@ import MaturityIndicator from '../components/MaturityIndicator';
 import ScoreBars from '../components/ScoreBars';
 import FinancingReadiness from '../components/FinancingReadiness';
 import AnomaliesList from '../components/AnomaliesList';
+import PriorityBlockers from '../components/PriorityBlockers';
 import RoadmapTimeline from '../components/RoadmapTimeline';
 import ResourcesGrid from '../components/ResourcesGrid';
 import AnswersInput from '../components/AnswersInput';
 import { MapPin, Layers, Loader2 } from 'lucide-react';
 import { getAdaptedData, translateValue } from '../data/dataAdapter';
+import { getDemoDashboardData } from '../data/demoStore';
 import { saveF1, saveF2, saveF3 } from '../api';
-
 
 export default function Dashboard({ lang }) {
   const [dashboardData, setDashboardData] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  const fetchDashboardData = async () => {
-    const projectId = localStorage.getItem("project_id");
-    const token = localStorage.getItem("token");
-    if (!projectId || !token) {
-      setLoading(false);
-      return;
-    }
-    try {
-      const response = await fetch(`http://localhost:8000/projects/${projectId}/dashboard`, {
-        headers: {
-          "Authorization": `Bearer ${token}`
-        }
-      });
-      if (response.ok) {
-        const rawJson = await response.json();
-        const adapted = getAdaptedData(rawJson.full_data || rawJson);
-        setDashboardData(adapted);
-
-        // Sauvegarder F1 (après chargement des données)
-        saveF1({
-          stage: adapted.maturity?.realStage,
-          perceived_stage: adapted.maturity?.perceivedStage,
-          perception_gap: adapted.maturity?.realStage !== adapted.maturity?.perceivedStage,
-          blockers: adapted.blockers?.map(b => b.title?.fr) ?? [],
-          gaps: adapted.maturity?.gapsList ?? []
-        });
-
-        // Sauvegarder F2
-        saveF2({
-          scores: {
-            market:      adapted.scores?.find(s => s.id === 'market')?.score,
-            offer:       adapted.scores?.find(s => s.id === 'commercial')?.score,
-            innovation:  adapted.scores?.find(s => s.id === 'innovation')?.score,
-            scalability: adapted.scores?.find(s => s.id === 'scalability')?.score,
-            green:       adapted.scores?.find(s => s.id === 'green')?.score,
-          },
-          global_score: adapted.financingReadiness?.score
-        });
-
-        // Sauvegarder F3
-        saveF3({
-          roadmap: adapted.roadmap
-        });
-      }
-    } catch (e) {
-      console.error('Error fetching dashboard data:', e);
-    } finally {
-      setLoading(false);
-    }
-  };
-
   useEffect(() => {
-    fetchDashboardData();
+    async function loadDashboard() {
+      try {
+        const projectId = localStorage.getItem('project_id') || 1;
+        const token = localStorage.getItem('token');
+        const res = await fetch(`http://localhost:8000/projects/${projectId}/dashboard`, {
+          headers: { 'Authorization': `Bearer ${token}` }
+        });
+        if (res.ok) {
+          const rawData = await res.json();
+          const adapted = getAdaptedData(rawData);
+          setDashboardData(adapted);
+        } else {
+          console.error("Failed to load dashboard data");
+        }
+      } catch (err) {
+        console.error(err);
+      } finally {
+        setLoading(false);
+      }
+    }
+    loadDashboard();
   }, []);
 
   const handleSaveAnswers = async (updatedAnswers) => {
-    const projectId = localStorage.getItem("project_id");
-    const token = localStorage.getItem("token");
-    if (!projectId || !token) return false;
     try {
-      // On met à jour F1 avec les nouvelles réponses (AnswersInput)
-      const currentF1Data = await saveF1(updatedAnswers);
-      fetchDashboardData();
+      await saveF1(updatedAnswers);
+      const projectId = localStorage.getItem('project_id') || 1;
+      const token = localStorage.getItem('token');
+      const res = await fetch(`http://localhost:8000/projects/${projectId}/dashboard`, {
+        headers: { 'Authorization': `Bearer ${token}` }
+      });
+      if (res.ok) {
+        const rawData = await res.json();
+        const adapted = getAdaptedData(rawData);
+        setDashboardData(adapted);
+      }
       return true;
     } catch (e) {
       console.error('Error saving answers:', e);
@@ -155,9 +130,14 @@ export default function Dashboard({ lang }) {
         <ScoreBars scores={dashboardData.scores} lang={lang} />
       </div>
 
-      {/* ── Row 4: Anomalies — full width compact cards ── */}
-      <div>
-        <AnomaliesList anomalies={dashboardData.anomalies} lang={lang} />
+      {/* ── Row 4: Blockers & Anomalies grid ── */}
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div className="lg:col-span-1">
+          <PriorityBlockers blockers={dashboardData.blockers} lang={lang} />
+        </div>
+        <div className="lg:col-span-2">
+          <AnomaliesList anomalies={dashboardData.anomalies} lang={lang} />
+        </div>
       </div>
 
       {/* ── Row 5: Roadmap — full width ── */}

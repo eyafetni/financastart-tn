@@ -17,8 +17,30 @@ export default function App() {
   const [lang, setLang] = useState('fr');
   const [isLoggedIn, setIsLoggedIn] = useState(isAuthenticated());
 
-  // Get adapted data from dashboard.json
-  const adaptedData = getAdaptedData();
+  const [projectData, setProjectData] = useState(null);
+
+  React.useEffect(() => {
+    if (isLoggedIn) {
+      const projectId = localStorage.getItem('project_id') || 1;
+      const token = localStorage.getItem('token');
+      if (token) {
+        fetch(`http://localhost:8000/projects/${projectId}/dashboard`, {
+          headers: { 'Authorization': `Bearer ${token}` }
+        })
+        .then(res => {
+          if (res.ok) return res.json();
+          throw new Error('Failed to fetch');
+        })
+        .then(data => {
+          const adapted = getAdaptedData(data);
+          setProjectData(adapted);
+        })
+        .catch(console.error);
+      }
+    } else {
+      setProjectData(null);
+    }
+  }, [isLoggedIn]);
 
   const handleLogout = () => {
     localStorage.removeItem('token');
@@ -37,9 +59,9 @@ export default function App() {
         <Navbar
           lang={lang}
           setLang={setLang}
-          startupName={adaptedData.startupName}
-          secteur={adaptedData.secteur}
-          localisation={adaptedData.localisation}
+          startupName={projectData?.startupName || ''}
+          secteur={projectData?.secteur || ''}
+          localisation={projectData?.localisation || ''}
           isLoggedIn={isLoggedIn}
           onLogout={handleLogout}
         />

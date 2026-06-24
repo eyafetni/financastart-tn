@@ -9,8 +9,9 @@ import {
   ChevronRight,
   ClipboardList
 } from 'lucide-react';
-import { loadQuestionnaire, saveQuestionnaire } from '../data/questionnaireService';
+import { loadQuestionnaire, saveQuestionnaire, analyzeProject } from '../data/questionnaireService';
 import { getAdaptedData, translateValue } from '../data/dataAdapter';
+import { useNavigate } from 'react-router-dom';
 
 // Textes bilingues locaux pour la structure du diagnostic
 const pageTranslations = {
@@ -22,7 +23,7 @@ const pageTranslations = {
     saving: "Enregistrement...",
     loading: "Chargement du questionnaire...",
     resetBtn: "Réinitialiser",
-    exportBtn: "Exporter JSON",
+    exportBtn: "Analyser le projet",
     resetConfirm: "Réinitialiser toutes les réponses ?",
     nextStep: "Suivant",
     prevStep: "Précédent",
@@ -114,6 +115,7 @@ const getActiveQuestions = (questions, answers, detectedSector) => {
 
 export default function Questionnaire({ lang }) {
   const pt = pageTranslations[lang] || pageTranslations.fr;
+  const navigate = useNavigate();
 
   const [description, setDescription] = useState('');
   const [questions, setQuestions] = useState([]);
@@ -129,16 +131,30 @@ export default function Questionnaire({ lang }) {
 
   const lastSavedAnswersRef = useRef(null);
 
-  // Charger les données de la startup pour la substitution des variables
-  const adaptedData = getAdaptedData();
-  const detectedSector = adaptedData.secteur;
-  const detectedRegion = adaptedData.localisation;
-  const detectedStage = adaptedData.maturity.perceivedStage;
+  const [detectedSector, setDetectedSector] = useState('');
+  const [detectedRegion, setDetectedRegion] = useState('');
+  const [detectedStage, setDetectedStage] = useState('');
+  const [detectedNom, setDetectedNom] = useState('');
 
-  // Charger les données depuis le fichier questionnaire.json
+  // Charger les données depuis le fichier questionnaire.json et l'API
   useEffect(() => {
     async function fetchData() {
       try {
+        const projectId = localStorage.getItem('project_id') || 1;
+        const token = localStorage.getItem('token');
+        if (token) {
+           const res = await fetch(`http://localhost:8000/projects/${projectId}/dashboard`, {
+             headers: { 'Authorization': `Bearer ${token}` }
+           });
+           if (res.ok) {
+              const rawData = await res.json();
+              const adapted = getAdaptedData(rawData);
+              setDetectedSector(adapted.secteur);
+              setDetectedRegion(adapted.localisation);
+              setDetectedStage(adapted.maturity.perceivedStage);
+              setDetectedNom(adapted.startupName || '');
+           }
+        }
         const data = await loadQuestionnaire();
         setDescription(data.description || '');
         setQuestions(data.questions || []);
@@ -261,8 +277,8 @@ export default function Questionnaire({ lang }) {
     }
   };
 
-  // Exporter les réponses sous forme de fichier answers.json
-  const handleExportJSON = () => {
+  // Envoyer les réponses pour analyse et enregistrement en BD
+  const handleAnalyzeProject = async () => {
     // 1. Résoudre le Secteur
     let rawSecteur = answers.choix_secteur;
     if (!rawSecteur && answers.confirmation_secteur === 'oui') {
@@ -276,7 +292,7 @@ export default function Questionnaire({ lang }) {
       'industrie': 'industrie_construction',
       'commerce': 'commerce_transport_logistique',
       'service': 'service_tourisme',
-      'technologie': 'technologie_services_entreprise'
+      'technologie': 'tech_services_entreprise'
     };
     const resolvedSector = sectorMapping[rawSecteur] || rawSecteur;
 
@@ -288,15 +304,25 @@ export default function Questionnaire({ lang }) {
     if (!resolvedLocalisation) resolvedLocalisation = detectedRegion || '';
 
     // 3. Résoudre le Stade perçu
-    let resolvedStadePercu = detectedStage;
+    let rawStadePercu = detectedStage;
     if (answers.confirmation_stade === 'non') {
-      resolvedStadePercu = answers.choix_stade;
+      rawStadePercu = answers.choix_stade;
     }
-    if (!resolvedStadePercu) resolvedStadePercu = detectedStage || '';
+    if (!rawStadePercu) rawStadePercu = detectedStage || '';
+
+    const stageMapping = {
+      'ideation': 'Ideation',
+      'market_validation': 'Market Validation',
+      'structuration': 'Structuration',
+      'fundraising': 'Fundraising',
+      'launch_planning': 'Launch Planning',
+      'growth': 'Growth'
+    };
+    const resolvedStadePercu = stageMapping[rawStadePercu] || rawStadePercu;
 
     // 4. Données de base
     const payload = {
-      nom_entreprise: answers.nom_entreprise || adaptedData.nom_entreprise || '',
+      nom_entreprise: answers.nom_entreprise || detectedNom || '',
       description_libre: description || answers.description_libre || '',
       secteur: resolvedSector,
       localisation: resolvedLocalisation,
@@ -313,24 +339,24 @@ export default function Questionnaire({ lang }) {
         answers.indus_donneurs_ordre === 'informellement' ? 'informels' :
           answers.indus_donneurs_ordre === 'non' ? 'aucun' : null;
     } else if (rawSecteur === 'agriculture') {
-      payload.agri_certifications = answers.agri_certifications ? (answers.agri_certifications === 'oui') : null;
+      payload.agri_certifications_sanitaires = answers.agri_certifications ? (answers.agri_certifications === 'oui') : null;
       payload.agri_chaine_froid = answers.agri_chaine_froid ? (answers.agri_chaine_froid === 'oui') : null;
       payload.agri_saisonnalite = answers.agri_saisonnalite || null;
-      payload.agri_foncier = answers.agri_foncier || null;
+      payload.agri_acces_foncier = answers.agri_foncier || null;
     } else if (rawSecteur === 'commerce') {
-      payload.com_distribution = answers.com_distribution || null;
-      payload.com_transport = answers.com_transport || null;
+      payload.com_reseau_distribution = answers.com_distribution || null;
+      payload.com_parc_vehicules = answers.com_transport || null;
       payload.com_digital = answers.com_digital || null;
       payload.com_stock = answers.com_stock || null;
     } else if (rawSecteur === 'service') {
-      payload.serv_classement = answers.serv_classement || null;
-      payload.serv_fidelisation = answers.serv_fidelisation || null;
-      payload.serv_numerique = answers.serv_numerique || null;
-      payload.serv_saisonnalite = answers.serv_saisonnalite || null;
+      payload.service_classement = answers.serv_classement || null;
+      payload.service_fidelisation = answers.serv_fidelisation || null;
+      payload.service_numerisation = answers.serv_numerique || null;
+      payload.service_saisonnalite = answers.serv_saisonnalite || null;
     } else if (rawSecteur === 'technologie') {
       payload.tech_mvp = answers.tech_mvp || null;
       payload.tech_mrr = answers.tech_mrr || null;
-      payload.tech_propriete_intellectuelle = answers.tech_propriete_intellectuelle || null;
+      payload.tech_ip = answers.tech_propriete_intellectuelle ? (answers.tech_propriete_intellectuelle === 'oui') : null;
       payload.tech_scalabilite = answers.tech_scalabilite || null;
     }
 
@@ -571,13 +597,43 @@ export default function Questionnaire({ lang }) {
       }
     });
 
-    const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(payload, null, 2));
-    const downloadAnchor = document.createElement('a');
-    downloadAnchor.setAttribute("href", dataStr);
-    downloadAnchor.setAttribute("download", "answers.json");
-    document.body.appendChild(downloadAnchor);
-    downloadAnchor.click();
-    downloadAnchor.remove();
+    setSaving(true);
+    try {
+      const token = localStorage.getItem('token');
+      const projectId = localStorage.getItem('project_id') || 1; // Fallback to 1 if not set
+
+      const response = await fetch(`http://localhost:8000/projects/${projectId}/analyse`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify(payload)
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        const resObj = data.f1_diagnostic;
+        if (resObj) {
+          setStadeReel(resObj.stade_reel || '');
+          setStadePercu(resObj.stade_percu || '');
+          setDivergenceExplication(resObj.gap_explication || '');
+        }
+        setSavedIndicator(true);
+        setTimeout(() => setSavedIndicator(false), 2000);
+
+        // Rediriger vers le dashboard après succès
+        navigate('/');
+      } else {
+        const errData = await response.json().catch(() => ({}));
+        alert("Erreur lors de l'analyse : " + (errData.detail || response.statusText));
+      }
+    } catch (err) {
+      console.error("Erreur lors de la validation du diagnostic:", err);
+      alert("Erreur serveur lors de l'analyse.");
+    } finally {
+      setSaving(false);
+    }
   };
 
 
@@ -888,19 +944,16 @@ export default function Questionnaire({ lang }) {
             <ChevronRight className="h-4 w-4 rtl:rotate-180" />
           </button>
         ) : (
-          <div className="flex flex-col sm:flex-row items-center gap-3">
+          <div className="flex flex-col sm:flex-row items-center justify-end w-full gap-3">
             <button
               type="button"
-              onClick={handleExportJSON}
-              className="w-full sm:w-auto px-5 py-3 rounded-xl text-xs font-bold flex items-center justify-center gap-2 bg-cyan-500 hover:bg-cyan-400 text-slate-950 hover:scale-[1.02] active:scale-[0.98] transition-all shadow-lg shadow-cyan-500/10 cursor-pointer"
+              onClick={handleAnalyzeProject}
+              disabled={saving}
+              className="w-full sm:w-auto px-5 py-3 rounded-xl text-xs font-bold flex items-center justify-center gap-2 bg-cyan-500 hover:bg-cyan-400 text-slate-950 hover:scale-[1.02] active:scale-[0.98] transition-all shadow-lg shadow-cyan-500/10 cursor-pointer disabled:opacity-50"
             >
-              <FileText className="h-4 w-4" />
-              {pt.exportBtn}
+              {saving ? <Loader2 className="h-4 w-4 animate-spin" /> : <FileText className="h-4 w-4" />}
+              {saving ? pt.saving : pt.exportBtn}
             </button>
-            <div className="w-full sm:w-auto px-5 py-3 rounded-xl text-xs font-bold flex items-center justify-center gap-2 bg-emerald-500/10 border border-emerald-500/30 text-emerald-400">
-              <CheckCircle2 className="h-4 w-4 animate-pulse" />
-              {pt.finish}
-            </div>
           </div>
         )}
       </div>

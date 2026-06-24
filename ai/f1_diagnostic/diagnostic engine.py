@@ -1161,7 +1161,7 @@ def run_diagnostic():
 
     output = {
         "entrepreneur_id": entrepreneur_id,
-        "timestamp": datetime.now().isoformat(),
+        "secteur": profil.get("secteur", "Non précisé"),
         "stade_reel": stade_reel_nom,
         "stade_percu": stade_percu,
         "score_diagnostic": engine.score,
@@ -1169,8 +1169,6 @@ def run_diagnostic():
         "gap_explication": gap_explication,
         "gaps": engine.gaps,
         "blockers": engine.blockers,
-        "secteur": profil.get("secteur", "Non précisé"),
-        "secteur_label": profil.get("secteur_label", "Non précisé"),
         "localisation": profil.get("localisation", "Non précisé"),
         "profil_complet": profil,
         "signaux_divergence": engine.signaux_divergence,

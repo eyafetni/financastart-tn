@@ -1,0 +1,126 @@
+{
+  "entrepreneur_id": "ENT-748F3F",
+  "secteur": "tech_services_entreprise",
+  "stade_reel": "Fundraising",
+  "stade_percu": "Launch Planning",
+  "score_diagnostic": 55,
+  "gap_detecte": true,
+  "gap_explication": "L'entrepreneur a surestimé son stade de 1 niveau(x). Il se perçoit en 'Launch Planning' mais le diagnostic objectif indique 'Fundraising'. Causes principales : Équipe incomplète — rôles clés manquants, MVP / offre non encore livrée, Marché déjà occupé par des concurrents récents.",
+  "gaps": [
+    "Équipe incomplète — rôles clés manquants",
+    "MVP / offre non encore livrée",
+    "Marché déjà occupé par des concurrents récents"
+  ],
+  "blockers": [],
+  "localisation": "Nabeul",
+  "profil_complet": {
+    "nom_entreprise": "ELMED",
+    "description_libre": "tech nabeul launch planning",
+    "entrepreneur_id": "ENT-748F3F",
+    "secteur": "tech_services_entreprise",
+    "secteur_label": "Technologie et Services Entreprise",
+    "localisation": "Nabeul",
+    "stade_percu": "Launch Planning",
+    "equipe": "partielle",
+    "mvp_statut": "dev",
+    "mrr": "zero_avec_users",
+    "propriete_intellectuelle": false,
+    "scalabilite": "Partiellement scalable",
+    "rne": true,
+    "forme_juridique": "Entreprise individuelle",
+    "chiffre_affaires": 55550000.0,
+    "anciennete_revenus": "1 à 3 ans",
+    "business_plan": "en_cours",
+    "innovation_niveau": "faible",
+    "accompagnement": "jamais",
+    "financement": "love_money"
+  },
+  "signaux_divergence": [],
+  "financement_recommande": "BFPME / Startup Act",
+  "reponses": {
+    "type_cible": {
+      "index": 2,
+      "valeur": "B2B_Enterprise"
+    },
+    "potentiel_financier_marche": {
+      "index": 1,
+      "valeur": "marche_local_limite"
+    },
+    "intensite_concurrence": {
+      "index": 2,
+      "valeur": "marche_partage"
+    },
+    "niveau_traction": {
+      "index": 3,
+      "valeur": "traction_significative"
+    },
+    "modele_revenu": {
+      "index": 0,
+      "valeur": "non_defini"
+    },
+    "business_plan_f2": {
+      "index": 1,
+      "valeur": "ebauche_initiale"
+    },
+    "maturite_produit": {
+      "index": 2,
+      "valeur": "mvp_valide"
+    },
+    "strategie_prix": {
+      "index": 3,
+      "valeur": "valeur_percue"
+    },
+    "alignement_besoins": {
+      "index": 2,
+      "valeur": "important_non_urgent"
+    },
+    "nouveaute_locale": {
+      "index": 3,
+      "valeur": "premiere_nationale"
+    },
+    "intensite_tech": {
+      "index": 2,
+      "valeur": "integration_avancee"
+    },
+    "barrieres_entree": {
+      "index": 3,
+      "valeur": "effet_de_reseau"
+    },
+    "degre_rupture": {
+      "index": 4,
+      "valeur": "changement_paradigme"
+    },
+    "replicabilite": {
+      "index": 3,
+      "valeur": "facilement_replicable"
+    },
+    "independance_manuelle": {
+      "index": 4,
+      "valeur": "zero_marginal_cost"
+    },
+    "couts_deploiement": {
+      "index": 2,
+      "valeur": "besoin_modere"
+    },
+    "potentiel_geo": {
+      "index": 4,
+      "valeur": "global_born_global"
+    },
+    "climat_air": {
+      "index": 1,
+      "valeur": "impact_negatif_modere"
+    },
+    "donnees_eau_fournies": {
+      "index": 4,
+      "valeur": "optimisation_ia_predictive"
+    },
+    "sols_biodiversite": {
+      "index": 2,
+      "valeur": "preservation_passive"
+    },
+    "ressources_dechets": {
+      "index": 3,
+      "valeur": "revalorisation_upcycling"
+    }
+  }
+}

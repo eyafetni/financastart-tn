@@ -39,5 +39,20 @@ def init_db():
         FOREIGN KEY (user_id) REFERENCES users (id)
     )
     """)
+    
+    # Table project_history
+    cursor.execute("""
+    CREATE TABLE IF NOT EXISTS project_history (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        project_id INTEGER NOT NULL,
+        project_name TEXT,
+        sector TEXT,
+        f1_diagnostic TEXT,
+        f2_scoring TEXT,
+        f3_roadmap TEXT,
+        created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+        FOREIGN KEY (project_id) REFERENCES projects (id)
+    )
+    """)
     conn.commit()
     conn.close()

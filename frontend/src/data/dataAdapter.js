@@ -306,7 +306,7 @@ export function getAdaptedData(data) {
       };
     });
  
-    const justificationFr = detailObj.justification || "";
+    const justificationFr = detailObj.justification || detailObj.justification_template || "";
     const justificationAr = translateValue(justificationFr, 'ar');
  
     return {

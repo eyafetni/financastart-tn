@@ -177,32 +177,65 @@ export default function MyPath({ lang }) {
       try {
         const projectId = localStorage.getItem('project_id') || 1;
         const token = localStorage.getItem('token');
-        const res = await fetch(`http://localhost:8000/projects/${projectId}/dashboard`, {
+        const res = await fetch(`http://localhost:8000/projects/${projectId}/history`, {
           headers: { 'Authorization': `Bearer ${token}` }
         });
         if (res.ok) {
-          const rawData = await res.json();
-          const fromAPI = {
-            id: `sess-${new Date().getTime()}`,
-            date: new Date().toISOString().split('T')[0],
-            stade_reel: rawData.real_stage || "Structuration",
-            stade_percu: rawData.perceived_stage || "",
-            gap_detecte: rawData.gap_detected || false,
-            financingScore: rawData.financing_readiness_index || 0,
-            status: rawData.is_financeable ? "bankable" : "non_bankable",
-            scores: {
-              market: rawData.scores_data?.scores_f2?.market || 0,
-              commercial: rawData.scores_data?.scores_f2?.commercial_offer || 0,
-              innovation: rawData.scores_data?.scores_f2?.innovation || 0,
-              scalability: rawData.scores_data?.scores_f2?.scalability || 0,
-              green: rawData.scores_data?.scores_f2?.green || 0,
-            },
-            isCurrent: true,
-          };
-          setSessionHistory([fromAPI]);
+          const historyData = await res.json();
+          if (historyData.length > 0) {
+            const mappedHistory = historyData.map((h, idx) => {
+              const rawF1 = h.f1_diagnostic || {};
+              const rawF2 = h.f2_scoring || {};
+              const f2Scores = rawF2.scores || {};
+              return {
+                id: `sess-${h.id}`,
+                date: h.created_at ? h.created_at.split('T')[0] : new Date().toISOString().split('T')[0],
+                stade_reel: rawF1.stade_reel || "Ideation",
+                stade_percu: rawF1.stade_percu || "",
+                gap_detecte: rawF1.gap_detecte || false,
+                financingScore: rawF2.financing_readiness_index || 0,
+                status: rawF2.is_financeable ? "bankable" : "non_bankable",
+                scores: {
+                  market: f2Scores.market_score?.valeur || 0,
+                  commercial: f2Scores.commercial_offer_score?.valeur || 0,
+                  innovation: f2Scores.innovation_score?.valeur || 0,
+                  scalability: f2Scores.scalability_score?.valeur || 0,
+                  green: f2Scores.green_score?.valeur || 0,
+                },
+                isCurrent: idx === historyData.length - 1,
+              };
+            });
+            setSessionHistory(mappedHistory);
+          } else {
+            // Fallback to dashboard
+            const dashRes = await fetch(`http://localhost:8000/projects/${projectId}/dashboard`, {
+              headers: { 'Authorization': `Bearer ${token}` }
+            });
+            if (dashRes.ok) {
+              const rawData = await dashRes.json();
+              const fromAPI = {
+                id: `sess-${new Date().getTime()}`,
+                date: new Date().toISOString().split('T')[0],
+                stade_reel: rawData.real_stage || "Structuration",
+                stade_percu: rawData.perceived_stage || "",
+                gap_detecte: rawData.gap_detected || false,
+                financingScore: rawData.financing_readiness_index || 0,
+                status: rawData.is_financeable ? "bankable" : "non_bankable",
+                scores: {
+                  market: rawData.scores_data?.scores_f2?.market || 0,
+                  commercial: rawData.scores_data?.scores_f2?.commercial_offer || 0,
+                  innovation: rawData.scores_data?.scores_f2?.innovation || 0,
+                  scalability: rawData.scores_data?.scores_f2?.scalability || 0,
+                  green: rawData.scores_data?.scores_f2?.green || 0,
+                },
+                isCurrent: true,
+              };
+              setSessionHistory([fromAPI]);
+            }
+          }
         }
       } catch (e) {
-        console.error("Error loading dashboard in MyPath:", e);
+        console.error("Error loading history in MyPath:", e);
       } finally {
         setLoadingQuestionnaire(false);
       }

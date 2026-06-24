@@ -65,7 +65,7 @@ export default function PriorityBlockers({ blockers, lang }) {
                 <span className="text-[10px] uppercase font-bold tracking-wider bg-slate-800 text-slate-300 px-2.5 py-0.5 rounded-full border border-slate-700/50">
                   {domain[lang]}
                 </span>
-                
+
                 <span className={`text-[10px] font-bold px-2 py-0.5 rounded-md flex items-center gap-1 ${styles.badge}`}>
                   <Icon className="h-3 w-3" />
                   {priority === 'high' ? t.priorityHigh : priority === 'medium' ? t.priorityMedium : t.priorityLow}

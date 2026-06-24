@@ -1,0 +1,315 @@
+{
+  "entrepreneur_id": "ID_UNKNOWN",
+  "nom_entreprise": "Amine Industries",
+  "secteur": "industrie_construction",
+  "localisation": "ariana",
+  "stade_percu": "Growth",
+  "stade_reel": "Structuration",
+  "gap_detecte": true,
+  "gap_explication": "L'entrepreneur a surestimé son stade de 3 niveau(x). Auto-évaluation : 'Growth' | Diagnostic : 'Structuration'. Lacunes principales : Équipements non disponibles, Business plan incomplet ou sans projections, Produit existant depuis >2 ans.",
+  "gaps": [
+    "Équipements non disponibles",
+    "Business plan incomplet ou sans projections",
+    "Produit existant depuis >2 ans"
+  ],
+  "blockers": [
+    {
+      "domaine": "financier",
+      "description": "Besoin d'investissement équipements / matériel",
+      "priorite": 1
+    }
+  ],
+  "signaux_divergence": [
+    "Votre solution existe déjà depuis plusieurs années. L'innovation perçue ne se traduit pas en différenciation réelle."
+  ],
+  "financement_recommande": "APII / ANPE",
+  "reponses_f2": {
+    "type_cible": {
+      "index": 1,
+      "valeur": "B2B_SME"
+    },
+    "potentiel_financier_marche": {
+      "index": 2,
+      "valeur": "marche_national_intermediaire"
+    },
+    "intensite_concurrence": {
+      "index": 1,
+      "valeur": "concurrence_severe"
+    },
+    "niveau_traction": {
+      "index": 1,
+      "valeur": "interet_sans_revenu"
+    },
+    "modele_revenu": {
+      "index": 1,
+      "valeur": "one_shot_vente_directe"
+    },
+    "business_plan_f2": {
+      "index": 2,
+      "valeur": "en_cours_de_validation"
+    },
+    "maturite_produit": {
+      "index": 2,
+      "valeur": "mvp_valide"
+    },
+    "strategie_prix": {
+      "index": 1,
+      "valeur": "cout_plus_marge"
+    },
+    "alignement_besoins": {
+      "index": 2,
+      "valeur": "critique_non_bloquant"
+    },
+    "nouveaute_locale": {
+      "index": 1,
+      "valeur": "amelioration_incrementale"
+    },
+    "intensite_tech": {
+      "index": 2,
+      "valeur": "integration_avancee"
+    },
+    "barrieres_entree": {
+      "index": 1,
+      "valeur": "vitesse_execution"
+    },
+    "degre_rupture": {
+      "index": 2,
+      "valeur": "transformation_process"
+    },
+    "replicabilite": {
+      "index": 2,
+      "valeur": "deploiement_operationnel_modere"
+    },
+    "independance_manuelle": {
+      "index": 1,
+      "valeur": "rendements_degressifs"
+    },
+    "couts_deploiement": {
+      "index": 2,
+      "valeur": "besoin_modere"
+    },
+    "potentiel_geo": {
+      "index": 1,
+      "valeur": "regional"
+    },
+    "climat_air": {
+      "index": 1,
+      "valeur": "effort_d_attenuation"
+    },
+    "donnees_eau_fournies": {
+      "index": 1,
+      "valeur": "estimation_annuelle"
+    },
+    "sols_biodiversite": {
+      "index": 2,
+      "valeur": "preservation_passive"
+    },
+    "ressources_dechets": {
+      "index": 2,
+      "valeur": "tri_et_recyclage"
+    }
+  },
+  "reponses": {
+    "type_cible": {
+      "index": 1,
+      "valeur": "B2B_SME"
+    },
+    "potentiel_financier_marche": {
+      "index": 2,
+      "valeur": "marche_national_intermediaire"
+    },
+    "intensite_concurrence": {
+      "index": 1,
+      "valeur": "concurrence_severe"
+    },
+    "niveau_traction": {
+      "index": 1,
+      "valeur": "interet_sans_revenu"
+    },
+    "modele_revenu": {
+      "index": 1,
+      "valeur": "one_shot_vente_directe"
+    },
+    "business_plan_f2": {
+      "index": 2,
+      "valeur": "en_cours_de_validation"
+    },
+    "maturite_produit": {
+      "index": 2,
+      "valeur": "mvp_valide"
+    },
+    "strategie_prix": {
+      "index": 1,
+      "valeur": "cout_plus_marge"
+    },
+    "alignement_besoins": {
+      "index": 2,
+      "valeur": "critique_non_bloquant"
+    },
+    "nouveaute_locale": {
+      "index": 1,
+      "valeur": "amelioration_incrementale"
+    },
+    "intensite_tech": {
+      "index": 2,
+      "valeur": "integration_avancee"
+    },
+    "barrieres_entree": {
+      "index": 1,
+      "valeur": "vitesse_execution"
+    },
+    "degre_rupture": {
+      "index": 2,
+      "valeur": "transformation_process"
+    },
+    "replicabilite": {
+      "index": 2,
+      "valeur": "deploiement_operationnel_modere"
+    },
+    "independance_manuelle": {
+      "index": 1,
+      "valeur": "rendements_degressifs"
+    },
+    "couts_deploiement": {
+      "index": 2,
+      "valeur": "besoin_modere"
+    },
+    "potentiel_geo": {
+      "index": 1,
+      "valeur": "regional"
+    },
+    "climat_air": {
+      "index": 1,
+      "valeur": "effort_d_attenuation"
+    },
+    "donnees_eau_fournies": {
+      "index": 1,
+      "valeur": "estimation_annuelle"
+    },
+    "sols_biodiversite": {
+      "index": 2,
+      "valeur": "preservation_passive"
+    },
+    "ressources_dechets": {
+      "index": 2,
+      "valeur": "tri_et_recyclage"
+    }
+  },
+  "scores_f2": {
+    "MKT": 18,
+    "COM": 21,
+    "INO": 18,
+    "SCA": 18,
+    "ESG": 18
+  },
+  "profil_complet": {
+    "nom_entreprise": "Amine Industries",
+    "description_libre": "Mon Projet est un projet d'Industrie,basé à Ariana et en stade de Launch Planning",
+    "secteur": "industrie_construction",
+    "localisation": "ariana",
+    "stade_percu": "Growth",
+    "equipe": "complete",
+    "indus_equipements": "besoin_financement",
+    "indus_iso": "certifie",
+    "indus_foprodi": true,
+    "indus_sous_traitance": "informels",
+    "rne": true,
+    "forme_juridique": "sa",
+    "a_revenus": true,
+    "chiffre_affaires": 55000,
+    "anciennete_revenus": "6_a_12_mois",
+    "a_clients_payants": null,
+    "lettres_intention": null,
+    "validation_type": null,
+    "business_plan": "incomplet",
+    "innovation": "nouveau",
+    "accompagnement": "en_incubateur",
+    "financement": "financement_public",
+    "reponses_f2": {
+      "type_cible": {
+        "index": 1,
+        "valeur": "B2B_SME"
+      },
+      "potentiel_financier_marche": {
+        "index": 2,
+        "valeur": "marche_national_intermediaire"
+      },
+      "intensite_concurrence": {
+        "index": 1,
+        "valeur": "concurrence_severe"
+      },
+      "niveau_traction": {
+        "index": 1,
+        "valeur": "interet_sans_revenu"
+      },
+      "modele_revenu": {
+        "index": 1,
+        "valeur": "one_shot_vente_directe"
+      },
+      "business_plan_f2": {
+        "index": 2,
+        "valeur": "en_cours_de_validation"
+      },
+      "maturite_produit": {
+        "index": 2,
+        "valeur": "mvp_valide"
+      },
+      "strategie_prix": {
+        "index": 1,
+        "valeur": "cout_plus_marge"
+      },
+      "alignement_besoins": {
+        "index": 2,
+        "valeur": "critique_non_bloquant"
+      },
+      "nouveaute_locale": {
+        "index": 1,
+        "valeur": "amelioration_incrementale"
+      },
+      "intensite_tech": {
+        "index": 2,
+        "valeur": "integration_avancee"
+      },
+      "barrieres_entree": {
+        "index": 1,
+        "valeur": "vitesse_execution"
+      },
+      "degre_rupture": {
+        "index": 2,
+        "valeur": "transformation_process"
+      },
+      "replicabilite": {
+        "index": 2,
+        "valeur": "deploiement_operationnel_modere"
+      },
+      "independance_manuelle": {
+        "index": 1,
+        "valeur": "rendements_degressifs"
+      },
+      "couts_deploiement": {
+        "index": 2,
+        "valeur": "besoin_modere"
+      },
+      "potentiel_geo": {
+        "index": 1,
+        "valeur": "regional"
+      },
+      "climat_air": {
+        "index": 1,
+        "valeur": "effort_d_attenuation"
+      },
+      "donnees_eau_fournies": {
+        "index": 1,
+        "valeur": "estimation_annuelle"
+      },
+      "sols_biodiversite": {
+        "index": 2,
+        "valeur": "preservation_passive"
+      },
+      "ressources_dechets": {
+        "index": 2,
+        "valeur": "tri_et_recyclage"
+      }
+    }
+  }
+}

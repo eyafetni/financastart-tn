@@ -267,6 +267,19 @@ def analyse_project(project_id: int, payload: dict, user=Depends(get_current_use
                 user["user_id"]
             )
         )
+        # Insertion dans l'historique
+        conn.execute(
+            """INSERT INTO project_history (project_id, project_name, sector, f1_diagnostic, f2_scoring, f3_roadmap)
+               VALUES (?, ?, ?, ?, ?, ?)""",
+            (
+                project_id,
+                payload.get("nom_entreprise", "Projet sans nom"),
+                payload.get("secteur", ""),
+                json.dumps(f1_result, ensure_ascii=False),
+                json.dumps(f2_result, ensure_ascii=False),
+                json.dumps(f3_result, ensure_ascii=False)
+            )
+        )
         conn.commit()
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Erreur d'analyse: {str(e)}")
@@ -296,6 +309,36 @@ def save_f3(project_id: int, data: F3Update, user=Depends(get_current_user)):
     conn.commit()
     conn.close()
     return {"message": "F3 sauvegardé ✅"}
+
+# ── RÉCUPÉRER L'HISTORIQUE DU PROJET ──────────────────
+@router.get("/{project_id}/history")
+def get_project_history(project_id: int, user=Depends(get_current_user)):
+    conn = get_db()
+    project_row = conn.execute("SELECT id FROM projects WHERE id = ? AND user_id = ?", (project_id, user["user_id"])).fetchone()
+    if not project_row:
+        conn.close()
+        raise HTTPException(status_code=404, detail="Projet non trouvé")
+        
+    rows = conn.execute(
+        """SELECT * FROM project_history 
+           WHERE project_id = ? 
+           ORDER BY created_at ASC""",
+        (project_id,)
+    ).fetchall()
+    conn.close()
+    
+    history_list = []
+    for r in rows:
+        d = dict(r)
+        for field in ["f1_diagnostic", "f2_scoring", "f3_roadmap"]:
+            if d.get(field):
+                try:
+                    d[field] = json.loads(d[field])
+                except Exception:
+                    d[field] = {}
+        history_list.append(d)
+        
+    return history_list
 
 # ── DASHBOARD COMPLET (F1+F2+F3) ──────────────────
 @router.get("/{project_id}/dashboard")

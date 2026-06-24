@@ -162,7 +162,7 @@ Moyen terme (3–6 mois) →  Dossier BFPME                [source : bfpme.com.t
 |-------|----------|
 | J1–J3 | Knowledge Base JSON · Taxonomie F1 · Matrices AHP F2 |
 | J4–J6 | Prototype F1 + F2 + F3 · Intégration cross-module |
-| J7 | Demo Day · Soumission finale · 22 juin 2026 |
+| J7 | Demo Day · Soumission finale · 26 juin 2026 |
 
 ---
 
@@ -189,4 +189,4 @@ Moyen terme (3–6 mois) →  Dossier BFPME                [source : bfpme.com.t
 
 ---
 
-*AINS Hackathon 2026 · Demo Day 22 juin 2026*
+*AINS Hackathon 2026 · Demo Day 26 juin 2026*
